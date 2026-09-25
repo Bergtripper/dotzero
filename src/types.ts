@@ -50,6 +50,24 @@ export interface GeometricElement {
 
 export type ThemeVariant = 'classic' | 'monochrome' | 'destijl';
 
+export type ColorMode = 'light' | 'dark';
+
+export type DotzeroProjectStatus = 'active' | 'archive' | 'prototype';
+
+export interface DotzeroProject {
+  id: string;
+  number: string;
+  title: string;
+  slug: string;
+  period?: string;
+  year: string;
+  status: DotzeroProjectStatus;
+  type: string[];
+  summary: LocalizedString;
+  route?: string;
+  externalUrl?: string;
+}
+
 export interface ModulorPreset {
   id: string;
   name: string;
