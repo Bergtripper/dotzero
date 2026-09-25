@@ -23,7 +23,7 @@ export const Manifesto: React.FC = () => {
               <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
               <span>{t.badge[language]}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[var(--text)]">
+            <h2 className="dz-h2 text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text)]">
               {t.title[language]} <span className="text-[var(--accent)]">·0</span>
             </h2>
           </div>
@@ -83,14 +83,14 @@ export const Manifesto: React.FC = () => {
                     </div>
                   </div>
 
-                  <h3 className="font-display font-bold text-xl uppercase tracking-tight text-[var(--text)] mb-1">
+                  <h3 className="dz-h3 mb-1 text-xl uppercase text-[var(--text)]">
                     {principle.title[language]}
                   </h3>
                   <div className="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-4 italic">
                     {principle.germanTitle}
                   </div>
 
-                  <p className="text-sm text-zinc-700 leading-relaxed font-sans">
+                  <p className="dz-body text-sm">
                     {principle.subtitle[language]}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export const Manifesto: React.FC = () => {
             <h4 className="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight text-[var(--text)] mb-4">
               {selectedPrinciple.title[language]} — {selectedPrinciple.germanTitle}
             </h4>
-            <p className="text-base sm:text-lg text-zinc-800 leading-relaxed max-w-3xl">
+            <p className="dz-body max-w-3xl text-base sm:text-lg">
               {selectedPrinciple.description[language]}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3 font-mono text-xs">
