@@ -448,7 +448,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080C] text-[#EDEDED] font-sans relative selection:bg-[#DE3831] selection:text-white pb-20">
+    <div className="min-h-screen bg-[#07080C] text-[#EDEDED] font-sans relative selection:bg-[var(--accent)] selection:text-[var(--on-accent)] pb-20">
       
       {/* Top Bar for Musa Subpage */}
       <header className="sticky top-0 z-50 bg-[#07080C]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
@@ -458,14 +458,14 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           <button
             type="button"
             onClick={onBack}
-            className="flex items-center gap-2 px-3 py-1.5 border border-white/20 bg-white/5 hover:bg-white/15 text-white font-mono text-xs uppercase tracking-wider transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 border border-white/20 bg-[var(--surface-raised)]/5 hover:bg-[var(--surface-raised)]/15 text-[var(--on-accent)] font-mono text-xs uppercase tracking-wider transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 text-[#DE3831]" />
+            <ArrowLeft className="w-4 h-4 text-[var(--accent)]" />
             <span>{t.backToDotzero[language]}</span>
           </button>
 
           <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-zinc-400">
-            <span className="w-2 h-2 rounded-full bg-[#1350B0] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[var(--accent-secondary)] animate-pulse" />
             <span className="tracking-widest uppercase">{t.status[language]}</span>
           </div>
         </div>
@@ -478,8 +478,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             onClick={toggleAudio}
             className={`flex items-center gap-1.5 px-3 py-1.5 border text-xs font-mono uppercase tracking-wider transition-all ${
               audioActive
-                ? 'border-[#F7B801] bg-[#F7B801]/10 text-[#F7B801] shadow-[0_0_12px_rgba(247,184,1,0.3)]'
-                : 'border-white/20 bg-white/5 text-zinc-400 hover:text-white'
+                ? 'border-[var(--accent-tertiary)] bg-[var(--accent-tertiary)]/10 text-[var(--accent-tertiary)] shadow-[0_0_12px_rgba(247,184,1,0.3)]'
+                : 'border-white/20 bg-[var(--surface-raised)]/5 text-zinc-400 hover:text-[var(--on-accent)]'
             }`}
             title="Audio-reactive ambient synth"
           >
@@ -498,8 +498,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 onClick={() => setLanguage(lng)}
                 className={`px-2 py-0.5 uppercase transition-all ${
                   language === lng
-                    ? 'bg-[#DE3831] text-white font-bold'
-                    : 'text-zinc-400 hover:text-white'
+                    ? 'bg-[var(--accent)] text-[var(--on-accent)] font-bold'
+                    : 'text-zinc-400 hover:text-[var(--on-accent)]'
                 }`}
               >
                 {lng.toUpperCase()}
@@ -516,13 +516,13 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         {/* Title Lockup */}
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
           <div>
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[#F7B801] mb-2 font-bold">
+            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent-tertiary)] mb-2 font-bold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>DOTZERO // NEXT-GEN KINETICS</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase font-display tracking-tight text-white flex items-center gap-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase font-display tracking-tight text-[var(--on-accent)] flex items-center gap-3">
               <span>{t.title[language]}</span>
-              <span className="text-xs px-2 py-0.5 border border-[#DE3831] text-[#DE3831] font-mono tracking-widest">
+              <span className="text-xs px-2 py-0.5 border border-[var(--accent)] text-[var(--accent)] font-mono tracking-widest">
                 v2.0
               </span>
             </h1>
@@ -581,7 +581,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
               {/* Viewport Overlay HUD Details */}
               <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-[#DE3831] animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
                 <span>REALTIME 4K SHADER · {activePreset.name}</span>
               </div>
 
@@ -594,26 +594,26 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <span>CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO GRAVITAZIONALE</span>
               </div>              {/* Audio visualizer bars on canvas HUD */}
               {audioActive && (
-                <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[#F7B801]/30">
+                <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[var(--accent-tertiary)]/30">
                   {audioMeter.map((val, idx) => (
                     <div
                       key={idx}
-                      className="w-1.5 bg-[#F7B801] transition-all duration-75"
+                      className="w-1.5 bg-[var(--accent-tertiary)] transition-all duration-75"
                       style={{ height: `${val / 3}px` }}
                     />
                   ))}
-                  <span className="font-mono text-[9px] text-[#F7B801] ml-1 uppercase">SYNTH LIVE</span>
+                  <span className="font-mono text-[9px] text-[var(--accent-tertiary)] ml-1 uppercase">SYNTH LIVE</span>
                 </div>
               )}
             </div>
 
             {/* Quick Actions Bar below canvas */}
-            <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-white/5 border border-white/10 font-mono text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-[var(--surface-raised)]/5 border border-white/10 font-mono text-xs">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={captureSnapshot}
-                  className="px-3 py-1.5 bg-[#DE3831] text-white uppercase font-bold flex items-center gap-1.5 hover:bg-[#DE3831]/80 transition-colors"
+                  className="px-3 py-1.5 bg-[var(--accent)] text-[var(--on-accent)] uppercase font-bold flex items-center gap-1.5 hover:bg-[var(--accent)]/80 transition-colors"
                 >
                   {snapshotTaken ? <Check className="w-3.5 h-3.5" /> : <Camera className="w-3.5 h-3.5" />}
                   <span>{snapshotTaken ? t.snapshotSaved[language] : t.snapshotBtn[language]}</span>
@@ -622,16 +622,16 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <button
                   type="button"
                   onClick={() => triggerShockwave()}
-                  className="px-3 py-1.5 border border-white/20 bg-white/5 text-white uppercase flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                  className="px-3 py-1.5 border border-white/20 bg-[var(--surface-raised)]/5 text-[var(--on-accent)] uppercase flex items-center gap-1.5 hover:bg-[var(--surface-raised)]/10 transition-colors"
                 >
-                  <Zap className="w-3.5 h-3.5 text-[#F7B801]" />
+                  <Zap className="w-3.5 h-3.5 text-[var(--accent-tertiary)]" />
                   <span>{t.burstBtn[language]}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => initParticles(particleDensity, activePreset.colorScheme)}
-                  className="px-3 py-1.5 border border-white/20 bg-white/5 text-zinc-300 uppercase flex items-center gap-1.5 hover:bg-white/10 transition-colors"
+                  className="px-3 py-1.5 border border-white/20 bg-[var(--surface-raised)]/5 text-zinc-300 uppercase flex items-center gap-1.5 hover:bg-[var(--surface-raised)]/10 transition-colors"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{t.resetCanvasBtn[language]}</span>
@@ -644,7 +644,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   type="button"
                   onClick={() => setShapeMode('geometric-mesh')}
                   className={`px-2.5 py-1 uppercase transition-all ${
-                    shapeMode === 'geometric-mesh' ? 'bg-white text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    shapeMode === 'geometric-mesh' ? 'bg-[var(--surface-raised)] text-black font-bold' : 'text-zinc-400 hover:text-[var(--on-accent)]'
                   }`}
                 >
                   Bauhaus Mesh
@@ -653,7 +653,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   type="button"
                   onClick={() => setShapeMode('particles')}
                   className={`px-2.5 py-1 uppercase transition-all ${
-                    shapeMode === 'particles' ? 'bg-white text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    shapeMode === 'particles' ? 'bg-[var(--surface-raised)] text-black font-bold' : 'text-zinc-400 hover:text-[var(--on-accent)]'
                   }`}
                 >
                   Fluid Dust
@@ -662,7 +662,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   type="button"
                   onClick={() => setShapeMode('waveform')}
                   className={`px-2.5 py-1 uppercase transition-all ${
-                    shapeMode === 'waveform' ? 'bg-white text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    shapeMode === 'waveform' ? 'bg-[var(--surface-raised)] text-black font-bold' : 'text-zinc-400 hover:text-[var(--on-accent)]'
                   }`}
                 >
                   Waveform
@@ -676,8 +676,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           <div className="lg:col-span-4 space-y-6">
             
             {/* Preset Selector Panel */}
-            <div className="border border-white/15 bg-white/5 p-4 rounded-xs">
-              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#F7B801] font-bold mb-3">
+            <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs">
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--accent-tertiary)] font-bold mb-3">
                 <Sliders className="w-3.5 h-3.5" />
                 <span>{t.presetLabel[language]}</span>
               </div>
@@ -690,8 +690,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                     onClick={() => handleSelectPreset(p)}
                     className={`p-2.5 border text-left font-mono text-xs uppercase transition-all ${
                       activePreset.id === p.id
-                        ? 'border-[#DE3831] bg-[#DE3831]/15 text-white font-bold shadow-[0_0_15px_rgba(222,56,49,0.3)]'
-                        : 'border-white/10 bg-black/40 text-zinc-400 hover:border-white/30 hover:text-white'
+                        ? 'border-[var(--accent)] bg-[var(--accent)]/15 text-[var(--on-accent)] font-bold shadow-[0_0_15px_rgba(222,56,49,0.3)]'
+                        : 'border-white/10 bg-black/40 text-zinc-400 hover:border-white/30 hover:text-[var(--on-accent)]'
                     }`}
                   >
                     <div className="text-[11px] truncate">{p.name}</div>
@@ -702,7 +702,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             </div>
 
             {/* Parametric Shader Sliders */}
-            <div className="border border-white/15 bg-white/5 p-4 rounded-xs space-y-4 font-mono text-xs">
+            <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[#EDEDED] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
                 <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
@@ -711,7 +711,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               {/* Particle Count */}
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">                  <span>{t.particlesLabel[language]}</span>
-                  <span className="text-[#DE3831]">{particleDensity}</span>
+                  <span className="text-[var(--accent)]">{particleDensity}</span>
                 </div>
                 <input
                   type="range"
@@ -724,7 +724,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                     setParticleDensity(count);
                     initParticles(count, activePreset.colorScheme);
                   }}
-                  className="w-full accent-[#DE3831] bg-white/10 h-1.5 rounded-none"
+                  className="w-full accent-[#DE3831] bg-[var(--surface-raised)]/10 h-1.5 rounded-none"
                 />
               </div>
 
@@ -732,7 +732,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.speedLabel[language]}</span>
-                  <span className="text-[#1350B0]">{speedMultiplier.toFixed(1)}x</span>
+                  <span className="text-[var(--accent-secondary)]">{speedMultiplier.toFixed(1)}x</span>
                 </div>
                 <input
                   type="range"
@@ -741,7 +741,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   step="0.1"
                   value={speedMultiplier}
                   onChange={(e) => setSpeedMultiplier(Number(e.target.value))}
-                  className="w-full accent-[#1350B0] bg-white/10 h-1.5 rounded-none"
+                  className="w-full accent-[#1350B0] bg-[var(--surface-raised)]/10 h-1.5 rounded-none"
                 />
               </div>
 
@@ -749,7 +749,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.glowLabel[language]}</span>
-                  <span className="text-[#F7B801]">{glowIntensity}px</span>
+                  <span className="text-[var(--accent-tertiary)]">{glowIntensity}px</span>
                 </div>
                 <input
                   type="range"
@@ -758,7 +758,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   step="1"
                   value={glowIntensity}
                   onChange={(e) => setGlowIntensity(Number(e.target.value))}
-                  className="w-full accent-[#F7B801] bg-white/10 h-1.5 rounded-none"
+                  className="w-full accent-[#F7B801] bg-[var(--surface-raised)]/10 h-1.5 rounded-none"
                 />
               </div>
 
@@ -766,7 +766,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.trailLabel[language]}</span>
-                  <span className="text-white">{Math.round((1 - trailPersistence) * 100)}%</span>
+                  <span className="text-[var(--on-accent)]">{Math.round((1 - trailPersistence) * 100)}%</span>
                 </div>
                 <input
                   type="range"
@@ -775,15 +775,15 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                   step="0.01"
                   value={trailPersistence}
                   onChange={(e) => setTrailPersistence(Number(e.target.value))}
-                  className="w-full accent-white bg-white/10 h-1.5 rounded-none"
+                  className="w-full accent-white bg-[var(--surface-raised)]/10 h-1.5 rounded-none"
                 />
               </div>
             </div>
 
             {/* Web Audio Synth Panel */}
-            <div className="border border-white/15 bg-white/5 p-4 rounded-xs space-y-3 font-mono text-xs">
+            <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                <span className="font-bold uppercase text-[#F7B801] flex items-center gap-2">
+                <span className="font-bold uppercase text-[var(--accent-tertiary)] flex items-center gap-2">
                   <Activity className="w-3.5 h-3.5" />
                   <span>{t.audioTitle[language]}</span>
                 </span>
@@ -799,8 +799,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 onClick={toggleAudio}
                 className={`w-full py-2.5 border uppercase font-bold tracking-wider transition-all flex items-center justify-center gap-2 ${
                   audioActive
-                    ? 'border-[#F7B801] bg-[#F7B801] text-black shadow-[0_0_15px_rgba(247,184,1,0.4)]'
-                    : 'border-white/20 bg-white/10 text-white hover:bg-white/20'
+                    ? 'border-[var(--accent-tertiary)] bg-[var(--accent-tertiary)] text-black shadow-[0_0_15px_rgba(247,184,1,0.4)]'
+                    : 'border-white/20 bg-[var(--surface-raised)]/10 text-[var(--on-accent)] hover:bg-[var(--surface-raised)]/20'
                 }`}
               >
                 {audioActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
@@ -814,8 +814,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         {/* Multimodal Generation Pipeline Nodes */}
         <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="flex items-center gap-2 font-mono text-xs text-[#DE3831] uppercase tracking-[0.2em] font-bold mb-4">
-            <span className="w-2.5 h-2.5 bg-[#DE3831] inline-block" />
+          <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-4">
+            <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
             <span>{t.nodesTitle[language]}</span>
           </div>
 
@@ -823,18 +823,18 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             {t.nodes.map((node: { id: string; title: Record<Language, string>; desc: Record<Language, string>; tag: string }, i: number) => (
               <div
                 key={node.id}
-                className="p-4 border border-white/15 bg-white/5 hover:border-white/30 transition-all flex flex-col justify-between font-mono"
+                className="p-4 border border-white/15 bg-[var(--surface-raised)]/5 hover:border-white/30 transition-all flex flex-col justify-between font-mono"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] px-1.5 py-0.5 border border-white/20 text-zinc-400">
                       NODE 0{i + 1}
-                    </span>                    <span className="text-[10px] text-[#F7B801] font-bold">
+                    </span>                    <span className="text-[10px] text-[var(--accent-tertiary)] font-bold">
                       {node.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-1 uppercase">
+                  <h3 className="text-sm font-bold text-[var(--on-accent)] mb-1 uppercase">
                     {node.title[language]}
                   </h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
