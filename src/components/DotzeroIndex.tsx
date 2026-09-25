@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Circle } from 'lucide-react';
 import { getDotzeroProjects } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
-import { DotzeroWordmark } from './DotzeroWordmark';
+import { DotzeroTypographicSpecimen } from './DotzeroTypographicSpecimen';
 
 
 const COPY = {
@@ -58,7 +58,7 @@ export const DotzeroIndex: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
           <div>
             <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
-            <DotzeroWordmark />
+            <DotzeroTypographicSpecimen />
             <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
               {t.title}
             </p>
