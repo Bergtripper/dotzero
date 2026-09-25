@@ -70,7 +70,7 @@ export const ColorShapeTheory: React.FC = () => {
               <span className="w-2.5 h-2.5 bg-[var(--accent-secondary)] inline-block" />
               <span>{t.badge[language]}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[var(--text)]">
+            <h2 className="dz-h2 text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text)]">
               {t.title[language]}
             </h2>
           </div>
@@ -86,7 +86,7 @@ export const ColorShapeTheory: React.FC = () => {
               <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] font-bold">
                 {t.expBadge[language]}
               </span>
-              <h3 className="font-display font-bold text-2xl uppercase text-[var(--text)] mt-1">
+              <h3 className="dz-h3 mt-1 text-2xl uppercase text-[var(--text)]">
                 {t.expInstruction[language]}
               </h3>
             </div>
@@ -246,7 +246,7 @@ export const ColorShapeTheory: React.FC = () => {
                     : t.resultAltTitle[language]}
                 </span>
               </div>
-              <p className="text-zinc-800 font-sans text-base">
+              <p className="dz-body text-base">
                 {isExactKandinsky
                   ? t.resultSuccessDesc[language]
                   : t.resultAltDesc[language]}
@@ -267,7 +267,7 @@ export const ColorShapeTheory: React.FC = () => {
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.yellowCard.angle[language]}</span>
             </div>
-            <p className="text-sm text-zinc-700 leading-relaxed font-sans">
+            <p className="dz-body text-sm">
               {t.yellowCard.body[language]}
             </p>
             <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
@@ -285,7 +285,7 @@ export const ColorShapeTheory: React.FC = () => {
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.redCard.angle[language]}</span>
             </div>
-            <p className="text-sm text-zinc-700 leading-relaxed font-sans">
+            <p className="dz-body text-sm">
               {t.redCard.body[language]}
             </p>
             <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
@@ -303,7 +303,7 @@ export const ColorShapeTheory: React.FC = () => {
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.blueCard.angle[language]}</span>
             </div>
-            <p className="text-sm text-zinc-700 leading-relaxed font-sans">
+            <p className="dz-body text-sm">
               {t.blueCard.body[language]}
             </p>
             <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
