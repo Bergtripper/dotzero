@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
   };
 
   return (
-    <footer id="footer-section" className="bg-[#121212] text-white pt-16 pb-12 border-t-4 border-[#DE3831]">
+    <footer id="footer-section" className="bg-[var(--text)] text-[var(--on-accent)] pt-16 pb-12 border-t-4 border-[var(--accent)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Colophon Row */}
@@ -27,11 +27,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
           {/* Logo & Statement (5 cols) */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#DE3831] inline-block border border-white" />
-              <span className="w-4 h-4 bg-[#1350B0] inline-block border border-white" />
+              <span className="w-5 h-5 rounded-full bg-[var(--accent)] inline-block border border-white" />
+              <span className="w-4 h-4 bg-[var(--accent-secondary)] inline-block border border-white" />
               <div className="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[14px] border-b-[#F7B801]" />
-              <span className="text-3xl font-extrabold uppercase font-display tracking-tight text-white ml-2">
-                dotzero<span className="text-[#DE3831]">.</span>
+              <span className="text-3xl font-extrabold uppercase font-display tracking-tight text-[var(--on-accent)] ml-2">
+                dotzero<span className="text-[var(--accent)]">.</span>
               </span>
             </div>
 
@@ -49,9 +49,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
                   type="button"
                   id="footer-modulor-btn"
                   onClick={navigateToSubpage}
-                  className="px-3 py-1.5 border border-zinc-700 bg-zinc-900 hover:bg-[#DE3831] hover:border-[#DE3831] font-mono text-xs text-zinc-300 hover:text-white uppercase flex items-center gap-1.5 transition-colors"
+                  className="px-3 py-1.5 border border-zinc-700 bg-zinc-900 hover:bg-[var(--accent)] hover:border-[var(--accent)] font-mono text-xs text-zinc-300 hover:text-[var(--on-accent)] uppercase flex items-center gap-1.5 transition-colors"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#F7B801]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[var(--accent-tertiary)]" />
                   <span>Modulor Studio Subpage →</span>
                 </button>
               </div>
@@ -60,36 +60,36 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
 
           {/* Quick Links (3 cols) */}
           <div className="md:col-span-3 font-mono text-xs space-y-2">
-            <div className="text-[#F7B801] font-bold uppercase tracking-widest mb-3">
+            <div className="text-[var(--accent-tertiary)] font-bold uppercase tracking-widest mb-3">
               {t.modularIndex[language]}
             </div>
             <div>
-              <a href="#hero-section" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#hero-section" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 01 · Punto Zero
               </a>
             </div>
             <div>
-              <a href="#manifesto" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#manifesto" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 02 · Il Manifesto
               </a>
             </div>
             <div>
-              <a href="#teoria" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#teoria" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 03 · Teoria Forma-Colore
               </a>
             </div>
             <div>
-              <a href="#progetti" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#progetti" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 04 · Archivio Progetti
               </a>
             </div>
             <div>
-              <a href="#laboratorio" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#laboratorio" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 05 · Laboratorio Geometrico
               </a>
             </div>
             <div>
-              <a href="#contatti" className="text-zinc-300 hover:text-[#DE3831] transition-colors">
+              <a href="#contatti" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
                 06 · Commissioni
               </a>
             </div>
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
 
           {/* Standards & Specs (4 cols) */}
           <div className="md:col-span-4 font-mono text-xs space-y-3">
-            <div className="text-[#1350B0] font-bold uppercase tracking-widest mb-3">
+            <div className="text-[var(--accent-secondary)] font-bold uppercase tracking-widest mb-3">
               {t.constructiveStandards[language]}
             </div>
             <div className="p-3 bg-zinc-900 border border-zinc-800 space-y-1">
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
               type="button"
               id="back-to-top-btn"
               onClick={scrollToTop}
-              className="mt-4 px-4 py-2 border border-zinc-700 bg-zinc-900 text-white hover:bg-[#DE3831] hover:border-[#DE3831] transition-all flex items-center gap-2 uppercase tracking-wider font-bold"
+              className="mt-4 px-4 py-2 border border-zinc-700 bg-zinc-900 text-[var(--on-accent)] hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-all flex items-center gap-2 uppercase tracking-wider font-bold"
             >
               <ArrowUp className="w-3.5 h-3.5" />
               <span>{t.backToZero[language]}</span>
@@ -127,11 +127,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
           </div>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#DE3831]" />
+              <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
               <span>PUNKT</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-[#1350B0]" />
+              <span className="w-2 h-2 bg-[var(--accent-secondary)]" />
               <span>LINIE</span>
             </span>
             <span className="flex items-center gap-1.5">

@@ -78,7 +78,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
           </div>
 
           <div className="mt-14 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
-            <p className="max-w-2xl text-lg leading-relaxed sm:text-xl lg:col-span-7">
+            <p className="dz-body-strong max-w-2xl sm:text-xl lg:col-span-7">
               {t.intro}
             </p>
             <div className="grid grid-cols-2 gap-y-5 font-mono text-[9px] uppercase tracking-[0.16em] lg:col-span-5">
@@ -116,7 +116,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
                     </div>
 
                     <div className="md:col-span-4">
-                      <h3 className="font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+                      <h3 className="dz-h3 text-4xl sm:text-5xl">
                         {project.title}
                       </h3>
                       <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
@@ -125,7 +125,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
                     </div>
 
                     <div className="md:col-span-4">
-                      <p className="max-w-xl text-[15px] leading-7 dz-text-muted transition-colors group-hover:text-[var(--text)]">
+                      <p className="dz-body max-w-xl text-[15px] transition-colors group-hover:text-[var(--text)]">
                         {project.summary[language]}
                       </p>
                       <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
@@ -198,7 +198,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
           <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.contact}</h2>
           <div className="lg:col-span-8">
             <p className="font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">DOTZERO / OPEN CHANNEL</p>
-            <p className="mt-6 max-w-xl text-sm leading-7 dz-text-muted">
+            <p className="dz-body mt-6 max-w-xl text-sm">
               Independent research, digital experiments, archives and cultural collaborations.
             </p>
           </div>
