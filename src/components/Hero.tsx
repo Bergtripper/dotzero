@@ -100,7 +100,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
               <a
                 href="#progetti"
                 id="hero-cta-projects"
-                className="px-6 py-3.5 bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase tracking-widest font-bold border-2 border-[var(--text)] shadow-[4px_4px_0px_0px_#DE3831] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#DE3831] transition-all flex items-center gap-2"
+                className="px-6 py-3.5 bg-[var(--text)] text-[var(--on-text)] font-mono text-xs uppercase tracking-widest font-bold border-2 border-[var(--text)] shadow-[4px_4px_0px_0px_#DE3831] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#DE3831] transition-all flex items-center gap-2"
               >
                 <span>{t.ctaProjects[language]}</span>
                 <ArrowDownRight className="w-4 h-4 text-[var(--accent-tertiary)]" />

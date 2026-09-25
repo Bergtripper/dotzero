@@ -165,7 +165,7 @@ export const BauhausLaboratory: React.FC = () => {
               type="button"
               onClick={() => setSoundEnabled(!soundEnabled)}
               className={`p-2 border border-[var(--text)] font-mono text-xs uppercase flex items-center gap-1.5 transition-colors ${
-                soundEnabled ? 'bg-[var(--text)] text-[var(--on-accent)]' : 'bg-[var(--surface-raised)] text-zinc-700'
+                soundEnabled ? 'bg-[var(--text)] text-[var(--on-text)]' : 'bg-[var(--surface-raised)] text-zinc-700'
               }`}
               title="Feedback sonoro Bauhaus"
             >
@@ -317,7 +317,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   id="btn-export-svg"
                   onClick={handleExportSvg}
-                  className="px-3 py-1.5 bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase font-bold flex items-center gap-1.5 hover:bg-[var(--accent)] transition-colors"
+                  className="px-3 py-1.5 bg-[var(--text)] text-[var(--on-text)] font-mono text-xs uppercase font-bold flex items-center gap-1.5 hover:bg-[var(--accent)] transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>{t.exportSvg[language]}</span>
