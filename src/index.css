@@ -184,3 +184,51 @@ html {
 .dz-rule {
   border-color: var(--line-soft);
 }
+
+/* DOTZERO home wordmark — isolated so future effects never disturb hero layout */
+.dz-wordmark-frame {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dz-wordmark {
+  width: max-content;
+  max-width: none;
+  margin: 0;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform-origin: left center;
+}
+
+.dz-wordmark-letters,
+.dz-wordmark-letter,
+.dz-wordmark-dot {
+  display: inline-block;
+}
+
+.dz-wordmark-letter {
+  position: relative;
+}
+
+.dz-wordmark-dot {
+  color: var(--accent);
+  position: relative;
+}
+
+/* Reserved effect layer: effects can target the whole mark or individual letters. */
+.dz-wordmark[data-effect='active'] .dz-wordmark-letter,
+.dz-wordmark[data-effect='active'] .dz-wordmark-dot {
+  will-change: transform, opacity, filter;
+}
+
+@media (max-width: 639px) {
+  .dz-wordmark {
+    line-height: 0.86;
+    letter-spacing: -0.065em;
+  }
+}
