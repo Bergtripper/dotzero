@@ -2,32 +2,61 @@
 
 @layer base {
   :root {
-    --bauhaus-red: #DE3831;
-    --bauhaus-blue: #1350B0;
-    --bauhaus-yellow: #F7B801;
-    --bauhaus-black: #121212;
-    --bauhaus-paper: #F6F4EE;
-    --bauhaus-card: #ECE8DD;
+    /* DOTZERO semantic system */
+    --bg: #F6F4EE;
+    --surface: #ECE8DD;
+    --surface-raised: #FFFFFF;
+    --text: #121212;
+    --text-muted: #686868;
+    --line: #121212;
+    --grid: rgba(18, 18, 18, 0.08);
+    --accent: #DE3831;
+    --accent-secondary: #1350B0;
+    --accent-tertiary: #F7B801;
+
+    /* Legacy Bauhaus aliases retained during migration */
+    --bauhaus-red: var(--accent);
+    --bauhaus-blue: var(--accent-secondary);
+    --bauhaus-yellow: var(--accent-tertiary);
+    --bauhaus-black: var(--text);
+    --bauhaus-paper: var(--bg);
+    --bauhaus-card: var(--surface);
+  }
+
+  [data-color-mode='dark'] {
+    --bg: #0E0F10;
+    --surface: #17191B;
+    --surface-raised: #202326;
+    --text: #F2F0E9;
+    --text-muted: #A6A39B;
+    --line: #D8D5CD;
+    --grid: rgba(242, 240, 233, 0.09);
+  }
+
+  html {
+    background: var(--bg);
   }
 
   body {
-    background-color: var(--bauhaus-paper);
-    color: var(--bauhaus-black);
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
     overflow-x: hidden;
+    transition: background-color 180ms ease, color 180ms ease;
   }
 }
 
-/* Bauhaus Grid & Constructivist details */
+/* Architectural grid */
 .bauhaus-grid-pattern {
   background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(18, 18, 18, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18, 18, 18, 0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
 }
 
 .bauhaus-dot-pattern {
   background-size: 24px 24px;
-  background-image: radial-gradient(rgba(18, 18, 18, 0.12) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(var(--grid) 1.5px, transparent 1.5px);
 }
 
 .font-display {
@@ -38,19 +67,27 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
+/* Semantic utilities used during the migration away from hardcoded Bauhaus colors */
+.dz-bg { background-color: var(--bg); }
+.dz-surface { background-color: var(--surface); }
+.dz-surface-raised { background-color: var(--surface-raised); }
+.dz-text { color: var(--text); }
+.dz-text-muted { color: var(--text-muted); }
+.dz-border { border-color: var(--line); }
+.dz-grid-line { border-color: var(--grid); }
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F4EE;
-  border-left: 1px solid #121212;
+  background: var(--bg);
+  border-left: 1px solid var(--line);
 }
 ::-webkit-scrollbar-thumb {
-  background: #121212;
+  background: var(--text);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #DE3831;
+  background: var(--accent);
 }
-
