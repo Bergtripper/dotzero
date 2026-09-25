@@ -70,8 +70,8 @@ export const Header: React.FC<HeaderProps> = ({
       id="header-nav"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b ${
         scrolled
-          ? 'bg-[#F6F4EE]/95 backdrop-blur-sm border-[#121212] py-2'
-          : 'bg-[#F6F4EE] border-[#121212] py-3'
+          ? 'bg-[var(--bg)]/95 backdrop-blur-sm border-[var(--text)] py-2'
+          : 'bg-[var(--bg)] border-[var(--text)] py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,24 +83,24 @@ export const Header: React.FC<HeaderProps> = ({
             aria-label="dotzero home"
           >
             <div className="flex items-center space-x-1">
-              <span className="w-5 h-5 rounded-full bg-[#DE3831] inline-block border border-[#121212] transition-transform duration-300 group-hover:scale-110" />
-              <span className="w-4 h-4 bg-[#1350B0] inline-block border border-[#121212] transition-transform duration-300 group-hover:rotate-45" />
+              <span className="w-5 h-5 rounded-full bg-[var(--accent)] inline-block border border-[var(--text)] transition-transform duration-300 group-hover:scale-110" />
+              <span className="w-4 h-4 bg-[var(--accent-secondary)] inline-block border border-[var(--text)] transition-transform duration-300 group-hover:rotate-45" />
               <div className="w-0 h-0 border-l-[9px] border-l-transparent border-r-[9px] border-r-transparent border-b-[15px] border-b-[#F7B801] transition-transform duration-300 group-hover:-translate-y-0.5" />
             </div>
             <div className="flex items-baseline tracking-tighter">
               <span className="text-xl sm:text-2xl font-extrabold tracking-[-0.05em] uppercase font-display">
                 dot
               </span>
-              <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#DE3831]">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--accent)]">
                 zero
               </span>
-              <span className="inline-block w-2 h-2 rounded-full bg-[#121212] ml-1 mb-1" />
+              <span className="inline-block w-2 h-2 rounded-full bg-[var(--text)] ml-1 mb-1" />
             </div>
           </a>
 
-          <div className="hidden xl:flex items-center gap-4 text-xs font-mono border-l border-r border-[#121212] px-4 py-1">
+          <div className="hidden xl:flex items-center gap-4 text-xs font-mono border-l border-r border-[var(--text)] px-4 py-1">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-[#DE3831] rounded-full animate-ping" />
+              <span className="w-2 h-2 bg-[var(--accent)] rounded-full animate-ping" />
               <span>{t.origin[language]}</span>
             </span>
             <span className="text-zinc-400">/</span>
@@ -115,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
                 key={link.href}
                 href={link.href}
                 id={`nav-link-${link.href.replace('#', '')}`}
-                className="px-2.5 py-1.5 text-[#121212] hover:bg-[#121212] hover:text-white transition-colors duration-150 border border-transparent hover:border-[#121212] flex items-center gap-1.5 uppercase tracking-wider text-xs font-mono"
+                className="px-2.5 py-1.5 text-[var(--text)] hover:bg-[var(--text)] hover:text-[var(--on-accent)] transition-colors duration-150 border border-transparent hover:border-[var(--text)] flex items-center gap-1.5 uppercase tracking-wider text-xs font-mono"
               >
                 <span
                   className="w-1.5 h-1.5 inline-block"
@@ -132,17 +132,17 @@ export const Header: React.FC<HeaderProps> = ({
                 type="button"
                 id="btn-nav-modulor-studio"
                 onClick={navigateToSubpage}
-                className="px-3 py-1.5 bg-[#121212] text-white hover:bg-[#DE3831] font-mono text-xs uppercase tracking-wider font-bold border border-[#121212] shadow-[2px_2px_0px_0px_#DE3831] flex items-center gap-1.5 transition-all"
+                className="px-3 py-1.5 bg-[var(--text)] text-[var(--on-accent)] hover:bg-[var(--accent)] font-mono text-xs uppercase tracking-wider font-bold border border-[var(--text)] shadow-[2px_2px_0px_0px_#DE3831] flex items-center gap-1.5 transition-all"
                 title="Apri la sottopagina MODULOR STUDIO"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#F7B801] animate-spin" style={{ animationDuration: '6s' }} />
+                <Sparkles className="w-3.5 h-3.5 text-[var(--accent-tertiary)] animate-spin" style={{ animationDuration: '6s' }} />
                 <span>MODULOR STUDIO</span>
               </button>
             )}
 
             <div
               id="language-switcher"
-              className="flex items-center border border-[#121212] bg-white p-0.5"
+              className="flex items-center border border-[var(--text)] bg-[var(--surface-raised)] p-0.5"
               role="group"
               aria-label="Language Switcher"
             >
@@ -154,8 +154,8 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setLanguage(lng)}
                   className={`px-2 py-1 text-xs font-mono uppercase font-bold transition-colors ${
                     language === lng
-                      ? 'bg-[#121212] text-white'
-                      : 'text-[#121212] hover:bg-zinc-100'
+                      ? 'bg-[var(--text)] text-[var(--on-accent)]'
+                      : 'text-[var(--text)] hover:bg-zinc-100'
                   }`}
                   aria-pressed={language === lng}
                   title={`Lingua / Sprache / Language: ${lng.toUpperCase()}`}
@@ -181,10 +181,10 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               id="toggle-grid-lines"
               onClick={onToggleGridLines}
-              className={`p-1.5 border border-[#121212] text-xs font-mono hidden sm:flex items-center gap-1 transition-all ${
+              className={`p-1.5 border border-[var(--text)] text-xs font-mono hidden sm:flex items-center gap-1 transition-all ${
                 showGridLines
-                  ? 'bg-[#121212] text-white'
-                  : 'bg-white text-[#121212] hover:bg-[#ECE8DD]'
+                  ? 'bg-[var(--text)] text-[var(--on-accent)]'
+                  : 'bg-[var(--surface-raised)] text-[var(--text)] hover:bg-[var(--surface)]'
               }`}
               title={t.gridTooltip[language]}
             >
@@ -192,15 +192,15 @@ export const Header: React.FC<HeaderProps> = ({
               <span>{t.gridButton[language]}</span>
             </button>
 
-            <div className="hidden md:flex items-center border border-[#121212] bg-white p-0.5">
+            <div className="hidden md:flex items-center border border-[var(--text)] bg-[var(--surface-raised)] p-0.5">
               <button
                 type="button"
                 id="theme-classic"
                 onClick={() => onThemeChange('classic')}
                 className={`px-2 py-1 text-xs font-mono uppercase transition-colors ${
                   currentTheme === 'classic'
-                    ? 'bg-[#DE3831] text-white font-bold'
-                    : 'text-[#121212] hover:bg-zinc-100'
+                    ? 'bg-[var(--accent)] text-[var(--on-accent)] font-bold'
+                    : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
                 title="Classico Bauhaus"
               >
@@ -212,8 +212,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => onThemeChange('monochrome')}
                 className={`px-2 py-1 text-xs font-mono uppercase transition-colors ${
                   currentTheme === 'monochrome'
-                    ? 'bg-[#121212] text-white font-bold'
-                    : 'text-[#121212] hover:bg-zinc-100'
+                    ? 'bg-[var(--text)] text-[var(--on-accent)] font-bold'
+                    : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
                 title="Monocromo"
               >
@@ -225,8 +225,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => onThemeChange('destijl')}
                 className={`px-2 py-1 text-xs font-mono uppercase transition-colors ${
                   currentTheme === 'destijl'
-                    ? 'bg-[#1350B0] text-white font-bold'
-                    : 'text-[#121212] hover:bg-zinc-100'
+                    ? 'bg-[var(--accent-secondary)] text-[var(--on-accent)] font-bold'
+                    : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
                 title="De Stijl"
               >
@@ -238,7 +238,7 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 border border-[#121212] bg-white"
+              className="lg:hidden p-1.5 border border-[var(--text)] bg-[var(--surface-raised)]"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -249,7 +249,7 @@ export const Header: React.FC<HeaderProps> = ({
         {mobileMenuOpen && (
           <div
             id="mobile-dropdown"
-            className="lg:hidden mt-3 pt-3 pb-2 border-t-2 border-[#121212] flex flex-col gap-2 bg-[#F6F4EE]"
+            className="lg:hidden mt-3 pt-3 pb-2 border-t-2 border-[var(--text)] flex flex-col gap-2 bg-[var(--bg)]"
           >
             {navigateToSubpage && (
               <button
@@ -258,13 +258,13 @@ export const Header: React.FC<HeaderProps> = ({
                   setMobileMenuOpen(false);
                   navigateToSubpage();
                 }}
-                className="py-2.5 px-3 border-2 border-[#DE3831] bg-[#121212] text-white font-mono text-xs uppercase flex items-center justify-between font-bold"
+                className="py-2.5 px-3 border-2 border-[var(--accent)] bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase flex items-center justify-between font-bold"
               >
                 <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#F7B801]" />
+                  <Sparkles className="w-4 h-4 text-[var(--accent-tertiary)]" />
                   <span>MODULOR STUDIO</span>
                 </span>
-                <span className="text-[#DE3831] font-bold">→</span>
+                <span className="text-[var(--accent)] font-bold">→</span>
               </button>
             )}
 
@@ -273,11 +273,11 @@ export const Header: React.FC<HeaderProps> = ({
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 border border-[#121212] bg-white text-[#121212] font-mono text-xs uppercase flex items-center justify-between"
+                className="py-2 px-3 border border-[var(--text)] bg-[var(--surface-raised)] text-[var(--text)] font-mono text-xs uppercase flex items-center justify-between"
               >
                 <span>{link.label}</span>
                 <span
-                  className="w-2.5 h-2.5 border border-[#121212]"
+                  className="w-2.5 h-2.5 border border-[var(--text)]"
                   style={{ backgroundColor: link.color }}
                 />
               </a>
@@ -290,7 +290,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onThemeChange('classic');
                   setMobileMenuOpen(false);
                 }}
-                className="flex-1 py-1 text-center font-mono text-xs border border-[#121212] bg-[#DE3831] text-white font-bold"
+                className="flex-1 py-1 text-center font-mono text-xs border border-[var(--text)] bg-[var(--accent)] text-[var(--on-accent)] font-bold"
               >
                 Bauhaus
               </button>
@@ -300,7 +300,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onThemeChange('monochrome');
                   setMobileMenuOpen(false);
                 }}
-                className="flex-1 py-1 text-center font-mono text-xs border border-[#121212] bg-[#121212] text-white font-bold"
+                className="flex-1 py-1 text-center font-mono text-xs border border-[var(--text)] bg-[var(--text)] text-[var(--on-accent)] font-bold"
               >
                 Mono
               </button>
@@ -310,7 +310,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onThemeChange('destijl');
                   setMobileMenuOpen(false);
                 }}
-                className="flex-1 py-1 text-center font-mono text-xs border border-[#121212] bg-[#1350B0] text-white font-bold"
+                className="flex-1 py-1 text-center font-mono text-xs border border-[var(--text)] bg-[var(--accent-secondary)] text-[var(--on-accent)] font-bold"
               >
                 De Stijl
               </button>
