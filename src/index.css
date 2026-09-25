@@ -91,3 +91,43 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
 }
+
+/* DOTZERO editorial index refinements */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.dz-project-row {
+  position: relative;
+  transition: padding 180ms ease, background-color 180ms ease;
+}
+
+.dz-project-row::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--surface);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 180ms ease;
+}
+
+.dz-project-row:hover::before {
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
