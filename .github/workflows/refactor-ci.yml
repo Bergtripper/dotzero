@@ -8,6 +8,7 @@ on:
       - refactor/dotzero-phase2-5-visual
       - refactor/dotzero-phase3a-design-system
       - fix/dotzero-wordmark-style-audit
+      - refactor/dotzero-phase3b-project-system
   workflow_dispatch:
 
 permissions:
