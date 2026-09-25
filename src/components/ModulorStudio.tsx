@@ -448,10 +448,10 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#07080C] text-[#EDEDED] font-sans relative selection:bg-[var(--accent)] selection:text-[var(--on-accent)] pb-20">
+    <div className="min-h-screen bg-[var(--void)] text-[var(--void-text)] font-sans relative selection:bg-[var(--accent)] selection:text-[var(--on-accent)] pb-20">
       
       {/* Top Bar for Musa Subpage */}
-      <header className="sticky top-0 z-50 bg-[#07080C]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-[var(--void)]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         
         {/* Left: Back to Dotzero */}
         <div className="flex items-center gap-4">
@@ -539,7 +539,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           {/* Real-Time Interactive Canvas (8 cols) */}
           <div className="lg:col-span-8 flex flex-col gap-4">
             
-            <div className="relative w-full h-[460px] sm:h-[540px] bg-[#07080C] border-2 border-white/15 overflow-hidden rounded-xs shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+            <div className="relative w-full h-[460px] sm:h-[540px] bg-[var(--void)] border-2 border-white/15 overflow-hidden rounded-xs shadow-[0_0_50px_rgba(0,0,0,0.8)]">
               
               {/* Canvas element */}
               <canvas
@@ -703,7 +703,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
             {/* Parametric Shader Sliders */}
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
-              <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[#EDEDED] font-bold uppercase">
+              <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[var(--void-text)] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
                 <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
               </div>
