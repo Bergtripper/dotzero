@@ -1,0 +1,119 @@
+import { Language } from './types';
+
+const modulorStudioData = {
+  backToDotzero: {
+    it: '← Ritorna al Bauhaus Dotzero',
+    de: '← Zurück zu Bauhaus Dotzero',
+    en: '← Back to Dotzero Bauhaus',
+  },
+  status: {
+    it: 'MOTORE GRAFICO SHADER 60FPS ATTIVO',
+    de: 'SHADER-GRAFIK-ENGINE 60FPS AKTIV',
+    en: 'SHADER GRAPHICS ENGINE 60FPS ACTIVE',
+  },
+  title: {
+    it: 'MODULOR STUDIO',
+    de: 'MODULOR STUDIO',
+    en: 'MODULOR STUDIO',
+  },
+  subtitle: {
+    it: 'Laboratorio visivo generativo & sonoro a proporzioni armoniche e reticoli cinetici. Muovi il cursore per modulare campi di forza e flussi particellari.',
+    de: 'Generatives visuelles & akustisches Labor für harmonische Proportionen und kinetische Raster. Bewege den Cursor, um Kraftfelder und Partikelströme zu modulieren.',
+    en: 'Generative visual & sonic laboratory of harmonic proportions and kinetic grids. Move your cursor to modulate force fields and particle vectors.',
+  },
+  presetLabel: {
+    it: 'PRESET VISIVO MODULOR',
+    de: 'MODULOR VISUELLES PRESET',
+    en: 'MODULOR VISUAL PRESET',
+  },
+  audioTitle: {
+    it: 'SINTETIZZATORE ARMONICO GENERATIVO',
+    de: 'GENERATIVER HARMONISCHER SYNTHESIZER',
+    en: 'GENERATIVE HARMONIC SYNTHESIZER',
+  },
+  audioDesc: {
+    it: 'Generatore sinusoidale in tempo reale (Web Audio API) che accorda frequenze armoniche in base alla velocità del cursore e alle coordinate dei nodi.',
+    de: 'Echtzeit-Sinusgenerator (Web Audio API), der harmonische Frequenzen an Mausgeschwindigkeit und Knoten anpasst.',
+    en: 'Real-time sinusoidal generator (Web Audio API) tuning harmonic frequencies based on cursor velocity and node coordinates.',
+  },
+  audioToggleStart: {
+    it: 'Attiva Sintetizzatore Spaziale',
+    de: 'Raumsynthesizer Aktivieren',
+    en: 'Activate Spatial Synth',
+  },
+  audioToggleStop: {
+    it: 'Arresta Sintetizzatore',
+    de: 'Synthesizer Stoppen',
+    en: 'Stop Synthesizer',
+  },
+  shaderControls: {
+    it: 'CONTROLLI PARAMETRICI SHADER',
+    de: 'PARAMETRISCHE SHADER-STEUERUNG',
+    en: 'PARAMETRIC SHADER CONTROLS',
+  },
+  particlesLabel: {
+    it: 'Densità Particellare',
+    de: 'Partikeldichte',
+    en: 'Particle Density',
+  },
+  speedLabel: {
+    it: 'Velocità Flusso',
+    de: 'Strömungsgeschwindigkeit',
+    en: 'Flow Speed',
+  },
+  glowLabel: {
+    it: 'Intensità Bloom Glow',
+    de: 'Bloom-Glow-Intensität',
+    en: 'Bloom Glow Intensity',
+  },
+  trailLabel: {
+    it: 'Persistenza Scia Cinetica',
+    de: 'Kinetische Schweifpersistenz',
+    en: 'Kinetic Trail Persistence',
+  },
+  snapshotBtn: {
+    it: 'Cattura Fotogramma 4K (PNG)',
+    de: '4K-Frame Erfassen (PNG)',
+    en: 'Capture 4K Frame (PNG)',
+  },
+  snapshotSaved: {
+    it: 'Fotogramma Salvato!',
+    de: 'Frame Gespeichert!',
+    en: 'Frame Saved!',
+  },
+  resetCanvasBtn: {
+    it: 'Resetta Flusso',
+    de: 'Fluss Zurücksetzen',
+    en: 'Reset Flow',
+  },
+  burstBtn: {
+    it: 'Onda d’Urto Cinetica (Click)',
+    de: 'Kinetische Schockwelle (Klick)',
+    en: 'Kinetic Shockwave (Click)',
+  },
+  nodesTitle: {
+    it: 'PIPELINE DI GENERAZIONE MULTIMODALE',
+    de: 'MULTIMODALE GENERATIONS-PIPELINE',
+    en: 'MULTIMODAL GENERATION PIPELINE',
+  },
+  nodes: [
+    {
+      id: 'node-1',
+      title: { it: 'Prompt Semantico', de: 'Semantischer Prompt', en: 'Semantic Prompt' },
+      desc: { it: 'Vettorializzazione del concetto visivo', de: 'Vektorisierung des visuellen Konzepts', en: 'Vectorization of visual concept' },
+      tag: 'LATENT INPUT',
+    },
+    {
+      id: 'node-2',
+      title: { it: 'Shader Neurale 4D', de: 'Neuronaler 4D-Shader', en: 'Neural 4D Shader' },
+      desc: { it: 'Interpolazione continua tra geometria e luce', de: 'Kontinuierliche Interpolation von Licht und Geometrie', en: 'Continuous interpolation of geometry and light' },
+      tag: 'RAYMARCHING',
+    },
+    {
+      id: 'node-3',
+      title: { it: 'Sintesi Audio Spaziale', de: 'Räumliche Audiosynthese', en: 'Spatial Audio Synth' },
+      desc: { it: 'Frequenze risonanti a 432Hz in modulazione', de: '432Hz resonante modulierende Frequenzen', en: '432Hz resonant modulating frequencies' },
+      tag: 'WEB AUDIO',
+    },
+  ],
+};
