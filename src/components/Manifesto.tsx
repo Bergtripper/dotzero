@@ -55,7 +55,7 @@ export const Manifesto: React.FC = () => {
                     </span>
 
                     {/* Geometric Shape Badge */}
-                    <div className="w-10 h-10 border border-[var(--text)] flex items-center justify-center bg-[#FAF8F5]">
+                    <div className="w-10 h-10 border border-[var(--text)] flex items-center justify-center bg-[var(--canvas)]">
                       {principle.shape === 'circle' && (
                         <div
                           className="w-6 h-6 rounded-full border border-[var(--text)]"
@@ -139,7 +139,7 @@ export const Manifesto: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-4 flex items-center justify-center p-6 bg-[#FAF8F5] border-2 border-[var(--text)]">
+          <div className="lg:col-span-4 flex items-center justify-center p-6 bg-[var(--canvas)] border-2 border-[var(--text)]">
             <div className="relative w-48 h-48 flex items-center justify-center">
               <div className="absolute inset-0 bauhaus-grid-pattern opacity-40" />
               {selectedPrinciple.shape === 'circle' && (
