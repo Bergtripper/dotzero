@@ -16,8 +16,8 @@ jobs:
       - name: Reconstruct source files
         shell: bash
         run: |
-          cat .import/modulor.part* | base64 -d > src/components/ModulorStudio.tsx
-          cat .import/translations.part* | base64 -d > src/translations.ts
+          base64 -d .import/modulor.gz.b64 | gzip -d > src/components/ModulorStudio.tsx
+          base64 -d .import/translations.gz.b64 | gzip -d > src/translations.ts
       - name: Commit reconstructed baseline
         shell: bash
         run: |
