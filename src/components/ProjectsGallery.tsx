@@ -71,7 +71,7 @@ export const ProjectsGallery: React.FC = () => {
               className="border-2 border-[var(--text)] bg-[var(--surface-raised)] group cursor-pointer transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#121212] flex flex-col justify-between"
             >
               {/* Card Geometric Visual Poster Area */}
-              <div className="h-56 bg-[#FAF8F5] border-b-2 border-[var(--text)] p-6 relative overflow-hidden flex items-center justify-center">
+              <div className="h-56 bg-[var(--canvas)] border-b-2 border-[var(--text)] p-6 relative overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bauhaus-grid-pattern opacity-50" />
 
                 {/* Vector Constructivist Graphic corresponding to project */}
