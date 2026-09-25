@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Grid3X3, Menu, X, Sparkles } from 'lucide-react';
-import { ThemeVariant, Language } from '../types';
+import { Grid3X3, Menu, X, Sparkles, Moon, Sun } from 'lucide-react';
+import { ColorMode, ThemeVariant, Language } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { UI_TEXT } from '../translations';
 
 interface HeaderProps {
   currentTheme: ThemeVariant;
   onThemeChange: (theme: ThemeVariant) => void;
+  colorMode: ColorMode;
+  onColorModeChange: (mode: ColorMode) => void;
   showGridLines: boolean;
   onToggleGridLines: () => void;
   onNavigateToModulor?: () => void;
@@ -16,6 +18,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentTheme,
   onThemeChange,
+  colorMode,
+  onColorModeChange,
   showGridLines,
   onToggleGridLines,
   onNavigateToModulor,
@@ -160,6 +164,18 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               ))}
             </div>
+
+            <button
+              type="button"
+              id="toggle-color-mode"
+              onClick={() => onColorModeChange(colorMode === 'light' ? 'dark' : 'light')}
+              className="p-1.5 border dz-border dz-surface-raised dz-text text-xs font-mono hidden sm:flex items-center gap-1 transition-all"
+              title={colorMode === 'light' ? 'Dark mode' : 'Light mode'}
+              aria-label={colorMode === 'light' ? 'Activate dark mode' : 'Activate light mode'}
+            >
+              {colorMode === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
+              <span>{colorMode === 'light' ? 'DARK' : 'LIGHT'}</span>
+            </button>
 
             <button
               type="button"
