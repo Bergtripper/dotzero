@@ -5,6 +5,7 @@ on:
     branches:
       - refactor/dotzero-v3
       - refactor/dotzero-phase2
+      - refactor/dotzero-phase2-5-visual
   workflow_dispatch:
 
 permissions:
