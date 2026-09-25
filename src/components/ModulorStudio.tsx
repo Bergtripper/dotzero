@@ -520,7 +520,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               <Sparkles className="w-3.5 h-3.5" />
               <span>DOTZERO // NEXT-GEN KINETICS</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase font-display tracking-tight text-[var(--on-accent)] flex items-center gap-3">
+            <h1 className="dz-h1 flex items-center gap-3 text-3xl sm:text-4xl md:text-5xl uppercase text-[var(--on-accent)]">
               <span>{t.title[language]}</span>
               <span className="text-xs px-2 py-0.5 border border-[var(--accent)] text-[var(--accent)] font-mono tracking-widest">
                 v2.0
@@ -834,7 +834,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-[var(--on-accent)] mb-1 uppercase">
+                  <h3 className="dz-h3 mb-1 text-sm uppercase text-[var(--on-accent)]">
                     {node.title[language]}
                   </h3>
                   <p className="text-xs text-zinc-400 font-sans leading-relaxed">
