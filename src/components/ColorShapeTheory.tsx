@@ -60,7 +60,7 @@ export const ColorShapeTheory: React.FC = () => {
     userMapping.circle === correctMapping.circle;
 
   return (
-    <section id="teoria" className="py-20 border-b-2 border-[var(--text)] bg-[#FAF8F5]">
+    <section id="teoria" className="py-20 border-b-2 border-[var(--text)] bg-[var(--canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -117,7 +117,7 @@ export const ColorShapeTheory: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             
             {/* Shape 1: Triangolo */}
-            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.triangleTitle[language]}
               </div>
@@ -158,7 +158,7 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
 
             {/* Shape 2: Quadrato */}
-            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.squareTitle[language]}
               </div>
@@ -194,7 +194,7 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
 
             {/* Shape 3: Cerchio */}
-            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.circleTitle[language]}
               </div>
@@ -235,7 +235,7 @@ export const ColorShapeTheory: React.FC = () => {
           {tested && (
             <div
               className={`p-6 border-2 border-[var(--text)] font-mono text-sm ${
-                isExactKandinsky ? 'bg-[#FAF8F5]' : 'bg-[var(--surface)]'
+                isExactKandinsky ? 'bg-[var(--canvas)]' : 'bg-[var(--surface)]'
               }`}
             >
               <div className="flex items-center gap-2 mb-2 font-bold uppercase text-[var(--text)]">
