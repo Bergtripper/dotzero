@@ -5,24 +5,27 @@ interface GlyphSpec {
   key: string;
   framed?: boolean;
   accent?: boolean;
-  offsetY?: number;
+  x?: number;
+  y?: number;
+  rotate?: number;
   scale?: number;
 }
 
 const GLYPHS: GlyphSpec[] = [
-  { char: 'd', key: 'd', scale: 1.03 },
-  { char: 'o', key: 'o1', offsetY: 3 },
-  { char: 't', key: 't', framed: true, offsetY: -2 },
-  { char: 'z', key: 'z', offsetY: 4 },
-  { char: 'e', key: 'e', framed: true, offsetY: -1 },
-  { char: 'r', key: 'r', offsetY: 3 },
-  { char: 'o', key: 'zero', accent: true, scale: 1.08, offsetY: -2 },
+  { char: 'd', key: 'd', x: -1, y: 5, scale: 1.34 },
+  { char: 'o', key: 'o1', x: 1, y: -2, rotate: -2, scale: 0.92 },
+  { char: 't', key: 't', x: 0, y: 8, rotate: 2, framed: true, scale: 0.86 },
+  { char: 'z', key: 'z', x: 2, y: -7, rotate: -4, scale: 0.95 },
+  { char: 'e', key: 'e', x: -1, y: 4, rotate: 2, framed: true, scale: 0.9 },
+  { char: 'r', key: 'r', x: 1, y: 10, rotate: 5, scale: 0.83 },
+  { char: 'o', key: 'zero', x: 4, y: -5, accent: true, scale: 1.48 },
 ];
 
 export const DotzeroTypographicSpecimen: React.FC = () => {
   const frameRef = useRef<HTMLDivElement>(null);
   const wordRef = useRef<HTMLHeadingElement>(null);
   const [activeGlyph, setActiveGlyph] = useState<number | null>(null);
+  const [mode, setMode] = useState<'construction' | 'wordmark'>('construction');
 
   useLayoutEffect(() => {
     const frame = frameRef.current;
@@ -41,8 +44,8 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
         const measured = word.getBoundingClientRect().width;
         if (measured <= 0) return;
 
-        // Keep a deliberate editorial margin for transformed glyphs and frames.
-        const fitted = Math.max(1, (available / measured) * 92.5);
+        // Extra margin because construction mode intentionally breaks the baseline.
+        const fitted = Math.max(1, (available / measured) * 83.5);
         word.style.fontSize = `${fitted}px`;
       });
     };
@@ -58,21 +61,29 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
     };
   }, []);
 
+  const toggleMode = () => {
+    setMode((current) => current === 'construction' ? 'wordmark' : 'construction');
+    setActiveGlyph(null);
+  };
+
   return (
     <div
       ref={frameRef}
-      className="dz-specimen"
+      className={`dz-specimen dz-specimen--${mode}`}
+      data-mode={mode}
       data-active-glyph={activeGlyph ?? 'none'}
       onMouseLeave={() => setActiveGlyph(null)}
     >
+      <div className="dz-specimen-axis dz-specimen-axis--x" aria-hidden="true" />
+      <div className="dz-specimen-axis dz-specimen-axis--y" aria-hidden="true" />
       <div className="dz-specimen-guide dz-specimen-guide--cap" aria-hidden="true" />
       <div className="dz-specimen-guide dz-specimen-guide--base" aria-hidden="true" />
 
       <div className="dz-specimen-meta dz-specimen-meta--left" aria-hidden="true">
-        TYPE SYSTEM / 01
+        STATE / {mode === 'construction' ? '01 CONSTRUCTION' : '02 WORDMARK'}
       </div>
       <div className="dz-specimen-meta dz-specimen-meta--right" aria-hidden="true">
-        LOWERCASE / GEOMETRIC
+        TYPE SYSTEM / NODE 00
       </div>
 
       <h1 ref={wordRef} className="dz-specimen-word" aria-label="dotzero.">
@@ -89,8 +100,19 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
               data-glyph={glyph.key}
               data-index={index}
               onMouseEnter={() => setActiveGlyph(index)}
+              onClick={glyph.key === 'zero' ? toggleMode : undefined}
+              role={glyph.key === 'zero' ? 'button' : undefined}
+              tabIndex={glyph.key === 'zero' ? 0 : undefined}
+              onKeyDown={glyph.key === 'zero' ? (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  toggleMode();
+                }
+              } : undefined}
               style={{
-                '--glyph-y': `${glyph.offsetY ?? 0}%`,
+                '--glyph-x': `${glyph.x ?? 0}%`,
+                '--glyph-y': `${glyph.y ?? 0}%`,
+                '--glyph-rotate': `${glyph.rotate ?? 0}deg`,
                 '--glyph-scale': glyph.scale ?? 1,
               } as React.CSSProperties}
             >
@@ -102,10 +124,14 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
         </span>
       </h1>
 
+      <div className="dz-specimen-zero-callout" aria-hidden="true">
+        ZERO / RESET
+      </div>
+
       <div className="dz-specimen-readout" aria-live="polite">
         <span>NODE 00</span>
         <span>{activeGlyph === null ? 'GLYPH / IDLE' : `GLYPH / ${GLYPHS[activeGlyph].key.toUpperCase()}`}</span>
-        <span>GRID / 12</span>
+        <span>{mode === 'construction' ? 'SYSTEM / OPEN' : 'SYSTEM / ALIGNED'}</span>
       </div>
     </div>
   );
