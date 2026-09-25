@@ -36,7 +36,7 @@ export const ProjectsGallery: React.FC = () => {
               <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
               <span>{t.badge[language]}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[var(--text)]">
+            <h2 className="dz-h2 text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text)]">
               {t.title[language]} <span className="text-[var(--accent-secondary)]">·0</span>
             </h2>
           </div>
@@ -156,11 +156,11 @@ export const ProjectsGallery: React.FC = () => {
                     <span className="font-mono text-xs text-zinc-500">{project.year}</span>
                   </div>
 
-                  <h3 className="font-display font-bold text-xl uppercase tracking-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors mb-2">
+                  <h3 className="dz-h3 mb-2 text-xl uppercase text-[var(--text)] transition-colors group-hover:text-[var(--accent)]">
                     {project.title[language]}
                   </h3>
 
-                  <p className="text-sm text-zinc-600 line-clamp-2 font-sans mb-4">
+                  <p className="dz-body mb-4 line-clamp-2 text-sm">
                     {project.description[language]}
                   </p>
                 </div>
@@ -209,7 +209,7 @@ export const ProjectsGallery: React.FC = () => {
                     <span className="text-zinc-400">/</span>
                     <span>{activeProjectModal.year}</span>
                   </div>
-                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight text-[var(--text)]">
+                  <h3 className="dz-h3 text-2xl sm:text-3xl uppercase text-[var(--text)]">
                     {activeProjectModal.title[language]}
                   </h3>
                 </div>
@@ -231,7 +231,7 @@ export const ProjectsGallery: React.FC = () => {
                   <h4 className="font-mono text-xs uppercase font-bold text-zinc-500 mb-2">
                     {t.modalRequirement[language]}
                   </h4>
-                  <p className="text-base text-zinc-800 leading-relaxed font-sans">
+                  <p className="dz-body text-base">
                     {activeProjectModal.description[language]}
                   </p>
                 </div>
