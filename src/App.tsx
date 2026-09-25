@@ -7,6 +7,9 @@ import React, { useState, useEffect } from 'react';
 import { ColorMode, ThemeVariant } from './types';
 import { LanguageProvider } from './context/LanguageContext';
 import { Header } from './components/Header';
+import { DotzeroHeader } from './components/DotzeroHeader';
+import { DotzeroIndex } from './components/DotzeroIndex';
+import { DotzeroFooter } from './components/DotzeroFooter';
 import { Hero } from './components/Hero';
 import { Manifesto } from './components/Manifesto';
 import { ColorShapeTheory } from './components/ColorShapeTheory';
@@ -17,7 +20,7 @@ import { Footer } from './components/Footer';
 import { ModulorStudio } from './components/ModulorStudio';
 
 function MainAppContent() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'modulor'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'modulor' | 'bauhaus'>('home');
   const [currentTheme, setCurrentTheme] = useState<ThemeVariant>('classic');
   const [colorMode, setColorMode] = useState<ColorMode>('light');
   const [showGridLines, setShowGridLines] = useState<boolean>(true);
@@ -34,7 +37,9 @@ function MainAppContent() {
         hash === '#musa-studio'
       ) {
         setCurrentPage('modulor');
-      } else if (hash === '#home' || hash === '#bauhaus' || hash === '') {
+      } else if (hash === '#bauhaus' || hash === '#bauhaus-laboratory') {
+        setCurrentPage('bauhaus');
+      } else if (hash === '#home' || hash === '#index' || hash === '') {
         setCurrentPage('home');
       }
     };
@@ -51,7 +56,13 @@ function MainAppContent() {
 
   const navigateToHome = () => {
     setCurrentPage('home');
-    window.location.hash = '';
+    window.location.hash = 'index';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToBauhaus = () => {
+    setCurrentPage('bauhaus');
+    window.location.hash = 'bauhaus';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -67,44 +78,70 @@ function MainAppContent() {
     return <ModulorStudio onBack={navigateToHome} />;
   }
 
+  if (currentPage === 'bauhaus') {
+    return (
+      <div data-color-mode={colorMode} className={`min-h-screen dz-bg dz-text relative ${themeClass}`}>
+        {showGridLines && (
+          <div
+            id="architectural-grid-overlay"
+            className="fixed inset-0 pointer-events-none z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-6 lg:grid-cols-12 opacity-10"
+          >
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="h-full border-r dz-grid-line first:border-l" />
+            ))}
+          </div>
+        )}
+
+        <Header
+          currentTheme={currentTheme}
+          onThemeChange={setCurrentTheme}
+          colorMode={colorMode}
+          onColorModeChange={setColorMode}
+          showGridLines={showGridLines}
+          onToggleGridLines={() => setShowGridLines(!showGridLines)}
+          onNavigateToModulor={navigateToModulor}
+        />
+
+        <main id="main-content">
+          <Hero onNavigateToModulor={navigateToModulor} />
+          <Manifesto />
+          <ColorShapeTheory />
+          <ProjectsGallery />
+          <BauhausLaboratory />
+          <ContactSection />
+        </main>
+
+        <Footer onNavigateToModulor={navigateToModulor} />
+      </div>
+    );
+  }
+
   return (
-    <div data-color-mode={colorMode} className={`min-h-screen dz-bg dz-text relative ${themeClass}`}>
-      {/* Background Architectural Grid Lines (Toggled via header) */}
+    <div data-color-mode={colorMode} className="min-h-screen dz-bg dz-text relative">
       {showGridLines && (
         <div
-          id="architectural-grid-overlay"
-          className="fixed inset-0 pointer-events-none z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-6 lg:grid-cols-12 opacity-10"
+          id="dotzero-grid-overlay"
+          className="fixed inset-0 pointer-events-none z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-6 lg:grid-cols-12 opacity-100"
         >
           {Array.from({ length: 12 }).map((_, i) => (
-            <div
-              key={i}
-              className="h-full border-r dz-grid-line first:border-l"
-            />
+            <div key={i} className="h-full border-r dz-grid-line first:border-l" />
           ))}
         </div>
       )}
 
-      {/* Main App Layout */}
-      <Header
-        currentTheme={currentTheme}
-        onThemeChange={setCurrentTheme}
+      <DotzeroHeader
         colorMode={colorMode}
         onColorModeChange={setColorMode}
         showGridLines={showGridLines}
         onToggleGridLines={() => setShowGridLines(!showGridLines)}
-        onNavigateToModulor={navigateToModulor}
       />
 
-      <main id="main-content">
-        <Hero onNavigateToModulor={navigateToModulor} />
-        <Manifesto />
-        <ColorShapeTheory />
-        <ProjectsGallery />
-        <BauhausLaboratory />
-        <ContactSection />
-      </main>
+      <DotzeroIndex
+        onNavigateToModulor={navigateToModulor}
+        onNavigateToBauhaus={navigateToBauhaus}
+      />
 
-      <Footer onNavigateToModulor={navigateToModulor} />
+      <DotzeroFooter />
     </div>
   );
 }
