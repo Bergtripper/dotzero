@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
   };
 
   return (
-    <footer id="footer-section" className="bg-[var(--text)] text-[var(--on-accent)] pt-16 pb-12 border-t-4 border-[var(--accent)]">
+    <footer id="footer-section" className="bg-[var(--text)] text-[var(--on-text)] pt-16 pb-12 border-t-4 border-[var(--accent)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Colophon Row */}
