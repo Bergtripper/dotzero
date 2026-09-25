@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Circle } from 'lucide-react';
 import { DOTZERO_PROJECTS } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
+import { DotzeroWordmark } from './DotzeroWordmark';
 
 interface DotzeroIndexProps {
   onNavigateToModulor: () => void;
@@ -65,9 +66,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
         <div className="px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
           <div>
             <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
-            <h1 className="font-display whitespace-nowrap text-[clamp(3.4rem,11.2vw,11.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.075em]">
-              DOTZERO<span className="text-[var(--accent)]">.</span>
-            </h1>
+            <DotzeroWordmark />
             <p className="mt-8 max-w-3xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
               {t.title}
             </p>
