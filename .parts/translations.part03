@@ -1,0 +1,120 @@
+      de: 'Mit Kandinsky Prüfen',
+      en: 'Verify with Kandinsky',
+    },
+    selectColorHint: {
+      it: 'Seleziona il colore:',
+      de: 'Farbe auswählen:',
+      en: 'Select color:',
+    },
+    triangleTitle: {
+      it: '01 · TRIANGOLO ACUTO',
+      de: '01 · SPITZES DREIECK',
+      en: '01 · ACUTE TRIANGLE',
+    },
+    squareTitle: {
+      it: '02 · QUADRATO RETTO',
+      de: '02 · RECHTES QUADRAT',
+      en: '02 · RIGHT SQUARE',
+    },
+    circleTitle: {
+      it: '03 · CERCHIO PERFETTO',
+      de: '03 · VOLLKOMMENER KREIS',
+      en: '03 · PERFECT CIRCLE',
+    },
+    resultSuccessTitle: {
+      it: 'Risultato: Sintonia Perfetta con il Canone Bauhaus!',
+      de: 'Ergebnis: Vollkommener Einklang mit dem Bauhaus-Kanon!',
+      en: 'Result: Perfect Alignment with the Bauhaus Canon!',
+    },
+    resultSuccessDesc: {
+      it: 'Hai assegnato Giallo al Triangolo, Rosso al Quadrato e Blu al Cerchio. Questa è esattamente la formula psicodinamica formulata da Kandinsky e confermata dalla maggioranza degli allievi del Bauhaus di Weimar nel 1923!',
+      de: 'Du hast Gelb dem Dreieck, Rot dem Quadrat und Blau dem Kreis zugeordnet. Dies entspricht exakt der von Kandinsky formulierten psychodynamischen Zuordnung, wie sie 1923 in Weimar bestätigt wurde!',
+      en: 'You matched Yellow to Triangle, Red to Square, and Blue to Circle. This is the exact psychodynamic formula established by Kandinsky and validated by the Weimar Bauhaus students in 1923!',
+    },
+    resultAltTitle: {
+      it: 'Risultato: Interpretazione Eterodossa',
+      de: 'Ergebnis: Freie Interpretation',
+      en: 'Result: Alternative Interpretation',
+    },
+    resultAltDesc: {
+      it: 'Secondo la teoria canonica di Kandinsky: il Triangolo corrisponde al Giallo (angolo acuto, energia solare), il Quadrato al Rosso (angolo retto, stabilità terrena), e il Cerchio al Blu (tensione centripeta e quiete spirituale).',
+      de: 'Nach Kandinskys kanonischer Theorie: Das Dreieck gehört zu Gelb (spitzer Winkel, solare Energie), das Quadrat zu Rot (rechter Winkel, irdische Stabilität) und der Kreis zu Blau (zentripetale Ruhe).',
+      en: "According to Kandinsky's canonical doctrine: Triangle corresponds to Yellow (acute angle, radiant energy), Square to Red (right angle, grounded stability), and Circle to Blue (centripetal tension and spiritual stillness).",
+    },
+    yellowCard: {
+      title: { it: 'Giallo · Triangolo', de: 'Gelb · Dreieck', en: 'Yellow · Triangle' },
+      angle: { it: 'ANGOLO 30°-60°', de: 'WINKEL 30°-60°', en: 'ANGLE 30°-60°' },
+      body: {
+        it: "L'angolo acuto punge, divide lo spazio e genera tensione aggressiva. Il giallo possiede una dinamica centrifuga: si proietta verso lo spettatore ed evoca squilli di tromba acuti.",
+        de: 'Der spitze Winkel sticht, teilt den Raum und erzeugt dynamische Spannung. Gelb wirkt zentrifugal: Es strebt auf den Betrachter zu und evoziert helle Trompetenklänge.',
+        en: 'The acute angle pierces, divides space, and produces active tension. Yellow possesses a centrifugal dynamic: projecting outward toward the viewer and evoking sharp trumpet fanfares.',
+      },
+      force: { it: 'FORZA: CENTRIFUGA', de: 'KRAFT: ZENTRIFUGAL', en: 'FORCE: CENTRIFUGAL' },
+      sound: { it: 'SUONO: ACUTO', de: 'KLANG: HELL/SPITZ', en: 'SOUND: HIGH/BRASS' },
+    },
+    redCard: {
+      title: { it: 'Rosso · Quadrato', de: 'Rot · Quadrat', en: 'Red · Square' },
+      angle: { it: 'ANGOLO 90°', de: 'WINKEL 90°', en: 'ANGLE 90°' },
+      body: {
+        it: 'I quattro angoli retti e i lati uguali conferiscono al quadrato la massima stabilità fisica. Il rosso esprime calore interno, peso materiale, sicurezza costruttiva e gravità terrena.',
+        de: 'Vier rechte Winkel und gleiche Seiten verleihen dem Quadrat maximale Stabilität. Rot verkörpert innere Wärme, konstruktive Ruhe und irdische Schwere.',
+        en: 'Four right angles and equal sides endow the square with ultimate physical stability. Red embodies internal heat, tectonic security, and earthbound gravity.',
+      },
+      force: { it: 'FORZA: EQUILIBRIO', de: 'KRAFT: GLEICHGEWICHT', en: 'FORCE: EQUILIBRIUM' },
+      sound: { it: 'SUONO: PROFONDO', de: 'KLANG: TIEF', en: 'SOUND: RESONANT/CELLO' },
+    },
+    blueCard: {
+      title: { it: 'Blu · Cerchio', de: 'Blau · Kreis', en: 'Blue · Circle' },
+      angle: { it: 'CURVATURA ∞', de: 'KRÜMMUNG ∞', en: 'CURVATURE ∞' },
+      body: {
+        it: 'La linea curva continua chiusa in se stessa non ha inizio né fine. Il blu si ritrae all’interno, suggerendo infinito, contemplazione, precisione cosmica e assenza di spigoli.',
+        de: 'Die in sich geschlossene Kurve kennt weder Anfang noch Ende. Blau zieht sich nach innen zurück und evoziert Unendlichkeit, kosmische Konzentration und Stille.',
+        en: 'The continuous closed curve has neither beginning nor end. Blue withdraws inward, inspiring contemplation, cosmic depth, and serene quietude.',
+      },
+      force: { it: 'FORZA: CENTRIPETA', de: 'KRAFT: ZENTRIPETAL', en: 'FORCE: CENTRIPETAL' },
+      sound: { it: 'SUONO: CALMO', de: 'KLANG: RUHIG/ORGEL', en: 'SOUND: SERENE/FLUTE' },
+    },
+  },
+  projects: {
+    badge: {
+      it: 'ATELIER ARCHIVIO OPERE',
+      de: 'ATELIER WERKSARCHIV',
+      en: 'STUDIO ARCHIVE WORKS',
+    },
+    title: {
+      it: 'PROGETTI',
+      de: 'PROJEKTE',
+      en: 'PROJECTS',
+    },
+    categories: {
+      all: { it: 'Tutti', de: 'Alle', en: 'All' },
+      identity: { it: 'Identità', de: 'Identität', en: 'Identity' },
+      typography: { it: 'Tipografia', de: 'Typografie', en: 'Typography' },
+      space: { it: 'Spazio', de: 'Raum', en: 'Space' },
+      digital: { it: 'Digitale', de: 'Digital', en: 'Digital' },
+    },
+    detailsBtn: {
+      it: 'Dettagli Tecnici',
+      de: 'Technische Details',
+      en: 'Technical Details',
+    },
+    modalRequirement: {
+      it: 'REQUISITO & MANIFESTO',
+      de: 'ANFORDERUNG & MANIFEST',
+      en: 'REQUIREMENT & MANIFESTO',
+    },
+    modalSpecs: {
+      it: 'SPECIFICHE GEOMETRICHE & COSTRUTTIVE',
+      de: 'GEOMETRISCHE & KONSTRUKTIVE VORGABEN',
+      en: 'GEOMETRIC & CONSTRUCTIVE SPECS',
+    },
+    modalClose: {
+      it: 'Chiudi Scheda',
+      de: 'Karte Schließen',
+      en: 'Close Sheet',
+    },
+  },
+  laboratory: {
+    badge: {
+      it: 'ATELIER INTERATTIVO DOTZERO',
+      de: 'INTERAKTIVES DOTZERO ATELIER',
