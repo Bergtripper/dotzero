@@ -19,17 +19,17 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
   const { language, setLanguage } = useLanguage();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b dz-border dz-bg/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#index" className="font-display text-xl font-extrabold tracking-[-0.06em] uppercase sm:text-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b dz-border bg-[color:var(--bg)]/95 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+        <a href="#index" className="font-display text-lg font-extrabold tracking-[-0.07em] uppercase sm:text-xl">
           dotzero<span className="text-[var(--accent)]">.</span>
         </a>
 
-        <nav className="hidden items-center gap-6 font-mono text-[11px] uppercase tracking-[0.16em] md:flex">
-          <a href="#projects" className="hover:opacity-60">Index</a>
-          <a href="#method" className="hover:opacity-60">Method</a>
-          <a href="#about" className="hover:opacity-60">About</a>
-          <a href="#contact" className="hover:opacity-60">Contact</a>
+        <nav className="hidden items-center gap-7 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
+          <a href="#projects" className="transition-opacity hover:opacity-45">Index</a>
+          <a href="#method" className="transition-opacity hover:opacity-45">Method</a>
+          <a href="#about" className="transition-opacity hover:opacity-45">About</a>
+          <a href="#contact" className="transition-opacity hover:opacity-45">Contact</a>
         </nav>
 
         <div className="flex items-center gap-1.5">
