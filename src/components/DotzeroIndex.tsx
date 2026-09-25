@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Circle } from 'lucide-react';
 import { DOTZERO_PROJECTS } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -60,72 +60,101 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
   };
 
   return (
-    <main id="index" className="pt-24">
+    <main id="index" className="pt-20">
       <section className="border-b dz-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <div className="mb-8 font-mono text-[10px] uppercase tracking-[0.22em] dz-text-muted">{t.kicker}</div>
-          <h1 className="max-w-6xl font-display text-5xl font-extrabold uppercase leading-[0.92] tracking-[-0.055em] sm:text-7xl lg:text-[7.5rem]">
-            DOTZERO<span className="text-[var(--accent)]">.</span>
-          </h1>
-          <p className="mt-5 max-w-5xl font-mono text-xs uppercase tracking-[0.14em] dz-text-muted sm:text-sm">{t.title}</p>
-          <p className="mt-10 max-w-2xl text-lg leading-relaxed sm:text-xl">{t.intro}</p>
+        <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-9">
+              <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
+              <h1 className="font-display text-[clamp(4rem,13vw,10.5rem)] font-extrabold uppercase leading-[0.78] tracking-[-0.075em]">
+                DOTZERO<span className="text-[var(--accent)]">.</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-3 lg:pb-2">
+              <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.15em] dz-text-muted">
+                {t.title}
+              </p>
+            </div>
+          </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-px border dz-border bg-[var(--line)] font-mono text-[10px] uppercase tracking-[0.12em] sm:grid-cols-4">
-            {[
-              ['TYPE', 'INDEX'],
-              ['STATUS', 'ACTIVE'],
-              ['PROJECTS', String(DOTZERO_PROJECTS.length).padStart(2, '0')],
-              ['REV', '2026.09'],
-            ].map(([label, value]) => (
-              <div key={label} className="dz-bg p-4">
-                <div className="dz-text-muted">{label}</div>
-                <div className="mt-2 font-bold">{value}</div>
-              </div>
-            ))}
+          <div className="mt-14 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
+            <p className="max-w-2xl text-lg leading-relaxed sm:text-xl lg:col-span-7">
+              {t.intro}
+            </p>
+            <div className="grid grid-cols-2 gap-y-5 font-mono text-[9px] uppercase tracking-[0.16em] lg:col-span-5">
+              {[
+                ['TYPE', 'INDEX'],
+                ['STATUS', 'ACTIVE'],
+                ['PROJECTS', String(DOTZERO_PROJECTS.length).padStart(2, '0')],
+                ['REV', '2026.09'],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <div className="dz-text-muted">{label}</div>
+                  <div className="mt-1 text-[var(--text)]">{value}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section id="projects" className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="mb-10 flex items-end justify-between border-b dz-border pb-4">
-            <h2 className="font-display text-3xl font-bold tracking-[-0.04em] sm:text-5xl">{t.projects}</h2>
-            <span className="font-mono text-[10px] dz-text-muted">01—{String(DOTZERO_PROJECTS.length).padStart(2, '0')}</span>
+          <div className="mb-3 flex items-end justify-between">
+            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">{t.projects}</h2>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">01—{String(DOTZERO_PROJECTS.length).padStart(2, '0')}</span>
           </div>
 
-          <div>
+          <div className="border-t-2 dz-border">
             {DOTZERO_PROJECTS.map((project) => {
               const canOpen = project.id !== 'avant-garde-atlas';
               return (
-                <article key={project.id} className="group grid gap-5 border-b dz-border py-8 md:grid-cols-12 md:items-start">
-                  <div className="font-mono text-xs font-bold md:col-span-1">{project.number}</div>
-                  <div className="md:col-span-4">
-                    <h3 className="font-display text-3xl font-bold tracking-[-0.04em] sm:text-4xl">{project.title}</h3>
-                    <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.14em] dz-text-muted">
-                      {project.period || project.year}
+                <article key={project.id} className="dz-project-row group border-b dz-border">
+                  <div className="grid gap-6 py-9 md:grid-cols-12 md:items-start lg:py-11">
+                    <div className="md:col-span-1">
+                      <span className="font-mono text-[11px] font-bold">{project.number}</span>
                     </div>
-                  </div>
-                  <div className="md:col-span-4">
-                    <p className="max-w-xl leading-relaxed">{project.summary[language]}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {project.type.map((type) => (
-                        <span key={type} className="border dz-border px-2 py-1 font-mono text-[9px] uppercase tracking-wider">{type}</span>
-                      ))}
+
+                    <div className="md:col-span-4">
+                      <h3 className="font-display text-4xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-5xl">
+                        {project.title}
+                      </h3>
+                      <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
+                        {project.period || project.year}
+                      </div>
                     </div>
-                  </div>
-                  <div className="md:col-span-3 md:text-right">
-                    <div className="font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">STATUS / {project.status}</div>
-                    <button
-                      type="button"
-                      onClick={() => canOpen && openProject(project.id)}
-                      disabled={!canOpen}
-                      className={`mt-4 inline-flex items-center gap-2 border dz-border px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-wider transition-colors ${
-                        canOpen ? 'hover:bg-[var(--text)] hover:text-[var(--bg)]' : 'cursor-default opacity-50'
-                      }`}
-                    >
-                      {canOpen ? t.open : t.pending}
-                      {canOpen && <ArrowUpRight className="h-3.5 w-3.5" />}
-                    </button>
+
+                    <div className="md:col-span-4">
+                      <p className="max-w-xl text-[15px] leading-7 dz-text-muted transition-colors group-hover:text-[var(--text)]">
+                        {project.summary[language]}
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+                        {project.type.map((type) => (
+                          <span key={type} className="font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
+                            {type}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-start justify-between md:col-span-3 md:block md:text-right">
+                      <div className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">
+                        <Circle className="h-2 w-2 fill-current" />
+                        {project.status}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => canOpen && openProject(project.id)}
+                        disabled={!canOpen}
+                        className={`mt-0 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] md:mt-8 ${
+                          canOpen ? 'hover:opacity-50' : 'cursor-default opacity-35'
+                        }`}
+                      >
+                        {canOpen ? t.open : t.pending}
+                        {canOpen && <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
+                      </button>
+                    </div>
                   </div>
                 </article>
               );
@@ -137,13 +166,13 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
       <section id="method" className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-xs font-bold uppercase tracking-[0.18em]">{t.method}</h2>
+            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">{t.method}</h2>
           </div>
           <div className="lg:col-span-9">
             {t.methodLines.map((line, i) => (
-              <div key={line} className="grid grid-cols-[2rem_1fr] border-b dz-border py-5">
-                <span className="font-mono text-[10px] dz-text-muted">0{i + 1}</span>
-                <p className="font-display text-2xl font-bold tracking-[-0.03em] sm:text-4xl">{line}</p>
+              <div key={line} className="group grid grid-cols-[2.5rem_1fr] border-t dz-border py-5 first:border-t-2">
+                <span className="font-mono text-[9px] dz-text-muted">0{i + 1}</span>
+                <p className="font-display text-2xl font-semibold tracking-[-0.04em] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl">{line}</p>
               </div>
             ))}
           </div>
@@ -152,10 +181,12 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
 
       <section id="about" className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.about}</h2>
+          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.about}</h2>
           <div className="lg:col-span-7">
-            <p className="text-2xl leading-snug sm:text-3xl">{t.aboutBody}</p>
-            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.14em] dz-text-muted">
+            <p className="font-display text-3xl font-medium leading-[1.08] tracking-[-0.035em] sm:text-5xl">
+              {t.aboutBody}
+            </p>
+            <p className="mt-10 border-t dz-border pt-4 font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
               Alberto Comini — Research · Digital experiments · Cultural projects
             </p>
           </div>
@@ -164,10 +195,12 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
 
       <section id="contact">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.contact}</h2>
-          <div className="lg:col-span-7">
-            <p className="font-display text-3xl font-bold tracking-[-0.04em] sm:text-5xl">DOTZERO / OPEN CHANNEL</p>
-            <p className="mt-5 max-w-xl dz-text-muted">Independent research, digital experiments, archives and cultural collaborations.</p>
+          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.contact}</h2>
+          <div className="lg:col-span-8">
+            <p className="font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">DOTZERO / OPEN CHANNEL</p>
+            <p className="mt-6 max-w-xl text-sm leading-7 dz-text-muted">
+              Independent research, digital experiments, archives and cultural collaborations.
+            </p>
           </div>
         </div>
       </section>
