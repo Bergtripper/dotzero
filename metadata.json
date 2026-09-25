@@ -1,0 +1,6 @@
+{
+  "name": "dotzero",
+  "description": "Atelier di design e architettura visiva ispirato al Bauhaus. Rigore geometrico, colori primari e minimalismo funzionale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
