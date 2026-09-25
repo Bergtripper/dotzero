@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { ThemeVariant } from './types';
+import { ColorMode, ThemeVariant } from './types';
 import { LanguageProvider } from './context/LanguageContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -19,6 +19,7 @@ import { ModulorStudio } from './components/ModulorStudio';
 function MainAppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'modulor'>('home');
   const [currentTheme, setCurrentTheme] = useState<ThemeVariant>('classic');
+  const [colorMode, setColorMode] = useState<ColorMode>('light');
   const [showGridLines, setShowGridLines] = useState<boolean>(true);
 
   // Sync hash routing if user comes with #modulor or #modulor-studio
@@ -67,7 +68,7 @@ function MainAppContent() {
   }
 
   return (
-    <div className={`min-h-screen bg-[#F6F4EE] text-[#121212] relative ${themeClass}`}>
+    <div data-color-mode={colorMode} className={`min-h-screen dz-bg dz-text relative ${themeClass}`}>
       {/* Background Architectural Grid Lines (Toggled via header) */}
       {showGridLines && (
         <div
@@ -77,7 +78,7 @@ function MainAppContent() {
           {Array.from({ length: 12 }).map((_, i) => (
             <div
               key={i}
-              className="h-full border-r border-[#121212] first:border-l"
+              className="h-full border-r dz-grid-line first:border-l"
             />
           ))}
         </div>
@@ -87,6 +88,8 @@ function MainAppContent() {
       <Header
         currentTheme={currentTheme}
         onThemeChange={setCurrentTheme}
+        colorMode={colorMode}
+        onColorModeChange={setColorMode}
         showGridLines={showGridLines}
         onToggleGridLines={() => setShowGridLines(!showGridLines)}
         onNavigateToModulor={navigateToModulor}
