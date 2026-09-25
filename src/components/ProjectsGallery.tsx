@@ -51,7 +51,7 @@ export const ProjectsGallery: React.FC = () => {
                 onClick={() => setSelectedCategoryKey(cat.key)}
                 className={`px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors ${
                   selectedCategoryKey === cat.key
-                    ? 'bg-[var(--text)] text-[var(--on-accent)] font-bold'
+                    ? 'bg-[var(--text)] text-[var(--on-text)] font-bold'
                     : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
               >
@@ -202,7 +202,7 @@ export const ProjectsGallery: React.FC = () => {
               <div className="flex items-start justify-between pb-4 mb-6 border-b-2 border-[var(--text)]">
                 <div>
                   <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase font-bold mb-1">
-                    <span className="px-1.5 py-0.5 bg-[var(--text)] text-[var(--on-accent)]">
+                    <span className="px-1.5 py-0.5 bg-[var(--text)] text-[var(--on-text)]">
                       {activeProjectModal.code}
                     </span>
                     <span>{activeProjectModal.category[language]}</span>
@@ -277,7 +277,7 @@ export const ProjectsGallery: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveProjectModal(null)}
-                    className="px-4 py-2 bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase font-bold hover:bg-[var(--accent)] transition-colors"
+                    className="px-4 py-2 bg-[var(--text)] text-[var(--on-text)] font-mono text-xs uppercase font-bold hover:bg-[var(--accent)] transition-colors"
                   >
                     {t.modalClose[language]}
                   </button>
