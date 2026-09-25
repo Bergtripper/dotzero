@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - refactor/dotzero-v3
+      - refactor/dotzero-phase2
   workflow_dispatch:
 
 permissions:
