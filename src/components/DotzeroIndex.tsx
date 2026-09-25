@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUpRight, Circle } from 'lucide-react';
 import { DOTZERO_PROJECTS } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
+import { DotzeroWordmark } from './DotzeroWordmark';
 
 interface DotzeroIndexProps {
   onNavigateToModulor: () => void;
@@ -63,21 +64,15 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
     <main id="index" className="pt-20">
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-9">
-              <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
-              <h1 className="font-display text-[clamp(4rem,13vw,10.5rem)] font-extrabold uppercase leading-[0.78] tracking-[-0.075em]">
-                DOTZERO<span className="text-[var(--accent)]">.</span>
-              </h1>
-            </div>
-            <div className="lg:col-span-3 lg:pb-2">
-              <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.15em] dz-text-muted">
-                {t.title}
-              </p>
-            </div>
+          <div>
+            <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
+            <DotzeroWordmark />
+            <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
+              {t.title}
+            </p>
           </div>
 
-          <div className="mt-14 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
+          <div className="mt-12 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
             <p className="dz-body-strong max-w-2xl sm:text-xl lg:col-span-7">
               {t.intro}
             </p>
