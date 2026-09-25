@@ -1,13 +1,9 @@
 import React from 'react';
 import { ArrowUpRight, Circle } from 'lucide-react';
-import { DOTZERO_PROJECTS } from '../projects';
+import { getDotzeroProjects } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
 import { DotzeroWordmark } from './DotzeroWordmark';
 
-interface DotzeroIndexProps {
-  onNavigateToModulor: () => void;
-  onNavigateToBauhaus: () => void;
-}
 
 const COPY = {
   it: {
@@ -51,14 +47,10 @@ const COPY = {
   },
 };
 
-export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor, onNavigateToBauhaus }) => {
+export const DotzeroIndex: React.FC = () => {
   const { language } = useLanguage();
   const t = COPY[language];
-
-  const openProject = (id: string) => {
-    if (id === 'modulor-studio') onNavigateToModulor();
-    if (id === 'bauhaus-laboratory') onNavigateToBauhaus();
-  };
+  const projects = getDotzeroProjects();
 
   return (
     <main id="index" className="pt-20">
@@ -80,7 +72,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
               {[
                 ['TYPE', 'INDEX'],
                 ['STATUS', 'ACTIVE'],
-                ['PROJECTS', String(DOTZERO_PROJECTS.length).padStart(2, '0')],
+                ['PROJECTS', String(projects.length).padStart(2, '0')],
                 ['REV', '2026.09'],
               ].map(([label, value]) => (
                 <div key={label}>
@@ -97,12 +89,20 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="mb-3 flex items-end justify-between">
             <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">{t.projects}</h2>
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">01—{String(DOTZERO_PROJECTS.length).padStart(2, '0')}</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">01—{String(projects.length).padStart(2, '0')}</span>
           </div>
 
           <div className="border-t-2 dz-border">
-            {DOTZERO_PROJECTS.map((project) => {
-              const canOpen = project.id !== 'avant-garde-atlas';
+            {projects.map((project) => {
+              const canOpen = project.destination.kind !== 'planned';
+              const projectHref =
+                project.destination.kind === 'internal'
+                  ? project.destination.hash
+                  : project.destination.kind === 'external'
+                    ? project.destination.url
+                    : undefined;
+              const isExternal = project.destination.kind === 'external';
+
               return (
                 <article key={project.id} className="dz-project-row group border-b dz-border">
                   <div className="grid gap-6 py-9 md:grid-cols-12 md:items-start lg:py-11">
@@ -138,17 +138,21 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
                         {project.status}
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => canOpen && openProject(project.id)}
-                        disabled={!canOpen}
-                        className={`mt-0 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] md:mt-8 ${
-                          canOpen ? 'hover:opacity-50' : 'cursor-default opacity-35'
-                        }`}
-                      >
-                        {canOpen ? t.open : t.pending}
-                        {canOpen && <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
-                      </button>
+                      {canOpen && projectHref ? (
+                        <a
+                          href={projectHref}
+                          target={isExternal ? '_blank' : undefined}
+                          rel={isExternal ? 'noreferrer' : undefined}
+                          className="mt-0 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] hover:opacity-50 md:mt-8"
+                        >
+                          {t.open}
+                          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </a>
+                      ) : (
+                        <span className="mt-0 inline-flex cursor-default items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] opacity-35 md:mt-8">
+                          {t.pending}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </article>

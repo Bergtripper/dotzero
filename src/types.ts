@@ -54,9 +54,15 @@ export type ColorMode = 'light' | 'dark';
 
 export type DotzeroProjectStatus = 'active' | 'archive' | 'prototype';
 
+export type DotzeroProjectDestination =
+  | { kind: 'internal'; hash: string }
+  | { kind: 'external'; url: string }
+  | { kind: 'planned' };
+
 export interface DotzeroProject {
   id: string;
   number: string;
+  order: number;
   title: string;
   slug: string;
   period?: string;
@@ -64,8 +70,13 @@ export interface DotzeroProject {
   status: DotzeroProjectStatus;
   type: string[];
   summary: LocalizedString;
-  route?: string;
-  externalUrl?: string;
+  destination: DotzeroProjectDestination;
+  featured?: boolean;
+  updatedAt?: string;
+  cover?: {
+    src: string;
+    alt: LocalizedString;
+  };
 }
 
 export interface ModulorPreset {

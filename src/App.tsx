@@ -60,12 +60,6 @@ function MainAppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const navigateToBauhaus = () => {
-    setCurrentPage('bauhaus');
-    window.location.hash = 'bauhaus';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Dynamic theme wrapper classes
   const themeClass =
     currentTheme === 'monochrome'
@@ -136,10 +130,7 @@ function MainAppContent() {
         onToggleGridLines={() => setShowGridLines(!showGridLines)}
       />
 
-      <DotzeroIndex
-        onNavigateToModulor={navigateToModulor}
-        onNavigateToBauhaus={navigateToBauhaus}
-      />
+      <DotzeroIndex />
 
       <DotzeroFooter />
     </div>
