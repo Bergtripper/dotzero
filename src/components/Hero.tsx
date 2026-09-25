@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
         
         {/* Modulor Studio Subpage Prominent Feature Banner */}
         {navigateToSubpage && (
-          <div className="mb-8 border-2 border-[var(--text)] bg-[#07080C] text-[var(--on-accent)] p-3 sm:p-4 shadow-[4px_4px_0px_0px_#DE3831] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="mb-8 border-2 border-[var(--text)] bg-[var(--void)] text-[var(--on-accent)] p-3 sm:p-4 shadow-[4px_4px_0px_0px_#DE3831] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <span className="w-3 h-3 rounded-full bg-[var(--accent)] animate-ping" />
               <div>
@@ -167,7 +167,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
               {/* Bauhaus Canvas Viewer */}
               <div
                 id="bauhaus-kinetic-stage"
-                className="relative h-[340px] sm:h-[380px] bg-[#FAF8F5] border border-[var(--text)] overflow-hidden flex items-center justify-center cursor-crosshair select-none"
+                className="relative h-[340px] sm:h-[380px] bg-[var(--canvas)] border border-[var(--text)] overflow-hidden flex items-center justify-center cursor-crosshair select-none"
                 onClick={rotateSculpture}
               >
                 {/* Background constructivist grid guidelines */}
