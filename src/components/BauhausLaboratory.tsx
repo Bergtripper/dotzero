@@ -145,7 +145,7 @@ export const BauhausLaboratory: React.FC = () => {
   ];
 
   return (
-    <section id="laboratorio" className="py-20 border-b-2 border-[var(--text)] bg-[#FAF8F5]">
+    <section id="laboratorio" className="py-20 border-b-2 border-[var(--text)] bg-[var(--canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -189,7 +189,7 @@ export const BauhausLaboratory: React.FC = () => {
         <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] shadow-[8px_8px_0px_0px_#121212] grid grid-cols-1 lg:grid-cols-12">
           
           {/* Left: Interactive Canvas (7 cols) */}
-          <div className="lg:col-span-7 p-6 border-b-2 lg:border-b-0 lg:border-r-2 border-[var(--text)] flex flex-col items-center justify-center bg-[#FAF8F5]">
+          <div className="lg:col-span-7 p-6 border-b-2 lg:border-b-0 lg:border-r-2 border-[var(--text)] flex flex-col items-center justify-center bg-[var(--canvas)]">
             
             {/* Top Canvas Bar */}
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[var(--text)] font-mono text-xs">
@@ -367,7 +367,7 @@ export const BauhausLaboratory: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => addPrimitive('circle', '#DE3831')}
-                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[#FAF8F5] flex flex-col items-center gap-1 transition-transform active:scale-95"
+                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
                   title="Aggiungi Cerchio"
                 >
                   <span className="w-6 h-6 rounded-full bg-[var(--accent)] border border-[var(--text)]" />
@@ -377,7 +377,7 @@ export const BauhausLaboratory: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => addPrimitive('square', '#1350B0')}
-                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[#FAF8F5] flex flex-col items-center gap-1 transition-transform active:scale-95"
+                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
                   title="Aggiungi Quadrato"
                 >
                   <span className="w-6 h-6 bg-[var(--accent-secondary)] border border-[var(--text)]" />
@@ -387,7 +387,7 @@ export const BauhausLaboratory: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => addPrimitive('triangle', '#F7B801')}
-                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[#FAF8F5] flex flex-col items-center gap-1 transition-transform active:scale-95"
+                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
                   title="Aggiungi Triangolo"
                 >
                   <div className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[20px] border-b-[#F7B801]" />
@@ -397,7 +397,7 @@ export const BauhausLaboratory: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => addPrimitive('semicircle', '#121212')}
-                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[#FAF8F5] flex flex-col items-center gap-1 transition-transform active:scale-95"
+                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
                   title="Aggiungi Semicerchio"
                 >
                   <div className="w-6 h-3 bg-[var(--text)] rounded-t-full border border-[var(--text)]" />
@@ -407,7 +407,7 @@ export const BauhausLaboratory: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => addPrimitive('line', '#121212')}
-                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[#FAF8F5] flex flex-col items-center gap-1 transition-transform active:scale-95"
+                  className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
                   title="Aggiungi Linea"
                 >
                   <div className="w-6 h-1 bg-[var(--text)] mt-2.5" />
@@ -418,7 +418,7 @@ export const BauhausLaboratory: React.FC = () => {
 
             {/* Selected Element Inspector */}
             {selectedElement ? (
-              <div className="border-2 border-[var(--text)] p-4 bg-[#FAF8F5] space-y-4">
+              <div className="border-2 border-[var(--text)] p-4 bg-[var(--canvas)] space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-[var(--text)] font-mono text-xs">
                   <span className="font-bold uppercase text-[var(--accent)]">
                     {t.modifyLabel[language]} {selectedElement.type.toUpperCase()}
