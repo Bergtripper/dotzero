@@ -1,0 +1,30 @@
+name: Complete baseline import
+
+on:
+  push:
+    paths:
+      - '.import/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct source files
+        shell: bash
+        run: |
+          cat .import/modulor.part* | base64 -d > src/components/ModulorStudio.tsx
+          cat .import/translations.part* | base64 -d > src/translations.ts
+      - name: Commit reconstructed baseline
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/ModulorStudio.tsx src/translations.ts
+          git rm -r .import
+          git rm .github/workflows/import-baseline.yml
+          git commit -m "Complete Studio AI pre-refactor baseline"
+          git push
