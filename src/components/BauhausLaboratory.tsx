@@ -155,7 +155,7 @@ export const BauhausLaboratory: React.FC = () => {
               <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
               <span>{t.badge[language]}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[var(--text)]">
+            <h2 className="dz-h2 text-4xl sm:text-5xl md:text-6xl uppercase text-[var(--text)]">
               {t.title[language]}
             </h2>
           </div>
