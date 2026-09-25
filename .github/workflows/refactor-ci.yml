@@ -9,6 +9,7 @@ on:
       - refactor/dotzero-phase3a-design-system
       - fix/dotzero-wordmark-style-audit
       - refactor/dotzero-phase3b-project-system
+      - feature/dotzero-typographic-specimen
   workflow_dispatch:
 
 permissions:
