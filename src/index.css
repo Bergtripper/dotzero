@@ -240,7 +240,7 @@ html {
   width: 100%;
   min-width: 0;
   overflow: hidden;
-  padding: 2.75rem 0 2.2rem;
+  padding: 3.25rem 0 2.3rem;
 }
 
 .dz-specimen-word {
@@ -248,7 +248,7 @@ html {
   margin: 0;
   font-family: 'Syne', sans-serif;
   font-weight: 700;
-  line-height: 0.8;
+  line-height: 0.78;
   letter-spacing: -0.055em;
   text-transform: lowercase;
   white-space: nowrap;
@@ -264,61 +264,93 @@ html {
 .dz-specimen-glyph {
   position: relative;
   transform:
-    translateY(var(--glyph-y, 0))
+    translate(var(--glyph-x, 0), var(--glyph-y, 0))
+    rotate(var(--glyph-rotate, 0deg))
     scale(var(--glyph-scale, 1));
   transform-origin: center bottom;
   transition:
-    transform 220ms cubic-bezier(.2,.75,.25,1),
-    color 180ms ease,
+    transform 420ms cubic-bezier(.2,.8,.2,1),
+    color 220ms ease,
     opacity 180ms ease;
   cursor: default;
 }
 
+.dz-specimen--wordmark .dz-specimen-glyph {
+  transform: translate(0, 0) rotate(0deg) scale(1);
+}
+
 .dz-specimen-glyph + .dz-specimen-glyph {
-  margin-left: 0.005em;
+  margin-left: 0.006em;
 }
 
 .dz-specimen-glyph.is-framed::after {
   content: '';
   position: absolute;
-  inset: -0.08em -0.035em -0.04em;
+  inset: -0.1em -0.045em -0.055em;
   border: 1px solid var(--accent);
   pointer-events: none;
-  opacity: 0.76;
+  opacity: 0.82;
+  transition: opacity 220ms ease, transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+
+.dz-specimen--wordmark .dz-specimen-glyph.is-framed::after {
+  opacity: 0.16;
+  transform: scale(0.92);
 }
 
 .dz-specimen-glyph.is-accent {
   color: var(--accent);
+  cursor: pointer;
 }
 
-.dz-specimen-glyph.is-active {
+.dz-specimen-glyph.is-accent::after {
+  content: '';
+  position: absolute;
+  inset: 0.09em 0.03em 0.07em 0.03em;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.dz-specimen-glyph.is-active:not(.is-accent) {
   transform:
-    translateY(calc(var(--glyph-y, 0) - 3%))
-    scale(calc(var(--glyph-scale, 1) * 1.035));
+    translate(var(--glyph-x, 0), calc(var(--glyph-y, 0) - 3%))
+    rotate(var(--glyph-rotate, 0deg))
+    scale(calc(var(--glyph-scale, 1) * 1.04));
+}
+
+.dz-specimen--wordmark .dz-specimen-glyph.is-active:not(.is-accent) {
+  transform: translateY(-2%) scale(1.035);
 }
 
 .dz-specimen-glyph.is-active::before {
   content: '';
   position: absolute;
   left: 50%;
-  top: -0.28em;
-  bottom: -0.18em;
+  top: -0.34em;
+  bottom: -0.24em;
   width: 1px;
   background: var(--accent);
-  opacity: 0.42;
+  opacity: 0.38;
 }
 
 .dz-specimen-period {
-  margin-left: 0.015em;
+  margin-left: 0.02em;
   color: var(--accent);
-  transform: translateY(-0.04em) scale(0.8);
+  transform: translateY(-0.08em) scale(0.72);
   transform-origin: left bottom;
+  transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+
+.dz-specimen--wordmark .dz-specimen-period {
+  transform: translateY(0) scale(1);
 }
 
 .dz-specimen-index {
   position: absolute;
   left: 50%;
-  top: calc(100% + 0.9rem);
+  top: calc(100% + 0.85rem);
   transform: translateX(-50%);
   font-family: 'JetBrains Mono', monospace;
   font-size: 8px;
@@ -333,24 +365,45 @@ html {
   opacity: 1;
 }
 
-.dz-specimen-guide {
+.dz-specimen-guide,
+.dz-specimen-axis {
   position: absolute;
+  pointer-events: none;
+  background: var(--line-soft);
+}
+
+.dz-specimen-guide {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--line-soft);
-  pointer-events: none;
 }
 
 .dz-specimen-guide--cap {
-  top: 2.5rem;
+  top: 2.9rem;
 }
 
 .dz-specimen-guide--base {
-  bottom: 3.2rem;
+  bottom: 3.45rem;
 }
 
-.dz-specimen-meta {
+.dz-specimen-axis--x {
+  left: 0;
+  right: 0;
+  top: 52%;
+  height: 1px;
+  opacity: 0.45;
+}
+
+.dz-specimen-axis--y {
+  top: 2.45rem;
+  bottom: 2.8rem;
+  left: 66.666%;
+  width: 1px;
+  opacity: 0.45;
+}
+
+.dz-specimen-meta,
+.dz-specimen-zero-callout {
   position: absolute;
   z-index: 2;
   font-family: 'JetBrains Mono', monospace;
@@ -364,21 +417,33 @@ html {
 }
 
 .dz-specimen-meta--left {
-  top: 2.05rem;
+  top: 2.4rem;
   left: 0.35rem;
 }
 
 .dz-specimen-meta--right {
-  top: 2.05rem;
+  top: 2.4rem;
   right: 0.35rem;
+}
+
+.dz-specimen-zero-callout {
+  right: 1.2%;
+  bottom: 4.1rem;
+  color: var(--accent);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.dz-specimen--wordmark .dz-specimen-zero-callout {
+  opacity: 0.45;
+  transform: translateY(0.2rem);
 }
 
 .dz-specimen-readout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-top: 1.85rem;
-  padding-top: 0.7rem;
+  margin-top: 2rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--line-soft);
   font-family: 'JetBrains Mono', monospace;
   font-size: 8px;
@@ -398,11 +463,16 @@ html {
 
 @media (max-width: 639px) {
   .dz-specimen {
-    padding-top: 2.25rem;
+    padding-top: 2.6rem;
   }
 
-  .dz-specimen-meta--right {
+  .dz-specimen-meta--right,
+  .dz-specimen-zero-callout {
     display: none;
+  }
+
+  .dz-specimen-axis--y {
+    left: 75%;
   }
 
   .dz-specimen-readout {
@@ -415,7 +485,8 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dz-specimen-glyph {
+  .dz-specimen-glyph,
+  .dz-specimen-period {
     transition: none;
   }
 }
