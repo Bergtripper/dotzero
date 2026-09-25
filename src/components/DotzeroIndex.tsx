@@ -62,10 +62,10 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
   return (
     <main id="index" className="pt-20">
       <section className="border-b dz-border">
-        <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
+        <div className="px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-10 lg:pb-28 lg:pt-24">
           <div>
             <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
-            <h1 className="font-display whitespace-nowrap text-[clamp(3.55rem,10.7vw,9.35rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.075em]">
+            <h1 className="font-display whitespace-nowrap text-[clamp(3.4rem,11.2vw,11.5rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.075em]">
               DOTZERO<span className="text-[var(--accent)]">.</span>
             </h1>
             <p className="mt-8 max-w-3xl font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
@@ -73,7 +73,7 @@ export const DotzeroIndex: React.FC<DotzeroIndexProps> = ({ onNavigateToModulor,
             </p>
           </div>
 
-          <div className="mt-12 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
+          <div className="mx-auto mt-12 grid max-w-7xl gap-10 border-t dz-border pt-7 lg:grid-cols-12">
             <p className="dz-body-strong max-w-2xl sm:text-xl lg:col-span-7">
               {t.intro}
             </p>
