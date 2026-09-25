@@ -6,6 +6,7 @@ on:
       - refactor/dotzero-v3
       - refactor/dotzero-phase2
       - refactor/dotzero-phase2-5-visual
+      - refactor/dotzero-phase3a-design-system
   workflow_dispatch:
 
 permissions:
