@@ -81,7 +81,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
             {/* Monumental Headline */}
             <h1
               id="hero-title"
-              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] leading-[0.88] text-[var(--text)] font-display uppercase"
+              className="dz-h1 text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[var(--text)] uppercase"
             >
               DOT<br />
               <span className="text-[var(--accent)] relative inline-block">
@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
             </h1>
 
             {/* Subtitle statement */}
-            <p className="mt-8 text-lg sm:text-xl text-[#222222] max-w-xl font-normal leading-relaxed">
+            <p className="dz-body-strong mt-8 max-w-xl sm:text-xl">
               {t.subtitle[language]}
             </p>
 
