@@ -136,10 +136,7 @@ function MainAppContent() {
         onToggleGridLines={() => setShowGridLines(!showGridLines)}
       />
 
-      <DotzeroIndex
-        onNavigateToModulor={navigateToModulor}
-        onNavigateToBauhaus={navigateToBauhaus}
-      />
+      <DotzeroIndex />
 
       <DotzeroFooter />
     </div>
