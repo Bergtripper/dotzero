@@ -60,17 +60,17 @@ export const ColorShapeTheory: React.FC = () => {
     userMapping.circle === correctMapping.circle;
 
   return (
-    <section id="teoria" className="py-20 border-b-2 border-[#121212] bg-[#FAF8F5]">
+    <section id="teoria" className="py-20 border-b-2 border-[var(--text)] bg-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="mb-12 pb-6 border-b-2 border-[#121212] flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="mb-12 pb-6 border-b-2 border-[var(--text)] flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 font-mono text-xs text-[#1350B0] uppercase tracking-[0.2em] font-bold mb-2">
-              <span className="w-2.5 h-2.5 bg-[#1350B0] inline-block" />
+            <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-secondary)] uppercase tracking-[0.2em] font-bold mb-2">
+              <span className="w-2.5 h-2.5 bg-[var(--accent-secondary)] inline-block" />
               <span>{t.badge[language]}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[#121212]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase font-display tracking-tight text-[var(--text)]">
               {t.title[language]}
             </h2>
           </div>
@@ -80,13 +80,13 @@ export const ColorShapeTheory: React.FC = () => {
         </div>
 
         {/* Interactive Experiment Box */}
-        <div className="border-2 border-[#121212] bg-white p-6 sm:p-10 shadow-[8px_8px_0px_0px_#121212] mb-12">
-          <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b-2 border-[#121212] gap-4">
+        <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 sm:p-10 shadow-[8px_8px_0px_0px_#121212] mb-12">
+          <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b-2 border-[var(--text)] gap-4">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-[#DE3831] font-bold">
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent)] font-bold">
                 {t.expBadge[language]}
               </span>
-              <h3 className="font-display font-bold text-2xl uppercase text-[#121212] mt-1">
+              <h3 className="font-display font-bold text-2xl uppercase text-[var(--text)] mt-1">
                 {t.expInstruction[language]}
               </h3>
             </div>
@@ -95,7 +95,7 @@ export const ColorShapeTheory: React.FC = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-3 py-1.5 border border-[#121212] font-mono text-xs uppercase hover:bg-zinc-100 flex items-center gap-1.5"
+                className="px-3 py-1.5 border border-[var(--text)] font-mono text-xs uppercase hover:bg-zinc-100 flex items-center gap-1.5"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
                 <span>{t.resetBtn[language]}</span>
@@ -105,7 +105,7 @@ export const ColorShapeTheory: React.FC = () => {
                   type="button"
                   id="btn-verify-kandinsky"
                   onClick={handleTest}
-                  className="px-4 py-1.5 bg-[#121212] text-white font-mono text-xs uppercase font-bold border border-[#121212] hover:bg-[#DE3831] transition-colors"
+                  className="px-4 py-1.5 bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase font-bold border border-[var(--text)] hover:bg-[var(--accent)] transition-colors"
                 >
                   {t.verifyBtn[language]}
                 </button>
@@ -117,7 +117,7 @@ export const ColorShapeTheory: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             
             {/* Shape 1: Triangolo */}
-            <div className="border-2 border-[#121212] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.triangleTitle[language]}
               </div>
@@ -144,7 +144,7 @@ export const ColorShapeTheory: React.FC = () => {
                       key={c.id}
                       type="button"
                       onClick={() => handleAssign('triangle', c.hex)}
-                      className={`w-7 h-7 border-2 border-[#121212] transition-transform ${
+                      className={`w-7 h-7 border-2 border-[var(--text)] transition-transform ${
                         userMapping.triangle === c.hex
                           ? 'scale-125 ring-2 ring-[#121212] z-10'
                           : 'opacity-80 hover:opacity-100 hover:scale-110'
@@ -158,14 +158,14 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
 
             {/* Shape 2: Quadrato */}
-            <div className="border-2 border-[#121212] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.squareTitle[language]}
               </div>
 
               <div className="my-4 h-36 flex items-center justify-center">
                 <div
-                  className="w-28 h-28 border-2 border-[#121212] transition-colors duration-200"
+                  className="w-28 h-28 border-2 border-[var(--text)] transition-colors duration-200"
                   style={{ backgroundColor: userMapping.square || '#E8E4D9' }}
                 />
               </div>
@@ -180,7 +180,7 @@ export const ColorShapeTheory: React.FC = () => {
                       key={c.id}
                       type="button"
                       onClick={() => handleAssign('square', c.hex)}
-                      className={`w-7 h-7 border-2 border-[#121212] transition-transform ${
+                      className={`w-7 h-7 border-2 border-[var(--text)] transition-transform ${
                         userMapping.square === c.hex
                           ? 'scale-125 ring-2 ring-[#121212] z-10'
                           : 'opacity-80 hover:opacity-100 hover:scale-110'
@@ -194,14 +194,14 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
 
             {/* Shape 3: Cerchio */}
-            <div className="border-2 border-[#121212] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
+            <div className="border-2 border-[var(--text)] p-6 bg-[#FAF8F5] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.circleTitle[language]}
               </div>
 
               <div className="my-4 h-36 flex items-center justify-center">
                 <div
-                  className="w-28 h-28 rounded-full border-2 border-[#121212] transition-colors duration-200"
+                  className="w-28 h-28 rounded-full border-2 border-[var(--text)] transition-colors duration-200"
                   style={{ backgroundColor: userMapping.circle || '#E8E4D9' }}
                 />
               </div>
@@ -216,7 +216,7 @@ export const ColorShapeTheory: React.FC = () => {
                       key={c.id}
                       type="button"
                       onClick={() => handleAssign('circle', c.hex)}
-                      className={`w-7 h-7 border-2 border-[#121212] transition-transform ${
+                      className={`w-7 h-7 border-2 border-[var(--text)] transition-transform ${
                         userMapping.circle === c.hex
                           ? 'scale-125 ring-2 ring-[#121212] z-10'
                           : 'opacity-80 hover:opacity-100 hover:scale-110'
@@ -234,12 +234,12 @@ export const ColorShapeTheory: React.FC = () => {
           {/* Test Result Evaluation */}
           {tested && (
             <div
-              className={`p-6 border-2 border-[#121212] font-mono text-sm ${
-                isExactKandinsky ? 'bg-[#FAF8F5]' : 'bg-[#ECE8DD]'
+              className={`p-6 border-2 border-[var(--text)] font-mono text-sm ${
+                isExactKandinsky ? 'bg-[#FAF8F5]' : 'bg-[var(--surface)]'
               }`}
             >
-              <div className="flex items-center gap-2 mb-2 font-bold uppercase text-[#121212]">
-                <CheckCircle2 className="w-5 h-5 text-[#DE3831]" />
+              <div className="flex items-center gap-2 mb-2 font-bold uppercase text-[var(--text)]">
+                <CheckCircle2 className="w-5 h-5 text-[var(--accent)]" />
                 <span>
                   {isExactKandinsky
                     ? t.resultSuccessTitle[language]
@@ -259,10 +259,10 @@ export const ColorShapeTheory: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Card Yellow */}
-          <div className="border-2 border-[#121212] bg-white p-6 relative">
-            <div className="w-full h-3 bg-[#F7B801] mb-4 border border-[#121212]" />
+          <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
+            <div className="w-full h-3 bg-[var(--accent-tertiary)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">
-              <span className="font-display font-bold text-xl uppercase text-[#121212]">
+              <span className="font-display font-bold text-xl uppercase text-[var(--text)]">
                 {t.yellowCard.title[language]}
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.yellowCard.angle[language]}</span>
@@ -270,17 +270,17 @@ export const ColorShapeTheory: React.FC = () => {
             <p className="text-sm text-zinc-700 leading-relaxed font-sans">
               {t.yellowCard.body[language]}
             </p>
-            <div className="mt-4 pt-3 border-t border-[#121212] font-mono text-[11px] text-zinc-600 flex justify-between">
+            <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
               <span>{t.yellowCard.force[language]}</span>
               <span>{t.yellowCard.sound[language]}</span>
             </div>
           </div>
 
           {/* Card Red */}
-          <div className="border-2 border-[#121212] bg-white p-6 relative">
-            <div className="w-full h-3 bg-[#DE3831] mb-4 border border-[#121212]" />
+          <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
+            <div className="w-full h-3 bg-[var(--accent)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">
-              <span className="font-display font-bold text-xl uppercase text-[#121212]">
+              <span className="font-display font-bold text-xl uppercase text-[var(--text)]">
                 {t.redCard.title[language]}
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.redCard.angle[language]}</span>
@@ -288,17 +288,17 @@ export const ColorShapeTheory: React.FC = () => {
             <p className="text-sm text-zinc-700 leading-relaxed font-sans">
               {t.redCard.body[language]}
             </p>
-            <div className="mt-4 pt-3 border-t border-[#121212] font-mono text-[11px] text-zinc-600 flex justify-between">
+            <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
               <span>{t.redCard.force[language]}</span>
               <span>{t.redCard.sound[language]}</span>
             </div>
           </div>
 
           {/* Card Blue */}
-          <div className="border-2 border-[#121212] bg-white p-6 relative">
-            <div className="w-full h-3 bg-[#1350B0] mb-4 border border-[#121212]" />
+          <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
+            <div className="w-full h-3 bg-[var(--accent-secondary)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">
-              <span className="font-display font-bold text-xl uppercase text-[#121212]">
+              <span className="font-display font-bold text-xl uppercase text-[var(--text)]">
                 {t.blueCard.title[language]}
               </span>
               <span className="font-mono text-xs text-zinc-500">{t.blueCard.angle[language]}</span>
@@ -306,7 +306,7 @@ export const ColorShapeTheory: React.FC = () => {
             <p className="text-sm text-zinc-700 leading-relaxed font-sans">
               {t.blueCard.body[language]}
             </p>
-            <div className="mt-4 pt-3 border-t border-[#121212] font-mono text-[11px] text-zinc-600 flex justify-between">
+            <div className="mt-4 pt-3 border-t border-[var(--text)] font-mono text-[11px] text-zinc-600 flex justify-between">
               <span>{t.blueCard.force[language]}</span>
               <span>{t.blueCard.sound[language]}</span>
             </div>
