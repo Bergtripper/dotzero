@@ -17,6 +17,7 @@
     --void: #07080C;
     --void-text: #EDEDED;
     --on-accent: #FFFFFF;
+    --on-text: var(--bg);
     --line-soft: rgba(18, 18, 18, 0.22);
 
     /* Legacy Bauhaus aliases retained during migration */
