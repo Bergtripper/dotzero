@@ -105,7 +105,7 @@ export const ColorShapeTheory: React.FC = () => {
                   type="button"
                   id="btn-verify-kandinsky"
                   onClick={handleTest}
-                  className="px-4 py-1.5 bg-[var(--text)] text-[var(--on-accent)] font-mono text-xs uppercase font-bold border border-[var(--text)] hover:bg-[var(--accent)] transition-colors"
+                  className="px-4 py-1.5 bg-[var(--text)] text-[var(--on-text)] font-mono text-xs uppercase font-bold border border-[var(--text)] hover:bg-[var(--accent)] transition-colors"
                 >
                   {t.verifyBtn[language]}
                 </button>
