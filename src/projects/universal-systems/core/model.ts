@@ -1,5 +1,6 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
 export type GlyphId = 'd' | 'o';
+export type KerningPair = 'dd' | 'do' | 'od' | 'oo';
 export type Tool = 'select' | 'bowl' | 'stem';
 export type PartId = 'bowl' | 'stem';
 
@@ -29,6 +30,7 @@ export interface GlyphDesign {
   stroke: number;
   overshoot: number;
   metrics: Record<GlyphId, GlyphMetrics>;
+  kerning: Record<KerningPair, number>;
 }
 
 export const GUIDES = {
@@ -46,6 +48,12 @@ export const DEFAULT_GLYPH: GlyphDesign = {
   metrics: {
     d: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
+  },
+  kerning: {
+    dd: 0,
+    do: 0,
+    od: 0,
+    oo: 0,
   },
 };
 
@@ -92,4 +100,17 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
     visualWidth,
     advanceWidth: visualWidth + metrics.leftSideBearing + metrics.rightSideBearing,
   };
+};
+
+
+export const KERNING_PAIRS: KerningPair[] = ['dd', 'do', 'od', 'oo'];
+
+export const getKerningValue = (
+  design: GlyphDesign,
+  left: string,
+  right: string | undefined
+) => {
+  if (!right) return 0;
+  const pair = `${left}${right}` as KerningPair;
+  return KERNING_PAIRS.includes(pair) ? design.kerning[pair] : 0;
 };
