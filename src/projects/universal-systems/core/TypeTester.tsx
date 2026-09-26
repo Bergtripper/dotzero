@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { BuiltGlyph } from './BuiltGlyph';
-import { GlyphDesign, GlyphId, getGlyphBounds } from './model';
+import { GlyphDesign, GlyphId, KerningPair, getGlyphBounds, getKerningValue } from './model';
 import { SpacingPanel } from './SpacingPanel';
+import { KerningPanel } from './KerningPanel';
 
 interface TypeTesterProps {
   design: GlyphDesign;
@@ -15,6 +16,7 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
   const [size, setSize] = useState(88);
   const [tracking, setTracking] = useState(0);
   const [spacingGlyph, setSpacingGlyph] = useState<GlyphId>('d');
+  const [kerningPair, setKerningPair] = useState<KerningPair>('do');
 
   const builtCount = useMemo(
     () => [...text].filter((char) => BUILT.has(char as GlyphId)).length,
@@ -90,12 +92,14 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
           if (BUILT.has(char as GlyphId)) {
             const glyph = char as GlyphId;
             const advance = getGlyphBounds(design, glyph).advanceWidth;
+            const kern = getKerningValue(design, char, text[index + 1]);
             return (
               <span
                 className="tc-test-char is-built"
                 key={`${char}-${index}`}
                 style={{
                   '--tc-glyph-advance': `${advance / 100}em`,
+                  '--tc-pair-kern': `${kern / 100}em`,
                 } as React.CSSProperties}
               >
                 <BuiltGlyph
@@ -123,12 +127,20 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
         })}
       </div>
 
-      <SpacingPanel
-        design={design}
-        glyph={spacingGlyph}
-        onGlyphChange={setSpacingGlyph}
-        onChange={onChange}
-      />
+      <div className="tc-test-metric-panels">
+        <SpacingPanel
+          design={design}
+          glyph={spacingGlyph}
+          onGlyphChange={setSpacingGlyph}
+          onChange={onChange}
+        />
+        <KerningPanel
+          design={design}
+          pair={kerningPair}
+          onPairChange={setKerningPair}
+          onChange={onChange}
+        />
+      </div>
 
       <div className="tc-test-report">
         <div>

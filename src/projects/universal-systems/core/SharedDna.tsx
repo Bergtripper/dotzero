@@ -41,6 +41,11 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
         <strong>PER GLYPH</strong>
         <small>d {design.metrics.d.leftSideBearing}/{design.metrics.d.rightSideBearing} · o {design.metrics.o.leftSideBearing}/{design.metrics.o.rightSideBearing}</small>
       </div>
+      <div className="is-specific">
+        <span>KERNING</span>
+        <strong>PER PAIR</strong>
+        <small>dd {design.kerning.dd} · do {design.kerning.do} · od {design.kerning.od} · oo {design.kerning.oo}</small>
+      </div>
     </div>
   </section>
 );
