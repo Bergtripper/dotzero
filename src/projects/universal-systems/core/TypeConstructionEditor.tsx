@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { RotateCcw } from 'lucide-react';
-import { DEFAULT_GLYPH, EditorMode, GlyphDesign, PartId, Tool } from './type-construction/model';
-import { ToolRail } from './type-construction/ToolRail';
-import { GlyphCanvas } from './type-construction/GlyphCanvas';
-import { GlyphInspector } from './type-construction/GlyphInspector';
-import { TypeSpecimen } from './type-construction/TypeSpecimen';
+import { DEFAULT_GLYPH, EditorMode, GlyphDesign, PartId, Tool } from './model';
+import { ToolRail } from './ToolRail';
+import { GlyphCanvas } from './GlyphCanvas';
+import { GlyphInspector } from './GlyphInspector';
+import { TypeSpecimen } from './TypeSpecimen';
 
 export const TypeConstructionEditor: React.FC = () => {
   const [design, setDesign] = useState<GlyphDesign>(DEFAULT_GLYPH);
