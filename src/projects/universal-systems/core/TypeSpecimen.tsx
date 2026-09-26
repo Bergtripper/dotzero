@@ -1,16 +1,20 @@
 import React from 'react';
-import { GlyphDesign } from './model';
+import { GlyphDesign, bowlOuterRy } from './model';
 
 interface TypeSpecimenProps {
   design: GlyphDesign;
 }
 
-const CustomD: React.FC<{ design: GlyphDesign; size?: number }> = ({ design, size = 72 }) => (
+const CustomD: React.FC<{ design: GlyphDesign; size?: number }> = ({
+  design,
+  size = 72,
+}) => (
   <svg viewBox="0 0 100 140" width={size * 0.72} height={size} aria-label="Custom d">
-    <circle
+    <ellipse
       cx={design.bowl.cx}
       cy={design.bowl.cy}
-      r={design.bowl.radius}
+      rx={design.bowl.rx}
+      ry={bowlOuterRy(design)}
       fill="none"
       stroke="currentColor"
       strokeWidth={design.stroke}
@@ -40,9 +44,9 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
 
     <div className="tc-specimen-row tc-specimen-row--large">
       <CustomD design={design} size={120} />
-      <CustomD design={design} size={120} />
-      <CustomD design={design} size={120} />
-      <CustomD design={design} size={120} />
+      <CustomD design={design} size={96} />
+      <CustomD design={design} size={72} />
+      <CustomD design={design} size={48} />
     </div>
 
     <div className="tc-specimen-row tc-specimen-row--context">
