@@ -18,6 +18,7 @@ on:
       - refactor/type-construction-v2
       - refactor/project-portable-architecture
       - feature/type-construction-v3
+      - feature/type-construction-step2-shared-system
   workflow_dispatch:
 
 permissions:

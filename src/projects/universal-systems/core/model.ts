@@ -1,4 +1,5 @@
 export type EditorMode = 'design' | 'construction';
+export type GlyphId = 'd' | 'o';
 export type Tool = 'select' | 'bowl' | 'stem';
 export type PartId = 'bowl' | 'stem';
 
