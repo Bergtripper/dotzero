@@ -204,7 +204,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           ...design,
           stem: {
             ...design.stem,
-            x: glyph === 'b' || glyph === 'p' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
+            x: glyph === 'b' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
             top,
             bottom: clamp(top + height, top + 20, 132),
           },
