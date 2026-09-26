@@ -34,6 +34,7 @@ export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, on
       <div className="tc-label">VIEW</div>
       <button className={mode === 'design' ? 'is-active' : ''} onClick={() => onModeChange('design')}>DESIGN</button>
       <button className={mode === 'construction' ? 'is-active' : ''} onClick={() => onModeChange('construction')}>CONSTRUCTION</button>
+      <button className={mode === 'system' ? 'is-active' : ''} onClick={() => onModeChange('system')}>SYSTEM</button>
     </div>
   </aside>
 );
