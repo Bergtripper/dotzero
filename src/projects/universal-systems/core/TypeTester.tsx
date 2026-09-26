@@ -1,17 +1,20 @@
 import React, { useMemo, useState } from 'react';
 import { BuiltGlyph } from './BuiltGlyph';
-import { GlyphDesign, GlyphId } from './model';
+import { GlyphDesign, GlyphId, getGlyphBounds } from './model';
+import { SpacingPanel } from './SpacingPanel';
 
 interface TypeTesterProps {
   design: GlyphDesign;
+  onChange: (design: GlyphDesign) => void;
 }
 
 const BUILT = new Set<GlyphId>(['d', 'o']);
 
-export const TypeTester: React.FC<TypeTesterProps> = ({ design }) => {
+export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
   const [text, setText] = useState('do dotzero');
   const [size, setSize] = useState(88);
   const [tracking, setTracking] = useState(0);
+  const [spacingGlyph, setSpacingGlyph] = useState<GlyphId>('d');
 
   const builtCount = useMemo(
     () => [...text].filter((char) => BUILT.has(char as GlyphId)).length,
@@ -85,10 +88,18 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design }) => {
       >
         {[...text].map((char, index) => {
           if (BUILT.has(char as GlyphId)) {
+            const glyph = char as GlyphId;
+            const advance = getGlyphBounds(design, glyph).advanceWidth;
             return (
-              <span className="tc-test-char is-built" key={`${char}-${index}`}>
+              <span
+                className="tc-test-char is-built"
+                key={`${char}-${index}`}
+                style={{
+                  '--tc-glyph-advance': `${advance / 100}em`,
+                } as React.CSSProperties}
+              >
                 <BuiltGlyph
-                  glyph={char as GlyphId}
+                  glyph={glyph}
                   design={design}
                   className="tc-test-built-glyph"
                 />
@@ -111,6 +122,13 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design }) => {
           );
         })}
       </div>
+
+      <SpacingPanel
+        design={design}
+        glyph={spacingGlyph}
+        onGlyphChange={setSpacingGlyph}
+        onChange={onChange}
+      />
 
       <div className="tc-test-report">
         <div>

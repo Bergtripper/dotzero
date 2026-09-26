@@ -52,7 +52,7 @@ export const TypeConstructionEditor: React.FC = () => {
     <div className="tc-editor">
       <div className="tc-editor-topbar">
         <div>
-          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 03</div>
+          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 04</div>
           <div className="tc-editor-title">TYPE SYSTEM</div>
         </div>
 
@@ -92,7 +92,7 @@ export const TypeConstructionEditor: React.FC = () => {
           </div>
         ) : mode === 'test' ? (
           <div className="tc-system-slot">
-            <TypeTester design={design} />
+            <TypeTester design={design} onChange={setDesign} />
           </div>
         ) : (
           <>

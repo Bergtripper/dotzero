@@ -705,7 +705,7 @@
 
 .tc-dna-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin-top: 0.8rem;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
@@ -1059,7 +1059,7 @@
 }
 
 .tc-test-char.is-built {
-  width: 0.72em;
+  width: var(--tc-glyph-advance, 0.72em);
   color: var(--text);
 }
 
@@ -1130,6 +1130,133 @@
   }
 
   .tc-test-report {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Type Construction Lab — Spacing + Metrics */
+.tc-spacing-panel {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: 0.85rem;
+}
+
+.tc-spacing-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tc-spacing-title {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tc-spacing-glyph-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 2rem);
+  border: 1px solid var(--line);
+}
+
+.tc-spacing-glyph-switch button {
+  height: 1.8rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tc-spacing-glyph-switch button:last-child {
+  border-right: 0;
+}
+
+.tc-spacing-glyph-switch button.is-active {
+  background: var(--text);
+  color: var(--on-text);
+}
+
+.tc-spacing-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.tc-spacing-controls label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 0.6rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tc-spacing-controls label > span {
+  color: var(--text-muted);
+}
+
+.tc-spacing-controls input {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.tc-spacing-readout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-left: 1px solid var(--line);
+}
+
+.tc-spacing-readout > div {
+  min-height: 66px;
+  display: grid;
+  align-content: space-between;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.6rem;
+}
+
+.tc-spacing-readout span,
+.tc-spacing-readout strong {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.tc-spacing-readout span {
+  color: var(--text-muted);
+}
+
+.tc-spacing-readout strong {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .tc-dna-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .tc-dna-grid,
+  .tc-spacing-controls,
+  .tc-spacing-readout {
     grid-template-columns: 1fr;
   }
 }
