@@ -1,6 +1,6 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
-export type GlyphId = 'd' | 'o';
-export type KerningPair = 'dd' | 'do' | 'od' | 'oo';
+export type GlyphId = 'b' | 'd' | 'o';
+export type KerningPair = 'bb' | 'bd' | 'bo' | 'db' | 'dd' | 'do' | 'ob' | 'od' | 'oo';
 export type Tool = 'select' | 'bowl' | 'stem';
 export type PartId = 'bowl' | 'stem';
 
@@ -46,12 +46,18 @@ export const DEFAULT_GLYPH: GlyphDesign = {
   stroke: 11,
   overshoot: 2,
   metrics: {
+    b: { leftSideBearing: 8, rightSideBearing: 8 },
     d: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
   },
   kerning: {
+    bb: 0,
+    bd: 0,
+    bo: 0,
+    db: 0,
     dd: 0,
     do: 0,
+    ob: 0,
     od: 0,
     oo: 0,
   },
@@ -89,9 +95,11 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
   const halfStroke = design.stroke / 2;
   const bowlMin = design.bowl.cx - design.bowl.rx - halfStroke;
   const bowlMax = design.bowl.cx + design.bowl.rx + halfStroke;
-  const stemMax = design.stem.x + halfStroke;
-  const minX = bowlMin;
-  const maxX = glyph === 'd' ? Math.max(bowlMax, stemMax) : bowlMax;
+  const stemX = getStemX(design, glyph);
+  const stemMin = stemX - halfStroke;
+  const stemMax = stemX + halfStroke;
+  const minX = glyph === 'b' ? Math.min(bowlMin, stemMin) : bowlMin;
+  const maxX = glyph === 'o' ? bowlMax : Math.max(bowlMax, stemMax);
   const visualWidth = maxX - minX;
   const metrics = design.metrics[glyph];
   return {
@@ -103,7 +111,7 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
 };
 
 
-export const KERNING_PAIRS: KerningPair[] = ['dd', 'do', 'od', 'oo'];
+export const KERNING_PAIRS: KerningPair[] = ['bb', 'bd', 'bo', 'db', 'dd', 'do', 'ob', 'od', 'oo'];
 
 export const getKerningValue = (
   design: GlyphDesign,
@@ -114,3 +122,7 @@ export const getKerningValue = (
   const pair = `${left}${right}` as KerningPair;
   return KERNING_PAIRS.includes(pair) ? design.kerning[pair] : 0;
 };
+
+
+export const getStemX = (design: GlyphDesign, glyph: GlyphId) =>
+  glyph === 'b' ? (2 * design.bowl.cx) - design.stem.x : design.stem.x;
