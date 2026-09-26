@@ -20,6 +20,7 @@ on:
       - feature/type-construction-v3
       - feature/type-construction-step2-shared-system
       - feature/type-construction-system-view
+      - feature/type-construction-type-test
   workflow_dispatch:
 
 permissions:
