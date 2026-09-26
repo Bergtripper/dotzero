@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlyphDesign, GlyphId, bowlOuterRy, getGlyphBounds } from './model';
+import { GlyphDesign, GlyphId, bowlOuterRy, getGlyphBounds, getStemX } from './model';
 
 interface BuiltGlyphProps {
   glyph: GlyphId;
@@ -36,10 +36,10 @@ export const BuiltGlyph: React.FC<BuiltGlyphProps> = ({
         strokeWidth={design.stroke}
         vectorEffect="non-scaling-stroke"
       />
-      {glyph === 'd' && (
+      {glyph !== 'o' && (
         <line
-          x1={design.stem.x}
-          x2={design.stem.x}
+          x1={getStemX(design, glyph)}
+          x2={getStemX(design, glyph)}
           y1={design.stem.top}
           y2={design.stem.bottom}
           stroke="currentColor"
