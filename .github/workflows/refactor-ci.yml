@@ -26,6 +26,7 @@ on:
       - feature/type-construction-glyph-b
       - feature/type-construction-glyph-p
       - feature/type-construction-glyph-q
+      - feature/type-construction-glyph-e
   workflow_dispatch:
 
 permissions:
