@@ -1,10 +1,11 @@
 import React from 'react';
 import { ArrowLeft, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { TypeConstructionEditor } from './TypeConstructionEditor';
+import { TypeConstructionEditor } from './core/TypeConstructionEditor';
+import './styles.css';
 
-interface UniversalSystemsProps {
-  onBack: () => void;
+interface UniversalSystemsProjectProps {
+  onBack?: () => void;
 }
 
 type ModuleStatus = 'active' | 'planned';
@@ -89,16 +90,20 @@ const MODULES: Array<{
   { number: '05', title: '1925 → 2026 / UNIVERSAL?', strap: 'History → Question', status: 'planned', icon: Type },
 ];
 
-export const UniversalSystems: React.FC<UniversalSystemsProps> = ({ onBack }) => {
+export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = ({ onBack }) => {
   const { language } = useLanguage();
   const t = COPY[language];
   return (
     <div className="min-h-screen dz-bg dz-text">
       <header className="sticky top-0 z-40 border-b dz-border bg-[var(--bg)]/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <button onClick={onBack} className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em]">
-            <ArrowLeft className="h-3.5 w-3.5" /> {t.back}
-          </button>
+          {onBack ? (
+            <button onClick={onBack} className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em]">
+              <ArrowLeft className="h-3.5 w-3.5" /> {t.back}
+            </button>
+          ) : (
+            <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">INDEPENDENT RESEARCH TOOL</div>
+          )}
           <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">DOTZERO / UNIVERSAL SYSTEMS / 04</div>
         </div>
       </header>
