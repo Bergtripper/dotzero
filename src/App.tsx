@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { ColorMode, ThemeVariant } from './types';
 import { LanguageProvider } from './context/LanguageContext';
+import { TypographyProvider } from './context/TypographyContext';
 import { Header } from './components/Header';
 import { DotzeroHeader } from './components/DotzeroHeader';
 import { DotzeroIndex } from './components/DotzeroIndex';
@@ -139,8 +140,10 @@ function MainAppContent() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <MainAppContent />
-    </LanguageProvider>
+    <TypographyProvider>
+      <LanguageProvider>
+        <MainAppContent />
+      </LanguageProvider>
+    </TypographyProvider>
   );
 }

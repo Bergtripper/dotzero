@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { UI_TEXT } from '../translations';
 import { MODULOR_PRESETS } from '../data';
 import { ModulorPreset, Language } from '../types';
+import { TypographySwitch } from './TypographySwitch';
 import {
   ArrowLeft,
   Volume2,
@@ -472,6 +473,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         {/* Right: Language Switcher & Audio quick-toggle */}
         <div className="flex items-center gap-3">
+          <div className="hidden xl:block">
+            <TypographySwitch compact inverse />
+          </div>
           
           {/* Audio Synth Toggle */}          <button
             type="button"

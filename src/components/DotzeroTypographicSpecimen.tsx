@@ -1,112 +1,135 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 interface GlyphSpec {
   char: string;
   key: string;
   framed?: boolean;
   accent?: boolean;
-  offsetY?: number;
-  scale?: number;
+  construction: { x: number; y: number; size: number; rotate?: number };
+  wordmark: { x: number; y: number; size: number; rotate?: number };
 }
 
 const GLYPHS: GlyphSpec[] = [
-  { char: 'd', key: 'd', scale: 1.03 },
-  { char: 'o', key: 'o1', offsetY: 3 },
-  { char: 't', key: 't', framed: true, offsetY: -2 },
-  { char: 'z', key: 'z', offsetY: 4 },
-  { char: 'e', key: 'e', framed: true, offsetY: -1 },
-  { char: 'r', key: 'r', offsetY: 3 },
-  { char: 'o', key: 'zero', accent: true, scale: 1.08, offsetY: -2 },
+  {
+    char: 'd',
+    key: 'd',
+    construction: { x: 2, y: 30, size: 31, rotate: -1 },
+    wordmark: { x: 1, y: 37, size: 25 },
+  },
+  {
+    char: 'o',
+    key: 'o1',
+    construction: { x: 18, y: 16, size: 24, rotate: 2 },
+    wordmark: { x: 14, y: 37, size: 25 },
+  },
+  {
+    char: 't',
+    key: 't',
+    framed: true,
+    construction: { x: 34, y: 34, size: 24, rotate: -3 },
+    wordmark: { x: 27, y: 37, size: 25 },
+  },
+  {
+    char: 'z',
+    key: 'z',
+    construction: { x: 47, y: 10, size: 27, rotate: -5 },
+    wordmark: { x: 40, y: 37, size: 25 },
+  },
+  {
+    char: 'e',
+    key: 'e',
+    framed: true,
+    construction: { x: 61, y: 30, size: 23, rotate: 3 },
+    wordmark: { x: 53, y: 37, size: 25 },
+  },
+  {
+    char: 'r',
+    key: 'r',
+    construction: { x: 73, y: 39, size: 22, rotate: 6 },
+    wordmark: { x: 66, y: 37, size: 25 },
+  },
+  {
+    char: 'o',
+    key: 'zero',
+    accent: true,
+    construction: { x: 82, y: 9, size: 32, rotate: 0 },
+    wordmark: { x: 77.5, y: 37, size: 25 },
+  },
+  {
+    char: '.',
+    key: 'period',
+    accent: true,
+    construction: { x: 94, y: 61, size: 10, rotate: 0 },
+    wordmark: { x: 91.5, y: 52, size: 12 },
+  },
 ];
 
 export const DotzeroTypographicSpecimen: React.FC = () => {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const wordRef = useRef<HTMLHeadingElement>(null);
+  const [mode, setMode] = useState<'construction' | 'wordmark'>('construction');
   const [activeGlyph, setActiveGlyph] = useState<number | null>(null);
 
-  useLayoutEffect(() => {
-    const frame = frameRef.current;
-    const word = wordRef.current;
-    if (!frame || !word) return;
-
-    let raf = 0;
-
-    const fit = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const available = frame.getBoundingClientRect().width;
-        if (available <= 0) return;
-
-        word.style.fontSize = '100px';
-        const measured = word.getBoundingClientRect().width;
-        if (measured <= 0) return;
-
-        // Keep a deliberate editorial margin for transformed glyphs and frames.
-        const fitted = Math.max(1, (available / measured) * 92.5);
-        word.style.fontSize = `${fitted}px`;
-      });
-    };
-
-    const observer = new ResizeObserver(fit);
-    observer.observe(frame);
-    fit();
-    document.fonts?.ready.then(fit).catch(() => undefined);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      observer.disconnect();
-    };
-  }, []);
+  const toggleMode = () => {
+    setMode((current) => current === 'construction' ? 'wordmark' : 'construction');
+    setActiveGlyph(null);
+  };
 
   return (
-    <div
-      ref={frameRef}
-      className="dz-specimen"
-      data-active-glyph={activeGlyph ?? 'none'}
-      onMouseLeave={() => setActiveGlyph(null)}
-    >
-      <div className="dz-specimen-guide dz-specimen-guide--cap" aria-hidden="true" />
-      <div className="dz-specimen-guide dz-specimen-guide--base" aria-hidden="true" />
-
-      <div className="dz-specimen-meta dz-specimen-meta--left" aria-hidden="true">
-        TYPE SYSTEM / 01
+    <section className={`dz-specimen-stage dz-specimen-stage--${mode}`} aria-label="DOTZERO typographic system">
+      <div className="dz-specimen-stage__grid" aria-hidden="true" />
+      <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tl">
+        STATE / {mode === 'construction' ? '01 CONSTRUCTION' : '02 WORDMARK'}
       </div>
-      <div className="dz-specimen-meta dz-specimen-meta--right" aria-hidden="true">
-        LOWERCASE / GEOMETRIC
+      <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tr">
+        NODE 00 / TYPE SYSTEM
       </div>
+      <div className="dz-specimen-stage__axis dz-specimen-stage__axis--x" aria-hidden="true" />
+      <div className="dz-specimen-stage__axis dz-specimen-stage__axis--y" aria-hidden="true" />
 
-      <h1 ref={wordRef} className="dz-specimen-word" aria-label="dotzero.">
-        <span className="dz-specimen-glyphs" aria-hidden="true">
-          {GLYPHS.map((glyph, index) => (
-            <span
-              key={glyph.key}
-              className={[
-                'dz-specimen-glyph',
-                glyph.framed ? 'is-framed' : '',
-                glyph.accent ? 'is-accent' : '',
-                activeGlyph === index ? 'is-active' : '',
-              ].filter(Boolean).join(' ')}
-              data-glyph={glyph.key}
-              data-index={index}
-              onMouseEnter={() => setActiveGlyph(index)}
-              style={{
-                '--glyph-y': `${glyph.offsetY ?? 0}%`,
-                '--glyph-scale': glyph.scale ?? 1,
-              } as React.CSSProperties}
-            >
-              {glyph.char}
-              <span className="dz-specimen-index">{String(index + 1).padStart(2, '0')}</span>
-            </span>
-          ))}
-          <span className="dz-specimen-period" data-glyph="period">.</span>
-        </span>
-      </h1>
+      <h1 className="sr-only">dotzero.</h1>
 
-      <div className="dz-specimen-readout" aria-live="polite">
-        <span>NODE 00</span>
-        <span>{activeGlyph === null ? 'GLYPH / IDLE' : `GLYPH / ${GLYPHS[activeGlyph].key.toUpperCase()}`}</span>
+      {GLYPHS.map((glyph, index) => {
+        const position = mode === 'construction' ? glyph.construction : glyph.wordmark;
+        const isZero = glyph.key === 'zero';
+
+        return (
+          <button
+            key={glyph.key}
+            type="button"
+            className={[
+              'dz-specimen-glyph-node',
+              glyph.framed ? 'is-framed' : '',
+              glyph.accent ? 'is-accent' : '',
+              activeGlyph === index ? 'is-active' : '',
+              isZero ? 'is-zero' : '',
+            ].filter(Boolean).join(' ')}
+            style={{
+              '--x': `${position.x}%`,
+              '--y': `${position.y}%`,
+              '--size': `${position.size}%`,
+              '--rotate': `${position.rotate ?? 0}deg`,
+            } as React.CSSProperties}
+            onMouseEnter={() => setActiveGlyph(index)}
+            onMouseLeave={() => setActiveGlyph(null)}
+            onFocus={() => setActiveGlyph(index)}
+            onBlur={() => setActiveGlyph(null)}
+            onClick={isZero ? toggleMode : undefined}
+            aria-label={isZero ? `Toggle to ${mode === 'construction' ? 'wordmark' : 'construction'} state` : `Glyph ${glyph.key}`}
+          >
+            <span className="dz-specimen-glyph-node__char">{glyph.char}</span>
+            <span className="dz-specimen-glyph-node__index">{String(index + 1).padStart(2, '0')}</span>
+          </button>
+        );
+      })}
+
+      <button type="button" className="dz-specimen-stage__toggle" onClick={toggleMode}>
+        {mode === 'construction' ? 'ALIGN WORDMARK →' : '← OPEN SYSTEM'}
+      </button>
+
+      <div className="dz-specimen-stage__readout" aria-live="polite">
         <span>GRID / 12</span>
+        <span>{activeGlyph === null ? 'GLYPH / IDLE' : `GLYPH / ${GLYPHS[activeGlyph].key.toUpperCase()}`}</span>
+        <span>{mode === 'construction' ? 'SYSTEM / OPEN' : 'SYSTEM / ALIGNED'}</span>
       </div>
-    </div>
+    </section>
   );
 };

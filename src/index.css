@@ -20,6 +20,11 @@
     --on-text: var(--bg);
     --line-soft: rgba(18, 18, 18, 0.22);
 
+    /* Global typography profile */
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-display: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
     /* Legacy Bauhaus aliases retained during migration */
     --bauhaus-red: var(--accent);
     --bauhaus-blue: var(--accent-secondary);
@@ -41,6 +46,31 @@
     --canvas: #151719;
   }
 
+
+  [data-typography='plex'] {
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-display: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  [data-typography='swiss'] {
+    --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  [data-typography='grotesk'] {
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  [data-typography='syne'] {
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
   html {
     background: var(--bg);
   }
@@ -49,6 +79,7 @@
     margin: 0;
     background-color: var(--bg);
     color: var(--text);
+    font-family: var(--font-body);
     overflow-x: hidden;
     transition: background-color 180ms ease, color 180ms ease;
   }
@@ -68,11 +99,15 @@
 }
 
 .font-display {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-body);
 }
 
 /* Semantic utilities used during the migration away from hardcoded Bauhaus colors */
@@ -142,21 +177,21 @@ html {
 
 /* Shared DOTZERO typography */
 .dz-h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -0.065em;
   line-height: 0.9;
 }
 
 .dz-h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.98;
 }
 
 .dz-h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -175,7 +210,7 @@ html {
 }
 
 .dz-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.625rem;
   line-height: 1.4;
   letter-spacing: 0.16em;
@@ -198,7 +233,7 @@ html {
   width: max-content;
   max-width: none;
   margin: 0;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.075em;
@@ -234,188 +269,285 @@ html {
   }
 }
 
-/* DOTZERO typographic specimen */
-.dz-specimen {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-  padding: 2.75rem 0 2.2rem;
-}
-
-.dz-specimen-word {
-  width: max-content;
-  margin: 0;
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: -0.055em;
-  text-transform: lowercase;
+/* Global typography switch */
+.dz-type-switch {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text);
   white-space: nowrap;
-  transform-origin: left center;
 }
 
-.dz-specimen-glyphs,
-.dz-specimen-glyph,
-.dz-specimen-period {
-  display: inline-block;
-}
-
-.dz-specimen-glyph {
-  position: relative;
-  transform:
-    translateY(var(--glyph-y, 0))
-    scale(var(--glyph-scale, 1));
-  transform-origin: center bottom;
-  transition:
-    transform 220ms cubic-bezier(.2,.75,.25,1),
-    color 180ms ease,
-    opacity 180ms ease;
-  cursor: default;
-}
-
-.dz-specimen-glyph + .dz-specimen-glyph {
-  margin-left: 0.005em;
-}
-
-.dz-specimen-glyph.is-framed::after {
-  content: '';
-  position: absolute;
-  inset: -0.08em -0.035em -0.04em;
-  border: 1px solid var(--accent);
-  pointer-events: none;
-  opacity: 0.76;
-}
-
-.dz-specimen-glyph.is-accent {
-  color: var(--accent);
-}
-
-.dz-specimen-glyph.is-active {
-  transform:
-    translateY(calc(var(--glyph-y, 0) - 3%))
-    scale(calc(var(--glyph-scale, 1) * 1.035));
-}
-
-.dz-specimen-glyph.is-active::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -0.28em;
-  bottom: -0.18em;
-  width: 1px;
-  background: var(--accent);
-  opacity: 0.42;
-}
-
-.dz-specimen-period {
-  margin-left: 0.015em;
-  color: var(--accent);
-  transform: translateY(-0.04em) scale(0.8);
-  transform-origin: left bottom;
-}
-
-.dz-specimen-index {
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 0.9rem);
-  transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
+.dz-type-switch__label,
+.dz-type-switch__option {
+  font-family: var(--font-mono);
   font-size: 8px;
   line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dz-type-switch__label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.55rem;
+  color: var(--text-muted);
+  border-right: 1px solid var(--line-soft);
+}
+
+.dz-type-switch__option {
+  border: 0;
+  border-right: 1px solid var(--line-soft);
+  padding: 0.55rem 0.5rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.dz-type-switch__option:last-child {
+  border-right: 0;
+}
+
+.dz-type-switch__option:hover {
+  background: var(--surface);
+}
+
+.dz-type-switch__option.is-active {
+  background: var(--text);
+  color: var(--on-text);
+}
+
+.dz-type-switch.is-compact .dz-type-switch__label {
+  padding-inline: 0.4rem;
+}
+
+.dz-type-switch.is-compact .dz-type-switch__option {
+  padding: 0.45rem 0.42rem;
+  font-size: 7px;
+}
+
+.dz-type-switch.is-inverse {
+  --line: rgba(255,255,255,.24);
+  --line-soft: rgba(255,255,255,.12);
+  --surface-raised: rgba(255,255,255,.05);
+  --surface: rgba(255,255,255,.12);
+  --text: var(--void-text);
+  --text-muted: rgba(237,237,237,.58);
+  --on-text: var(--void);
+}
+
+/* DOTZERO typographic specimen — absolute coordinate stage */
+.dz-specimen-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 6.4;
+  min-height: 260px;
+  overflow: hidden;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.dz-specimen-stage__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%, 100% 25%;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.dz-specimen-stage__axis {
+  position: absolute;
+  background: var(--accent);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.dz-specimen-stage__axis--x {
+  left: 0;
+  right: 0;
+  top: 61%;
+  height: 1px;
+}
+
+.dz-specimen-stage__axis--y {
+  top: 0;
+  bottom: 0;
+  left: 83.333%;
+  width: 1px;
+}
+
+.dz-specimen-stage__meta,
+.dz-specimen-stage__readout,
+.dz-specimen-stage__toggle {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.dz-specimen-stage__meta {
+  position: absolute;
+  z-index: 5;
+  top: 0.75rem;
+  font-size: 8px;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 0 0.35rem;
+}
+
+.dz-specimen-stage__meta--tl { left: 0.35rem; }
+.dz-specimen-stage__meta--tr { right: 0.35rem; }
+
+.dz-specimen-glyph-node {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: default;
+  transform: translate(-50%, -50%) rotate(var(--rotate));
+  transform-origin: center;
+  transition:
+    left 520ms cubic-bezier(.2,.8,.2,1),
+    top 520ms cubic-bezier(.2,.8,.2,1),
+    transform 520ms cubic-bezier(.2,.8,.2,1),
+    color 220ms ease;
+}
+
+.dz-specimen-glyph-node__char {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, calc(var(--size) * 0.9), 13rem);
+  font-weight: 700;
+  line-height: 0.76;
+  letter-spacing: -0.08em;
+}
+
+.dz-specimen-glyph-node.is-framed::after {
+  content: '';
+  position: absolute;
+  inset: -0.18em -0.13em -0.12em -0.1em;
+  border: 1px solid var(--accent);
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 240ms ease, transform 420ms cubic-bezier(.2,.8,.2,1);
+}
+
+.dz-specimen-stage--wordmark .dz-specimen-glyph-node.is-framed::after {
+  opacity: 0.12;
+  transform: scale(0.9);
+}
+
+.dz-specimen-glyph-node.is-accent {
+  color: var(--accent);
+}
+
+.dz-specimen-glyph-node.is-zero {
+  cursor: pointer;
+}
+
+.dz-specimen-glyph-node.is-zero::before {
+  content: '';
+  position: absolute;
+  inset: 0.08em 0.02em 0.05em 0.02em;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.dz-specimen-glyph-node.is-active {
+  z-index: 4;
+  transform: translate(-50%, -50%) rotate(var(--rotate)) scale(1.045);
+}
+
+.dz-specimen-glyph-node__index {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.5rem);
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 8px;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   opacity: 0;
   transition: opacity 160ms ease;
 }
 
-.dz-specimen-glyph.is-active .dz-specimen-index {
+.dz-specimen-glyph-node.is-active .dz-specimen-glyph-node__index {
   opacity: 1;
 }
 
-.dz-specimen-guide {
+.dz-specimen-stage__toggle {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--line-soft);
-  pointer-events: none;
-}
-
-.dz-specimen-guide--cap {
-  top: 2.5rem;
-}
-
-.dz-specimen-guide--base {
-  bottom: 3.2rem;
-}
-
-.dz-specimen-meta {
-  position: absolute;
-  z-index: 2;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 8px;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  background: var(--bg);
-  padding: 0 0.45rem;
-}
-
-.dz-specimen-meta--left {
-  top: 2.05rem;
   left: 0.35rem;
-}
-
-.dz-specimen-meta--right {
-  top: 2.05rem;
-  right: 0.35rem;
-}
-
-.dz-specimen-readout {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.85rem;
-  padding-top: 0.7rem;
-  border-top: 1px solid var(--line-soft);
-  font-family: 'JetBrains Mono', monospace;
+  bottom: 0.8rem;
+  z-index: 5;
+  border: 0;
+  background: var(--bg);
+  color: var(--accent);
+  padding: 0 0.35rem;
   font-size: 8px;
-  line-height: 1.35;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dz-specimen-stage__readout {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.8rem;
+  z-index: 5;
+  display: flex;
+  gap: 1.2rem;
+  background: var(--bg);
+  padding: 0 0.35rem;
+  font-size: 8px;
   color: var(--text-muted);
 }
 
-.dz-specimen-readout span:nth-child(2) {
-  text-align: center;
-}
+@media (max-width: 900px) {
+  .dz-specimen-stage {
+    aspect-ratio: 4 / 2.3;
+    min-height: 310px;
+  }
 
-.dz-specimen-readout span:last-child {
-  text-align: right;
+  .dz-specimen-glyph-node__char {
+    font-size: clamp(2.4rem, calc(var(--size) * 0.72), 8rem);
+  }
+
+  .dz-specimen-stage__readout span:first-child {
+    display: none;
+  }
 }
 
 @media (max-width: 639px) {
-  .dz-specimen {
-    padding-top: 2.25rem;
+  .dz-specimen-stage {
+    aspect-ratio: 1 / 1.05;
+    min-height: 340px;
   }
 
-  .dz-specimen-meta--right {
+  .dz-specimen-stage__meta--tr,
+  .dz-specimen-stage__readout span:last-child {
     display: none;
   }
 
-  .dz-specimen-readout {
-    grid-template-columns: 1fr 1fr;
+  .dz-specimen-stage__readout {
+    gap: 0;
   }
 
-  .dz-specimen-readout span:last-child {
-    display: none;
+  .dz-specimen-glyph-node__char {
+    font-size: clamp(2rem, calc(var(--size) * 0.58), 6rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dz-specimen-glyph {
+  .dz-specimen-glyph-node {
     transition: none;
   }
 }
