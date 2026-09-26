@@ -55,6 +55,24 @@ export const DOTZERO_PROJECTS: DotzeroProject[] = [
     },
     destination: { kind: 'internal', hash: '#bauhaus' },
   },
+  {
+    id: 'universal-type-lab',
+    number: '04',
+    order: 4,
+    title: 'Universal Type Lab',
+    slug: 'universal-type',
+    period: '1925—2026',
+    year: '2026',
+    status: 'prototype',
+    type: ['typography', 'research', 'svg-system'],
+    updatedAt: '2026-09',
+    summary: {
+      it: 'Studio comparativo tra un sistema geometrico SVG originale e le reinterpretazioni ufficiali autorizzate dall’Herbert Bayer Estate.',
+      de: 'Vergleichsstudie zwischen einem eigenen geometrischen SVG-System und den offiziell vom Herbert Bayer Estate autorisierten Interpretationen.',
+      en: 'A comparative study between an original geometric SVG system and the official interpretations authorized by the Herbert Bayer Estate.',
+    },
+    destination: { kind: 'internal', hash: '#universal-type' },
+  },
 ];
 
 export const getDotzeroProjects = (): DotzeroProject[] =>
