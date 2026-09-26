@@ -8,6 +8,7 @@ import {
   bowlOuterRy,
   clamp,
   magnetic,
+  getStemX,
 } from './model';
 
 interface GlyphCanvasProps {
@@ -77,7 +78,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       part === 'bowl'
         ? { x: design.bowl.cx, y: design.bowl.cy }
         : {
-            x: design.stem.x,
+            x: getStemX(design, glyph),
             y: (design.stem.top + design.stem.bottom) / 2,
           };
 
@@ -159,8 +160,11 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     }
 
     if (drag.target === 'stem') {
-      const rawX = clamp(p.x - drag.offsetX, 20, 90);
-      const tangentX = design.bowl.cx + design.bowl.rx;
+      const rawX = clamp(p.x - drag.offsetX, 10, 90);
+      const tangentX =
+        glyph === 'b'
+          ? design.bowl.cx - design.bowl.rx
+          : design.bowl.cx + design.bowl.rx;
       const xSnap = magnetic(rawX, [tangentX, GUIDES.center], 2.2);
 
       if (xSnap.snapped) {
@@ -189,7 +193,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         ...design,
         stem: {
           ...design.stem,
-          x: xSnap.value,
+          x: glyph === 'b' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
           top,
           bottom: clamp(top + height, top + 20, 132),
         },
@@ -233,6 +237,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
   };
 
   const outerRy = bowlOuterRy(design);
+  const stemX = getStemX(design, glyph);
 
   return (
     <div className="tc-canvas-shell">
@@ -304,10 +309,10 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
               y2={design.bowl.cy + outerRy}
               className="tc-construction-radius"
             />
-            {glyph === 'd' && (
+            {glyph !== 'o' && (
               <line
-                x1={design.stem.x}
-                x2={design.stem.x}
+                x1={stemX}
+                x2={stemX}
                 y1={design.stem.top}
                 y2={design.stem.bottom}
                 className="tc-construction-shape"
@@ -344,15 +349,15 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           />
         </g>
 
-        {glyph === 'd' && (
+        {glyph !== 'o' && (
           <>
                     <g
                       className={`tc-part ${selected === 'stem' ? 'is-selected' : ''}`}
                       onPointerDown={(event) => beginDrag('stem', 'stem', event)}
                     >
                       <line
-                        x1={design.stem.x}
-                        x2={design.stem.x}
+                        x1={stemX}
+                        x2={stemX}
                         y1={design.stem.top}
                         y2={design.stem.bottom}
                         stroke="transparent"
@@ -361,8 +366,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
                         className="tc-hit-stroke"
                       />
                       <line
-                        x1={design.stem.x}
-                        x2={design.stem.x}
+                        x1={stemX}
+                        x2={stemX}
                         y1={design.stem.top}
                         y2={design.stem.bottom}
                         stroke="currentColor"
@@ -413,14 +418,14 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         {glyph === 'd' && selected === 'stem' && (
           <>
             <circle
-              cx={design.stem.x}
+              cx={stemX}
               cy={design.stem.top}
               r="2.5"
               className="tc-handle"
               onPointerDown={(event) => beginDrag('stem', 'stem-top', event)}
             />
             <circle
-              cx={design.stem.x}
+              cx={stemX}
               cy={design.stem.bottom}
               r="2.5"
               className="tc-handle"

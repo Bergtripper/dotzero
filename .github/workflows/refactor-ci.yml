@@ -23,6 +23,7 @@ on:
       - feature/type-construction-type-test
       - feature/type-construction-spacing-metrics
       - feature/type-construction-kerning
+      - feature/type-construction-glyph-b
   workflow_dispatch:
 
 permissions:

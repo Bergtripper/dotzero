@@ -2,6 +2,7 @@ import React from 'react';
 import { BuiltGlyph } from './BuiltGlyph';
 import {
   GlyphDesign,
+  GlyphId,
   KERNING_PAIRS,
   KerningPair,
   getGlyphBounds,
@@ -20,8 +21,8 @@ export const KerningPanel: React.FC<KerningPanelProps> = ({
   onPairChange,
   onChange,
 }) => {
-  const left = pair[0] as 'd' | 'o';
-  const right = pair[1] as 'd' | 'o';
+  const left = pair[0] as GlyphId;
+  const right = pair[1] as GlyphId;
   const value = design.kerning[pair];
   const leftAdvance = getGlyphBounds(design, left).advanceWidth;
   const rightAdvance = getGlyphBounds(design, right).advanceWidth;

@@ -52,13 +52,13 @@ export const TypeConstructionEditor: React.FC = () => {
     <div className="tc-editor">
       <div className="tc-editor-topbar">
         <div>
-          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 05</div>
+          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 06</div>
           <div className="tc-editor-title">TYPE SYSTEM</div>
         </div>
 
         <div className="tc-editor-actions-top">
           <div className="tc-glyph-switch" aria-label="Select glyph">
-            {(['d', 'o'] as GlyphId[]).map((id) => (
+            {(['b', 'd', 'o'] as GlyphId[]).map((id) => (
               <button
                 key={id}
                 type="button"
