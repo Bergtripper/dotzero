@@ -13,6 +13,7 @@ import { GlyphCanvas } from './GlyphCanvas';
 import { GlyphInspector } from './GlyphInspector';
 import { TypeSpecimen } from './TypeSpecimen';
 import { SharedDna } from './SharedDna';
+import { SystemView } from './SystemView';
 
 export const TypeConstructionEditor: React.FC = () => {
   const [design, setDesign] = useState<GlyphDesign>(DEFAULT_GLYPH);
@@ -84,25 +85,33 @@ export const TypeConstructionEditor: React.FC = () => {
           onModeChange={setMode}
         />
 
-        <GlyphCanvas
-          design={design}
-          glyph={glyph}
-          selected={selected}
-          mode={mode}
-          onSelect={(part) => {
-            setSelected(part);
-            setTool(part);
-          }}
-          onChange={setDesign}
-        />
+        {mode === 'system' ? (
+          <div className="tc-system-slot">
+            <SystemView design={design} />
+          </div>
+        ) : (
+          <>
+            <GlyphCanvas
+              design={design}
+              glyph={glyph}
+              selected={selected}
+              mode={mode}
+              onSelect={(part) => {
+                setSelected(part);
+                setTool(part);
+              }}
+              onChange={setDesign}
+            />
 
-        <GlyphInspector
-          design={design}
-          glyph={glyph}
-          selected={selected}
-          onSelect={setSelected}
-          onChange={setDesign}
-        />
+            <GlyphInspector
+              design={design}
+              glyph={glyph}
+              selected={selected}
+              onSelect={setSelected}
+              onChange={setDesign}
+            />
+          </>
+        )}
       </div>
 
       <SharedDna design={design} />
