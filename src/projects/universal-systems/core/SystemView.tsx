@@ -80,6 +80,8 @@ export const SystemView: React.FC<SystemViewProps> = ({ design }) => {
       <div><span>LSB</span><span>{design.metrics.d.leftSideBearing}</span><span>{design.metrics.o.leftSideBearing}</span><em>GLYPH METRIC</em></div>
       <div><span>RSB</span><span>{design.metrics.d.rightSideBearing}</span><span>{design.metrics.o.rightSideBearing}</span><em>GLYPH METRIC</em></div>
       <div><span>ADVANCE</span><span>{dBounds.advanceWidth.toFixed(1)}</span><span>{oBounds.advanceWidth.toFixed(1)}</span><em>GLYPH METRIC</em></div>
+      <div><span>KERN dd / oo</span><span>{design.kerning.dd}</span><span>{design.kerning.oo}</span><em>PAIR METRIC</em></div>
+      <div><span>KERN do / od</span><span>{design.kerning.do}</span><span>{design.kerning.od}</span><em>PAIR METRIC</em></div>
     </div>
   </section>
   );
