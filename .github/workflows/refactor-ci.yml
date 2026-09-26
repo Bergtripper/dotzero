@@ -11,6 +11,7 @@ on:
       - refactor/dotzero-phase3b-project-system
       - feature/dotzero-typographic-specimen
       - feature/dotzero-hero-v2-typography
+      - fix/dotzero-hero-scale-motion
   workflow_dispatch:
 
 permissions:
