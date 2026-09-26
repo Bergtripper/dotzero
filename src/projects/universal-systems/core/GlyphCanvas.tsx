@@ -164,7 +164,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     if (drag.target === 'stem') {
       const rawX = clamp(p.x - drag.offsetX, 10, 90);
       const tangentX =
-        glyph === 'b'
+        glyph === 'b' || glyph === 'p'
           ? design.bowl.cx - design.bowl.rx
           : design.bowl.cx + design.bowl.rx;
       const xSnap = magnetic(rawX, [tangentX, GUIDES.center], 2.2);
@@ -204,7 +204,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           ...design,
           stem: {
             ...design.stem,
-            x: glyph === 'b' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
+            x: glyph === 'b' || glyph === 'p' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
             top,
             bottom: clamp(top + height, top + 20, 132),
           },
