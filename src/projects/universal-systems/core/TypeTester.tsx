@@ -14,13 +14,13 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design }) => {
   const [tracking, setTracking] = useState(0);
 
   const builtCount = useMemo(
-    () => [...text.toLowerCase()].filter((char) => BUILT.has(char as GlyphId)).length,
+    () => [...text].filter((char) => BUILT.has(char as GlyphId)).length,
     [text]
   );
 
   const missing = useMemo(
     () => Array.from(new Set(
-      [...text.toLowerCase()].filter(
+      [...text].filter(
         (char) => char.trim() && !BUILT.has(char as GlyphId)
       )
     )),
@@ -84,13 +84,11 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design }) => {
         } as React.CSSProperties}
       >
         {[...text].map((char, index) => {
-          const lower = char.toLowerCase();
-
-          if (BUILT.has(lower as GlyphId)) {
+          if (BUILT.has(char as GlyphId)) {
             return (
               <span className="tc-test-char is-built" key={`${char}-${index}`}>
                 <BuiltGlyph
-                  glyph={lower as GlyphId}
+                  glyph={char as GlyphId}
                   design={design}
                   className="tc-test-built-glyph"
                 />
