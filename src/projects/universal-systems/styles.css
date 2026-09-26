@@ -930,3 +930,206 @@
     grid-template-columns: minmax(0, 1.4fr) 0.4fr 0.4fr 0.8fr;
   }
 }
+
+
+/* Type Construction Lab — Type Test */
+.tc-specimen-sized-glyph {
+  display: inline-flex;
+  width: calc(var(--tc-specimen-size) * 0.72);
+  height: var(--tc-specimen-size);
+  align-items: flex-end;
+}
+
+.tc-specimen-inline-glyph {
+  display: inline-flex;
+  width: 0.72em;
+  height: 1em;
+  align-items: flex-end;
+  color: var(--text);
+}
+
+.tc-specimen-built-glyph {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tc-test-view {
+  min-height: 650px;
+  padding: 1rem 1.1rem 1.2rem;
+  background: var(--surface-raised);
+}
+
+.tc-test-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tc-test-title {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tc-test-status {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tc-test-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) 0.7fr 0.7fr;
+  gap: 0;
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.tc-test-controls label {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem 0.65rem;
+  align-items: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tc-test-controls label > span {
+  color: var(--text-muted);
+}
+
+.tc-test-controls input[type='range'] {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.tc-test-input input {
+  grid-column: 1 / -1;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--text);
+  padding: 0.65rem 0 0.1rem;
+  outline: none;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.tc-test-stage {
+  min-height: 360px;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(to bottom, transparent calc(70% - .5px), var(--accent) 70%, transparent calc(70% + .5px)),
+    var(--canvas);
+  padding: 1.25rem;
+  font-family: var(--font-display);
+  font-size: var(--tc-test-size);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.tc-test-char {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: var(--tc-test-tracking);
+  height: 1em;
+}
+
+.tc-test-char.is-built {
+  width: 0.72em;
+  color: var(--text);
+}
+
+.tc-test-built-glyph {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tc-test-char.is-fallback {
+  min-width: 0.58em;
+  color: var(--text-muted);
+  opacity: 0.28;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.tc-test-space {
+  display: inline-block;
+  width: calc(0.38em + var(--tc-test-tracking));
+  height: 1em;
+}
+
+.tc-test-report {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.tc-test-report > div {
+  min-height: 74px;
+  display: grid;
+  align-content: space-between;
+  gap: 0.4rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem;
+}
+
+.tc-test-report span,
+.tc-test-report strong {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tc-test-report span {
+  color: var(--text-muted);
+}
+
+.tc-test-report strong {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .tc-test-view {
+    min-height: 0;
+  }
+
+  .tc-test-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-test-stage {
+    min-height: 280px;
+  }
+
+  .tc-test-report {
+    grid-template-columns: 1fr;
+  }
+}
