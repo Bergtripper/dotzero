@@ -13,6 +13,7 @@ on:
       - feature/dotzero-hero-v2-typography
       - fix/dotzero-hero-scale-motion
       - feature/universal-type-lab
+      - feature/universal-systems
   workflow_dispatch:
 
 permissions:

@@ -19,7 +19,7 @@ import { BauhausLaboratory } from './components/BauhausLaboratory';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ModulorStudio } from './components/ModulorStudio';
-import { UniversalTypeLab } from './components/UniversalTypeLab';
+import { UniversalSystems } from './components/UniversalSystems';
 
 function MainAppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'modulor' | 'bauhaus' | 'universal'>('home');
@@ -41,7 +41,11 @@ function MainAppContent() {
         setCurrentPage('modulor');
       } else if (hash === '#bauhaus' || hash === '#bauhaus-laboratory') {
         setCurrentPage('bauhaus');
-      } else if (hash === '#universal-type' || hash === '#universal-type-lab') {
+      } else if (
+        hash === '#universal-systems' ||
+        hash === '#universal-type' ||
+        hash === '#universal-type-lab'
+      ) {
         setCurrentPage('universal');
       } else if (hash === '#home' || hash === '#index' || hash === '') {
         setCurrentPage('home');
@@ -77,7 +81,7 @@ function MainAppContent() {
   }
 
   if (currentPage === 'universal') {
-    return <UniversalTypeLab onBack={navigateToHome} />;
+    return <UniversalSystems onBack={navigateToHome} />;
   }
 
   if (currentPage === 'bauhaus') {
