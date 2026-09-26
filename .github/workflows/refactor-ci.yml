@@ -16,6 +16,7 @@ on:
       - feature/universal-systems
       - feature/type-construction-step1
       - refactor/type-construction-v2
+      - refactor/project-portable-architecture
   workflow_dispatch:
 
 permissions:
