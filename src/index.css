@@ -20,6 +20,11 @@
     --on-text: var(--bg);
     --line-soft: rgba(18, 18, 18, 0.22);
 
+    /* Global typography profile */
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-display: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
     /* Legacy Bauhaus aliases retained during migration */
     --bauhaus-red: var(--accent);
     --bauhaus-blue: var(--accent-secondary);
@@ -41,6 +46,31 @@
     --canvas: #151719;
   }
 
+
+  [data-typography='plex'] {
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-display: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  [data-typography='swiss'] {
+    --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  [data-typography='grotesk'] {
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  [data-typography='syne'] {
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
   html {
     background: var(--bg);
   }
@@ -49,6 +79,7 @@
     margin: 0;
     background-color: var(--bg);
     color: var(--text);
+    font-family: var(--font-body);
     overflow-x: hidden;
     transition: background-color 180ms ease, color 180ms ease;
   }
@@ -68,11 +99,15 @@
 }
 
 .font-display {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
+}
+
+.font-sans {
+  font-family: var(--font-body);
 }
 
 /* Semantic utilities used during the migration away from hardcoded Bauhaus colors */
@@ -142,21 +177,21 @@ html {
 
 /* Shared DOTZERO typography */
 .dz-h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -0.065em;
   line-height: 0.9;
 }
 
 .dz-h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.98;
 }
 
 .dz-h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -175,7 +210,7 @@ html {
 }
 
 .dz-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.625rem;
   line-height: 1.4;
   letter-spacing: 0.16em;
@@ -198,7 +233,7 @@ html {
   width: max-content;
   max-width: none;
   margin: 0;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   line-height: 0.82;
   letter-spacing: -0.075em;
@@ -232,6 +267,75 @@ html {
     line-height: 0.86;
     letter-spacing: -0.065em;
   }
+}
+
+/* Global typography switch */
+.dz-type-switch {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.dz-type-switch__label,
+.dz-type-switch__option {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dz-type-switch__label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.55rem;
+  color: var(--text-muted);
+  border-right: 1px solid var(--line-soft);
+}
+
+.dz-type-switch__option {
+  border: 0;
+  border-right: 1px solid var(--line-soft);
+  padding: 0.55rem 0.5rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.dz-type-switch__option:last-child {
+  border-right: 0;
+}
+
+.dz-type-switch__option:hover {
+  background: var(--surface);
+}
+
+.dz-type-switch__option.is-active {
+  background: var(--text);
+  color: var(--on-text);
+}
+
+.dz-type-switch.is-compact .dz-type-switch__label {
+  padding-inline: 0.4rem;
+}
+
+.dz-type-switch.is-compact .dz-type-switch__option {
+  padding: 0.45rem 0.42rem;
+  font-size: 7px;
+}
+
+.dz-type-switch.is-inverse {
+  --line: rgba(255,255,255,.24);
+  --line-soft: rgba(255,255,255,.12);
+  --surface-raised: rgba(255,255,255,.05);
+  --surface: rgba(255,255,255,.12);
+  --text: var(--void-text);
+  --text-muted: rgba(237,237,237,.58);
+  --on-text: var(--void);
 }
 
 /* DOTZERO typographic specimen — absolute coordinate stage */
@@ -280,7 +384,7 @@ html {
 .dz-specimen-stage__meta,
 .dz-specimen-stage__readout,
 .dz-specimen-stage__toggle {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.14em;
 }
@@ -320,7 +424,7 @@ html {
 
 .dz-specimen-glyph-node__char {
   display: block;
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.5rem, calc(var(--size) * 0.9), 13rem);
   font-weight: 700;
   line-height: 0.76;
@@ -369,7 +473,7 @@ html {
   left: 50%;
   top: calc(100% + 0.5rem);
   transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: 0.08em;
   color: var(--text-muted);
