@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid3X3, Moon, Sun } from 'lucide-react';
 import { ColorMode, Language } from '../types';
 import { useLanguage } from '../context/LanguageContext';
+import { TypographySwitch } from './TypographySwitch';
 
 interface DotzeroHeaderProps {
   colorMode: ColorMode;
@@ -33,6 +34,9 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
         </nav>
 
         <div className="flex items-center gap-1.5">
+          <div className="hidden xl:block">
+            <TypographySwitch compact />
+          </div>
           <div className="hidden border dz-border sm:flex">
             {(['it', 'de', 'en'] as Language[]).map((lng) => (
               <button
