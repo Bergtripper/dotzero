@@ -9,8 +9,7 @@ interface TypeSpecimenProps {
 const SizedGlyph: React.FC<{
   glyph: 'd' | 'o';
   design: GlyphDesign;
-  size: number;
-}> = ({ glyph, design, size }) => (
+}> = ({ glyph, design }) => (
   <BuiltGlyph
     glyph={glyph}
     design={design}
@@ -36,7 +35,7 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
           style={{ '--tc-specimen-size': `${size}px` } as React.CSSProperties}
           key={size}
         >
-          <SizedGlyph glyph={index % 2 === 0 ? 'd' : 'o'} design={design} size={size} />
+          <SizedGlyph glyph={index % 2 === 0 ? 'd' : 'o'} design={design} />
         </span>
       ))}
     </div>
