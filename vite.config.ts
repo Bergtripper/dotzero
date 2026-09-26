@@ -5,10 +5,19 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+  const publicBase = process.env.VITE_PUBLIC_BASE ?? (isGitHubPages ? '/dotzero/' : '/');
 
   return {
-    base: isGitHubPages ? '/dotzero/' : '/',
+    base: publicBase,
     plugins: [react(), tailwindcss()],
+    build: {
+      rollupOptions: {
+        input: {
+          dotzero: path.resolve(__dirname, 'index.html'),
+          universalSystems: path.resolve(__dirname, 'universal-systems.html'),
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
