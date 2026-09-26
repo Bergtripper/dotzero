@@ -93,7 +93,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
             FIT X-HEIGHT ↔ BASELINE
           </button>
 
-          {glyph === 'd' && (
+          {glyph !== 'o' && (
             <button
               className="tc-semantic-action"
               onClick={() =>
