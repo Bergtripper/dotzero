@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlyphDesign, bowlOuterRy } from './model';
+import { GlyphDesign, bowlOuterRy, getGlyphBounds } from './model';
 
 interface SystemViewProps {
   design: GlyphDesign;
@@ -31,7 +31,11 @@ const SystemGlyph: React.FC<{ glyph: 'd' | 'o'; design: GlyphDesign }> = ({ glyp
   </svg>
 );
 
-export const SystemView: React.FC<SystemViewProps> = ({ design }) => (
+export const SystemView: React.FC<SystemViewProps> = ({ design }) => {
+  const dBounds = getGlyphBounds(design, 'd');
+  const oBounds = getGlyphBounds(design, 'o');
+
+  return (
   <section className="tc-system-view">
     <div className="tc-system-head">
       <div>
@@ -73,6 +77,10 @@ export const SystemView: React.FC<SystemViewProps> = ({ design }) => (
       <div><span>STROKE {design.stroke}</span><span>{design.stroke}</span><span>{design.stroke}</span><strong>SHARED</strong></div>
       <div><span>OVERSHOOT {design.overshoot.toFixed(1)}</span><span>{design.overshoot.toFixed(1)}</span><span>{design.overshoot.toFixed(1)}</span><strong>SHARED</strong></div>
       <div><span>STEM</span><span>01</span><span>—</span><em>SPECIFIC</em></div>
+      <div><span>LSB</span><span>{design.metrics.d.leftSideBearing}</span><span>{design.metrics.o.leftSideBearing}</span><em>GLYPH METRIC</em></div>
+      <div><span>RSB</span><span>{design.metrics.d.rightSideBearing}</span><span>{design.metrics.o.rightSideBearing}</span><em>GLYPH METRIC</em></div>
+      <div><span>ADVANCE</span><span>{dBounds.advanceWidth.toFixed(1)}</span><span>{oBounds.advanceWidth.toFixed(1)}</span><em>GLYPH METRIC</em></div>
     </div>
   </section>
-);
+  );
+};
