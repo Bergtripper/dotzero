@@ -1,5 +1,13 @@
 import React from 'react';
-import { GlyphDesign, GlyphId, PartId, GUIDES, bowlOuterRy, isDescenderGlyph } from './model';
+import {
+  GlyphDesign,
+  GlyphId,
+  PartId,
+  GUIDES,
+  bowlOuterRy,
+  isDescenderGlyph,
+  isStemGlyph,
+} from './model';
 
 interface GlyphInspectorProps {
   design: GlyphDesign;
@@ -29,7 +37,6 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
   };
 
   const alignBowl = () => {
-    const outerRy = bowlOuterRy(design);
     onChange({
       ...design,
       bowl: {
@@ -45,11 +52,88 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
     });
   };
 
+  const crossbarSelected = glyph === 'e' && selected === 'crossbar';
+  const bowlSelected = glyph === 'o' || selected === 'bowl';
+
   return (
     <aside className="tc-inspector">
       <div className="tc-label">GLYPH {glyph} / SELECTED {selected.toUpperCase()}</div>
 
-      {glyph === 'o' || selected === 'bowl' ? (
+      {crossbarSelected ? (
+        <>
+          <div className="tc-inspector-title">CROSSBAR</div>
+
+          <label className="tc-semantic-control">
+            <span>POSITION</span>
+            <input
+              type="range"
+              min="-12"
+              max="12"
+              step="1"
+              value={design.crossbar.yOffset}
+              onChange={(e) =>
+                onChange({
+                  ...design,
+                  crossbar: { ...design.crossbar, yOffset: Number(e.target.value) },
+                })
+              }
+            />
+            <strong>{design.crossbar.yOffset > 0 ? '+' : ''}{design.crossbar.yOffset}</strong>
+          </label>
+
+          <label className="tc-semantic-control">
+            <span>APERTURE</span>
+            <input
+              type="range"
+              min="6"
+              max="30"
+              step="1"
+              value={design.crossbar.aperture}
+              onChange={(e) =>
+                onChange({
+                  ...design,
+                  crossbar: { ...design.crossbar, aperture: Number(e.target.value) },
+                })
+              }
+            />
+            <strong>{design.crossbar.aperture}</strong>
+          </label>
+
+          <label className="tc-semantic-control">
+            <span>INSET</span>
+            <input
+              type="range"
+              min="0"
+              max="24"
+              step="1"
+              value={design.crossbar.inset}
+              onChange={(e) =>
+                onChange({
+                  ...design,
+                  crossbar: { ...design.crossbar, inset: Number(e.target.value) },
+                })
+              }
+            />
+            <strong>{design.crossbar.inset}</strong>
+          </label>
+
+          <button
+            className="tc-semantic-action is-accent"
+            onClick={() =>
+              onChange({
+                ...design,
+                crossbar: { ...design.crossbar, yOffset: 0 },
+              })
+            }
+          >
+            CENTER CROSSBAR
+          </button>
+
+          <div className="tc-rule-note">
+            OPEN BOWL / APERTURE {design.crossbar.aperture}
+          </div>
+        </>
+      ) : bowlSelected ? (
         <>
           <div className="tc-inspector-title">BOWL</div>
 
@@ -93,7 +177,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
             FIT X-HEIGHT ↔ BASELINE
           </button>
 
-          {glyph !== 'o' && (
+          {isStemGlyph(glyph) && (
             <button
               className="tc-semantic-action"
               onClick={() =>
@@ -107,6 +191,15 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
               }
             >
               SNAP TANGENT TO STEM
+            </button>
+          )}
+
+          {glyph === 'e' && (
+            <button
+              className="tc-semantic-action"
+              onClick={() => onSelect('crossbar')}
+            >
+              EDIT CROSSBAR
             </button>
           )}
         </>
@@ -133,7 +226,6 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
                 />
                 <strong>{Math.round(design.descender)}</strong>
               </label>
-
               <div className="tc-rule-note">
                 STEM / X-HEIGHT {GUIDES.xHeight} → DESCENDER {Math.round(design.descender)}
               </div>
