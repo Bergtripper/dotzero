@@ -78,7 +78,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       part === 'bowl'
         ? { x: design.bowl.cx, y: design.bowl.cy }
         : {
-            x: design.stem.x,
+            x: getStemX(design, glyph),
             y: (design.stem.top + design.stem.bottom) / 2,
           };
 
