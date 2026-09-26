@@ -1,5 +1,5 @@
 import React from 'react';
-import { GlyphDesign, GlyphId, PartId, GUIDES, bowlOuterRy } from './model';
+import { GlyphDesign, GlyphId, PartId, GUIDES, bowlOuterRy, isDescenderGlyph } from './model';
 
 interface GlyphInspectorProps {
   design: GlyphDesign;
@@ -114,7 +114,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
         <>
           <div className="tc-inspector-title">STEM</div>
 
-          {glyph === 'p' ? (
+          {isDescenderGlyph(glyph) ? (
             <>
               <label className="tc-semantic-control">
                 <span>DESCENDER</span>

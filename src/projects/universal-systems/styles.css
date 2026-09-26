@@ -640,7 +640,7 @@
 
 .tc-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(4, 2.25rem);
+  grid-template-columns: repeat(5, 2.25rem);
   border: 1px solid var(--line);
   background: var(--surface-raised);
 }
@@ -1160,7 +1160,7 @@
 
 .tc-spacing-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(4, 2rem);
+  grid-template-columns: repeat(5, 2rem);
   border: 1px solid var(--line);
 }
 
@@ -1293,7 +1293,7 @@
 
 .tc-kerning-pairs {
   display: inline-grid;
-  grid-template-columns: repeat(3, 2rem);
+  grid-template-columns: repeat(5, 2rem);
   border: 1px solid var(--line);
 }
 
@@ -1476,5 +1476,37 @@
 
   .tc-system-matrix--four > div {
     grid-template-columns: minmax(0, 1.1fr) repeat(4, 0.38fr) 0.75fr;
+  }
+}
+
+
+/* Type Construction Lab — Glyph 05 / q */
+.tc-system-stage--five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.tc-system-matrix--five > div {
+  grid-template-columns: minmax(0, 1.4fr) repeat(5, 0.38fr) 0.8fr;
+}
+
+@media (max-width: 1200px) {
+  .tc-system-stage--five {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) {
+  .tc-system-stage--five {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .tc-system-stage--five {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-system-matrix--five > div {
+    grid-template-columns: minmax(0, 1.05fr) repeat(5, 0.34fr) 0.7fr;
   }
 }
