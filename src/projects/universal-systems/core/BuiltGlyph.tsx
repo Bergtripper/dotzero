@@ -1,5 +1,16 @@
 import React from 'react';
-import { GlyphDesign, GlyphId, bowlOuterRy, getGlyphBounds, getStemBottom, getStemTop, getStemX } from './model';
+import {
+  GlyphDesign,
+  GlyphId,
+  bowlOuterRy,
+  getECrossbarY,
+  getEArcPath,
+  getGlyphBounds,
+  getStemBottom,
+  getStemTop,
+  getStemX,
+  isStemGlyph,
+} from './model';
 
 interface BuiltGlyphProps {
   glyph: GlyphId;
@@ -17,6 +28,7 @@ export const BuiltGlyph: React.FC<BuiltGlyphProps> = ({
   const bounds = getGlyphBounds(design, glyph);
   const metrics = design.metrics[glyph];
   const viewMinX = bounds.minX - metrics.leftSideBearing;
+  const crossbarY = getECrossbarY(design);
 
   return (
     <svg
@@ -26,17 +38,39 @@ export const BuiltGlyph: React.FC<BuiltGlyphProps> = ({
       aria-label={title ?? `Custom ${glyph}`}
       preserveAspectRatio="xMidYMid meet"
     >
-      <ellipse
-        cx={design.bowl.cx}
-        cy={design.bowl.cy}
-        rx={design.bowl.rx}
-        ry={bowlOuterRy(design)}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={design.stroke}
-        vectorEffect="non-scaling-stroke"
-      />
-      {glyph !== 'o' && (
+      {glyph === 'e' ? (
+        <>
+          <path
+            d={getEArcPath(design)}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={design.stroke}
+            vectorEffect="non-scaling-stroke"
+          />
+          <line
+            x1={design.bowl.cx - design.bowl.rx + design.crossbar.inset}
+            x2={design.bowl.cx + design.bowl.rx}
+            y1={crossbarY}
+            y2={crossbarY}
+            stroke="currentColor"
+            strokeWidth={design.stroke}
+            vectorEffect="non-scaling-stroke"
+          />
+        </>
+      ) : (
+        <ellipse
+          cx={design.bowl.cx}
+          cy={design.bowl.cy}
+          rx={design.bowl.rx}
+          ry={bowlOuterRy(design)}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={design.stroke}
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
+
+      {isStemGlyph(glyph) && (
         <line
           x1={getStemX(design, glyph)}
           x2={getStemX(design, glyph)}

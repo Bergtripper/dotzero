@@ -13,6 +13,9 @@ import {
   getStemBottom,
   isDescenderGlyph,
   isLeftStemGlyph,
+  isStemGlyph,
+  getECrossbarY,
+  getEArcPath,
 } from './model';
 
 interface GlyphCanvasProps {
@@ -31,6 +34,7 @@ type DragTarget =
   | 'stem'
   | 'stem-top'
   | 'stem-bottom'
+  | 'crossbar'
   | null;
 
 interface DragState {
@@ -70,7 +74,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
   const beginDrag = (
     part: PartId,
     target: DragTarget,
-    event: React.PointerEvent<SVGGElement | SVGCircleElement>
+    event: React.PointerEvent<SVGElement>
   ) => {
     event.stopPropagation();
     const point = pointFromClient(event.clientX, event.clientY);
@@ -81,10 +85,12 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     const center =
       part === 'bowl'
         ? { x: design.bowl.cx, y: design.bowl.cy }
-        : {
-            x: getStemX(design, glyph),
-            y: (getStemTop(design, glyph) + getStemBottom(design, glyph)) / 2,
-          };
+        : part === 'crossbar'
+          ? { x: design.bowl.cx, y: getECrossbarY(design) }
+          : {
+              x: getStemX(design, glyph),
+              y: (getStemTop(design, glyph) + getStemBottom(design, glyph)) / 2,
+            };
 
     setDrag({
       target,
@@ -161,6 +167,25 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         cues.push({ axis: 'y', value: design.bowl.cy - snapped.value, label: `HEIGHT ${snapped.value * 2}` });
       }
       onChange({ ...design, bowl: { ...design.bowl, ry: snapped.value } });
+    }
+
+    if (drag.target === 'crossbar' && glyph === 'e') {
+      const rawOffset = clamp(p.y - drag.offsetY - design.bowl.cy, -12, 12);
+      const snap = magnetic(rawOffset, [-8, 0, 8], 1.4);
+      if (snap.snapped) {
+        cues.push({
+          axis: 'y',
+          value: design.bowl.cy + snap.value,
+          label: snap.value === 0 ? 'CENTER' : `BAR ${snap.value > 0 ? '+' : ''}${snap.value}`,
+        });
+      }
+      onChange({
+        ...design,
+        crossbar: {
+          ...design.crossbar,
+          yOffset: snap.value,
+        },
+      });
     }
 
     if (drag.target === 'stem') {
@@ -260,6 +285,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
   const stemX = getStemX(design, glyph);
   const stemTop = getStemTop(design, glyph);
   const stemBottom = getStemBottom(design, glyph);
+  const crossbarY = getECrossbarY(design);
 
   return (
     <div className="tc-canvas-shell">
@@ -334,7 +360,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
               y2={design.bowl.cy + outerRy}
               className="tc-construction-radius"
             />
-            {glyph !== 'o' && (
+            {isStemGlyph(glyph) && (
               <line
                 x1={stemX}
                 x2={stemX}
@@ -350,31 +376,82 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           className={`tc-part ${selected === 'bowl' ? 'is-selected' : ''}`}
           onPointerDown={(event) => beginDrag('bowl', 'bowl', event)}
         >
-          <ellipse
-            cx={design.bowl.cx}
-            cy={design.bowl.cy}
-            rx={design.bowl.rx}
-            ry={outerRy}
-            fill="none"
-            stroke="transparent"
-            strokeWidth={Math.max(design.stroke + 10, 18)}
-            vectorEffect="non-scaling-stroke"
-            className="tc-hit-stroke"
-          />
-          <ellipse
-            cx={design.bowl.cx}
-            cy={design.bowl.cy}
-            rx={design.bowl.rx}
-            ry={outerRy}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={design.stroke}
-            vectorEffect="non-scaling-stroke"
-            className="tc-visible-stroke"
-          />
+          {glyph === 'e' ? (
+            <>
+              <path
+                d={getEArcPath(design)}
+                fill="none"
+                stroke="transparent"
+                strokeWidth={Math.max(design.stroke + 10, 18)}
+                vectorEffect="non-scaling-stroke"
+                className="tc-hit-stroke"
+              />
+              <path
+                d={getEArcPath(design)}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={design.stroke}
+                vectorEffect="non-scaling-stroke"
+                className="tc-visible-stroke"
+              />
+            </>
+          ) : (
+            <>
+              <ellipse
+                cx={design.bowl.cx}
+                cy={design.bowl.cy}
+                rx={design.bowl.rx}
+                ry={outerRy}
+                fill="none"
+                stroke="transparent"
+                strokeWidth={Math.max(design.stroke + 10, 18)}
+                vectorEffect="non-scaling-stroke"
+                className="tc-hit-stroke"
+              />
+              <ellipse
+                cx={design.bowl.cx}
+                cy={design.bowl.cy}
+                rx={design.bowl.rx}
+                ry={outerRy}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={design.stroke}
+                vectorEffect="non-scaling-stroke"
+                className="tc-visible-stroke"
+              />
+            </>
+          )}
         </g>
 
-        {glyph !== 'o' && (
+        {glyph === 'e' && (
+          <g
+            className={`tc-part ${selected === 'crossbar' ? 'is-selected' : ''}`}
+            onPointerDown={(event) => beginDrag('crossbar', 'crossbar', event)}
+          >
+            <line
+              x1={design.bowl.cx - design.bowl.rx + design.crossbar.inset}
+              x2={design.bowl.cx + design.bowl.rx}
+              y1={crossbarY}
+              y2={crossbarY}
+              stroke="transparent"
+              strokeWidth={Math.max(design.stroke + 12, 20)}
+              vectorEffect="non-scaling-stroke"
+              className="tc-hit-stroke"
+            />
+            <line
+              x1={design.bowl.cx - design.bowl.rx + design.crossbar.inset}
+              x2={design.bowl.cx + design.bowl.rx}
+              y1={crossbarY}
+              y2={crossbarY}
+              stroke="currentColor"
+              strokeWidth={design.stroke}
+              vectorEffect="non-scaling-stroke"
+              className="tc-visible-stroke"
+            />
+          </g>
+        )}
+
+        {isStemGlyph(glyph) && (
           <>
                     <g
                       className={`tc-part ${selected === 'stem' ? 'is-selected' : ''}`}
@@ -403,6 +480,25 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
                     </g>
             
             
+          </>
+        )}
+
+        {selected === 'crossbar' && glyph === 'e' && (
+          <>
+            <line
+              x1={design.bowl.cx - design.bowl.rx}
+              x2={design.bowl.cx + design.bowl.rx}
+              y1={crossbarY}
+              y2={crossbarY}
+              className="tc-handle-guide"
+            />
+            <circle
+              cx={design.bowl.cx + design.bowl.rx}
+              cy={crossbarY}
+              r="2.5"
+              className="tc-handle"
+              onPointerDown={(event) => beginDrag('crossbar', 'crossbar', event)}
+            />
           </>
         )}
 
@@ -440,7 +536,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           </>
         )}
 
-        {glyph !== 'o' && selected === 'stem' && (
+        {isStemGlyph(glyph) && selected === 'stem' && (
           <>
             {!isDescenderGlyph(glyph) && (
               <circle

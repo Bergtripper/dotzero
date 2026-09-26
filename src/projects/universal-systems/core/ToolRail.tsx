@@ -17,10 +17,14 @@ export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, on
         ['select', '↖', 'Select'],
         ['bowl', '○', 'Bowl'],
         ['stem', '│', 'Stem'],
+        ['crossbar', '—', 'Bar'],
       ] as Array<[Tool, string, string]>).map(([id, symbol, label]) => (
         <button
           key={id}
-          disabled={glyph === 'o' && id === 'stem'}
+          disabled={
+            (id === 'stem' && (glyph === 'o' || glyph === 'e')) ||
+            (id === 'crossbar' && glyph !== 'e')
+          }
           className={`tc-tool ${tool === id ? 'is-active' : ''}`}
           onClick={() => onToolChange(id)}
         >
