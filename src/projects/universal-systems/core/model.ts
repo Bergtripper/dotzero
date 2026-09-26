@@ -1,8 +1,10 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
-export type GlyphId = 'b' | 'd' | 'o' | 'p' | 'q';
+export type GlyphId = 'b' | 'd' | 'e' | 'o' | 'p' | 'q';
 export type KerningPair = `${GlyphId}${GlyphId}`;
-export type Tool = 'select' | 'bowl' | 'stem';
-export type PartId = 'bowl' | 'stem';
+export type Tool = 'select' | 'bowl' | 'stem' | 'crossbar';
+export type PartId = 'bowl' | 'stem' | 'crossbar';
+
+export const GLYPH_IDS: GlyphId[] = ['b', 'd', 'e', 'o', 'p', 'q'];
 
 export interface BowlPart {
   id: 'bowl';
@@ -19,6 +21,13 @@ export interface StemPart {
   bottom: number;
 }
 
+export interface CrossbarPart {
+  id: 'crossbar';
+  yOffset: number;
+  aperture: number;
+  inset: number;
+}
+
 export interface GlyphMetrics {
   leftSideBearing: number;
   rightSideBearing: number;
@@ -27,6 +36,7 @@ export interface GlyphMetrics {
 export interface GlyphDesign {
   bowl: BowlPart;
   stem: StemPart;
+  crossbar: CrossbarPart;
   stroke: number;
   overshoot: number;
   metrics: Record<GlyphId, GlyphMetrics>;
@@ -41,25 +51,28 @@ export const GUIDES = {
   center: 50,
 };
 
+const createDefaultKerning = () =>
+  Object.fromEntries(
+    GLYPH_IDS.flatMap((left) =>
+      GLYPH_IDS.map((right) => [`${left}${right}`, 0])
+    )
+  ) as Record<KerningPair, number>;
+
 export const DEFAULT_GLYPH: GlyphDesign = {
   bowl: { id: 'bowl', cx: 43, cy: 82, rx: 30, ry: 28 },
   stem: { id: 'stem', x: 73, top: 18, bottom: 112 },
+  crossbar: { id: 'crossbar', yOffset: 0, aperture: 16, inset: 8 },
   stroke: 11,
   overshoot: 2,
   metrics: {
     b: { leftSideBearing: 8, rightSideBearing: 8 },
     d: { leftSideBearing: 8, rightSideBearing: 8 },
+    e: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
     p: { leftSideBearing: 8, rightSideBearing: 8 },
     q: { leftSideBearing: 8, rightSideBearing: 8 },
   },
-  kerning: {
-    bb: 0, bd: 0, bo: 0, bp: 0, bq: 0,
-    db: 0, dd: 0, do: 0, dp: 0, dq: 0,
-    ob: 0, od: 0, oo: 0, op: 0, oq: 0,
-    pb: 0, pd: 0, po: 0, pp: 0, pq: 0,
-    qb: 0, qd: 0, qo: 0, qp: 0, qq: 0,
-  },
+  kerning: createDefaultKerning(),
   descender: 132,
 };
 
@@ -98,8 +111,9 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
   const stemX = getStemX(design, glyph);
   const stemMin = stemX - halfStroke;
   const stemMax = stemX + halfStroke;
-  const minX = glyph === 'b' ? Math.min(bowlMin, stemMin) : bowlMin;
-  const maxX = glyph === 'o' ? bowlMax : Math.max(bowlMax, stemMax);
+  const hasStem = isStemGlyph(glyph);
+  const minX = hasStem && isLeftStemGlyph(glyph) ? Math.min(bowlMin, stemMin) : bowlMin;
+  const maxX = hasStem ? Math.max(bowlMax, stemMax) : bowlMax;
   const visualWidth = maxX - minX;
   const metrics = design.metrics[glyph];
   return {
@@ -111,13 +125,11 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
 };
 
 
-export const KERNING_PAIRS: KerningPair[] = [
-  'bb', 'bd', 'bo', 'bp', 'bq',
-  'db', 'dd', 'do', 'dp', 'dq',
-  'ob', 'od', 'oo', 'op', 'oq',
-  'pb', 'pd', 'po', 'pp', 'pq',
-  'qb', 'qd', 'qo', 'qp', 'qq',
-];
+export const KERNING_PAIRS: KerningPair[] =
+  GLYPH_IDS.flatMap((left) =>
+    GLYPH_IDS.map((right) => `${left}${right}` as KerningPair)
+  );
+
 
 export const getKerningValue = (
   design: GlyphDesign,
@@ -146,3 +158,18 @@ export const getStemTop = (design: GlyphDesign, glyph: GlyphId) =>
 
 export const getStemBottom = (design: GlyphDesign, glyph: GlyphId) =>
   isDescenderGlyph(glyph) ? design.descender : design.stem.bottom;
+
+
+export const isStemGlyph = (glyph: GlyphId) =>
+  glyph === 'b' || glyph === 'd' || glyph === 'p' || glyph === 'q';
+
+export const getECrossbarY = (design: GlyphDesign) =>
+  design.bowl.cy + design.crossbar.yOffset;
+
+export const getEArcPath = (design: GlyphDesign) => {
+  const right = design.bowl.cx + design.bowl.rx;
+  const halfGap = design.crossbar.aperture / 2;
+  const topGap = design.bowl.cy - halfGap;
+  const bottomGap = design.bowl.cy + halfGap;
+  return `M ${right} ${bottomGap} A ${design.bowl.rx} ${bowlOuterRy(design)} 0 1 1 ${right} ${topGap}`;
+};
