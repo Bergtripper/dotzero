@@ -11,6 +11,8 @@ import {
   getStemX,
   getStemTop,
   getStemBottom,
+  isDescenderGlyph,
+  isLeftStemGlyph,
 } from './model';
 
 interface GlyphCanvasProps {
@@ -164,7 +166,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     if (drag.target === 'stem') {
       const rawX = clamp(p.x - drag.offsetX, 10, 90);
       const tangentX =
-        glyph === 'b' || glyph === 'p'
+        isLeftStemGlyph(glyph)
           ? design.bowl.cx - design.bowl.rx
           : design.bowl.cx + design.bowl.rx;
       const xSnap = magnetic(rawX, [tangentX, GUIDES.center], 2.2);
@@ -177,7 +179,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         });
       }
 
-      if (glyph === 'p') {
+      if (isDescenderGlyph(glyph)) {
         onChange({
           ...design,
           stem: {
@@ -212,7 +214,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       }
     }
 
-    if (drag.target === 'stem-top' && glyph !== 'p') {
+    if (drag.target === 'stem-top' && !isDescenderGlyph(glyph)) {
       const snap = magnetic(
         clamp(p.y, 8, design.stem.bottom - 18),
         [GUIDES.ascender, GUIDES.xHeight],
@@ -229,7 +231,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     }
 
     if (drag.target === 'stem-bottom') {
-      if (glyph === 'p') {
+      if (isDescenderGlyph(glyph)) {
         const value = clamp(p.y, GUIDES.baseline + 8, 138);
         onChange({ ...design, descender: value });
         cues.push({ axis: 'y', value, label: 'DESCENDER' });
@@ -290,7 +292,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         <line x1="0" x2="100" y1={GUIDES.ascender} y2={GUIDES.ascender} className="tc-guide tc-guide--muted" />
         <line x1="0" x2="100" y1={GUIDES.xHeight} y2={GUIDES.xHeight} className="tc-guide tc-guide--blue" />
         <line x1="0" x2="100" y1={GUIDES.baseline} y2={GUIDES.baseline} className="tc-guide tc-guide--red" />
-        {glyph === 'p' && (
+        {isDescenderGlyph(glyph) && (
           <line x1="0" x2="100" y1={design.descender} y2={design.descender} className="tc-guide tc-guide--descender" />
         )}
         <line x1={GUIDES.center} x2={GUIDES.center} y1="0" y2="140" className="tc-guide tc-guide--axis" />
@@ -440,7 +442,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
 
         {glyph !== 'o' && selected === 'stem' && (
           <>
-            {glyph !== 'p' && (
+            {!isDescenderGlyph(glyph) && (
               <circle
                 cx={stemX}
                 cy={stemTop}
@@ -464,7 +466,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         <span>ASCENDER {GUIDES.ascender}</span>
         <span>X-HEIGHT {GUIDES.xHeight}</span>
         <span>BASELINE {GUIDES.baseline}</span>
-        {glyph === 'p' && <span>DESCENDER {Math.round(design.descender)}</span>}
+        {isDescenderGlyph(glyph) && <span>DESCENDER {Math.round(design.descender)}</span>}
       </div>
     </div>
   );
