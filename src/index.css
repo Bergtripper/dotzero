@@ -413,7 +413,12 @@ html {
   color: var(--text);
   font: inherit;
   cursor: default;
-  transform: translate(-50%, -50%) rotate(var(--rotate));
+  transform:
+    translate(
+      calc(-50% + var(--motion-x, 0px)),
+      calc(-50% + var(--motion-y, 0px))
+    )
+    rotate(var(--rotate));
   transform-origin: center;
   transition:
     left 520ms cubic-bezier(.2,.8,.2,1),
@@ -425,7 +430,7 @@ html {
 .dz-specimen-glyph-node__char {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, calc(var(--size) * 0.9), 13rem);
+  font-size: var(--glyph-font-size);
   font-weight: 700;
   line-height: 0.76;
   letter-spacing: -0.08em;
@@ -465,7 +470,13 @@ html {
 
 .dz-specimen-glyph-node.is-active {
   z-index: 4;
-  transform: translate(-50%, -50%) rotate(var(--rotate)) scale(1.045);
+  transform:
+    translate(
+      calc(-50% + var(--motion-x, 0px)),
+      calc(-50% + var(--motion-y, 0px))
+    )
+    rotate(var(--rotate))
+    scale(1.075);
 }
 
 .dz-specimen-glyph-node__index {
@@ -517,10 +528,6 @@ html {
     min-height: 310px;
   }
 
-  .dz-specimen-glyph-node__char {
-    font-size: clamp(2.4rem, calc(var(--size) * 0.72), 8rem);
-  }
-
   .dz-specimen-stage__readout span:first-child {
     display: none;
   }
@@ -541,9 +548,6 @@ html {
     gap: 0;
   }
 
-  .dz-specimen-glyph-node__char {
-    font-size: clamp(2rem, calc(var(--size) * 0.58), 6rem);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
