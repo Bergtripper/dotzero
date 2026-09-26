@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import {
   EditorMode,
   GlyphDesign,
+  GlyphId,
   GUIDES,
   PartId,
   bowlOuterRy,
@@ -15,6 +16,7 @@ interface GlyphCanvasProps {
   mode: EditorMode;
   onSelect: (part: PartId) => void;
   onChange: (design: GlyphDesign) => void;
+  glyph: GlyphId;
 }
 
 type DragTarget =
@@ -44,6 +46,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
   mode,
   onSelect,
   onChange,
+  glyph,
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [drag, setDrag] = useState<DragState | null>(null);
@@ -235,7 +238,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     <div className="tc-canvas-shell">
       <div className="tc-canvas-head">
         <div>
-          <div className="tc-label">GLYPH / d</div>
+          <div className="tc-label">GLYPH / {glyph}</div>
           <div className="tc-canvas-sub">DESIGN FIELD / 100 × 140</div>
         </div>
         <div className="tc-canvas-state">
@@ -301,13 +304,15 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
               y2={design.bowl.cy + outerRy}
               className="tc-construction-radius"
             />
-            <line
-              x1={design.stem.x}
-              x2={design.stem.x}
-              y1={design.stem.top}
-              y2={design.stem.bottom}
-              className="tc-construction-shape"
-            />
+            {glyph === 'd' && (
+              <line
+                x1={design.stem.x}
+                x2={design.stem.x}
+                y1={design.stem.top}
+                y2={design.stem.bottom}
+                className="tc-construction-shape"
+              />
+            )}
           </>
         )}
 
@@ -339,31 +344,37 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           />
         </g>
 
-        <g
-          className={`tc-part ${selected === 'stem' ? 'is-selected' : ''}`}
-          onPointerDown={(event) => beginDrag('stem', 'stem', event)}
-        >
-          <line
-            x1={design.stem.x}
-            x2={design.stem.x}
-            y1={design.stem.top}
-            y2={design.stem.bottom}
-            stroke="transparent"
-            strokeWidth={Math.max(design.stroke + 12, 20)}
-            vectorEffect="non-scaling-stroke"
-            className="tc-hit-stroke"
-          />
-          <line
-            x1={design.stem.x}
-            x2={design.stem.x}
-            y1={design.stem.top}
-            y2={design.stem.bottom}
-            stroke="currentColor"
-            strokeWidth={design.stroke}
-            vectorEffect="non-scaling-stroke"
-            className="tc-visible-stroke"
-          />
-        </g>
+        {glyph === 'd' && (
+          <>
+                    <g
+                      className={`tc-part ${selected === 'stem' ? 'is-selected' : ''}`}
+                      onPointerDown={(event) => beginDrag('stem', 'stem', event)}
+                    >
+                      <line
+                        x1={design.stem.x}
+                        x2={design.stem.x}
+                        y1={design.stem.top}
+                        y2={design.stem.bottom}
+                        stroke="transparent"
+                        strokeWidth={Math.max(design.stroke + 12, 20)}
+                        vectorEffect="non-scaling-stroke"
+                        className="tc-hit-stroke"
+                      />
+                      <line
+                        x1={design.stem.x}
+                        x2={design.stem.x}
+                        y1={design.stem.top}
+                        y2={design.stem.bottom}
+                        stroke="currentColor"
+                        strokeWidth={design.stroke}
+                        vectorEffect="non-scaling-stroke"
+                        className="tc-visible-stroke"
+                      />
+                    </g>
+            
+            
+          </>
+        )}
 
         {selected === 'bowl' && (
           <>
@@ -399,7 +410,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           </>
         )}
 
-        {selected === 'stem' && (
+        {glyph === 'd' && selected === 'stem' && (
           <>
             <circle
               cx={design.stem.x}
