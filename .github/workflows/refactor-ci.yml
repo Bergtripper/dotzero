@@ -12,6 +12,7 @@ on:
       - feature/dotzero-typographic-specimen
       - feature/dotzero-hero-v2-typography
       - fix/dotzero-hero-scale-motion
+      - feature/universal-type-lab
   workflow_dispatch:
 
 permissions:
