@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { TypeConstructionEditor } from './core/TypeConstructionEditor';
+import './styles.css';
 
 interface UniversalSystemsProjectProps {
   onBack?: () => void;
