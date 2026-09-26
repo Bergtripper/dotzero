@@ -25,6 +25,7 @@ on:
       - feature/type-construction-kerning
       - feature/type-construction-glyph-b
       - feature/type-construction-glyph-p
+      - feature/type-construction-glyph-q
   workflow_dispatch:
 
 permissions:
