@@ -15,6 +15,7 @@ on:
       - feature/universal-type-lab
       - feature/universal-systems
       - feature/type-construction-step1
+      - refactor/type-construction-v2
   workflow_dispatch:
 
 permissions:
