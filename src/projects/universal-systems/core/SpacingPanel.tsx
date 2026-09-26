@@ -42,7 +42,7 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
         </div>
 
         <div className="tc-spacing-glyph-switch" aria-label="Spacing glyph">
-          {(['b', 'd', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
+          {(['b', 'd', 'e', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
             <button
               type="button"
               key={id}
