@@ -19,7 +19,7 @@ import { BauhausLaboratory } from './components/BauhausLaboratory';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ModulorStudio } from './components/ModulorStudio';
-import { UniversalSystems } from './components/UniversalSystems';
+import { UniversalSystemsProject } from './projects/universal-systems';
 
 function MainAppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'modulor' | 'bauhaus' | 'universal'>('home');
@@ -81,7 +81,7 @@ function MainAppContent() {
   }
 
   if (currentPage === 'universal') {
-    return <UniversalSystems onBack={navigateToHome} />;
+    return <UniversalSystemsProject onBack={navigateToHome} />;
   }
 
   if (currentPage === 'bauhaus') {
