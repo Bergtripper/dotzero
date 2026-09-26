@@ -1,14 +1,15 @@
 import React from 'react';
-import { EditorMode, Tool } from './model';
+import { EditorMode, GlyphId, Tool } from './model';
 
 interface ToolRailProps {
   tool: Tool;
   mode: EditorMode;
   onToolChange: (tool: Tool) => void;
   onModeChange: (mode: EditorMode) => void;
+  glyph: GlyphId;
 }
 
-export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, onModeChange }) => (
+export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, onModeChange, glyph }) => (
   <aside className="tc-rail">
     <div className="tc-label">TOOLS</div>
     <div className="tc-rail-tools">
@@ -17,7 +18,12 @@ export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, on
         ['bowl', '○', 'Bowl'],
         ['stem', '│', 'Stem'],
       ] as Array<[Tool, string, string]>).map(([id, symbol, label]) => (
-        <button key={id} className={`tc-tool ${tool === id ? 'is-active' : ''}`} onClick={() => onToolChange(id)}>
+        <button
+          key={id}
+          disabled={glyph === 'o' && id === 'stem'}
+          className={`tc-tool ${tool === id ? 'is-active' : ''}`}
+          onClick={() => onToolChange(id)}
+        >
           <span>{symbol}</span>
           <small>{label}</small>
         </button>
