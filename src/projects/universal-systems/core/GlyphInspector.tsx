@@ -114,35 +114,63 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
         <>
           <div className="tc-inspector-title">STEM</div>
 
-          <label className="tc-semantic-control">
-            <span>ASCENDER</span>
-            <input
-              type="range"
-              min="8"
-              max={design.stem.bottom - 18}
-              step="1"
-              value={design.stem.top}
-              onChange={(e) =>
-                onChange({
-                  ...design,
-                  stem: { ...design.stem, top: Number(e.target.value) },
-                })
-              }
-            />
-            <strong>{Math.round(design.stem.top)}</strong>
-          </label>
+          {glyph === 'p' ? (
+            <>
+              <label className="tc-semantic-control">
+                <span>DESCENDER</span>
+                <input
+                  type="range"
+                  min={GUIDES.baseline + 8}
+                  max="138"
+                  step="1"
+                  value={design.descender}
+                  onChange={(e) =>
+                    onChange({
+                      ...design,
+                      descender: Number(e.target.value),
+                    })
+                  }
+                />
+                <strong>{Math.round(design.descender)}</strong>
+              </label>
 
-          <button
-            className="tc-semantic-action"
-            onClick={() =>
-              onChange({
-                ...design,
-                stem: { ...design.stem, top: GUIDES.ascender },
-              })
-            }
-          >
-            ANCHOR ASCENDER
-          </button>
+              <div className="tc-rule-note">
+                STEM / X-HEIGHT {GUIDES.xHeight} → DESCENDER {Math.round(design.descender)}
+              </div>
+            </>
+          ) : (
+            <>
+              <label className="tc-semantic-control">
+                <span>ASCENDER</span>
+                <input
+                  type="range"
+                  min="8"
+                  max={design.stem.bottom - 18}
+                  step="1"
+                  value={design.stem.top}
+                  onChange={(e) =>
+                    onChange({
+                      ...design,
+                      stem: { ...design.stem, top: Number(e.target.value) },
+                    })
+                  }
+                />
+                <strong>{Math.round(design.stem.top)}</strong>
+              </label>
+
+              <button
+                className="tc-semantic-action"
+                onClick={() =>
+                  onChange({
+                    ...design,
+                    stem: { ...design.stem, top: GUIDES.ascender },
+                  })
+                }
+              >
+                ANCHOR ASCENDER
+              </button>
+            </>
+          )}
 
           <button className="tc-semantic-action is-accent" onClick={joinStemToBowl}>
             JOIN TANGENT TO BOWL
@@ -185,6 +213,9 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
 
         <div className="tc-rule-note">
           OUTER BOWL / {(bowlOuterRy(design) * 2).toFixed(1)}
+        </div>
+        <div className="tc-rule-note">
+          DESCENDER / {Math.round(design.descender)}
         </div>
       </div>
     </aside>
