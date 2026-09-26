@@ -14,6 +14,7 @@ import { GlyphInspector } from './GlyphInspector';
 import { TypeSpecimen } from './TypeSpecimen';
 import { SharedDna } from './SharedDna';
 import { SystemView } from './SystemView';
+import { TypeTester } from './TypeTester';
 
 export const TypeConstructionEditor: React.FC = () => {
   const [design, setDesign] = useState<GlyphDesign>(DEFAULT_GLYPH);
@@ -51,8 +52,8 @@ export const TypeConstructionEditor: React.FC = () => {
     <div className="tc-editor">
       <div className="tc-editor-topbar">
         <div>
-          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 02</div>
-          <div className="tc-editor-title">SHARED SYSTEM</div>
+          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 03</div>
+          <div className="tc-editor-title">TYPE SYSTEM</div>
         </div>
 
         <div className="tc-editor-actions-top">
@@ -88,6 +89,10 @@ export const TypeConstructionEditor: React.FC = () => {
         {mode === 'system' ? (
           <div className="tc-system-slot">
             <SystemView design={design} />
+          </div>
+        ) : mode === 'test' ? (
+          <div className="tc-system-slot">
+            <TypeTester design={design} />
           </div>
         ) : (
           <>
