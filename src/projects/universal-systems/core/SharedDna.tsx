@@ -10,41 +10,41 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
     <div className="tc-dna-head">
       <div>
         <div className="tc-label">SHARED DNA</div>
-        <div className="tc-dna-title">d ↔ o</div>
+        <div className="tc-dna-title">b ↔ d ↔ o</div>
       </div>
-      <div className="tc-dna-status">LIVE LINK</div>
+      <div className="tc-dna-status">LIVE FAMILY</div>
     </div>
 
     <div className="tc-dna-grid">
       <div>
         <span>BOWL</span>
-        <strong>LINKED</strong>
+        <strong>03 GLYPHS</strong>
         <small>{Math.round(design.bowl.rx * 2)} × {Math.round(design.bowl.ry * 2)}</small>
       </div>
       <div>
         <span>STROKE</span>
-        <strong>LINKED</strong>
+        <strong>SHARED</strong>
         <small>{design.stroke}</small>
       </div>
       <div>
         <span>OVERSHOOT</span>
-        <strong>LINKED</strong>
+        <strong>SHARED</strong>
         <small>{design.overshoot.toFixed(1)}</small>
       </div>
-      <div className="is-specific">
-        <span>STEM</span>
-        <strong>d ONLY</strong>
-        <small>NOT SHARED</small>
+      <div>
+        <span>STEM LOGIC</span>
+        <strong>MIRRORED</strong>
+        <small>b ← axis → d</small>
       </div>
       <div className="is-specific">
         <span>SPACING</span>
         <strong>PER GLYPH</strong>
-        <small>d {design.metrics.d.leftSideBearing}/{design.metrics.d.rightSideBearing} · o {design.metrics.o.leftSideBearing}/{design.metrics.o.rightSideBearing}</small>
+        <small>b {design.metrics.b.leftSideBearing}/{design.metrics.b.rightSideBearing} · d {design.metrics.d.leftSideBearing}/{design.metrics.d.rightSideBearing} · o {design.metrics.o.leftSideBearing}/{design.metrics.o.rightSideBearing}</small>
       </div>
       <div className="is-specific">
         <span>KERNING</span>
-        <strong>PER PAIR</strong>
-        <small>dd {design.kerning.dd} · do {design.kerning.do} · od {design.kerning.od} · oo {design.kerning.oo}</small>
+        <strong>09 PAIRS</strong>
+        <small>bb bd bo / db dd do / ob od oo</small>
       </div>
     </div>
   </section>
