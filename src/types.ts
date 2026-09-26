@@ -52,6 +52,8 @@ export type ThemeVariant = 'classic' | 'monochrome' | 'destijl';
 
 export type ColorMode = 'light' | 'dark';
 
+export type TypographyPreset = 'plex' | 'swiss' | 'grotesk' | 'syne';
+
 export type DotzeroProjectStatus = 'active' | 'archive' | 'prototype';
 
 export type DotzeroProjectDestination =
