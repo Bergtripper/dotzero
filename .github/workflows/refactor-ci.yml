@@ -21,6 +21,7 @@ on:
       - feature/type-construction-step2-shared-system
       - feature/type-construction-system-view
       - feature/type-construction-type-test
+      - feature/type-construction-spacing-metrics
   workflow_dispatch:
 
 permissions:
