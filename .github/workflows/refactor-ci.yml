@@ -10,6 +10,7 @@ on:
       - fix/dotzero-wordmark-style-audit
       - refactor/dotzero-phase3b-project-system
       - feature/dotzero-typographic-specimen
+      - feature/dotzero-hero-v2-typography
   workflow_dispatch:
 
 permissions:
