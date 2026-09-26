@@ -640,7 +640,7 @@
 
 .tc-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(2, 2.25rem);
+  grid-template-columns: repeat(3, 2.25rem);
   border: 1px solid var(--line);
   background: var(--surface-raised);
 }
@@ -1160,7 +1160,7 @@
 
 .tc-spacing-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(2, 2rem);
+  grid-template-columns: repeat(3, 2rem);
   border: 1px solid var(--line);
 }
 
@@ -1293,7 +1293,7 @@
 
 .tc-kerning-pairs {
   display: inline-grid;
-  grid-template-columns: repeat(4, 2rem);
+  grid-template-columns: repeat(3, 2rem);
   border: 1px solid var(--line);
 }
 
@@ -1423,5 +1423,27 @@
 
   .tc-dna-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* Type Construction Lab — Glyph 03 / b */
+.tc-system-stage--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tc-system-matrix--three > div {
+  grid-template-columns: minmax(0, 1.5fr) 0.45fr 0.45fr 0.45fr 0.8fr;
+}
+
+@media (max-width: 900px) {
+  .tc-system-stage--three {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .tc-system-matrix--three > div {
+    grid-template-columns: minmax(0, 1.2fr) 0.4fr 0.4fr 0.4fr 0.75fr;
   }
 }
