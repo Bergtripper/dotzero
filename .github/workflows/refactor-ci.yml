@@ -22,6 +22,7 @@ on:
       - feature/type-construction-system-view
       - feature/type-construction-type-test
       - feature/type-construction-spacing-metrics
+      - feature/type-construction-kerning
   workflow_dispatch:
 
 permissions:
