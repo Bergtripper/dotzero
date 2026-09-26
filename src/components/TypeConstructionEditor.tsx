@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Circle, Copy, Minus, RotateCcw, Slash, Trash2 } from 'lucide-react';
+import { Copy, RotateCcw, Trash2 } from 'lucide-react';
 
 type PrimitiveType = 'circle' | 'vertical' | 'horizontal' | 'diagonal' | 'arc';
 
