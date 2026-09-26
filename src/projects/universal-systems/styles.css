@@ -705,7 +705,7 @@
 
 .tc-dna-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin-top: 0.8rem;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
@@ -1054,7 +1054,7 @@
   display: inline-flex;
   align-items: flex-end;
   justify-content: center;
-  margin-right: var(--tc-test-tracking);
+  margin-right: calc(var(--tc-test-tracking) + var(--tc-pair-kern, 0px));
   height: 1em;
 }
 
@@ -1257,6 +1257,171 @@
   .tc-dna-grid,
   .tc-spacing-controls,
   .tc-spacing-readout {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Type Construction Lab — Kerning */
+.tc-test-metric-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tc-kerning-panel {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: 0.85rem;
+}
+
+.tc-kerning-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tc-kerning-title {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tc-kerning-pairs {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 2rem);
+  border: 1px solid var(--line);
+}
+
+.tc-kerning-pairs button {
+  height: 1.8rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tc-kerning-pairs button:last-child {
+  border-right: 0;
+}
+
+.tc-kerning-pairs button.is-active {
+  background: var(--text);
+  color: var(--on-text);
+}
+
+.tc-kerning-preview {
+  min-height: 150px;
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--canvas);
+  font-size: 112px;
+}
+
+.tc-kerning-preview-glyph {
+  display: inline-flex;
+  width: var(--tc-preview-advance);
+  height: 1em;
+  margin-right: var(--tc-preview-kern, 0);
+}
+
+.tc-kerning-built-glyph {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tc-kerning-control {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem 0.6rem;
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tc-kerning-control span {
+  color: var(--text-muted);
+}
+
+.tc-kerning-control input {
+  grid-column: 1 / -1;
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.tc-kerning-readout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-left: 1px solid var(--line);
+}
+
+.tc-kerning-readout > div {
+  min-height: 62px;
+  display: grid;
+  align-content: space-between;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.55rem;
+}
+
+.tc-kerning-readout span,
+.tc-kerning-readout strong {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tc-kerning-readout span {
+  color: var(--text-muted);
+}
+
+.tc-kerning-readout strong {
+  color: var(--accent);
+}
+
+@media (max-width: 1000px) {
+  .tc-test-metric-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-dna-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .tc-kerning-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tc-kerning-readout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tc-dna-grid {
     grid-template-columns: 1fr;
   }
 }
