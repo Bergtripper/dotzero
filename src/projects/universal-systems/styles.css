@@ -629,3 +629,129 @@
   text-transform: uppercase;
   color: var(--text-muted);
 }
+
+
+/* Type Construction Lab — Step 02 shared system */
+.tc-editor-actions-top {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tc-glyph-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 2.25rem);
+  border: 1px solid var(--line);
+  background: var(--surface-raised);
+}
+
+.tc-glyph-switch button {
+  height: 2rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tc-glyph-switch button:last-child {
+  border-right: 0;
+}
+
+.tc-glyph-switch button.is-active {
+  background: var(--text);
+  color: var(--on-text);
+}
+
+.tc-tool:disabled {
+  opacity: 0.24;
+  cursor: not-allowed;
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.tc-dna {
+  border-top: 1px solid var(--line);
+  padding: 1rem 1.1rem 1.15rem;
+  background: var(--surface-raised);
+}
+
+.tc-dna-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tc-dna-title {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.tc-dna-status {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tc-dna-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.tc-dna-grid > div {
+  min-height: 84px;
+  display: grid;
+  align-content: space-between;
+  gap: 0.35rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem;
+}
+
+.tc-dna-grid span,
+.tc-dna-grid small {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tc-dna-grid strong {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tc-dna-grid .is-specific strong {
+  color: var(--text);
+}
+
+@media (max-width: 700px) {
+  .tc-editor-topbar {
+    align-items: flex-start;
+  }
+
+  .tc-editor-actions-top {
+    align-items: stretch;
+  }
+
+  .tc-dna-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
