@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import { ArrowLeft, CircleDot, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { TypeConstructionEditor } from './TypeConstructionEditor';
 
 interface UniversalSystemsProps {
   onBack: () => void;
@@ -88,56 +89,9 @@ const MODULES: Array<{
   { number: '05', title: '1925 → 2026 / UNIVERSAL?', strap: 'History → Question', status: 'planned', icon: Type },
 ];
 
-const glyphStroke = 'currentColor';
-const strokeWidth = 12;
-
-const CustomGlyph: React.FC<{ glyph: string }> = ({ glyph }) => {
-  const common = {
-    fill: 'none',
-    stroke: glyphStroke,
-    strokeWidth,
-    strokeLinecap: 'butt' as const,
-    strokeLinejoin: 'miter' as const,
-  };
-
-  switch (glyph) {
-    case 'd':
-      return <g><circle cx="48" cy="58" r="28" {...common}/><line x1="76" y1="12" x2="76" y2="88" {...common}/></g>;
-    case 'o':
-      return <circle cx="50" cy="58" r="28" {...common}/>;
-    case 't':
-      return <g><line x1="50" y1="18" x2="50" y2="88" {...common}/><line x1="26" y1="36" x2="74" y2="36" {...common}/></g>;
-    case 'z':
-      return <g><line x1="22" y1="32" x2="78" y2="32" {...common}/><line x1="78" y1="32" x2="22" y2="84" {...common}/><line x1="22" y1="84" x2="78" y2="84" {...common}/></g>;
-    case 'e':
-      return <g><path d="M76 62 A28 28 0 1 0 70 77" {...common}/><line x1="23" y1="58" x2="76" y2="58" {...common}/></g>;
-    case 'r':
-      return <g><line x1="28" y1="32" x2="28" y2="88" {...common}/><path d="M28 56 A28 28 0 0 1 70 34" {...common}/></g>;
-    case '.':
-      return <circle cx="50" cy="80" r="7" fill="currentColor"/>;
-    default:
-      return null;
-  }
-};
-
-const CUSTOM_WORD = ['d', 'o', 't', 'z', 'e', 'r', 'o', '.'];
-
 export const UniversalSystems: React.FC<UniversalSystemsProps> = ({ onBack }) => {
   const { language } = useLanguage();
   const t = COPY[language];
-  const [resolved, setResolved] = useState(false);
-
-  const constructionOffsets = useMemo(() => [
-    { x: -12, y: 18, r: -4, s: 1.15 },
-    { x: 6, y: -14, r: 3, s: 0.92 },
-    { x: -4, y: 16, r: -3, s: 0.88 },
-    { x: 10, y: -18, r: -5, s: 1.0 },
-    { x: -8, y: 10, r: 4, s: 0.9 },
-    { x: 8, y: 22, r: 6, s: 0.86 },
-    { x: 14, y: -16, r: 0, s: 1.18 },
-    { x: 8, y: 18, r: 0, s: 1.0 },
-  ], []);
-
   return (
     <div className="min-h-screen dz-bg dz-text">
       <header className="sticky top-0 z-40 border-b dz-border bg-[var(--bg)]/95 backdrop-blur-sm">
@@ -219,36 +173,8 @@ export const UniversalSystems: React.FC<UniversalSystemsProps> = ({ onBack }) =>
                   ))}
                 </div>
 
-                <div className="mt-8 universal-svg-stage">
-                  <div className="universal-svg-grid" aria-hidden="true" />
-                  <div className={`universal-svg-word ${resolved ? 'is-resolved' : 'is-construction'}`}>
-                    {CUSTOM_WORD.map((glyph, index) => {
-                      const offset = constructionOffsets[index];
-                      return (
-                        <svg
-                          key={`${glyph}-${index}`}
-                          viewBox="0 0 100 100"
-                          className={`universal-svg-glyph ${index === 6 || glyph === '.' ? 'is-accent' : ''}`}
-                          style={{
-                            '--cx': `${offset.x}px`,
-                            '--cy': `${offset.y}px`,
-                            '--cr': `${offset.r}deg`,
-                            '--cs': offset.s,
-                          } as React.CSSProperties}
-                          aria-hidden="true"
-                        >
-                          <CustomGlyph glyph={glyph} />
-                        </svg>
-                      );
-                    })}
-                  </div>
-
-                  <button onClick={() => setResolved((value) => !value)} className="universal-state-toggle universal-state-toggle--stage">
-                    <CircleDot className="h-3.5 w-3.5" />
-                    {resolved ? t.construction : t.resolved}
-                  </button>
-
-                  <div className="universal-svg-caption">PRIMITIVES 04 / STROKE 12 / GRID 10×14 / GLYPHS 08 / UNIQUE FORMS 06</div>
+                <div className="mt-8">
+                  <TypeConstructionEditor />
                 </div>
               </div>
             </div>
