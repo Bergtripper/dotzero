@@ -14,6 +14,7 @@ on:
       - fix/dotzero-hero-scale-motion
       - feature/universal-type-lab
       - feature/universal-systems
+      - feature/type-construction-step1
   workflow_dispatch:
 
 permissions:
