@@ -24,6 +24,7 @@ on:
       - feature/type-construction-spacing-metrics
       - feature/type-construction-kerning
       - feature/type-construction-glyph-b
+      - feature/type-construction-glyph-p
   workflow_dispatch:
 
 permissions:

@@ -640,7 +640,7 @@
 
 .tc-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(3, 2.25rem);
+  grid-template-columns: repeat(4, 2.25rem);
   border: 1px solid var(--line);
   background: var(--surface-raised);
 }
@@ -705,7 +705,7 @@
 
 .tc-dna-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   margin-top: 0.8rem;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
@@ -1160,7 +1160,7 @@
 
 .tc-spacing-glyph-switch {
   display: inline-grid;
-  grid-template-columns: repeat(3, 2rem);
+  grid-template-columns: repeat(4, 2rem);
   border: 1px solid var(--line);
 }
 
@@ -1445,5 +1445,36 @@
 @media (max-width: 700px) {
   .tc-system-matrix--three > div {
     grid-template-columns: minmax(0, 1.2fr) 0.4fr 0.4fr 0.4fr 0.75fr;
+  }
+}
+
+
+/* Type Construction Lab — Glyph 04 / p */
+.tc-guide--descender {
+  stroke: var(--accent-secondary);
+  opacity: 0.55;
+}
+
+.tc-system-stage--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tc-system-matrix--four > div {
+  grid-template-columns: minmax(0, 1.45fr) repeat(4, 0.4fr) 0.8fr;
+}
+
+@media (max-width: 1100px) {
+  .tc-system-stage--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .tc-system-stage--four {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-system-matrix--four > div {
+    grid-template-columns: minmax(0, 1.1fr) repeat(4, 0.38fr) 0.75fr;
   }
 }

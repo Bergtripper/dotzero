@@ -18,16 +18,16 @@ const SizedGlyph: React.FC<{
   />
 );
 
-const specimenGlyphs: GlyphId[] = ['b', 'd', 'o', 'b'];
+const specimenGlyphs: GlyphId[] = ['b', 'd', 'o', 'p'];
 
 export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
   <section className="tc-specimen">
     <div className="tc-specimen-head">
       <div>
         <div className="tc-label">LIVE SPECIMEN</div>
-        <div className="tc-specimen-note">SHARED BOWL / THREE GLYPHS</div>
+        <div className="tc-specimen-note">SHARED BOWL / FOUR GLYPHS</div>
       </div>
-      <div className="tc-specimen-status">b + d + o / LINKED</div>
+      <div className="tc-specimen-status">b + d + o + p / LINKED</div>
     </div>
 
     <div className="tc-specimen-row tc-specimen-row--large">
@@ -43,16 +43,17 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
     </div>
 
     <div className="tc-specimen-row tc-specimen-row--context">
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="b" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="o" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="d" design={design} className="tc-specimen-built-glyph" /></span>
+      {(['b', 'd', 'o', 'p'] as GlyphId[]).map((glyph) => (
+        <span className="tc-specimen-inline-glyph" key={glyph}>
+          <BuiltGlyph glyph={glyph} design={design} className="tc-specimen-built-glyph" />
+        </span>
+      ))}
       <span className="tc-specimen-separator">/</span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="d" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="o" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-separator">/</span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="b" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="d" design={design} className="tc-specimen-built-glyph" /></span>
-      <span className="tc-specimen-inline-glyph"><BuiltGlyph glyph="o" design={design} className="tc-specimen-built-glyph" /></span>
+      {(['p', 'o', 'd'] as GlyphId[]).map((glyph, index) => (
+        <span className="tc-specimen-inline-glyph" key={`${glyph}-${index}`}>
+          <BuiltGlyph glyph={glyph} design={design} className="tc-specimen-built-glyph" />
+        </span>
+      ))}
     </div>
   </section>
 );

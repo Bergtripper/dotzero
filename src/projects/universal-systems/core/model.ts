@@ -1,6 +1,6 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
-export type GlyphId = 'b' | 'd' | 'o';
-export type KerningPair = 'bb' | 'bd' | 'bo' | 'db' | 'dd' | 'do' | 'ob' | 'od' | 'oo';
+export type GlyphId = 'b' | 'd' | 'o' | 'p';
+export type KerningPair = `${GlyphId}${GlyphId}`;
 export type Tool = 'select' | 'bowl' | 'stem';
 export type PartId = 'bowl' | 'stem';
 
@@ -31,6 +31,7 @@ export interface GlyphDesign {
   overshoot: number;
   metrics: Record<GlyphId, GlyphMetrics>;
   kerning: Record<KerningPair, number>;
+  descender: number;
 }
 
 export const GUIDES = {
@@ -49,18 +50,15 @@ export const DEFAULT_GLYPH: GlyphDesign = {
     b: { leftSideBearing: 8, rightSideBearing: 8 },
     d: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
+    p: { leftSideBearing: 8, rightSideBearing: 8 },
   },
   kerning: {
-    bb: 0,
-    bd: 0,
-    bo: 0,
-    db: 0,
-    dd: 0,
-    do: 0,
-    ob: 0,
-    od: 0,
-    oo: 0,
+    bb: 0, bd: 0, bo: 0, bp: 0,
+    db: 0, dd: 0, do: 0, dp: 0,
+    ob: 0, od: 0, oo: 0, op: 0,
+    pb: 0, pd: 0, po: 0, pp: 0,
   },
+  descender: 132,
 };
 
 export const clamp = (value: number, min: number, max: number) =>
@@ -111,7 +109,12 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
 };
 
 
-export const KERNING_PAIRS: KerningPair[] = ['bb', 'bd', 'bo', 'db', 'dd', 'do', 'ob', 'od', 'oo'];
+export const KERNING_PAIRS: KerningPair[] = [
+  'bb', 'bd', 'bo', 'bp',
+  'db', 'dd', 'do', 'dp',
+  'ob', 'od', 'oo', 'op',
+  'pb', 'pd', 'po', 'pp',
+];
 
 export const getKerningValue = (
   design: GlyphDesign,
@@ -125,4 +128,12 @@ export const getKerningValue = (
 
 
 export const getStemX = (design: GlyphDesign, glyph: GlyphId) =>
-  glyph === 'b' ? (2 * design.bowl.cx) - design.stem.x : design.stem.x;
+  glyph === 'b' || glyph === 'p'
+    ? (2 * design.bowl.cx) - design.stem.x
+    : design.stem.x;
+
+export const getStemTop = (design: GlyphDesign, glyph: GlyphId) =>
+  glyph === 'p' ? GUIDES.xHeight : design.stem.top;
+
+export const getStemBottom = (design: GlyphDesign, glyph: GlyphId) =>
+  glyph === 'p' ? design.descender : design.stem.bottom;

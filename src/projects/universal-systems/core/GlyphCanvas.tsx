@@ -9,6 +9,8 @@ import {
   clamp,
   magnetic,
   getStemX,
+  getStemTop,
+  getStemBottom,
 } from './model';
 
 interface GlyphCanvasProps {
@@ -79,7 +81,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         ? { x: design.bowl.cx, y: design.bowl.cy }
         : {
             x: getStemX(design, glyph),
-            y: (design.stem.top + design.stem.bottom) / 2,
+            y: (getStemTop(design, glyph) + getStemBottom(design, glyph)) / 2,
           };
 
     setDrag({
@@ -162,7 +164,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     if (drag.target === 'stem') {
       const rawX = clamp(p.x - drag.offsetX, 10, 90);
       const tangentX =
-        glyph === 'b'
+        glyph === 'b' || glyph === 'p'
           ? design.bowl.cx - design.bowl.rx
           : design.bowl.cx + design.bowl.rx;
       const xSnap = magnetic(rawX, [tangentX, GUIDES.center], 2.2);
@@ -175,32 +177,42 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         });
       }
 
-      const height = design.stem.bottom - design.stem.top;
-      const rawCenterY = p.y - drag.offsetY;
-      let top = clamp(rawCenterY - height / 2, 8, 96);
-      const topSnap = magnetic(top, [GUIDES.ascender, GUIDES.xHeight], 2.2);
-      top = topSnap.value;
+      if (glyph === 'p') {
+        onChange({
+          ...design,
+          stem: {
+            ...design.stem,
+            x: (2 * design.bowl.cx) - xSnap.value,
+          },
+        });
+      } else {
+        const height = design.stem.bottom - design.stem.top;
+        const rawCenterY = p.y - drag.offsetY;
+        let top = clamp(rawCenterY - height / 2, 8, 96);
+        const topSnap = magnetic(top, [GUIDES.ascender, GUIDES.xHeight], 2.2);
+        top = topSnap.value;
 
-      if (topSnap.snapped) {
-        cues.push({
-          axis: 'y',
-          value: top,
-          label: top === GUIDES.ascender ? 'ASCENDER' : 'X-HEIGHT',
+        if (topSnap.snapped) {
+          cues.push({
+            axis: 'y',
+            value: top,
+            label: top === GUIDES.ascender ? 'ASCENDER' : 'X-HEIGHT',
+          });
+        }
+
+        onChange({
+          ...design,
+          stem: {
+            ...design.stem,
+            x: glyph === 'b' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
+            top,
+            bottom: clamp(top + height, top + 20, 132),
+          },
         });
       }
-
-      onChange({
-        ...design,
-        stem: {
-          ...design.stem,
-          x: glyph === 'b' ? (2 * design.bowl.cx) - xSnap.value : xSnap.value,
-          top,
-          bottom: clamp(top + height, top + 20, 132),
-        },
-      });
     }
 
-    if (drag.target === 'stem-top') {
+    if (drag.target === 'stem-top' && glyph !== 'p') {
       const snap = magnetic(
         clamp(p.y, 8, design.stem.bottom - 18),
         [GUIDES.ascender, GUIDES.xHeight],
@@ -217,15 +229,21 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     }
 
     if (drag.target === 'stem-bottom') {
-      const snap = magnetic(
-        clamp(p.y, design.stem.top + 18, 132),
-        [GUIDES.baseline],
-        2.2
-      );
-      if (snap.snapped) {
-        cues.push({ axis: 'y', value: GUIDES.baseline, label: 'BASELINE' });
+      if (glyph === 'p') {
+        const value = clamp(p.y, GUIDES.baseline + 8, 138);
+        onChange({ ...design, descender: value });
+        cues.push({ axis: 'y', value, label: 'DESCENDER' });
+      } else {
+        const snap = magnetic(
+          clamp(p.y, design.stem.top + 18, 132),
+          [GUIDES.baseline],
+          2.2
+        );
+        if (snap.snapped) {
+          cues.push({ axis: 'y', value: GUIDES.baseline, label: 'BASELINE' });
+        }
+        onChange({ ...design, stem: { ...design.stem, bottom: snap.value } });
       }
-      onChange({ ...design, stem: { ...design.stem, bottom: snap.value } });
     }
 
     setSnapCues(cues);
@@ -238,6 +256,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
 
   const outerRy = bowlOuterRy(design);
   const stemX = getStemX(design, glyph);
+  const stemTop = getStemTop(design, glyph);
+  const stemBottom = getStemBottom(design, glyph);
 
   return (
     <div className="tc-canvas-shell">
@@ -270,6 +290,9 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         <line x1="0" x2="100" y1={GUIDES.ascender} y2={GUIDES.ascender} className="tc-guide tc-guide--muted" />
         <line x1="0" x2="100" y1={GUIDES.xHeight} y2={GUIDES.xHeight} className="tc-guide tc-guide--blue" />
         <line x1="0" x2="100" y1={GUIDES.baseline} y2={GUIDES.baseline} className="tc-guide tc-guide--red" />
+        {glyph === 'p' && (
+          <line x1="0" x2="100" y1={design.descender} y2={design.descender} className="tc-guide tc-guide--descender" />
+        )}
         <line x1={GUIDES.center} x2={GUIDES.center} y1="0" y2="140" className="tc-guide tc-guide--axis" />
 
         {snapCues.map((cue, index) =>
@@ -313,8 +336,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
               <line
                 x1={stemX}
                 x2={stemX}
-                y1={design.stem.top}
-                y2={design.stem.bottom}
+                y1={stemTop}
+                y2={stemBottom}
                 className="tc-construction-shape"
               />
             )}
@@ -358,8 +381,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
                       <line
                         x1={stemX}
                         x2={stemX}
-                        y1={design.stem.top}
-                        y2={design.stem.bottom}
+                        y1={stemTop}
+                        y2={stemBottom}
                         stroke="transparent"
                         strokeWidth={Math.max(design.stroke + 12, 20)}
                         vectorEffect="non-scaling-stroke"
@@ -368,8 +391,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
                       <line
                         x1={stemX}
                         x2={stemX}
-                        y1={design.stem.top}
-                        y2={design.stem.bottom}
+                        y1={stemTop}
+                        y2={stemBottom}
                         stroke="currentColor"
                         strokeWidth={design.stroke}
                         vectorEffect="non-scaling-stroke"
@@ -415,18 +438,20 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           </>
         )}
 
-        {glyph === 'd' && selected === 'stem' && (
+        {glyph !== 'o' && selected === 'stem' && (
           <>
+            {glyph !== 'p' && (
+              <circle
+                cx={stemX}
+                cy={stemTop}
+                r="2.5"
+                className="tc-handle"
+                onPointerDown={(event) => beginDrag('stem', 'stem-top', event)}
+              />
+            )}
             <circle
               cx={stemX}
-              cy={design.stem.top}
-              r="2.5"
-              className="tc-handle"
-              onPointerDown={(event) => beginDrag('stem', 'stem-top', event)}
-            />
-            <circle
-              cx={stemX}
-              cy={design.stem.bottom}
+              cy={stemBottom}
               r="2.5"
               className="tc-handle"
               onPointerDown={(event) => beginDrag('stem', 'stem-bottom', event)}
@@ -439,6 +464,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         <span>ASCENDER {GUIDES.ascender}</span>
         <span>X-HEIGHT {GUIDES.xHeight}</span>
         <span>BASELINE {GUIDES.baseline}</span>
+        {glyph === 'p' && <span>DESCENDER {Math.round(design.descender)}</span>}
       </div>
     </div>
   );
