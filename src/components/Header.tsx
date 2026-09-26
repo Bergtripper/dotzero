@@ -3,6 +3,7 @@ import { Grid3X3, Menu, X, Sparkles, Moon, Sun } from 'lucide-react';
 import { ColorMode, ThemeVariant, Language } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { UI_TEXT } from '../translations';
+import { TypographySwitch } from './TypographySwitch';
 
 interface HeaderProps {
   currentTheme: ThemeVariant;
@@ -127,6 +128,9 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           <div className="flex items-center gap-2">
+            <div className="hidden 2xl:block">
+              <TypographySwitch compact />
+            </div>
             {navigateToSubpage && (
               <button
                 type="button"
