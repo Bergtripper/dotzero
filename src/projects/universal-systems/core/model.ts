@@ -1,5 +1,5 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
-export type GlyphId = 'b' | 'd' | 'o' | 'p';
+export type GlyphId = 'b' | 'd' | 'o' | 'p' | 'q';
 export type KerningPair = `${GlyphId}${GlyphId}`;
 export type Tool = 'select' | 'bowl' | 'stem';
 export type PartId = 'bowl' | 'stem';
@@ -51,12 +51,14 @@ export const DEFAULT_GLYPH: GlyphDesign = {
     d: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
     p: { leftSideBearing: 8, rightSideBearing: 8 },
+    q: { leftSideBearing: 8, rightSideBearing: 8 },
   },
   kerning: {
-    bb: 0, bd: 0, bo: 0, bp: 0,
-    db: 0, dd: 0, do: 0, dp: 0,
-    ob: 0, od: 0, oo: 0, op: 0,
-    pb: 0, pd: 0, po: 0, pp: 0,
+    bb: 0, bd: 0, bo: 0, bp: 0, bq: 0,
+    db: 0, dd: 0, do: 0, dp: 0, dq: 0,
+    ob: 0, od: 0, oo: 0, op: 0, oq: 0,
+    pb: 0, pd: 0, po: 0, pp: 0, pq: 0,
+    qb: 0, qd: 0, qo: 0, qp: 0, qq: 0,
   },
   descender: 132,
 };
@@ -110,10 +112,11 @@ export const getGlyphBounds = (design: GlyphDesign, glyph: GlyphId): GlyphBounds
 
 
 export const KERNING_PAIRS: KerningPair[] = [
-  'bb', 'bd', 'bo', 'bp',
-  'db', 'dd', 'do', 'dp',
-  'ob', 'od', 'oo', 'op',
-  'pb', 'pd', 'po', 'pp',
+  'bb', 'bd', 'bo', 'bp', 'bq',
+  'db', 'dd', 'do', 'dp', 'dq',
+  'ob', 'od', 'oo', 'op', 'oq',
+  'pb', 'pd', 'po', 'pp', 'pq',
+  'qb', 'qd', 'qo', 'qp', 'qq',
 ];
 
 export const getKerningValue = (
@@ -127,13 +130,19 @@ export const getKerningValue = (
 };
 
 
+export const isLeftStemGlyph = (glyph: GlyphId) =>
+  glyph === 'b' || glyph === 'p';
+
+export const isDescenderGlyph = (glyph: GlyphId) =>
+  glyph === 'p' || glyph === 'q';
+
 export const getStemX = (design: GlyphDesign, glyph: GlyphId) =>
-  glyph === 'b' || glyph === 'p'
+  isLeftStemGlyph(glyph)
     ? (2 * design.bowl.cx) - design.stem.x
     : design.stem.x;
 
 export const getStemTop = (design: GlyphDesign, glyph: GlyphId) =>
-  glyph === 'p' ? GUIDES.xHeight : design.stem.top;
+  isDescenderGlyph(glyph) ? GUIDES.xHeight : design.stem.top;
 
 export const getStemBottom = (design: GlyphDesign, glyph: GlyphId) =>
-  glyph === 'p' ? design.descender : design.stem.bottom;
+  isDescenderGlyph(glyph) ? design.descender : design.stem.bottom;
