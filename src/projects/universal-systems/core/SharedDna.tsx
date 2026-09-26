@@ -36,6 +36,11 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
         <strong>d ONLY</strong>
         <small>NOT SHARED</small>
       </div>
+      <div className="is-specific">
+        <span>SPACING</span>
+        <strong>PER GLYPH</strong>
+        <small>d {design.metrics.d.leftSideBearing}/{design.metrics.d.rightSideBearing} · o {design.metrics.o.leftSideBearing}/{design.metrics.o.rightSideBearing}</small>
+      </div>
     </div>
   </section>
 );
