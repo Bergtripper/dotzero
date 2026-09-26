@@ -1,11 +1,12 @@
 import React from 'react';
-import { GlyphDesign, PartId, GUIDES, bowlOuterRy } from './model';
+import { GlyphDesign, GlyphId, PartId, GUIDES, bowlOuterRy } from './model';
 
 interface GlyphInspectorProps {
   design: GlyphDesign;
   selected: PartId;
   onChange: (design: GlyphDesign) => void;
   onSelect: (part: PartId) => void;
+  glyph: GlyphId;
 }
 
 export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
@@ -13,6 +14,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
   selected,
   onChange,
   onSelect,
+  glyph,
 }) => {
   const joinStemToBowl = () => {
     onChange({
@@ -45,9 +47,9 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
 
   return (
     <aside className="tc-inspector">
-      <div className="tc-label">SELECTED / {selected.toUpperCase()}</div>
+      <div className="tc-label">GLYPH {glyph} / SELECTED {selected.toUpperCase()}</div>
 
-      {selected === 'bowl' ? (
+      {glyph === 'o' || selected === 'bowl' ? (
         <>
           <div className="tc-inspector-title">BOWL</div>
 
@@ -91,20 +93,22 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
             FIT X-HEIGHT ↔ BASELINE
           </button>
 
-          <button
-            className="tc-semantic-action"
-            onClick={() =>
-              onChange({
-                ...design,
-                bowl: {
-                  ...design.bowl,
-                  cx: design.stem.x - design.bowl.rx,
-                },
-              })
-            }
-          >
-            SNAP TANGENT TO STEM
-          </button>
+          {glyph === 'd' && (
+            <button
+              className="tc-semantic-action"
+              onClick={() =>
+                onChange({
+                  ...design,
+                  bowl: {
+                    ...design.bowl,
+                    cx: design.stem.x - design.bowl.rx,
+                  },
+                })
+              }
+            >
+              SNAP TANGENT TO STEM
+            </button>
+          )}
         </>
       ) : (
         <>
