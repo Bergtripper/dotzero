@@ -23,13 +23,13 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
     <div className="tc-specimen-head">
       <div>
         <div className="tc-label">LIVE SPECIMEN</div>
-        <div className="tc-specimen-note">SHARED SYSTEM / SIX GLYPHS</div>
+        <div className="tc-specimen-note">SHARED SYSTEM / SEVEN GLYPHS</div>
       </div>
-      <div className="tc-specimen-status">b + d + e + o + p + q / LINKED</div>
+      <div className="tc-specimen-status">b + c + d + e + o + p + q / LINKED</div>
     </div>
 
     <div className="tc-specimen-row tc-specimen-row--large">
-      {[120, 104, 88, 72, 60, 48].map((size, index) => (
+      {[120, 108, 96, 84, 72, 60, 48].map((size, index) => (
         <span
           className="tc-specimen-sized-glyph"
           style={{ '--tc-specimen-size': `${size}px` } as React.CSSProperties}
@@ -47,7 +47,7 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
         </span>
       ))}
       <span className="tc-specimen-separator">/</span>
-      {(['b', 'e', 'd', 'o', 'p', 'q'] as GlyphId[]).map((glyph, index) => (
+      {(['c', 'o', 'd', 'e', 'b', 'o', 'q'] as GlyphId[]).map((glyph, index) => (
         <span className="tc-specimen-inline-glyph" key={`${glyph}-${index}`}>
           <BuiltGlyph glyph={glyph} design={design} className="tc-specimen-built-glyph" />
         </span>
