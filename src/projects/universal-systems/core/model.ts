@@ -1,10 +1,10 @@
 export type EditorMode = 'design' | 'construction' | 'system' | 'test';
-export type GlyphId = 'b' | 'd' | 'e' | 'o' | 'p' | 'q';
+export type GlyphId = 'b' | 'c' | 'd' | 'e' | 'o' | 'p' | 'q';
 export type KerningPair = `${GlyphId}${GlyphId}`;
 export type Tool = 'select' | 'bowl' | 'stem' | 'crossbar';
 export type PartId = 'bowl' | 'stem' | 'crossbar';
 
-export const GLYPH_IDS: GlyphId[] = ['b', 'd', 'e', 'o', 'p', 'q'];
+export const GLYPH_IDS: GlyphId[] = ['b', 'c', 'd', 'e', 'o', 'p', 'q'];
 
 export interface BowlPart {
   id: 'bowl';
@@ -66,6 +66,7 @@ export const DEFAULT_GLYPH: GlyphDesign = {
   overshoot: 2,
   metrics: {
     b: { leftSideBearing: 8, rightSideBearing: 8 },
+    c: { leftSideBearing: 8, rightSideBearing: 8 },
     d: { leftSideBearing: 8, rightSideBearing: 8 },
     e: { leftSideBearing: 8, rightSideBearing: 8 },
     o: { leftSideBearing: 8, rightSideBearing: 8 },
@@ -166,10 +167,14 @@ export const isStemGlyph = (glyph: GlyphId) =>
 export const getECrossbarY = (design: GlyphDesign) =>
   design.bowl.cy + design.crossbar.yOffset;
 
-export const getEArcPath = (design: GlyphDesign) => {
+export const getOpenBowlPath = (design: GlyphDesign) => {
   const right = design.bowl.cx + design.bowl.rx;
   const halfGap = design.crossbar.aperture / 2;
   const topGap = design.bowl.cy - halfGap;
   const bottomGap = design.bowl.cy + halfGap;
   return `M ${right} ${bottomGap} A ${design.bowl.rx} ${bowlOuterRy(design)} 0 1 1 ${right} ${topGap}`;
 };
+
+
+export const isOpenBowlGlyph = (glyph: GlyphId) =>
+  glyph === 'c' || glyph === 'e';
