@@ -8,40 +8,40 @@ import { DotzeroTypographicSpecimen } from './DotzeroTypographicSpecimen';
 const COPY = {
   it: {
     kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'ARCHIVES · SYSTEMS · CULTURE · EXPERIMENTS',
-    intro: 'DOTZERO è un indice di progetti indipendenti: archivi, sistemi digitali, ricerca culturale ed esperimenti interattivi.',
+    title: 'KNOWLEDGE · SYSTEMS · QUESTIONS · INSTRUMENTS',
+    intro: 'DOTZERO è un personal research lab for knowledge exploration: Atlas, Studies e Tools nati dalla curiosità e costruiti come strumenti di indagine.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
-    aboutBody: 'Un laboratorio personale per ricerca, sistemi digitali e progetti culturali. I progetti condividono un metodo, non necessariamente un tema.',
+    aboutBody: 'Un laboratorio personale per esplorare la conoscenza. Il soggetto può cambiare completamente; metodo, standard, evidenza e responsabilità restano costanti.',
     contact: 'CONTACT',
-    methodLines: ['Research before decoration.', 'Systems before pages.', 'Relations before categories.', 'Experiments before conclusions.'],
+    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
     open: 'OPEN PROJECT',
     pending: 'LINK SOON',
   },
   de: {
     kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'ARCHIVE · SYSTEME · KULTUR · EXPERIMENTE',
-    intro: 'DOTZERO ist ein Index unabhängiger Projekte: Archive, digitale Systeme, Kulturforschung und interaktive Experimente.',
+    title: 'WISSEN · SYSTEME · FRAGEN · INSTRUMENTE',
+    intro: 'DOTZERO ist ein persönliches Research Lab for Knowledge Exploration: Atlanten, Studies und Tools, die aus Neugier entstehen und als Instrumente der Untersuchung gebaut werden.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
-    aboutBody: 'Ein persönliches Labor für Forschung, digitale Systeme und Kulturprojekte. Die Projekte teilen eine Methode, nicht zwingend ein Thema.',
+    aboutBody: 'Ein persönliches Labor zur Erkundung von Wissen. Das Thema kann vollständig wechseln; Methode, Standards, Evidenz und Verantwortung bleiben konstant.',
     contact: 'CONTACT',
-    methodLines: ['Research before decoration.', 'Systems before pages.', 'Relations before categories.', 'Experiments before conclusions.'],
+    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
     open: 'OPEN PROJECT',
     pending: 'LINK SOON',
   },
   en: {
     kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'ARCHIVES · SYSTEMS · CULTURE · EXPERIMENTS',
-    intro: 'DOTZERO is an index of independent projects: archives, digital systems, cultural research, and interactive experiments.',
+    title: 'KNOWLEDGE · SYSTEMS · QUESTIONS · INSTRUMENTS',
+    intro: 'DOTZERO is a personal research lab for knowledge exploration: Atlases, Studies and Tools that begin with curiosity and become instruments for inquiry.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
-    aboutBody: 'A personal laboratory for research, digital systems, and cultural projects. The projects share a method, not necessarily a subject.',
+    aboutBody: 'A personal lab for exploring knowledge. The subject may change completely; the method, standards, evidence and responsibility remain constant.',
     contact: 'CONTACT',
-    methodLines: ['Research before decoration.', 'Systems before pages.', 'Relations before categories.', 'Experiments before conclusions.'],
+    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
     open: 'OPEN PROJECT',
     pending: 'LINK SOON',
   },
@@ -198,7 +198,7 @@ export const DotzeroIndex: React.FC = () => {
           <div className="lg:col-span-8">
             <p className="font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">DOTZERO / OPEN CHANNEL</p>
             <p className="dz-body mt-6 max-w-xl text-sm">
-              Independent research, digital experiments, archives and cultural collaborations.
+              Personal research · Atlas · Study · Tool · Instruments for inquiry.
             </p>
           </div>
         </div>
