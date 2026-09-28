@@ -4,12 +4,13 @@ import {
   GlyphId,
   bowlOuterRy,
   getECrossbarY,
-  getEArcPath,
+  getOpenBowlPath,
   getGlyphBounds,
   getStemBottom,
   getStemTop,
   getStemX,
   isStemGlyph,
+  isOpenBowlGlyph,
 } from './model';
 
 interface BuiltGlyphProps {
@@ -38,24 +39,26 @@ export const BuiltGlyph: React.FC<BuiltGlyphProps> = ({
       aria-label={title ?? `Custom ${glyph}`}
       preserveAspectRatio="xMidYMid meet"
     >
-      {glyph === 'e' ? (
+      {isOpenBowlGlyph(glyph) ? (
         <>
           <path
-            d={getEArcPath(design)}
+            d={getOpenBowlPath(design)}
             fill="none"
             stroke="currentColor"
             strokeWidth={design.stroke}
             vectorEffect="non-scaling-stroke"
           />
-          <line
-            x1={design.bowl.cx - design.bowl.rx + design.crossbar.inset}
-            x2={design.bowl.cx + design.bowl.rx}
-            y1={crossbarY}
-            y2={crossbarY}
-            stroke="currentColor"
-            strokeWidth={design.stroke}
-            vectorEffect="non-scaling-stroke"
-          />
+          {glyph === 'e' && (
+            <line
+              x1={design.bowl.cx - design.bowl.rx + design.crossbar.inset}
+              x2={design.bowl.cx + design.bowl.rx}
+              y1={crossbarY}
+              y2={crossbarY}
+              stroke="currentColor"
+              strokeWidth={design.stroke}
+              vectorEffect="non-scaling-stroke"
+            />
+          )}
         </>
       ) : (
         <ellipse

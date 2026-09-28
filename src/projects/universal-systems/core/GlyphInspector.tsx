@@ -7,6 +7,7 @@ import {
   bowlOuterRy,
   isDescenderGlyph,
   isStemGlyph,
+  isOpenBowlGlyph,
 } from './model';
 
 interface GlyphInspectorProps {
@@ -82,24 +83,6 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
           </label>
 
           <label className="tc-semantic-control">
-            <span>APERTURE</span>
-            <input
-              type="range"
-              min="6"
-              max="30"
-              step="1"
-              value={design.crossbar.aperture}
-              onChange={(e) =>
-                onChange({
-                  ...design,
-                  crossbar: { ...design.crossbar, aperture: Number(e.target.value) },
-                })
-              }
-            />
-            <strong>{design.crossbar.aperture}</strong>
-          </label>
-
-          <label className="tc-semantic-control">
             <span>INSET</span>
             <input
               type="range"
@@ -172,6 +155,26 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
             />
             <strong>{Math.round(design.bowl.ry * 2)}</strong>
           </label>
+
+          {isOpenBowlGlyph(glyph) && (
+            <label className="tc-semantic-control">
+              <span>APERTURE</span>
+              <input
+                type="range"
+                min="6"
+                max="30"
+                step="1"
+                value={design.crossbar.aperture}
+                onChange={(e) =>
+                  onChange({
+                    ...design,
+                    crossbar: { ...design.crossbar, aperture: Number(e.target.value) },
+                  })
+                }
+              />
+              <strong>{design.crossbar.aperture}</strong>
+            </label>
+          )}
 
           <button className="tc-semantic-action is-accent" onClick={alignBowl}>
             FIT X-HEIGHT ↔ BASELINE

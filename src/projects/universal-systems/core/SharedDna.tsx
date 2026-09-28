@@ -10,7 +10,7 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
     <div className="tc-dna-head">
       <div>
         <div className="tc-label">SHARED DNA</div>
-        <div className="tc-dna-title">b ↔ d ↔ e ↔ o ↔ p ↔ q</div>
+        <div className="tc-dna-title">b ↔ c ↔ d ↔ e ↔ o ↔ p ↔ q</div>
       </div>
       <div className="tc-dna-status">LIVE FAMILY</div>
     </div>
@@ -18,7 +18,7 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
     <div className="tc-dna-grid">
       <div>
         <span>BOWL</span>
-        <strong>06 GLYPHS</strong>
+        <strong>07 GLYPHS</strong>
         <small>{Math.round(design.bowl.rx * 2)} × {Math.round(design.bowl.ry * 2)}</small>
       </div>
       <div>
@@ -37,24 +37,29 @@ export const SharedDna: React.FC<SharedDnaProps> = ({ design }) => (
         <small>b/p ← bowl → d/q</small>
       </div>
       <div>
+        <span>OPEN BOWL</span>
+        <strong>c ↔ e</strong>
+        <small>APERTURE {design.crossbar.aperture}</small>
+      </div>
+      <div>
+        <span>CROSSBAR</span>
+        <strong>e SPECIFIC</strong>
+        <small>BAR {design.crossbar.yOffset} / INSET {design.crossbar.inset}</small>
+      </div>
+      <div>
         <span>VERTICAL SYSTEM</span>
         <strong>2 AXES</strong>
         <small>ASC→BASE / XH→DESC {Math.round(design.descender)}</small>
       </div>
-      <div>
-        <span>APERTURE</span>
-        <strong>e SPECIFIC</strong>
-        <small>GAP {design.crossbar.aperture} / BAR {design.crossbar.yOffset}</small>
-      </div>
       <div className="is-specific">
         <span>SPACING</span>
         <strong>PER GLYPH</strong>
-        <small>06 METRIC SETS</small>
+        <small>07 METRIC SETS</small>
       </div>
       <div className="is-specific">
         <span>KERNING</span>
-        <strong>36 PAIRS</strong>
-        <small>6 × 6 BUILT GLYPHS</small>
+        <strong>49 PAIRS</strong>
+        <small>7 × 7 BUILT GLYPHS</small>
       </div>
     </div>
   </section>

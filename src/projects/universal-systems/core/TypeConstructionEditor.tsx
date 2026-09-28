@@ -24,7 +24,7 @@ export const TypeConstructionEditor: React.FC = () => {
   const [mode, setMode] = useState<EditorMode>('design');
 
   const handleToolChange = (next: Tool) => {
-    if ((glyph === 'o' || glyph === 'e') && next === 'stem') return;
+    if ((glyph === 'o' || glyph === 'c' || glyph === 'e') && next === 'stem') return;
     if (glyph !== 'e' && next === 'crossbar') return;
     setTool(next);
     if (next === 'bowl') setSelected('bowl');
@@ -34,7 +34,7 @@ export const TypeConstructionEditor: React.FC = () => {
 
   const handleGlyphChange = (next: GlyphId) => {
     setGlyph(next);
-    if (next === 'o') {
+    if (next === 'o' || next === 'c') {
       setSelected('bowl');
       setTool('bowl');
     } else if (next === 'e') {
@@ -58,13 +58,13 @@ export const TypeConstructionEditor: React.FC = () => {
     <div className="tc-editor">
       <div className="tc-editor-topbar">
         <div>
-          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 09</div>
+          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 10</div>
           <div className="tc-editor-title">TYPE SYSTEM</div>
         </div>
 
         <div className="tc-editor-actions-top">
           <div className="tc-glyph-switch" aria-label="Select glyph">
-            {(['b', 'd', 'e', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
+            {(['b', 'c', 'd', 'e', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
               <button
                 key={id}
                 type="button"

@@ -22,7 +22,7 @@ export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, on
         <button
           key={id}
           disabled={
-            (id === 'stem' && (glyph === 'o' || glyph === 'e')) ||
+            (id === 'stem' && (glyph === 'o' || glyph === 'c' || glyph === 'e')) ||
             (id === 'crossbar' && glyph !== 'e')
           }
           className={`tc-tool ${tool === id ? 'is-active' : ''}`}

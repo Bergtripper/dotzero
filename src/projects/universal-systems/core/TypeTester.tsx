@@ -9,10 +9,10 @@ interface TypeTesterProps {
   onChange: (design: GlyphDesign) => void;
 }
 
-const BUILT = new Set<GlyphId>(['b', 'd', 'e', 'o', 'p', 'q']);
+const BUILT = new Set<GlyphId>(['b', 'c', 'd', 'e', 'o', 'p', 'q']);
 
 export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
-  const [text, setText] = useState('bed dope qop');
+  const [text, setText] = useState('code bed cope');
   const [size, setSize] = useState(88);
   const [tracking, setTracking] = useState(0);
   const [spacingGlyph, setSpacingGlyph] = useState<GlyphId>('d');
@@ -39,7 +39,7 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
           <div className="tc-label">TYPE TEST</div>
           <div className="tc-test-title">USE THE SYSTEM</div>
         </div>
-        <div className="tc-test-status">BUILT GLYPHS / b d e o p q</div>
+        <div className="tc-test-status">BUILT GLYPHS / b c d e o p q</div>
       </div>
 
       <div className="tc-test-controls">
@@ -153,7 +153,7 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
         </div>
         <div>
           <span>COVERAGE</span>
-          <strong>06 GLYPHS</strong>
+          <strong>07 GLYPHS</strong>
         </div>
       </div>
     </section>

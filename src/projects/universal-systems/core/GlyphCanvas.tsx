@@ -15,7 +15,8 @@ import {
   isLeftStemGlyph,
   isStemGlyph,
   getECrossbarY,
-  getEArcPath,
+  getOpenBowlPath,
+  isOpenBowlGlyph,
 } from './model';
 
 interface GlyphCanvasProps {
@@ -376,10 +377,10 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           className={`tc-part ${selected === 'bowl' ? 'is-selected' : ''}`}
           onPointerDown={(event) => beginDrag('bowl', 'bowl', event)}
         >
-          {glyph === 'e' ? (
+          {isOpenBowlGlyph(glyph) ? (
             <>
               <path
-                d={getEArcPath(design)}
+                d={getOpenBowlPath(design)}
                 fill="none"
                 stroke="transparent"
                 strokeWidth={Math.max(design.stroke + 10, 18)}
@@ -387,7 +388,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
                 className="tc-hit-stroke"
               />
               <path
-                d={getEArcPath(design)}
+                d={getOpenBowlPath(design)}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={design.stroke}
