@@ -4,10 +4,10 @@ import { useLanguage } from '../context/LanguageContext';
 
 const COPY = {
   it: {
-    kicker: 'DOTZERO / SYSTEM / ATLAS ENGINE',
+    kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'UN FRAMEWORK PER CONOSCENZA CONNESSA',
     intro:
-      'L’Atlas Engine è il framework comune con cui DOTZERO organizza materiali culturali, relazioni, fonti e dimensioni spaziali e temporali. Non definisce il contenuto di un Atlas: definisce il modo in cui quel contenuto può essere strutturato, verificato ed esplorato.',
+      'L’Atlas Engine è un framework condiviso per i progetti DOTZERO che beneficiano di conoscenza relazionale strutturata: entità, relazioni, fonti e dimensioni spaziali e temporali. Non definisce il contenuto di un Atlas: definisce il modo in cui quel contenuto può essere strutturato, verificato ed esplorato.',
     back: 'BACK TO INDEX',
     why: 'WHY',
     whyTitle: 'Da pagine isolate a sistemi esplorabili.',
@@ -51,13 +51,13 @@ const COPY = {
     projectSpecificBody:
       'Le specifiche operative — tipi di entità, relation vocabulary, media model, regole delle viste e convenzioni editoriali — saranno documentate all’interno di ciascun Atlas. Questa pagina resta intenzionalmente generale: descrive il framework condiviso.',
     close: 'DOTZERO ATLAS ENGINE',
-    closeTitle: 'Not a database of isolated entries. A framework for connected knowledge.',
+    closeTitle: 'A shared framework for relational inquiry.',
   },
   de: {
-    kicker: 'DOTZERO / SYSTEM / ATLAS ENGINE',
+    kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'EIN FRAMEWORK FÜR VERNETZTES WISSEN',
     intro:
-      'Die Atlas Engine ist das gemeinsame Framework, mit dem DOTZERO kulturelles Material, Beziehungen, Quellen sowie räumliche und zeitliche Dimensionen strukturiert. Sie definiert nicht den Inhalt eines Atlas, sondern wie dieser Inhalt organisiert, überprüft und exploriert werden kann.',
+      'Die Atlas Engine ist ein gemeinsames Framework für DOTZERO-Projekte, die von strukturiertem relationalem Wissen profitieren: Entitäten, Beziehungen, Quellen sowie räumliche und zeitliche Dimensionen. Sie definiert nicht den Inhalt eines Atlas, sondern wie dieser Inhalt organisiert, überprüft und exploriert werden kann.',
     back: 'BACK TO INDEX',
     why: 'WHY',
     whyTitle: 'Von isolierten Seiten zu explorierbaren Systemen.',
@@ -104,10 +104,10 @@ const COPY = {
     closeTitle: 'Not a database of isolated entries. A framework for connected knowledge.',
   },
   en: {
-    kicker: 'DOTZERO / SYSTEM / ATLAS ENGINE',
+    kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'A FRAMEWORK FOR CONNECTED KNOWLEDGE',
     intro:
-      'The Atlas Engine is the shared framework DOTZERO uses to structure cultural material, relations, sources, and spatial and temporal dimensions. It does not define the content of an Atlas; it defines how that content can be organised, verified, and explored.',
+      'The Atlas Engine is a shared framework for DOTZERO projects that benefit from structured relational knowledge: entities, relations, sources, and spatial and temporal dimensions. It does not define the content of an Atlas; it defines how that content can be organised, verified, and explored.',
     back: 'BACK TO INDEX',
     why: 'WHY',
     whyTitle: 'From isolated pages to explorable systems.',
