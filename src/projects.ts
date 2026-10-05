@@ -92,6 +92,25 @@ export const DOTZERO_PROJECTS: DotzeroProject[] = [
     },
     destination: { kind: 'internal', hash: '#universal-systems' },
   },
+  {
+    id: 'feedback',
+    number: '06',
+    order: 6,
+    title: 'Feedback',
+    slug: 'feedback',
+    period: '2026—',
+    year: '2026',
+    status: 'prototype',
+    type: ['research', 'observatory', 'interactive', 'ai-r-and-d'],
+    featured: true,
+    updatedAt: '2026-10',
+    summary: {
+      it: 'Osservatorio pubblico su capability AI, automazione della ricerca e progresso ricorsivo.',
+      de: 'Öffentliches Observatorium zu KI-Fähigkeiten, Forschungsautomatisierung und rekursivem Fortschritt.',
+      en: 'A public observatory of AI capability, research automation, and recursive progress.',
+    },
+    destination: { kind: 'internal', hash: '#feedback' },
+  },
 ];
 
 export const getDotzeroProjects = (): DotzeroProject[] =>
