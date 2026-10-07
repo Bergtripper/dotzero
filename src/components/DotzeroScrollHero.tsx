@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph } from './GraphicSyntax';
+import { Language } from '../types';
 
 type DotzeroScrollHeroProps = {
   label: string;
@@ -8,6 +9,9 @@ type DotzeroScrollHeroProps = {
   sub: string;
   intro: string;
   projectCount: number;
+  activeLabel: string;
+  projectsLabel: string;
+  language: Language;
 };
 
 type Glyph = {
@@ -78,6 +82,9 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
   sub,
   intro,
   projectCount,
+  activeLabel,
+  projectsLabel,
+  language,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -140,7 +147,12 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
   const meaning = smoothstep(0.58, 0.9, progress);
   const zeroShift = smoothstep(0.42, 0.62, progress);
 
-  const stateLabel = progress < 0.34 ? '01 / OPEN' : progress < 0.68 ? '02 / ALIGN' : '03 / OPEN DIRECTION';
+  const stateLabels = {
+    it: ['01 / APERTO', '02 / ALLINEA', '03 / OPEN DIRECTION'],
+    de: ['01 / OFFEN', '02 / AUSRICHTEN', '03 / OPEN DIRECTION'],
+    en: ['01 / OPEN', '02 / ALIGN', '03 / OPEN DIRECTION'],
+  } as const;
+  const stateLabel = progress < 0.34 ? stateLabels[language][0] : progress < 0.68 ? stateLabels[language][1] : stateLabels[language][2];
 
   const renderedGlyphs = useMemo(() => GLYPHS, []);
 
@@ -243,8 +255,8 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
               <p className="dz-body mt-3 max-w-2xl">{intro}</p>
             </div>
             <div className="flex items-center gap-8 font-mono text-[8px] uppercase tracking-[0.16em] dz-text-muted lg:col-span-5 lg:justify-end">
-              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />Active</span>
-              <span>{String(projectCount).padStart(2, '0')} projects</span>
+              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />{activeLabel}</span>
+              <span>{String(projectCount).padStart(2, '0')} {projectsLabel}</span>
             </div>
           </div>
         </div>
