@@ -485,7 +485,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 ? 'border-[var(--accent-tertiary)] bg-[var(--accent-tertiary)]/10 text-[var(--accent-tertiary)] shadow-[0_0_12px_rgba(247,184,1,0.3)]'
                 : 'border-white/20 bg-[var(--surface-raised)]/5 text-zinc-400 hover:text-[var(--on-accent)]'
             }`}
-            title="Audio-reactive ambient synth"
+            title={t.audioAria[language]}
           >
             {audioActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
             <span className="hidden sm:inline">
@@ -587,12 +587,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               </div>
 
               <div className="absolute top-3 right-3 pointer-events-none font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
-                <span>FPS: 60 · PARTICELLE: {particlesRef.current.length}</span>
+                <span>FPS: 60 · {t.particlesStat[language]}: {particlesRef.current.length}</span>
               </div>
 
               {/* Shockwave hint */}
               <div className="absolute bottom-3 left-3 pointer-events-none font-mono text-[10px] text-zinc-500 bg-black/60 px-2 py-1 border border-white/10">
-                <span>CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO GRAVITAZIONALE</span>
+                <span>{t.fieldInstruction[language]}</span>
               </div>              {/* Audio visualizer bars on canvas HUD */}
               {audioActive && (
                 <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[var(--accent-tertiary)]/30">
@@ -706,7 +706,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[var(--void-text)] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
-                <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
+                <span className="text-[10px] text-zinc-400">{t.paramsLabel[language]}</span>
               </div>
 
               {/* Particle Count */}
