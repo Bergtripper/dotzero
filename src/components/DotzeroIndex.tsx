@@ -7,9 +7,11 @@ import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph } from './GraphicSyntax
 
 const COPY = {
   it: {
-    kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'KNOWLEDGE · SYSTEMS · QUESTIONS · INSTRUMENTS',
-    intro: 'DOTZERO è un personal research lab for knowledge exploration: Atlas, Studies e Tools nati dalla curiosità e costruiti come strumenti di indagine.',
+    heroLabel: 'PERSONAL RESEARCH LAB',
+    heroMeta: 'NODE 00 / INDEX',
+    heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
+    heroSub: 'Esplorare la conoscenza attraverso atlanti, studi e strumenti.',
+    intro: 'Atlas, Studies e Tools nati dalla curiosità e costruiti come strumenti di indagine.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
@@ -20,9 +22,11 @@ const COPY = {
     pending: 'LINK SOON',
   },
   de: {
-    kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'WISSEN · SYSTEME · FRAGEN · INSTRUMENTE',
-    intro: 'DOTZERO ist ein persönliches Research Lab for Knowledge Exploration: Atlanten, Studies und Tools, die aus Neugier entstehen und als Instrumente der Untersuchung gebaut werden.',
+    heroLabel: 'PERSONAL RESEARCH LAB',
+    heroMeta: 'NODE 00 / INDEX',
+    heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
+    heroSub: 'Wissen durch Atlanten, Studien und Instrumente erkunden.',
+    intro: 'Atlanten, Studies und Tools, die aus Neugier entstehen und als Instrumente der Untersuchung gebaut werden.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
@@ -33,9 +37,11 @@ const COPY = {
     pending: 'LINK SOON',
   },
   en: {
-    kicker: 'NODE 00 / INDEX / REV 2026.09',
-    title: 'KNOWLEDGE · SYSTEMS · QUESTIONS · INSTRUMENTS',
-    intro: 'DOTZERO is a personal research lab for knowledge exploration: Atlases, Studies and Tools that begin with curiosity and become instruments for inquiry.',
+    heroLabel: 'PERSONAL RESEARCH LAB',
+    heroMeta: 'NODE 00 / INDEX',
+    heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
+    heroSub: 'Exploring knowledge through atlases, studies and instruments.',
+    intro: 'Atlases, Studies and Tools that begin with curiosity and become instruments for inquiry.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
@@ -57,44 +63,39 @@ export const DotzeroIndex: React.FC = () => {
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
           <div>
-            <div className="mb-7 dz-text-muted"><SyntaxLabel kind="dot">{t.kicker}</SyntaxLabel></div>
-            <DotzeroTypographicSpecimen />
-            <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
-              {t.title}
-            </p>
+            <div className="mb-7 flex items-center justify-between gap-6 dz-text-muted">
+              <SyntaxLabel kind="dot">{t.heroLabel}</SyntaxLabel>
+              <span className="hidden font-mono text-[8px] uppercase tracking-[0.16em] sm:block">{t.heroMeta}</span>
+            </div>
 
-            <div className="mt-8 grid gap-px border dz-rule bg-[var(--line-soft)] sm:grid-cols-3">
-              <div className="bg-[var(--bg)] p-4">
-                <div className="flex items-center gap-3"><DotMarker size="md" /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Knowledge</span></div>
-                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Origin · Question · Node · Evidence</p>
+            <DotzeroTypographicSpecimen />
+
+            <div className="mt-10 grid gap-10 border-t dz-rule pt-8 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-8">
+                <h1 className="dz-h2 max-w-5xl text-[clamp(2.8rem,6vw,6.4rem)]">
+                  {t.heroStatement}
+                </h1>
               </div>
-              <div className="bg-[var(--bg)] p-4">
-                <div className="flex items-center gap-3"><FieldGlyph size={15} /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Field</span></div>
-                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Container · System · Research space</p>
-              </div>
-              <div className="bg-[var(--bg)] p-4">
-                <div className="flex items-center gap-3"><SystemGlyph size={24} /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Method</span></div>
-                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Construct · Open · Move · Explore</p>
+              <div className="lg:col-span-4">
+                <p className="dz-body-strong max-w-md">{t.heroSub}</p>
+                <div className="dz-hero-syntax mt-8" aria-label="Dot, zero, open direction">
+                  <span className="dz-hero-syntax__node dz-hero-syntax__node--dot"><DotMarker size="lg" /></span>
+                  <span className="dz-hero-syntax__track dz-hero-syntax__track--one" aria-hidden="true" />
+                  <span className="dz-hero-syntax__node dz-hero-syntax__node--field"><FieldGlyph size={28} /></span>
+                  <span className="dz-hero-syntax__track dz-hero-syntax__track--two" aria-hidden="true" />
+                  <span className="dz-hero-syntax__node dz-hero-syntax__node--system"><SystemGlyph size={46} /></span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
-            <p className="dz-body-strong max-w-2xl sm:text-xl lg:col-span-7">
+          <div className="mt-12 grid gap-8 border-t dz-border pt-7 lg:grid-cols-12 lg:items-start">
+            <p className="dz-body max-w-2xl lg:col-span-7">
               {t.intro}
             </p>
-            <div className="grid grid-cols-2 gap-y-5 font-mono text-[9px] uppercase tracking-[0.16em] lg:col-span-5">
-              {[
-                ['TYPE', 'INDEX'],
-                ['STATUS', 'ACTIVE'],
-                ['PROJECTS', String(projects.length).padStart(2, '0')],
-                ['REV', '2026.09'],
-              ].map(([label, value]) => (
-                <div key={label}>
-                  <div className="dz-text-muted">{label}</div>
-                  <div className="mt-1 text-[var(--text)]">{value}</div>
-                </div>
-              ))}
+            <div className="flex items-center gap-8 font-mono text-[8px] uppercase tracking-[0.16em] dz-text-muted lg:col-span-5 lg:justify-end">
+              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />Active</span>
+              <span>{String(projects.length).padStart(2, '0')} projects</span>
             </div>
           </div>
         </div>
