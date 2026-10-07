@@ -1,8 +1,8 @@
 import React from 'react';
 import { getDotzeroProjects } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
-import { DotzeroTypographicSpecimen } from './DotzeroTypographicSpecimen';
 import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph } from './GraphicSyntax';
+import { DotzeroScrollHero } from './DotzeroScrollHero';
 
 
 const COPY = {
@@ -60,46 +60,14 @@ export const DotzeroIndex: React.FC = () => {
 
   return (
     <main id="index" className="pt-20">
-      <section className="border-b dz-border">
-        <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
-          <div>
-            <div className="mb-7 flex items-center justify-between gap-6 dz-text-muted">
-              <SyntaxLabel kind="dot">{t.heroLabel}</SyntaxLabel>
-              <span className="hidden font-mono text-[8px] uppercase tracking-[0.16em] sm:block">{t.heroMeta}</span>
-            </div>
-
-            <DotzeroTypographicSpecimen />
-
-            <div className="mt-10 grid gap-10 border-t dz-rule pt-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
-                <h1 className="dz-h2 max-w-5xl text-[clamp(2.8rem,6vw,6.4rem)]">
-                  {t.heroStatement}
-                </h1>
-              </div>
-              <div className="lg:col-span-4">
-                <p className="dz-body-strong max-w-md">{t.heroSub}</p>
-                <div className="dz-hero-syntax mt-8" aria-label="Dot, zero, open direction">
-                  <span className="dz-hero-syntax__node dz-hero-syntax__node--dot"><DotMarker size="lg" /></span>
-                  <span className="dz-hero-syntax__track dz-hero-syntax__track--one" aria-hidden="true" />
-                  <span className="dz-hero-syntax__node dz-hero-syntax__node--field"><FieldGlyph size={28} /></span>
-                  <span className="dz-hero-syntax__track dz-hero-syntax__track--two" aria-hidden="true" />
-                  <span className="dz-hero-syntax__node dz-hero-syntax__node--system"><SystemGlyph size={46} /></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 grid gap-8 border-t dz-border pt-7 lg:grid-cols-12 lg:items-start">
-            <p className="dz-body max-w-2xl lg:col-span-7">
-              {t.intro}
-            </p>
-            <div className="flex items-center gap-8 font-mono text-[8px] uppercase tracking-[0.16em] dz-text-muted lg:col-span-5 lg:justify-end">
-              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />Active</span>
-              <span>{String(projects.length).padStart(2, '0')} projects</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DotzeroScrollHero
+        label={t.heroLabel}
+        meta={t.heroMeta}
+        statement={t.heroStatement}
+        sub={t.heroSub}
+        intro={t.intro}
+        projectCount={projects.length}
+      />
 
       <section id="projects" className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
