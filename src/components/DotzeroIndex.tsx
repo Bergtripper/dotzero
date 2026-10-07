@@ -7,49 +7,64 @@ import { DotzeroScrollHero } from './DotzeroScrollHero';
 
 const COPY = {
   it: {
-    heroLabel: 'PERSONAL RESEARCH LAB',
-    heroMeta: 'NODE 00 / INDEX',
+    heroLabel: 'LABORATORIO PERSONALE DI RICERCA',
+    heroMeta: 'NODO 00 / INDICE',
     heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
     heroSub: 'Esplorare la conoscenza attraverso atlanti, studi e strumenti.',
-    intro: 'Atlas, Studies e Tools nati dalla curiosità e costruiti come strumenti di indagine.',
-    projects: 'PROJECT INDEX',
-    method: 'METHOD',
-    about: 'ABOUT',
+    intro: 'Atlanti, studi e strumenti nati dalla curiosità e costruiti per indagare.',
+    projects: 'INDICE PROGETTI',
+    method: 'METODO',
+    about: 'CHI SONO',
     aboutBody: 'Un laboratorio personale per esplorare la conoscenza. Il soggetto può cambiare completamente; metodo, standard, evidenza e responsabilità restano costanti.',
-    contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
-    open: 'OPEN PROJECT',
-    pending: 'LINK SOON',
+    aboutMeta: 'Ricerca · esperimenti digitali · progetti culturali',
+    contact: 'CONTATTO',
+    contactTitle: 'CANALE APERTO',
+    contactBody: 'Ricerca personale · Atlante · Studio · Strumento · strumenti per l’indagine.',
+    methodLines: ['La domanda viene prima.', 'Curiosità per iniziare, rigore per pubblicare.', 'Ogni affermazione mostra il proprio fondamento.', 'Ogni strumento dichiara i propri limiti.'],
+    open: 'APRI PROGETTO',
+    pending: 'LINK IN ARRIVO',
+    active: 'attivo',
+    projectsCount: 'progetti',
   },
   de: {
-    heroLabel: 'PERSONAL RESEARCH LAB',
-    heroMeta: 'NODE 00 / INDEX',
+    heroLabel: 'PERSÖNLICHES FORSCHUNGSLABOR',
+    heroMeta: 'KNOTEN 00 / INDEX',
     heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
     heroSub: 'Wissen durch Atlanten, Studien und Instrumente erkunden.',
-    intro: 'Atlanten, Studies und Tools, die aus Neugier entstehen und als Instrumente der Untersuchung gebaut werden.',
-    projects: 'PROJECT INDEX',
-    method: 'METHOD',
-    about: 'ABOUT',
+    intro: 'Atlanten, Studien und Werkzeuge, die aus Neugier entstehen und der Untersuchung dienen.',
+    projects: 'PROJEKTINDEX',
+    method: 'METHODE',
+    about: 'ÜBER',
     aboutBody: 'Ein persönliches Labor zur Erkundung von Wissen. Das Thema kann vollständig wechseln; Methode, Standards, Evidenz und Verantwortung bleiben konstant.',
-    contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
-    open: 'OPEN PROJECT',
-    pending: 'LINK SOON',
+    aboutMeta: 'Forschung · digitale Experimente · Kulturprojekte',
+    contact: 'KONTAKT',
+    contactTitle: 'OFFENER KANAL',
+    contactBody: 'Persönliche Forschung · Atlas · Studie · Werkzeug · Instrumente für Untersuchung.',
+    methodLines: ['Die Frage kommt zuerst.', 'Neugier zum Beginnen, Sorgfalt zum Veröffentlichen.', 'Jede Aussage zeigt ihre Grundlage.', 'Jedes Instrument benennt seine Grenzen.'],
+    open: 'PROJEKT ÖFFNEN',
+    pending: 'LINK FOLGT',
+    active: 'aktiv',
+    projectsCount: 'Projekte',
   },
   en: {
     heroLabel: 'PERSONAL RESEARCH LAB',
     heroMeta: 'NODE 00 / INDEX',
     heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
     heroSub: 'Exploring knowledge through atlases, studies and instruments.',
-    intro: 'Atlases, Studies and Tools that begin with curiosity and become instruments for inquiry.',
+    intro: 'Atlases, studies and tools that begin with curiosity and become instruments for inquiry.',
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
-    aboutBody: 'A personal lab for exploring knowledge. The subject may change completely; the method, standards, evidence and responsibility remain constant.',
+    aboutBody: 'A personal lab for exploring knowledge. The subject may change completely; method, standards, evidence and responsibility remain constant.',
+    aboutMeta: 'Research · digital experiments · cultural projects',
     contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
+    contactTitle: 'OPEN CHANNEL',
+    contactBody: 'Personal research · Atlas · Study · Tool · instruments for inquiry.',
+    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Every instrument declares its limits.'],
     open: 'OPEN PROJECT',
     pending: 'LINK SOON',
+    active: 'active',
+    projectsCount: 'projects',
   },
 };
 
@@ -57,6 +72,25 @@ export const DotzeroIndex: React.FC = () => {
   const { language } = useLanguage();
   const t = COPY[language];
   const projects = getDotzeroProjects();
+
+  const typeLabels: Record<string, Record<typeof language, string>> = {
+    archive: { it: 'archivio', de: 'Archiv', en: 'archive' },
+    research: { it: 'ricerca', de: 'Forschung', en: 'research' },
+    interactive: { it: 'interattivo', de: 'interaktiv', en: 'interactive' },
+    'visual-culture': { it: 'cultura visiva', de: 'visuelle Kultur', en: 'visual culture' },
+    experiment: { it: 'esperimento', de: 'Experiment', en: 'experiment' },
+    generative: { it: 'generativo', de: 'generativ', en: 'generative' },
+    'visual-systems': { it: 'sistemi visivi', de: 'visuelle Systeme', en: 'visual systems' },
+    typography: { it: 'tipografia', de: 'Typografie', en: 'typography' },
+    geometry: { it: 'geometria', de: 'Geometrie', en: 'geometry' },
+    morphology: { it: 'morfologia', de: 'Morphologie', en: 'morphology' },
+  };
+
+  const statusLabels: Record<string, Record<typeof language, string>> = {
+    active: { it: 'attivo', de: 'aktiv', en: 'active' },
+    prototype: { it: 'prototipo', de: 'Prototyp', en: 'prototype' },
+    planned: { it: 'pianificato', de: 'geplant', en: 'planned' },
+  };
 
   return (
     <main id="index" className="pt-20">
@@ -110,7 +144,7 @@ export const DotzeroIndex: React.FC = () => {
                       <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
                         {project.type.map((type) => (
                           <span key={type} className="font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
-                            {type}
+{typeLabels[type]?.[language] ?? type}
                           </span>
                         ))}
                       </div>
@@ -119,7 +153,7 @@ export const DotzeroIndex: React.FC = () => {
                     <div className="flex items-start justify-between md:col-span-3 md:block md:text-right">
                       <div className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">
                         <DotMarker size="xs" />
-                        {project.status}
+{statusLabels[project.status]?.[language] ?? project.status}
                       </div>
 
                       {canOpen && projectHref ? (
@@ -170,7 +204,7 @@ export const DotzeroIndex: React.FC = () => {
               {t.aboutBody}
             </p>
             <p className="mt-10 border-t dz-border pt-4 font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
-              Alberto Comini — Research · Digital experiments · Cultural projects
+              Alberto Comini — {t.aboutMeta}
             </p>
           </div>
         </div>
@@ -180,9 +214,9 @@ export const DotzeroIndex: React.FC = () => {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
           <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3"><SyntaxLabel kind="system">{t.contact}</SyntaxLabel></h2>
           <div className="lg:col-span-8">
-            <p className="flex items-center gap-4 font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl"><SystemGlyph size={48} />OPEN CHANNEL</p>
+            <p className="flex items-center gap-4 font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl"><SystemGlyph size={48} />{t.contactTitle}</p>
             <p className="dz-body mt-6 max-w-xl text-sm">
-              Personal research · Atlas · Study · Tool · Instruments for inquiry.
+              {t.contactBody}
             </p>
           </div>
         </div>
