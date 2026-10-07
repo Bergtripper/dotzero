@@ -26,6 +26,9 @@ const COPY = {
     open: 'APRI PROGETTO',
     pending: 'IN ARRIVO',
     active: 'ATTIVO',
+    byline: 'Alberto Comini — Ricerca · Esperimenti digitali · Progetti culturali',
+    openChannel: 'CANALE APERTO',
+    contactBody: 'Ricerca personale · Atlas · Study · Tool · Strumenti per indagare.',
     projectsCount: 'PROGETTI',
     status: { active: 'attivo', prototype: 'prototipo', planned: 'pianificato' },
     types: {
@@ -55,6 +58,9 @@ const COPY = {
     open: 'PROJEKT ÖFFNEN',
     pending: 'FOLGT',
     active: 'AKTIV',
+    byline: 'Alberto Comini — Forschung · Digitale Experimente · Kulturprojekte',
+    openChannel: 'OFFENER KANAL',
+    contactBody: 'Persönliche Forschung · Atlas · Study · Tool · Instrumente zum Untersuchen.',
     projectsCount: 'PROJEKTE',
     status: { active: 'aktiv', prototype: 'prototyp', planned: 'geplant' },
     types: {
@@ -84,6 +90,9 @@ const COPY = {
     open: 'OPEN PROJECT',
     pending: 'COMING SOON',
     active: 'ACTIVE',
+    byline: '{t.byline}',
+    openChannel: 'OPEN CHANNEL',
+    contactBody: '{t.contactBody}',
     projectsCount: 'PROJECTS',
     status: { active: 'active', prototype: 'prototype', planned: 'planned' },
     types: {
@@ -222,7 +231,7 @@ export const DotzeroIndex: React.FC = () => {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
           <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3"><SyntaxLabel kind="system">{t.contact}</SyntaxLabel></h2>
           <div className="lg:col-span-8">
-            <p className="flex items-center gap-4 font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl"><SystemGlyph size={48} />OPEN CHANNEL</p>
+            <p className="flex items-center gap-4 font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl"><SystemGlyph size={48} />{t.openChannel}</p>
             <p className="dz-body mt-6 max-w-xl text-sm">
               Personal research · Atlas · Study · Tool · Instruments for inquiry.
             </p>
