@@ -231,7 +231,7 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label kind="field">IDENTITY / v1.2 CANONICAL SYSTEM</Label>
+          <Label kind="field">IDENTITY / DOT · ZERO · OPEN DIRECTION</Label>
           <div className="mt-8 grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="dz-h2 text-4xl sm:text-6xl">DOT. ZERO. OPEN DIRECTION.</h2>
