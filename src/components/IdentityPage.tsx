@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { DotzeroLogotype } from './DotzeroLogotype';
 import { DotzeroMark } from './DotzeroMark';
-import { DotMarker, FieldGlyph, SystemGlyph, ZeroField } from './GraphicSyntax';
+import { DotMarker, FieldGlyph, SystemGlyph } from './GraphicSyntax';
 
 type CellProps = {
   number: string;
@@ -76,6 +76,8 @@ const COPY = {
     clearBody: 'Mantieni almeno l’altezza della testa circolare libera su ogni lato del segno.',
     clearNote: 'Testo, cornici, bordi immagine e controlli non devono entrare in questo campo.',
     usage: ['Header · logotipo', 'Header · segno', 'Icona app / solo segno', 'Documento / solo logotipo', 'Orientamento / solo segno'],
+    signTitle: 'Segno DOTZERO',
+    headerPreview: 'Indice · Foundation · CD/CI',
     usageNav: ['Ricerca', 'Dialogo', 'Profilo'],
     usageDoc: ['RICERCA', 'ESPLORAZIONE', 'OPEN DIRECTION'],
     usageWayfinding: ['Ricerca', 'Dialogo', 'Open Direction'],
@@ -144,6 +146,8 @@ const COPY = {
     clearBody: 'Rund um das Zeichen mindestens die Höhe des kreisförmigen Kopfes freihalten.',
     clearNote: 'Text, Rahmen, Bildkante und Bedienelemente dürfen dieses Feld nicht betreten.',
     usage: ['Header · Logotype', 'Header · Zeichen', 'App-Icon / nur Zeichen', 'Dokument / nur Logotype', 'Leitsystem / nur Zeichen'],
+    signTitle: 'DOTZERO Zeichen',
+    headerPreview: 'Index · Foundation · CD/CI',
     usageNav: ['Forschung', 'Dialog', 'Profil'],
     usageDoc: ['FORSCHUNG', 'EXPLORATION', 'OPEN DIRECTION'],
     usageWayfinding: ['Forschung', 'Dialog', 'Open Direction'],
@@ -212,6 +216,8 @@ const COPY = {
     clearBody: 'Keep at least the height of the circular head clear around every side of the mark.',
     clearNote: 'No text, frame, image edge or interface control may enter this field.',
     usage: ['Header · logotype', 'Header · sign', 'App icon / sign only', 'Document / logotype only', 'Wayfinding / sign only'],
+    signTitle: 'DOTZERO sign',
+    headerPreview: 'Index · Foundation · CD/CI',
     usageNav: ['Research', 'Dialog', 'About'],
     usageDoc: ['RESEARCH', 'EXPLORATION', 'OPEN DIRECTION'],
     usageWayfinding: ['Research', 'Dialog', 'Open Direction'],
@@ -272,7 +278,7 @@ const MeaningPanel: React.FC<{ t: typeof COPY.en }> = ({ t }) => (
   <div className="grid gap-10 xl:grid-cols-12 xl:items-start">
     <div className="xl:col-span-4">
       <div className="flex min-h-[34rem] items-center justify-center bg-white p-8 text-black sm:p-12">
-        <DotzeroMark size="72%" title="DOTZERO sign" />
+        <DotzeroMark size="72%" title={t.signTitle} />
       </div>
       <div className="mt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">{t.primitives}</div>
     </div>
@@ -329,7 +335,7 @@ const UsageExamples: React.FC<{ t: typeof COPY.en }> = ({ t }) => (
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[0]}</figcaption>
     </figure>
     <figure className="m-0">
-      <div className="flex min-h-36 flex-col justify-between bg-white p-4 text-black"><DotzeroMark size={26} /><div className="font-mono text-[8px] uppercase tracking-[.12em] text-[#777]">Index · Foundation · CD/CI</div></div>
+      <div className="flex min-h-36 flex-col justify-between bg-white p-4 text-black"><DotzeroMark size={26} /><div className="font-mono text-[8px] uppercase tracking-[.12em] text-[#777]">{t.headerPreview}</div></div>
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[1]}</figcaption>
     </figure>
     <figure className="m-0">
