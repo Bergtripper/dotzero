@@ -75,6 +75,72 @@ const ClearSpaceDiagram = () => (
   </div>
 );
 
+const MeaningPanel = () => (
+  <div className="grid gap-10 xl:grid-cols-12 xl:items-start">
+    <div className="xl:col-span-5">
+      <div className="bg-white p-7 text-black sm:p-10">
+        <DotzeroMark size="100%" title="DOTZERO sign — dot, zero and open direction" />
+      </div>
+      <div className="mt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
+        Primary reading / abstract sign — the human figure remains latent, never illustrated
+      </div>
+    </div>
+
+    <div className="xl:col-span-7">
+      <div className="font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">THE SIGN IS AN IDEA BEFORE IT IS AN ICON</div>
+      <h2 className="dz-h2 mt-5 max-w-3xl text-4xl sm:text-6xl">
+        DOT. ZERO. QUESTION. INDIVIDUAL. OPEN SYSTEM.
+      </h2>
+      <p className="dz-body-strong mt-7 max-w-3xl">
+        The mark condenses the name and the method of DOTZERO into one ambiguous geometric construction.
+        Its first reading is not a person: it is <strong className="font-semibold text-[var(--text)]">.</strong> + <strong className="font-semibold text-[var(--text)]">0</strong> + the visual echo of <strong className="font-mono font-semibold text-[var(--text)]">&lt;/&gt;</strong>.
+      </p>
+
+      <div className="mt-10 grid gap-px bg-[var(--line-soft)] p-px sm:grid-cols-3">
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-display text-5xl font-bold text-[var(--accent)]">.</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">DOT / ORIGIN</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            A point, a beginning, a question. The smallest possible unit from which an inquiry can start.
+          </p>
+        </div>
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-display text-5xl font-bold">0</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">ZERO / FIELD</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            Zero is not emptiness but a field: a bounded system, a frame, a place in which knowledge can be constructed.
+          </p>
+        </div>
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-mono text-4xl font-semibold text-[var(--accent)]">&lt;/&gt;</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">CODE / OPEN DIRECTION</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            The diagonal crosses the field and exits it. Its angle recalls code, opening and closing, while the black wedge gives the movement a direction beyond the perimeter.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-10 grid gap-8 border-t dz-rule pt-8 md:grid-cols-2">
+        <div>
+          <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">SECOND READING / THE INDIVIDUAL</div>
+          <p className="mt-4 text-sm leading-6 dz-text-muted">
+            Only after the geometric reading does a human silhouette emerge: the dot may become a head, the zero a body or field, the diagonal an arm or gesture. The figure is intentionally unresolved.
+          </p>
+        </div>
+        <div>
+          <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">CORE PRINCIPLE</div>
+          <p className="mt-4 font-display text-2xl font-medium leading-tight tracking-[-.03em]">
+            The individual does not sit inside a closed system. The line opens it.
+          </p>
+          <p className="mt-4 text-sm leading-6 dz-text-muted">
+            That ambiguity is the identity: dot / zero / code / person / question / opening can coexist without reducing the sign to a single illustration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const UsageExamples = () => (
   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
     <figure className="m-0">
@@ -145,14 +211,14 @@ export const IdentityPage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-center justify-between gap-5 border-b dz-rule pb-5">
             <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">DOTZERO / BRAND IDENTITY GUIDELINES</div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.0</div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.1</div>
           </div>
           <div className="mt-10 grid items-end gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="dz-meta">CD / CI / CANONICAL SYSTEM</div>
               <h1 className="dz-h1 mt-5 text-[clamp(4rem,10vw,9rem)]">IDENTITY.</h1>
               <p className="dz-body-strong mt-7 max-w-2xl">
-                The visual system is built around one canonical SVG mark, IBM Plex typography and a reduced red / black / white palette.
+                The visual system begins with the meaning of the sign: dot, zero, code and open direction. Its applications, typography and rules follow from that idea.
               </p>
             </div>
             <div className="lg:col-span-5">
@@ -166,6 +232,10 @@ export const IdentityPage: React.FC = () => {
 
       <div className="mx-auto max-w-[96rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid grid-cols-1 gap-px bg-[var(--line-soft)] p-px lg:grid-cols-12">
+          <Cell number="00" title="Meaning of the sign" note={'. + 0 + </> / question · individual · opening'} className="lg:col-span-12">
+            <MeaningPanel />
+          </Cell>
+
           <Cell number="01" title="Primary logo" note="Horizontal lockup — official SVG" className="lg:col-span-7">
             <div className="flex min-h-56 items-center justify-center bg-white p-8 text-black sm:min-h-72">
               <DotzeroLogo className="w-full max-w-[720px]" />
@@ -305,7 +375,7 @@ export const IdentityPage: React.FC = () => {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t dz-rule pt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
-          <span>DOTZERO / CD + CI / v1.0</span>
+          <span>DOTZERO / CD + CI / v1.1</span>
           <span>Canonical SVG · IBM Plex Sans · IBM Plex Mono · #F70B0D</span>
         </div>
       </div>
