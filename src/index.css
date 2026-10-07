@@ -10,7 +10,7 @@
     --text-muted: #686868;
     --line: #121212;
     --grid: rgba(18, 18, 18, 0.08);
-    --accent: #DE3831;
+    --accent: #F70B0D;
     --accent-secondary: #1350B0;
     --accent-tertiary: #F7B801;
     --canvas: #FAF8F5;
@@ -557,17 +557,53 @@ html {
 }
 
 
-/* DOTZERO Identity v1 — canonical mark */
-.dz-mark{display:block;overflow:visible;color:var(--accent)}
-.dz-mark__dot,.dz-mark__zero{fill:currentColor}
-.dz-mark__counter{fill:var(--bg)}
-.dz-mark__slash{fill:none;stroke:currentColor;stroke-width:8;stroke-linecap:round}
-.dz-brand-lockup{display:inline-flex;align-items:center;gap:.55rem;color:var(--text);text-decoration:none}
-.dz-brand-lockup .dz-mark{flex:none}
-.dz-identity-board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));border:1px solid var(--line-soft);background:var(--bg)}
-.dz-identity-cell{grid-column:span 12;padding:1.5rem;border-bottom:1px solid var(--line-soft)}
-.dz-identity-cell:last-child{border-bottom:0}
-.dz-identity-hero{display:flex;min-height:20rem;align-items:center;justify-content:center}
-.dz-identity-scale{display:flex;align-items:end;gap:2rem;flex-wrap:wrap}
-.dz-identity-scale figure{margin:0;display:grid;gap:.6rem;justify-items:center}
-@media(min-width:768px){.dz-identity-cell{grid-column:span 6}.dz-identity-cell:nth-last-child(-n+2){border-bottom:0}.dz-identity-cell:nth-child(odd){border-right:1px solid var(--line-soft)}}
+/* DOTZERO Identity v1 — canonical SVG system */
+.dz-logo,
+.dz-mark {
+  display: block;
+  overflow: visible;
+  color: currentColor;
+  --dz-logo-red: #F70B0D;
+}
+
+.dz-logo {
+  height: auto;
+  max-width: 100%;
+}
+
+.dz-mark {
+  flex: none;
+  transform-origin: center;
+}
+
+.dz-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.dz-ci-cell {
+  min-width: 0;
+  padding: 1.25rem;
+  background: var(--bg);
+}
+
+.dz-ci-construction-grid {
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,.12) 1px, transparent 1px);
+  background-size: 25% 25%;
+}
+
+@media (min-width: 640px) {
+  .dz-ci-cell {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dz-ci-cell {
+    padding: 1.75rem;
+  }
+}
