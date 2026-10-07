@@ -522,13 +522,10 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           <div>
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent-tertiary)] mb-2 font-bold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>DOTZERO // NEXT-GEN KINETICS</span>
+              <span>{t.eyebrow[language]}</span>
             </div>
             <h1 className="dz-h1 flex items-center gap-3 text-3xl sm:text-4xl md:text-5xl uppercase text-[var(--on-accent)]">
               <span>{t.title[language]}</span>
-              <span className="text-xs px-2 py-0.5 border border-[var(--accent)] text-[var(--accent)] font-mono tracking-widest">
-                v2.0
-              </span>
             </h1>
           </div>
 
@@ -586,7 +583,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               {/* Viewport Overlay HUD Details */}
               <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
-                <span>REALTIME 4K SHADER · {activePreset.name}</span>
+                <span>{t.realtimeField[language]} · {activePreset.name}</span>
               </div>
 
               <div className="absolute top-3 right-3 pointer-events-none font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
@@ -606,7 +603,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                       style={{ height: `${val / 3}px` }}
                     />
                   ))}
-                  <span className="font-mono text-[9px] text-[var(--accent-tertiary)] ml-1 uppercase">SYNTH LIVE</span>
+                  <span className="font-mono text-[9px] text-[var(--accent-tertiary)] ml-1 uppercase">{t.synthActive[language]}</span>
                 </div>
               )}
             </div>
@@ -816,7 +813,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         </div>
 
-        {/* Multimodal Generation Pipeline Nodes */}
+        {/* Generation pipeline */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-4">
             <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
