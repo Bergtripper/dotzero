@@ -853,17 +853,17 @@ html {
 }
 
 .dz-scroll-sign--dot {
-  left: 4%;
+  left: clamp(1.5rem, 4%, 3rem);
   top: 25%;
 }
 
 .dz-scroll-sign--field {
-  left: 4%;
+  left: clamp(1.5rem, 4%, 3rem);
   top: 48%;
 }
 
 .dz-scroll-sign--system {
-  left: 91%;
+  left: clamp(1.5rem, 4%, 3rem);
   top: 72%;
 }
 
@@ -898,9 +898,6 @@ html {
     height: clamp(390px, 58vh, 560px);
   }
 
-  .dz-scroll-sign--system {
-    left: 92%;
-  }
 }
 
 @media (max-width: 639px) {
@@ -918,14 +915,6 @@ html {
     min-height: 390px;
   }
 
-  .dz-scroll-sign--dot,
-  .dz-scroll-sign--field {
-    left: 3%;
-  }
-
-  .dz-scroll-sign--system {
-    left: 93%;
-  }
 
   .dz-scroll-hero__footer {
     margin-top: 1rem;
