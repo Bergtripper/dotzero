@@ -76,6 +76,9 @@ const COPY = {
     clearBody: 'Mantieni almeno l’altezza della testa circolare libera su ogni lato del segno.',
     clearNote: 'Testo, cornici, bordi immagine e controlli non devono entrare in questo campo.',
     usage: ['Header · logotipo', 'Header · segno', 'Icona app / solo segno', 'Documento / solo logotipo', 'Orientamento / solo segno'],
+    usageNav: ['Ricerca', 'Dialogo', 'Profilo'],
+    usageDoc: ['RICERCA', 'ESPLORAZIONE', 'OPEN DIRECTION'],
+    usageWayfinding: ['Ricerca', 'Dialogo', 'Open Direction'],
     footer: '. = conoscenza · 0 = campo · </> = metodo · open direction',
   },
   de: {
@@ -141,6 +144,9 @@ const COPY = {
     clearBody: 'Rund um das Zeichen mindestens die Höhe des kreisförmigen Kopfes freihalten.',
     clearNote: 'Text, Rahmen, Bildkante und Bedienelemente dürfen dieses Feld nicht betreten.',
     usage: ['Header · Logotype', 'Header · Zeichen', 'App-Icon / nur Zeichen', 'Dokument / nur Logotype', 'Leitsystem / nur Zeichen'],
+    usageNav: ['Forschung', 'Dialog', 'Profil'],
+    usageDoc: ['FORSCHUNG', 'EXPLORATION', 'OPEN DIRECTION'],
+    usageWayfinding: ['Forschung', 'Dialog', 'Open Direction'],
     footer: '. = Wissen · 0 = Feld · </> = Methode · Open Direction',
   },
   en: {
@@ -206,6 +212,9 @@ const COPY = {
     clearBody: 'Keep at least the height of the circular head clear around every side of the mark.',
     clearNote: 'No text, frame, image edge or interface control may enter this field.',
     usage: ['Header · logotype', 'Header · sign', 'App icon / sign only', 'Document / logotype only', 'Wayfinding / sign only'],
+    usageNav: ['Research', 'Dialog', 'About'],
+    usageDoc: ['RESEARCH', 'EXPLORATION', 'OPEN DIRECTION'],
+    usageWayfinding: ['Research', 'Dialog', 'Open Direction'],
     footer: '. = knowledge · 0 = field · </> = method · open direction',
   },
 };
@@ -315,7 +324,7 @@ const UsageExamples: React.FC<{ t: typeof COPY.en }> = ({ t }) => (
   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
     <figure className="m-0">
       <div className="flex min-h-36 flex-col justify-between border border-[#dfdfdf] bg-white p-4 text-black">
-        <DotzeroLogotype className="w-[118px]" /><div className="flex gap-4 font-mono text-[7px] uppercase tracking-[.08em]"><span>Research</span><span>Dialog</span><span>About</span></div>
+        <DotzeroLogotype className="w-[118px]" /><div className="flex gap-4 font-mono text-[7px] uppercase tracking-[.08em]">{t.usageNav.map((item) => <span key={item}>{item}</span>)}</div>
       </div>
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[0]}</figcaption>
     </figure>
@@ -328,11 +337,11 @@ const UsageExamples: React.FC<{ t: typeof COPY.en }> = ({ t }) => (
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[2]}</figcaption>
     </figure>
     <figure className="m-0">
-      <div className="min-h-36 border border-[#dfdfdf] bg-white p-4 text-black"><DotzeroLogotype className="w-[132px]" /><div className="mt-8 border-l border-[#bdbdbd] pl-3 font-mono text-[8px] leading-4">RESEARCH<br />EXPLORATION<br />OPEN DIRECTION</div></div>
+      <div className="min-h-36 border border-[#dfdfdf] bg-white p-4 text-black"><DotzeroLogotype className="w-[132px]" /><div className="mt-8 border-l border-[#bdbdbd] pl-3 font-mono text-[8px] leading-4">{t.usageDoc.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div></div>
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[3]}</figcaption>
     </figure>
     <figure className="m-0">
-      <div className="flex min-h-36 items-center gap-5 bg-[#d7d7d5] p-5 text-black"><DotzeroMark size={58} /><div className="font-sans text-sm leading-5">Research<br />Dialog<br />Open Direction</div></div>
+      <div className="flex min-h-36 items-center gap-5 bg-[#d7d7d5] p-5 text-black"><DotzeroMark size={58} /><div className="font-sans text-sm leading-5">{t.usageWayfinding.map((item) => <React.Fragment key={item}>{item}<br /></React.Fragment>)}</div></div>
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">{t.usage[4]}</figcaption>
     </figure>
   </div>
