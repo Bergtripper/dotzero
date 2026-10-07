@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { BuiltGlyph } from './BuiltGlyph';
 import { GLYPH_IDS, GlyphDesign, GlyphId } from './model';
 
@@ -9,23 +11,27 @@ interface TypeSpecimenProps {
 const SizedGlyph: React.FC<{
   glyph: GlyphId;
   design: GlyphDesign;
-}> = ({ glyph, design }) => (
+  title: string;
+}> = ({ glyph, design, title }) => (
   <BuiltGlyph
     glyph={glyph}
     design={design}
     className="tc-specimen-built-glyph"
-    title={`Custom ${glyph}`}
+    title={title}
   />
 );
 
-export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
+export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
+  return (
   <section className="tc-specimen">
     <div className="tc-specimen-head">
       <div>
-        <div className="tc-label">LIVE SPECIMEN</div>
-        <div className="tc-specimen-note">SHARED SYSTEM / SEVEN GLYPHS</div>
+        <div className="tc-label">{t.liveSpecimen}</div>
+        <div className="tc-specimen-note">{t.sharedSystemSeven}</div>
       </div>
-      <div className="tc-specimen-status">b + c + d + e + o + p + q / LINKED</div>
+      <div className="tc-specimen-status">b + c + d + e + o + p + q / {t.linked}</div>
     </div>
 
     <div className="tc-specimen-row tc-specimen-row--large">
@@ -35,7 +41,7 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
           style={{ '--tc-specimen-size': `${size}px` } as React.CSSProperties}
           key={size}
         >
-          <SizedGlyph glyph={GLYPH_IDS[index]} design={design} />
+          <SizedGlyph glyph={GLYPH_IDS[index]} design={design} title={`${t.customGlyph} ${GLYPH_IDS[index]}`} />
         </span>
       ))}
     </div>
@@ -54,4 +60,5 @@ export const TypeSpecimen: React.FC<TypeSpecimenProps> = ({ design }) => (
       ))}
     </div>
   </section>
-);
+  );
+};
