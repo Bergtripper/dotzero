@@ -1,5 +1,5 @@
 import React from 'react';
-import { DotzeroLogo } from './DotzeroLogo';
+import { DotzeroLogotypetype } from './DotzeroLogotypetype';
 import { DotzeroMark } from './DotzeroMark';
 
 type CellProps = {
@@ -77,63 +77,92 @@ const ClearSpaceDiagram = () => (
 
 const MeaningPanel = () => (
   <div className="grid gap-10 xl:grid-cols-12 xl:items-start">
-    <div className="xl:col-span-5">
-      <div className="bg-white p-7 text-black sm:p-10">
-        <DotzeroMark size="100%" title="DOTZERO sign — dot, zero and open direction" />
+    <div className="xl:col-span-4">
+      <div className="flex min-h-[34rem] items-center justify-center bg-white p-8 text-black sm:p-12">
+        <DotzeroMark size="72%" title="DOTZERO sign — dot, zero and open direction" />
       </div>
       <div className="mt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
-        Primary reading / abstract sign — the human figure remains latent, never illustrated
+        Four primitives / point · zero · diagonal · triangle
       </div>
     </div>
 
-    <div className="xl:col-span-7">
-      <div className="font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">THE SIGN IS AN IDEA BEFORE IT IS AN ICON</div>
-      <h2 className="dz-h2 mt-5 max-w-3xl text-4xl sm:text-6xl">
-        DOT. ZERO. QUESTION. INDIVIDUAL. OPEN SYSTEM.
+    <div className="xl:col-span-8">
+      <div className="font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">
+        THE SIGN / CONCEPT BEFORE APPLICATION
+      </div>
+      <h2 className="dz-h2 mt-5 max-w-4xl text-4xl sm:text-6xl lg:text-7xl">
+        DOT. ZERO.<br />OPEN DIRECTION.
       </h2>
       <p className="dz-body-strong mt-7 max-w-3xl">
-        The mark condenses the name and the method of DOTZERO into one ambiguous geometric construction.
-        Its first reading is not a person: it is <strong className="font-semibold text-[var(--text)]">.</strong> + <strong className="font-semibold text-[var(--text)]">0</strong> + the visual echo of <strong className="font-mono font-semibold text-[var(--text)]">&lt;/&gt;</strong>.
+        The sign is built to hold several readings at the same time. Its base grammar is geometric:
+        <strong className="font-semibold text-[var(--text)]"> point + zero + diagonal + triangle</strong>.
+        From that construction emerge the name, the research method, a digital/code echo and a latent human figure.
       </p>
 
-      <div className="mt-10 grid gap-px bg-[var(--line-soft)] p-px sm:grid-cols-3">
+      <div className="mt-10 grid gap-px bg-[var(--line-soft)] p-px md:grid-cols-2 xl:grid-cols-3">
         <div className="bg-[var(--bg)] p-5">
           <div className="font-display text-5xl font-bold text-[var(--accent)]">.</div>
           <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">DOT / ORIGIN</div>
           <p className="mt-3 text-sm leading-6 dz-text-muted">
-            A point, a beginning, a question. The smallest possible unit from which an inquiry can start.
+            The point of origin: the first coordinate, the smallest unit, the moment before point one. It also reads as the first question from which research begins.
           </p>
         </div>
+
         <div className="bg-[var(--bg)] p-5">
           <div className="font-display text-5xl font-bold">0</div>
           <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">ZERO / FIELD</div>
           <p className="mt-3 text-sm leading-6 dz-text-muted">
-            Zero is not emptiness but a field: a bounded system, a frame, a place in which knowledge can be constructed.
+            Starting from zero. The zero is not empty: it is a field, container and system — a bounded space in which knowledge can be constructed.
           </p>
         </div>
+
         <div className="bg-[var(--bg)] p-5">
           <div className="font-mono text-4xl font-semibold text-[var(--accent)]">&lt;/&gt;</div>
-          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">CODE / OPEN DIRECTION</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">CODE / CONSTRUCTION</div>
           <p className="mt-3 text-sm leading-6 dz-text-muted">
-            The diagonal crosses the field and exits it. Its angle recalls code, opening and closing, while the black wedge gives the movement a direction beyond the perimeter.
+            The slash and angular terminal suggest &lt;/&gt; without drawing it literally: code, construction, systems, opening and closing. A digital layer, not a developer pictogram.
+          </p>
+        </div>
+
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-display text-5xl font-bold">?</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">QUESTION / RESEARCH</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            Dot, curved field and diagonal can also suggest an unresolved question mark. The ambiguity is intentional: DOTZERO starts with questions rather than answers.
+          </p>
+        </div>
+
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-mono text-4xl font-semibold">● /</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">INDIVIDUAL / GESTURE</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            A second reading reveals a person with a raised arm: head, body/field and gesture. The human figure remains latent, never illustrated or fixed.
+          </p>
+        </div>
+
+        <div className="bg-[var(--bg)] p-5">
+          <div className="font-mono text-4xl font-semibold text-[var(--accent)]">/›</div>
+          <div className="mt-4 font-mono text-[9px] font-semibold uppercase tracking-[.12em]">OPEN DIRECTION</div>
+          <p className="mt-3 text-sm leading-6 dz-text-muted">
+            The diagonal breaks the closed form and moves upward beyond its perimeter. The black triangular wedge echoes “&gt;”: direction, continuation and deviation from a closed system.
           </p>
         </div>
       </div>
 
       <div className="mt-10 grid gap-8 border-t dz-rule pt-8 md:grid-cols-2">
         <div>
-          <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">SECOND READING / THE INDIVIDUAL</div>
+          <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">BAUHAUS / CONTEMPORARY LOGIC</div>
           <p className="mt-4 text-sm leading-6 dz-text-muted">
-            Only after the geometric reading does a human silhouette emerge: the dot may become a head, the zero a body or field, the diagonal an arm or gesture. The figure is intentionally unresolved.
+            Circle, line, angle and asymmetry are used as a construction grammar, not as retro styling. The sign follows a rational Bauhaus logic while remaining contemporary and digital.
           </p>
         </div>
         <div>
           <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">CORE PRINCIPLE</div>
           <p className="mt-4 font-display text-2xl font-medium leading-tight tracking-[-.03em]">
-            The individual does not sit inside a closed system. The line opens it.
+            A point enters a field. A question opens it. A direction leaves it.
           </p>
           <p className="mt-4 text-sm leading-6 dz-text-muted">
-            That ambiguity is the identity: dot / zero / code / person / question / opening can coexist without reducing the sign to a single illustration.
+            DOT / ZERO / CODE / QUESTION / INDIVIDUAL / OPEN DIRECTION are not separate logos. They are simultaneous readings of one sign.
           </p>
         </div>
       </div>
@@ -146,21 +175,21 @@ const UsageExamples = () => (
     <figure className="m-0">
       <div className="flex min-h-36 flex-col justify-between border border-[#dfdfdf] bg-white p-4 text-black">
         <div className="flex items-center justify-between">
-          <DotzeroLogo className="w-[112px]" />
+          <DotzeroLogotypetype className="w-[118px]" />
           <span className="font-mono text-[8px]">☰</span>
         </div>
         <div className="flex gap-4 font-mono text-[7px] uppercase tracking-[.08em]">
           <span>Research</span><span>Dialog</span><span>About</span>
         </div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Website header</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Website / logotype only</figcaption>
     </figure>
 
     <figure className="m-0">
       <div className="flex min-h-36 items-center justify-center bg-black p-5 text-white">
-        <DotzeroLogo className="w-[145px]" />
+        <DotzeroLogotypetype className="w-[155px]" />
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Dark mode</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Dark mode / logotype only</figcaption>
     </figure>
 
     <figure className="m-0">
@@ -169,18 +198,18 @@ const UsageExamples = () => (
           <DotzeroMark size={62} />
         </div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">App icon</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">App icon / sign only</figcaption>
     </figure>
 
     <figure className="m-0">
       <div className="min-h-36 border border-[#dfdfdf] bg-white p-4 text-black">
-        <DotzeroLogo className="w-[125px]" />
+        <DotzeroLogotypetype className="w-[132px]" />
         <div className="mt-8 border-l border-[#bdbdbd] pl-3 font-mono text-[8px] leading-4">
           RESEARCH<br />EXPLORATION<br />OPEN DIRECTION
         </div>
         <div className="mt-3 h-px w-5 bg-[#F70B0D]" />
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Document / print</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Document / logotype only</figcaption>
     </figure>
 
     <figure className="m-0">
@@ -190,7 +219,7 @@ const UsageExamples = () => (
           Research<br />Dialog<br />Open Direction
         </div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Signage / wayfinding</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Wayfinding / sign only</figcaption>
     </figure>
   </div>
 );
@@ -211,19 +240,19 @@ export const IdentityPage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-center justify-between gap-5 border-b dz-rule pb-5">
             <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">DOTZERO / BRAND IDENTITY GUIDELINES</div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.1</div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.2</div>
           </div>
           <div className="mt-10 grid items-end gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="dz-meta">CD / CI / CANONICAL SYSTEM</div>
               <h1 className="dz-h1 mt-5 text-[clamp(4rem,10vw,9rem)]">IDENTITY.</h1>
               <p className="dz-body-strong mt-7 max-w-2xl">
-                The visual system begins with the meaning of the sign: dot, zero, code and open direction. Its applications, typography and rules follow from that idea.
+                The visual system begins with the sign: DOT · ZERO · OPEN DIRECTION. Logotype and sign are complementary identities and are never combined into a lockup.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="bg-white p-6 text-black sm:p-8">
-                <DotzeroLogo className="w-full" title="DOTZERO primary logo" />
+                <DotzeroLogotype className="w-full" title=".DOTZERO logotype" />
               </div>
             </div>
           </div>
@@ -236,17 +265,23 @@ export const IdentityPage: React.FC = () => {
             <MeaningPanel />
           </Cell>
 
-          <Cell number="01" title="Primary logo" note="Horizontal lockup — official SVG" className="lg:col-span-7">
+          <Cell number="01" title="Logotype" note=".DOTZERO / standalone typographic signature" className="lg:col-span-7">
             <div className="flex min-h-56 items-center justify-center bg-white p-8 text-black sm:min-h-72">
-              <DotzeroLogo className="w-full max-w-[720px]" />
+              <DotzeroLogotype className="w-full max-w-[720px]" />
             </div>
             <div className="mt-4 flex flex-wrap justify-between gap-3 font-mono text-[8px] uppercase tracking-[.11em] dz-text-muted">
-              <span>Master artwork / path-built SVG</span>
-              <span>No font dependency inside logo</span>
+              <span>Master artwork / path-built SVG · leading dot</span>
+              <span>Never paired with the sign</span>
+            </div>
+            <div className="mt-6 border-l-2 border-[var(--accent)] pl-4">
+              <div className="font-mono text-[8px] font-semibold uppercase tracking-[.12em]">RELATIONSHIP RULE</div>
+              <p className="mt-2 max-w-2xl text-sm leading-6 dz-text-muted">
+                Logotype and sign are complementary, not a combined logo. Use <strong className="text-[var(--text)]">.DOTZERO</strong> when the name must be read; use the sign when recognition can be carried by the symbol. Never place them side by side as one lockup.
+              </p>
             </div>
           </Cell>
 
-          <Cell number="02" title="Symbol" note="Standalone mark" className="lg:col-span-2">
+          <Cell number="02" title="Sign" note="Standalone sign · complementary to logotype" className="lg:col-span-2">
             <div className="flex min-h-56 items-center justify-center bg-white p-6 text-black sm:min-h-72">
               <DotzeroMark size={180} />
             </div>
@@ -290,7 +325,7 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="05" title="Symbol variations" note="Controlled derivatives" className="lg:col-span-4">
+          <Cell number="05" title="Sign variations" note="Controlled derivatives · sign only" className="lg:col-span-4">
             <div className="grid grid-cols-2 gap-px bg-[var(--line-soft)] sm:grid-cols-4">
               <div className="bg-[var(--bg)] p-3 text-center">
                 <div className="flex h-28 items-center justify-center bg-white text-black"><DotzeroMark size={70} /></div>
@@ -375,8 +410,8 @@ export const IdentityPage: React.FC = () => {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t dz-rule pt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
-          <span>DOTZERO / CD + CI / v1.1</span>
-          <span>Canonical SVG · IBM Plex Sans · IBM Plex Mono · #F70B0D</span>
+          <span>DOTZERO / CD + CI / v1.2</span>
+          <span>.DOTZERO logotype + standalone sign · IBM Plex Sans · IBM Plex Mono · #F70B0D</span>
         </div>
       </div>
     </main>

@@ -558,7 +558,7 @@ html {
 
 
 /* DOTZERO Identity v1 — canonical SVG system */
-.dz-logo,
+.dz-logotype,
 .dz-mark {
   display: block;
   overflow: visible;
@@ -566,7 +566,7 @@ html {
   --dz-logo-red: #F70B0D;
 }
 
-.dz-logo {
+.dz-logotype {
   height: auto;
   max-width: 100%;
 }

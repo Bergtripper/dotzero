@@ -48,19 +48,19 @@ export const DotzeroWordmark: React.FC<DotzeroWordmarkProps> = ({ className = ''
 
   return (
     <div ref={frameRef} className={`dz-wordmark-frame ${className}`} data-wordmark="dotzero">
-      <h1 ref={wordRef} id="dotzero-wordmark" className="dz-wordmark" aria-label="DOTZERO.">
+      <h1 ref={wordRef} id="dotzero-wordmark" className="dz-wordmark" aria-label=".DOTZERO">
         <span className="dz-wordmark-letters" aria-hidden="true">
+          <span className="dz-wordmark-dot" data-letter="." data-letter-index={0}>.</span>
           {LETTERS.map((letter, index) => (
             <span
               key={`${letter}-${index}`}
               className="dz-wordmark-letter"
               data-letter={letter}
-              data-letter-index={index}
+              data-letter-index={index + 1}
             >
               {letter}
             </span>
           ))}
-          <span className="dz-wordmark-dot" data-letter="." data-letter-index={LETTERS.length}>.</span>
         </span>
       </h1>
     </div>

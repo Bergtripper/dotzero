@@ -3,7 +3,7 @@ import { Grid3X3, Moon, Sun } from 'lucide-react';
 import { ColorMode, Language } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { TypographySwitch } from './TypographySwitch';
-import { DotzeroLogo } from './DotzeroLogo';
+import { DotzeroLogotype } from './DotzeroLogotype';
 
 interface DotzeroHeaderProps {
   colorMode: ColorMode;
@@ -24,7 +24,7 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
     <header className="fixed inset-x-0 top-0 z-50 border-b dz-border bg-[color:var(--bg)]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
         <a href="#index" className="dz-brand-lockup" aria-label="DOTZERO — personal research lab">
-          <DotzeroLogo className="w-[126px] sm:w-[148px]" title="DOTZERO — personal research lab" />
+          <DotzeroLogotype className="w-[126px] sm:w-[148px]" title=".DOTZERO — personal research lab" />
         </a>
 
         <nav className="hidden items-center gap-7 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
