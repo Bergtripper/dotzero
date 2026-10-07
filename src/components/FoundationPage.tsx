@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight, Braces, Compass, GitBranch, Layers3, Search, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowLeft, Braces, Compass, Layers3, Search, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { DotzeroMark } from './DotzeroMark';
 import { DotzeroLogotype } from './DotzeroLogotype';
@@ -7,193 +7,241 @@ import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph, ZeroField } from './Gr
 
 const COPY = {
   it: {
-    kicker: 'DOTZERO / FOUNDATION / v0.3',
-    title: 'PERSONAL RESEARCH LAB FOR KNOWLEDGE EXPLORATION',
-    tagline: 'Instruments for inquiry.',
-    intro:
-      'DOTZERO è un laboratorio personale per esplorare la conoscenza. Nasce dalla curiosità individuale e costruisce Atlas, Studies e Tools per vedere connessioni, testare idee, confrontare prospettive e capire su cosa poggiano le affermazioni.',
-    subject:
-      'Il tema può essere qualsiasi cosa. Ciò che resta costante non è il soggetto, ma il metodo e gli standard.',
-    problemLabel: 'THE PROBLEM',
+    kicker: 'DOTZERO / FOUNDATION',
+    title: 'LABORATORIO PERSONALE PER ESPLORARE LA CONOSCENZA',
+    tagline: 'Strumenti per indagare.',
+    intro: 'DOTZERO nasce dalla curiosità e costruisce atlanti, studi e strumenti per vedere connessioni, testare idee e confrontare prospettive.',
+    subject: 'I temi possono cambiare completamente. Metodo, rigore ed evidenza restano costanti.',
+    back: 'TORNA ALL’INDICE',
+    identityLabel: 'IDENTITÀ / DOT · ZERO · OPEN DIRECTION',
+    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    identityBody: 'Un segno costruito con punto, zero, diagonale e triangolo. Le sue letture convivono: origine, campo, domanda, gesto e direzione aperta.',
+    construction: 'COSTRUZIONE',
+    constructionLines: ['DOT / ORIGINE', 'ZERO / CAMPO', 'DIAGONALE / DIREZIONE APERTA'],
+    scale: 'PROVA DI SCALA',
+    logotype: 'LOGOTIPO / IDENTITÀ COMPLEMENTARE',
+    logotypeRule: '.DOTZERO e il segno non formano mai un lockup',
+    syntaxLabel: 'SINTASSI GRAFICA / . · 0 · </>',
+    syntax: [
+      ['CONOSCENZA.', 'DOT / MARCATORE DI CONTENUTO', 'Origine, domanda, nodo, evidenza e punto attivo. Il punto resta vicino al contenuto che identifica.'],
+      ['CAMPO.', 'ZERO / CONTENITORE', 'Uno spazio delimitato di ricerca: progetto, modello, dataset o contesto. Lo zero diventa soprattutto struttura e campo.'],
+      ['METODO.', '</> / MARCATORE DI SISTEMA', 'Costruzione, azione, transizione e apertura. Indica strumenti, metodo, navigazione e movimento oltre il campo.'],
+    ],
+    syntaxRules: [
+      '. resta con conoscenza ed evidenza.',
+      '0 definisce il campo in cui avviene l’indagine.',
+      '</> indica metodo, azione e apertura.',
+    ],
+    problemLabel: 'IL PROBLEMA',
     problemTitle: 'L’informazione è abbondante. La comprensione no.',
-    problemBody:
-      'La maggior parte dei sistemi digitali ottimizza il recupero o la sintesi. DOTZERO lavora nello spazio intermedio: relazioni, tempo, spazio, evidenza, disaccordi, assunzioni e nuove domande che emergono quando l’informazione viene riorganizzata.',
-    methodLabel: 'METHOD',
-    methodTitle: 'Question → Research → Model → Represent → Explore → Record',
-    methodBody:
-      'Il processo è iterativo. La rappresentazione può rivelare difetti del modello; l’esplorazione può mostrare lacune nella ricerca. Il metodo termina in un record documentato, non in una risposta finale.',
-    outputsLabel: 'OUTPUTS',
+    problemBody: 'DOTZERO lavora sulle relazioni: tempo, spazio, fonti, disaccordi e nuove domande che emergono quando l’informazione viene riorganizzata.',
+    compare: [
+      ['RECUPERARE', 'domanda → elenco'],
+      ['SINTETIZZARE', 'domanda → risposta'],
+      ['ESPLORARE', 'ingresso → relazione → domanda'],
+    ],
+    methodLabel: 'METODO',
+    methodTitle: 'Domanda → Ricerca → Modello → Rappresentazione → Esplorazione → Registro',
+    methodBody: 'Il processo è iterativo: una rappresentazione può mostrare un limite del modello e l’esplorazione può rivelare una lacuna nella ricerca.',
+    methodSteps: ['Domanda', 'Ricerca', 'Modello', 'Rappresentazione', 'Esplorazione', 'Registro'],
+    outputsLabel: 'FORME',
     outputsTitle: 'Tre forme. Qualunque soggetto.',
     outputs: [
-      ['ATLAS', 'Il suo oggetto è un campo.', 'Un ambiente strutturato per esplorare cosa esiste, cosa si connette, cosa cambia, dove, quando e secondo quali fonti.'],
-      ['STUDY', 'Il suo oggetto è una domanda.', 'Un modello interattivo o computazionale che rende un’idea, un’ipotesi o un problema osservabile, comparabile o manipolabile.'],
-      ['TOOL', 'Il suo oggetto è un metodo.', 'Uno strumento riutilizzabile per l’indagine: compare, map, timeline, network, similarity, search, simulation e altri metodi.'],
+      ['ATLAS', 'Oggetto: un campo.', 'Un ambiente strutturato per esplorare elementi, relazioni, luoghi, tempi e fonti.'],
+      ['STUDY', 'Oggetto: una domanda.', 'Un modello interattivo o computazionale che rende un’idea osservabile, comparabile o manipolabile.'],
+      ['TOOL', 'Oggetto: un metodo.', 'Uno strumento riutilizzabile per confrontare, mappare, cercare, simulare o mettere in relazione.'],
     ],
-    evidenceLabel: 'EVIDENCE',
-    evidenceTitle: 'Ogni claim mostra il proprio fondamento.',
-    evidenceBody:
-      'Le interfacce non sono neutrali. Una linea implica una relazione, un cluster una somiglianza, una posizione una rilevanza. DOTZERO rende visibili origine, livello di confidenza, copertura e disaccordi quando contano per l’interpretazione.',
+    evidenceLabel: 'EVIDENZA',
+    evidenceTitle: 'Ogni affermazione mostra il proprio fondamento.',
+    evidenceBody: 'Fonti, attribuzioni, copertura, confidenza e disaccordi devono restare visibili quando cambiano il modo in cui un’informazione viene interpretata.',
     evidenceAxes: [
-      ['ORIGIN', 'Documented · Derived · Interpreted · Suggested'],
-      ['CONFIDENCE', 'Established · Probable · Disputed · Unknown'],
+      ['ORIGINE', 'Documentato · Derivato · Interpretato · Proposto'],
+      ['CONFIDENZA', 'Consolidato · Probabile · Contestato · Sconosciuto'],
     ],
-    aiLabel: 'COMPUTATION + AI',
-    aiTitle: 'Machines suggest. People interpret.',
-    aiBody:
-      'L’AI è uno strumento tra gli altri, non l’identità di DOTZERO. Gli output macchina non diventano automaticamente fatti: devono essere distinguibili, tracciabili e, quando pubblicati come contenuto curato, sottoposti a revisione umana.',
-    scopeLabel: 'SCOPE',
-    scopeTitle: 'Open in subject. Narrow in claim.',
-    scopeBody:
-      'DOTZERO può lavorare su arte, storia, scienza, linguaggio, natura, tecnologia, sistemi o qualunque altro dominio. La curiosità è sufficiente per iniziare; il rigore determina cosa viene pubblicato.',
-    architectureLabel: 'ARCHITECTURE',
+    scopeLabel: 'CAMPO',
+    scopeTitle: 'Aperto nei temi. Preciso nelle affermazioni.',
+    scopeBody: 'Arte, storia, scienza, linguaggio, natura, tecnologia o sistemi: la curiosità apre la ricerca; il rigore decide cosa pubblicare.',
+    architectureLabel: 'ARCHITETTURA',
     architectureTitle: 'Foundation → Framework → Register',
-    architectureBody:
-      'La Foundation definisce purpose, metodo, standard e responsabilità. Il Framework contiene Atlas Engine, evidence schema, design system e componenti condivisi. Il Register raccoglie progetti, versioni, status e contributori.',
-    principlesLabel: '10 PRINCIPLES',
-    principles: [
-      'The question comes first.',
-      'Curiosity to begin, rigor to publish.',
-      'Open in subject. Narrow in claim.',
-      'Every claim shows its ground.',
-      'Missing data is not proof of absence.',
-      'Disagreement is shown, not silently resolved.',
-      'Machines suggest. People interpret.',
-      'Every instrument declares its limits.',
-      'Connect, don’t capture.',
-      'Record what was learned, including what failed.',
+    architectureBody: 'La Foundation definisce il metodo. Il Framework offre strutture condivise. Il Register rende visibili progetti e stato del lavoro.',
+    architectureItems: [
+      ['FOUNDATION', 'scopo · metodo · standard · responsabilità'],
+      ['FRAMEWORK', 'Atlas Engine · evidenza · design system · componenti'],
+      ['REGISTER', 'progetti · versioni · stato · contributi'],
     ],
-    longLabel: 'LONG-TERM QUESTION',
-    longQuestion:
-      'How can computational instruments help people see knowledge differently, while keeping visible what the instrument itself has chosen?',
-    framework: 'OPEN FRAMEWORK',
-    back: 'BACK TO INDEX',
-    canonical: 'Canonical Foundation Document · v0.3 · 28 Sep 2026',
+    principlesLabel: '9 PRINCIPI',
+    principles: [
+      'La domanda viene prima.',
+      'Curiosità per iniziare, rigore per pubblicare.',
+      'Aperto nei temi. Preciso nelle affermazioni.',
+      'Ogni affermazione mostra il proprio fondamento.',
+      'L’assenza di dati non dimostra l’assenza di un fenomeno.',
+      'Il disaccordo viene mostrato, non cancellato.',
+      'Ogni strumento dichiara i propri limiti.',
+      'Connettere, non catturare.',
+      'Registrare ciò che si è imparato, compreso ciò che non ha funzionato.',
+    ],
+    longLabel: 'DOMANDA APERTA',
+    longQuestion: 'Come possono gli strumenti computazionali aiutarci a vedere la conoscenza in modo diverso, rendendo visibili anche le scelte dello strumento?',
+    framework: 'APRI IL FRAMEWORK',
   },
   de: {
-    kicker: 'DOTZERO / FOUNDATION / v0.3',
-    title: 'PERSONAL RESEARCH LAB FOR KNOWLEDGE EXPLORATION',
-    tagline: 'Instruments for inquiry.',
-    intro:
-      'DOTZERO ist ein persönliches Forschungslabor zur Erkundung von Wissen. Es beginnt mit individueller Neugier und entwickelt Atlanten, Studies und Tools, um Verbindungen sichtbar zu machen, Ideen zu testen, Perspektiven zu vergleichen und die Grundlage von Aussagen nachvollziehbar zu machen.',
-    subject:
-      'Das Thema kann alles sein. Konstant bleiben nicht die Gegenstände, sondern Methode und Standards.',
-    problemLabel: 'THE PROBLEM',
+    kicker: 'DOTZERO / FOUNDATION',
+    title: 'PERSÖNLICHES LABOR ZUR ERKUNDUNG VON WISSEN',
+    tagline: 'Instrumente zum Untersuchen.',
+    intro: 'DOTZERO beginnt mit Neugier und entwickelt Atlanten, Studien und Instrumente, um Verbindungen sichtbar zu machen, Ideen zu prüfen und Perspektiven zu vergleichen.',
+    subject: 'Die Themen können vollständig wechseln. Methode, Sorgfalt und Evidenz bleiben konstant.',
+    back: 'ZURÜCK ZUM INDEX',
+    identityLabel: 'IDENTITÄT / DOT · ZERO · OPEN DIRECTION',
+    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    identityBody: 'Ein Zeichen aus Punkt, Null, Diagonale und Dreieck. Seine Lesarten bestehen gleichzeitig: Ursprung, Feld, Frage, Geste und offene Richtung.',
+    construction: 'KONSTRUKTION',
+    constructionLines: ['DOT / URSPRUNG', 'ZERO / FELD', 'DIAGONALE / OFFENE RICHTUNG'],
+    scale: 'GRÖSSENTEST',
+    logotype: 'LOGOTYPE / ERGÄNZENDE IDENTITÄT',
+    logotypeRule: '.DOTZERO und das Zeichen bilden niemals einen Lockup',
+    syntaxLabel: 'GRAFISCHE SYNTAX / . · 0 · </>',
+    syntax: [
+      ['WISSEN.', 'DOT / INHALTSMARKER', 'Ursprung, Frage, Knoten, Evidenz und aktiver Fokus. Der Punkt bleibt nahe bei dem Inhalt, den er markiert.'],
+      ['FELD.', 'ZERO / CONTAINER', 'Ein begrenzter Forschungsraum: Projekt, Modell, Datensatz oder Kontext. Die Null wird vor allem zu Struktur und Feld.'],
+      ['METHODE.', '</> / SYSTEMMARKER', 'Konstruktion, Handlung, Übergang und Öffnung. Das Zeichen markiert Instrumente, Methode, Navigation und Bewegung über das Feld hinaus.'],
+    ],
+    syntaxRules: [
+      '. bleibt bei Wissen und Evidenz.',
+      '0 definiert das Feld der Untersuchung.',
+      '</> markiert Methode, Handlung und Öffnung.',
+    ],
+    problemLabel: 'DAS PROBLEM',
     problemTitle: 'Information ist reichlich vorhanden. Verstehen nicht.',
-    problemBody:
-      'Die meisten digitalen Systeme optimieren Retrieval oder Synthese. DOTZERO arbeitet im Zwischenraum: Beziehungen, Zeit, Raum, Evidenz, Widersprüche, Annahmen und neue Fragen, die durch eine andere Anordnung von Information sichtbar werden.',
-    methodLabel: 'METHOD',
-    methodTitle: 'Question → Research → Model → Represent → Explore → Record',
-    methodBody:
-      'Der Prozess ist iterativ. Repräsentation kann Schwächen des Modells zeigen; Exploration kann Forschungslücken sichtbar machen. Die Methode endet in einer dokumentierten Aufzeichnung, nicht in einer endgültigen Antwort.',
-    outputsLabel: 'OUTPUTS',
+    problemBody: 'DOTZERO arbeitet mit Beziehungen: Zeit, Raum, Quellen, Widersprüchen und neuen Fragen, die durch eine andere Anordnung von Information entstehen.',
+    compare: [
+      ['ABRUFEN', 'Frage → Liste'],
+      ['VERDICHTEN', 'Frage → Antwort'],
+      ['ERKUNDEN', 'Einstieg → Beziehung → Frage'],
+    ],
+    methodLabel: 'METHODE',
+    methodTitle: 'Frage → Recherche → Modell → Darstellung → Exploration → Dokumentation',
+    methodBody: 'Der Prozess ist iterativ: Eine Darstellung kann Grenzen des Modells zeigen, Exploration kann Lücken in der Recherche sichtbar machen.',
+    methodSteps: ['Frage', 'Recherche', 'Modell', 'Darstellung', 'Exploration', 'Dokumentation'],
+    outputsLabel: 'FORMEN',
     outputsTitle: 'Drei Formen. Jedes Thema.',
     outputs: [
-      ['ATLAS', 'Sein Objekt ist ein Feld.', 'Eine strukturierte Umgebung, um zu erkunden, was existiert, was verbunden ist, was sich verändert, wo, wann und auf Basis welcher Quellen.'],
-      ['STUDY', 'Sein Objekt ist eine Frage.', 'Ein interaktives oder rechnerisches Modell, das eine Idee, Hypothese oder ein Problem beobachtbar, vergleichbar oder manipulierbar macht.'],
-      ['TOOL', 'Sein Objekt ist eine Methode.', 'Ein wiederverwendbares Instrument für Untersuchung: compare, map, timeline, network, similarity, search, simulation und weitere Methoden.'],
+      ['ATLAS', 'Gegenstand: ein Feld.', 'Eine strukturierte Umgebung für Elemente, Beziehungen, Orte, Zeiten und Quellen.'],
+      ['STUDY', 'Gegenstand: eine Frage.', 'Ein interaktives oder computergestütztes Modell, das eine Idee beobachtbar, vergleichbar oder manipulierbar macht.'],
+      ['TOOL', 'Gegenstand: eine Methode.', 'Ein wiederverwendbares Instrument zum Vergleichen, Kartieren, Suchen, Simulieren oder Verknüpfen.'],
     ],
-    evidenceLabel: 'EVIDENCE',
+    evidenceLabel: 'EVIDENZ',
     evidenceTitle: 'Jede Aussage zeigt ihre Grundlage.',
-    evidenceBody:
-      'Interfaces sind nicht neutral. Eine Linie impliziert Beziehung, ein Cluster Ähnlichkeit, eine Position Relevanz. DOTZERO macht Herkunft, Sicherheit, Abdeckung und Widerspruch sichtbar, wenn sie für die Interpretation wesentlich sind.',
+    evidenceBody: 'Quellen, Zuschreibungen, Abdeckung, Sicherheit und Widersprüche bleiben sichtbar, wenn sie die Interpretation beeinflussen.',
     evidenceAxes: [
-      ['ORIGIN', 'Documented · Derived · Interpreted · Suggested'],
-      ['CONFIDENCE', 'Established · Probable · Disputed · Unknown'],
+      ['HERKUNFT', 'Dokumentiert · Abgeleitet · Interpretiert · Vorgeschlagen'],
+      ['SICHERHEIT', 'Gesichert · Wahrscheinlich · Umstritten · Unbekannt'],
     ],
-    aiLabel: 'COMPUTATION + AI',
-    aiTitle: 'Machines suggest. People interpret.',
-    aiBody:
-      'AI ist ein Instrument unter mehreren, nicht die Identität von DOTZERO. Maschinelle Ausgaben werden nicht automatisch zu Fakten: sie müssen unterscheidbar, nachvollziehbar und bei kuratierten Inhalten menschlich geprüft sein.',
-    scopeLabel: 'SCOPE',
-    scopeTitle: 'Open in subject. Narrow in claim.',
-    scopeBody:
-      'DOTZERO kann Kunst, Geschichte, Wissenschaft, Sprache, Natur, Technologie, Systeme oder jedes andere Gebiet untersuchen. Neugier genügt zum Beginn; Rigorosität entscheidet über die Veröffentlichung.',
-    architectureLabel: 'ARCHITECTURE',
+    scopeLabel: 'RAHMEN',
+    scopeTitle: 'Offen im Thema. Präzise in der Aussage.',
+    scopeBody: 'Kunst, Geschichte, Wissenschaft, Sprache, Natur, Technologie oder Systeme: Neugier eröffnet die Recherche; Sorgfalt entscheidet über die Veröffentlichung.',
+    architectureLabel: 'ARCHITEKTUR',
     architectureTitle: 'Foundation → Framework → Register',
-    architectureBody:
-      'Die Foundation definiert Zweck, Methode, Standards und Verantwortung. Das Framework umfasst Atlas Engine, Evidence Schema, Design System und gemeinsame Komponenten. Das Register führt Projekte, Versionen, Status und Mitwirkende.',
-    principlesLabel: '10 PRINCIPLES',
-    principles: [
-      'The question comes first.',
-      'Curiosity to begin, rigor to publish.',
-      'Open in subject. Narrow in claim.',
-      'Every claim shows its ground.',
-      'Missing data is not proof of absence.',
-      'Disagreement is shown, not silently resolved.',
-      'Machines suggest. People interpret.',
-      'Every instrument declares its limits.',
-      'Connect, don’t capture.',
-      'Record what was learned, including what failed.',
+    architectureBody: 'Die Foundation definiert die Methode. Das Framework bietet gemeinsame Strukturen. Das Register macht Projekte und Arbeitsstand sichtbar.',
+    architectureItems: [
+      ['FOUNDATION', 'Zweck · Methode · Standards · Verantwortung'],
+      ['FRAMEWORK', 'Atlas Engine · Evidenz · Designsystem · Komponenten'],
+      ['REGISTER', 'Projekte · Versionen · Status · Beiträge'],
     ],
-    longLabel: 'LONG-TERM QUESTION',
-    longQuestion:
-      'How can computational instruments help people see knowledge differently, while keeping visible what the instrument itself has chosen?',
-    framework: 'OPEN FRAMEWORK',
-    back: 'BACK TO INDEX',
-    canonical: 'Canonical Foundation Document · v0.3 · 28 Sep 2026',
+    principlesLabel: '9 PRINZIPIEN',
+    principles: [
+      'Die Frage kommt zuerst.',
+      'Neugier zum Beginnen, Sorgfalt zum Veröffentlichen.',
+      'Offen im Thema. Präzise in der Aussage.',
+      'Jede Aussage zeigt ihre Grundlage.',
+      'Fehlende Daten beweisen nicht die Abwesenheit eines Phänomens.',
+      'Widerspruch wird gezeigt, nicht still aufgelöst.',
+      'Jedes Instrument benennt seine Grenzen.',
+      'Verbinden, nicht vereinnahmen.',
+      'Festhalten, was gelernt wurde – auch was nicht funktioniert hat.',
+    ],
+    longLabel: 'OFFENE FRAGE',
+    longQuestion: 'Wie können computergestützte Instrumente helfen, Wissen anders zu sehen und zugleich die Entscheidungen des Instruments sichtbar zu halten?',
+    framework: 'FRAMEWORK ÖFFNEN',
   },
   en: {
-    kicker: 'DOTZERO / FOUNDATION / v0.3',
-    title: 'PERSONAL RESEARCH LAB FOR KNOWLEDGE EXPLORATION',
+    kicker: 'DOTZERO / FOUNDATION',
+    title: 'PERSONAL LAB FOR EXPLORING KNOWLEDGE',
     tagline: 'Instruments for inquiry.',
-    intro:
-      'DOTZERO is a personal research lab for exploring knowledge. It begins with individual curiosity and builds Atlases, Studies and Tools that help people see how things connect, test ideas, compare perspectives and understand what claims rest on.',
-    subject:
-      'The subject can be anything. What remains constant is not the subject, but the method and the standards.',
+    intro: 'DOTZERO begins with curiosity and builds atlases, studies and tools to reveal connections, test ideas and compare perspectives.',
+    subject: 'Subjects can change completely. Method, rigor and evidence remain constant.',
+    back: 'BACK TO INDEX',
+    identityLabel: 'IDENTITY / DOT · ZERO · OPEN DIRECTION',
+    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    identityBody: 'A sign built from point, zero, diagonal and triangle. Its readings coexist: origin, field, question, gesture and open direction.',
+    construction: 'CONSTRUCTION',
+    constructionLines: ['DOT / ORIGIN', 'ZERO / FIELD', 'DIAGONAL / OPEN DIRECTION'],
+    scale: 'SCALE TEST',
+    logotype: 'LOGOTYPE / COMPLEMENTARY IDENTITY',
+    logotypeRule: '.DOTZERO and the sign never form a lockup',
+    syntaxLabel: 'GRAPHIC SYNTAX / . · 0 · </>',
+    syntax: [
+      ['KNOWLEDGE.', 'DOT / CONTENT MARKER', 'Origin, question, node, evidence and active focus. The dot stays close to the content it identifies.'],
+      ['FIELD.', 'ZERO / CONTAINER', 'A bounded research space: project, model, dataset or context. The zero becomes structure and field rather than decoration.'],
+      ['METHOD.', '</> / SYSTEM MARKER', 'Construction, action, transition and opening. It marks tools, method, navigation and movement beyond the field.'],
+    ],
+    syntaxRules: [
+      '. stays with knowledge and evidence.',
+      '0 defines the field in which inquiry happens.',
+      '</> marks method, action and opening.',
+    ],
     problemLabel: 'THE PROBLEM',
     problemTitle: 'Information is abundant. Understanding is not.',
-    problemBody:
-      'Most digital systems optimise retrieval or synthesis. DOTZERO works in the gap between them: relations, time, space, evidence, disagreement, assumptions, and the new questions that appear when information is rearranged.',
+    problemBody: 'DOTZERO works with relations: time, space, sources, disagreement and the new questions that appear when information is rearranged.',
+    compare: [
+      ['RETRIEVE', 'question → list'],
+      ['SYNTHESISE', 'question → answer'],
+      ['EXPLORE', 'entry → relation → question'],
+    ],
     methodLabel: 'METHOD',
     methodTitle: 'Question → Research → Model → Represent → Explore → Record',
-    methodBody:
-      'The process is iterative. Representation may expose weaknesses in a model; exploration may reveal missing research. The method ends in a documented record, not a final answer.',
-    outputsLabel: 'OUTPUTS',
+    methodBody: 'The process is iterative: representation can expose limits in the model, and exploration can reveal gaps in the research.',
+    methodSteps: ['Question', 'Research', 'Model', 'Represent', 'Explore', 'Record'],
+    outputsLabel: 'FORMS',
     outputsTitle: 'Three forms. Any subject.',
     outputs: [
-      ['ATLAS', 'Its object is a field.', 'A structured environment for exploring what exists, what connects, what changes, where, when, and according to which sources.'],
-      ['STUDY', 'Its object is a question.', 'An interactive or computational model that makes an idea, hypothesis, or problem observable, comparable, or manipulable.'],
-      ['TOOL', 'Its object is a method.', 'A reusable instrument for inquiry: compare, map, timeline, network, similarity, search, simulation, and other methods.'],
+      ['ATLAS', 'Object: a field.', 'A structured environment for exploring elements, relations, places, time and sources.'],
+      ['STUDY', 'Object: a question.', 'An interactive or computational model that makes an idea observable, comparable or manipulable.'],
+      ['TOOL', 'Object: a method.', 'A reusable instrument for comparing, mapping, searching, simulating or connecting.'],
     ],
     evidenceLabel: 'EVIDENCE',
     evidenceTitle: 'Every claim shows its ground.',
-    evidenceBody:
-      'Interfaces are not neutral. A line implies a relation, a cluster similarity, a position relevance. DOTZERO makes origin, confidence, coverage, and disagreement visible when they materially affect interpretation.',
+    evidenceBody: 'Sources, attribution, coverage, confidence and disagreement remain visible when they affect interpretation.',
     evidenceAxes: [
       ['ORIGIN', 'Documented · Derived · Interpreted · Suggested'],
       ['CONFIDENCE', 'Established · Probable · Disputed · Unknown'],
     ],
-    aiLabel: 'COMPUTATION + AI',
-    aiTitle: 'Machines suggest. People interpret.',
-    aiBody:
-      'AI is one instrument among others, not the identity of DOTZERO. Machine output does not automatically become fact: it must remain distinguishable, traceable and, when published as curated content, subject to human review.',
     scopeLabel: 'SCOPE',
-    scopeTitle: 'Open in subject. Narrow in claim.',
-    scopeBody:
-      'DOTZERO can work on art, history, science, language, nature, technology, systems, or any other domain. Curiosity is sufficient to begin; rigor determines what gets published.',
+    scopeTitle: 'Open in subject. Precise in claim.',
+    scopeBody: 'Art, history, science, language, nature, technology or systems: curiosity opens the research; rigor determines what is published.',
     architectureLabel: 'ARCHITECTURE',
     architectureTitle: 'Foundation → Framework → Register',
-    architectureBody:
-      'The Foundation defines purpose, method, standards and responsibility. The Framework contains the Atlas Engine, evidence schema, design system and shared components. The Register contains projects, versions, status and contributors.',
-    principlesLabel: '10 PRINCIPLES',
+    architectureBody: 'The Foundation defines the method. The Framework provides shared structures. The Register makes projects and work status visible.',
+    architectureItems: [
+      ['FOUNDATION', 'purpose · method · standards · responsibility'],
+      ['FRAMEWORK', 'Atlas Engine · evidence · design system · components'],
+      ['REGISTER', 'projects · versions · status · contributions'],
+    ],
+    principlesLabel: '9 PRINCIPLES',
     principles: [
       'The question comes first.',
       'Curiosity to begin, rigor to publish.',
-      'Open in subject. Narrow in claim.',
+      'Open in subject. Precise in claim.',
       'Every claim shows its ground.',
       'Missing data is not proof of absence.',
       'Disagreement is shown, not silently resolved.',
-      'Machines suggest. People interpret.',
       'Every instrument declares its limits.',
       'Connect, don’t capture.',
       'Record what was learned, including what failed.',
     ],
-    longLabel: 'LONG-TERM QUESTION',
-    longQuestion:
-      'How can computational instruments help people see knowledge differently, while keeping visible what the instrument itself has chosen?',
+    longLabel: 'OPEN QUESTION',
+    longQuestion: 'How can computational instruments help us see knowledge differently while keeping the choices made by the instrument visible?',
     framework: 'OPEN FRAMEWORK',
-    back: 'BACK TO INDEX',
-    canonical: 'Canonical Foundation Document · v0.3 · 28 Sep 2026',
   },
 };
 
@@ -223,7 +271,6 @@ export const FoundationPage: React.FC = () => {
             <div className="flex flex-col justify-end gap-6 lg:col-span-4">
               <p className="dz-body-strong">{t.intro}</p>
               <p className="dz-body">{t.subject}</p>
-              <p className="font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">{t.canonical}</p>
             </div>
           </div>
         </div>
@@ -231,27 +278,27 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label kind="field">IDENTITY / DOT · ZERO · OPEN DIRECTION</Label>
+          <Label kind="field">{t.identityLabel}</Label>
           <div className="mt-8 grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="dz-h2 text-4xl sm:text-6xl">DOT. ZERO. OPEN DIRECTION.</h2>
-              <p className="dz-body mt-6 max-w-xl">A geometric sign built from point, zero, diagonal and triangle. It reads as DOT / ZERO / OPEN DIRECTION, echoes &lt;/&gt; as code and construction, and may also reveal a question or a person raising an arm. The ambiguity is intentional.</p>
+              <h2 className="dz-h2 text-4xl sm:text-6xl">{t.identityTitle}</h2>
+              <p className="dz-body mt-6 max-w-xl">{t.identityBody}</p>
             </div>
             <div className="lg:col-span-7">
               <div className="dz-identity-board">
                 <div className="dz-identity-cell dz-identity-hero"><DotzeroMark size={150} /></div>
                 <div className="dz-identity-cell">
-                  <div className="dz-meta">CONSTRUCTION</div>
-                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">DOT / ORIGIN<br/>ZERO / FIELD<br/>SLASH / OPEN DIRECTION</div></div>
+                  <div className="dz-meta">{t.construction}</div>
+                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">{t.constructionLines.map(line => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</div></div>
                 </div>
                 <div className="dz-identity-cell">
-                  <div className="dz-meta">SCALE TEST</div>
+                  <div className="dz-meta">{t.scale}</div>
                   <div className="dz-identity-scale mt-10">{[16,24,32,48].map(size => <figure key={size}><DotzeroMark size={size}/><figcaption className="dz-meta">{size}px</figcaption></figure>)}</div>
                 </div>
                 <div className="dz-identity-cell">
-                  <div className="dz-meta">LOGOTYPE / COMPLEMENTARY IDENTITY</div>
+                  <div className="dz-meta">{t.logotype}</div>
                   <div className="mt-10 bg-white p-4 text-black"><DotzeroLogotype className="w-full max-w-[250px]" /></div>
-                  <div className="dz-meta mt-6">.DOTZERO / SIGN NEVER FORM A LOCKUP</div>
+                  <div className="dz-meta mt-6">{t.logotypeRule}</div>
                 </div>
               </div>
             </div>
@@ -261,31 +308,25 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label kind="system">GRAPHIC SYNTAX / . · 0 · &lt;/&gt;</Label>
+          <Label kind="system">{t.syntaxLabel}</Label>
           <div className="mt-8 grid gap-px border dz-rule bg-[var(--line-soft)] lg:grid-cols-3">
-            <div className="bg-[var(--bg)] p-6 sm:p-8">
-              <DotMarker size="lg" />
-              <h3 className="dz-h3 mt-8 text-3xl">KNOWLEDGE.</h3>
-              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">DOT / CONTENT MARKER</div>
-              <p className="dz-body mt-5">Origin, question, node, evidence and active focus. The dot sits close to content: section labels, claims, sources, states and points of attention.</p>
-            </div>
-            <ZeroField className="bg-[var(--bg)] p-6 sm:p-8">
-              <FieldGlyph size={24} />
-              <h3 className="dz-h3 mt-8 text-3xl">FIELD.</h3>
-              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em]">ZERO / CONTAINER</div>
-              <p className="dz-body mt-5">A bounded research space: project, model, dataset or context. The zero is usually expressed as a field or frame, not repeated as decoration.</p>
-            </ZeroField>
-            <div className="bg-[var(--bg)] p-6 sm:p-8">
-              <SystemGlyph size={46} />
-              <h3 className="dz-h3 mt-8 text-3xl">METHOD.</h3>
-              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">&lt;/&gt; / SYSTEM MARKER</div>
-              <p className="dz-body mt-5">Construction, action, transition and open direction. It belongs to methods, tools, navigation and calls to explore — never as generic code decoration.</p>
-            </div>
+            {t.syntax.map(([title, meta, body], index) => {
+              const icon = index === 0 ? <DotMarker size="lg" /> : index === 1 ? <FieldGlyph size={24} /> : <SystemGlyph size={46} />;
+              const wrapper = (
+                <>
+                  {icon}
+                  <h3 className="dz-h3 mt-8 text-3xl">{title}</h3>
+                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">{meta}</div>
+                  <p className="dz-body mt-5">{body}</p>
+                </>
+              );
+              return index === 1
+                ? <ZeroField key={title} className="bg-[var(--bg)] p-6 sm:p-8">{wrapper}</ZeroField>
+                : <div key={title} className="bg-[var(--bg)] p-6 sm:p-8">{wrapper}</div>;
+            })}
           </div>
           <div className="mt-6 grid gap-4 font-mono text-[8px] uppercase leading-5 tracking-[.12em] dz-text-muted md:grid-cols-3">
-            <div><strong className="text-[var(--text)]">.</strong> stays with knowledge and evidence.</div>
-            <div><strong className="text-[var(--text)]">0</strong> defines the field in which inquiry happens.</div>
-            <div><strong className="text-[var(--text)]">&lt;/&gt;</strong> marks method, action and movement beyond the field.</div>
+            {t.syntaxRules.map(rule => <div key={rule}>{rule}</div>)}
           </div>
         </div>
       </section>
@@ -297,17 +338,16 @@ export const FoundationPage: React.FC = () => {
             <h2 className="dz-h2 text-4xl sm:text-6xl">{t.problemTitle}</h2>
             <p className="dz-body mt-7 max-w-3xl text-lg">{t.problemBody}</p>
             <div className="mt-10 grid gap-px border dz-border bg-[var(--line)] sm:grid-cols-3">
-              {[
-                ['RETRIEVE', 'question → list', Search],
-                ['SYNTHESISE', 'question → answer', Sparkles],
-                ['EXPLORE', 'entry → relation → question', Compass],
-              ].map(([title, body, Icon]) => (
-                <div key={String(title)} className="min-h-44 bg-[var(--bg)] p-5">
-                  {React.createElement(Icon as React.ElementType, { className: 'h-5 w-5' })}
-                  <div className="mt-12 font-mono text-[9px] font-bold tracking-[0.15em]">{String(title)}</div>
-                  <div className="mt-2 font-mono text-[9px] dz-text-muted">{String(body)}</div>
-                </div>
-              ))}
+              {t.compare.map(([title, body], i) => {
+                const Icon = [Search, Braces, Compass][i];
+                return (
+                  <div key={title} className="min-h-44 bg-[var(--bg)] p-5">
+                    <Icon className="h-5 w-5" />
+                    <div className="mt-12 font-mono text-[9px] font-bold tracking-[0.15em]">{title}</div>
+                    <div className="mt-2 font-mono text-[9px] dz-text-muted">{body}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -319,7 +359,7 @@ export const FoundationPage: React.FC = () => {
           <h2 className="dz-h2 mt-6 max-w-6xl text-4xl sm:text-6xl">{t.methodTitle}</h2>
           <p className="dz-body mt-7 max-w-3xl text-lg">{t.methodBody}</p>
           <div className="mt-12 grid gap-px border dz-border bg-[var(--line)] sm:grid-cols-3 lg:grid-cols-6">
-            {['Question', 'Research', 'Model', 'Represent', 'Explore', 'Record'].map((item, i) => (
+            {t.methodSteps.map((item, i) => (
               <div key={item} className="min-h-32 bg-[var(--bg)] p-5">
                 <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><SystemGlyph size={14} />0{i + 1}</span>
                 <div className="mt-10 font-display text-xl font-semibold">{item}</div>
@@ -374,16 +414,6 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-3"><Label kind="system">{t.aiLabel}</Label></div>
-          <div className="lg:col-span-8">
-            <h2 className="dz-h2 text-4xl sm:text-6xl">{t.aiTitle}</h2>
-            <p className="dz-body mt-7 max-w-3xl text-lg">{t.aiBody}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b dz-border">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
           <div className="lg:col-span-3"><Label kind="field">{t.scopeLabel}</Label></div>
           <div className="lg:col-span-8">
             <h2 className="dz-h2 text-4xl sm:text-6xl">{t.scopeTitle}</h2>
@@ -401,11 +431,7 @@ export const FoundationPage: React.FC = () => {
               <p className="dz-body mt-7 max-w-2xl text-lg">{t.architectureBody}</p>
             </div>
             <div className="lg:col-span-6">
-              {[
-                ['FOUNDATION', 'purpose · method · standards · responsibility'],
-                ['FRAMEWORK', 'Atlas Engine · evidence · design system · components'],
-                ['REGISTER', 'projects · versions · status · contributors'],
-              ].map(([name, body], i) => (
+              {t.architectureItems.map(([name, body], i) => (
                 <div key={name} className="grid grid-cols-[2.5rem_1fr] border-t dz-border py-5 first:border-t-2">
                   <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><SystemGlyph size={14} />0{i + 1}</span>
                   <div>
