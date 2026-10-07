@@ -101,6 +101,8 @@ export const DotzeroIndex: React.FC = () => {
         sub={t.heroSub}
         intro={t.intro}
         projectCount={projects.length}
+        activeLabel={t.active}
+        projectsLabel={t.projectsCount}
       />
 
       <section id="projects" className="border-b dz-border">
