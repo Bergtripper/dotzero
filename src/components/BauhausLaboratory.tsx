@@ -167,7 +167,7 @@ export const BauhausLaboratory: React.FC = () => {
               className={`p-2 border border-[var(--text)] font-mono text-xs uppercase flex items-center gap-1.5 transition-colors ${
                 soundEnabled ? 'bg-[var(--text)] text-[var(--on-text)]' : 'bg-[var(--surface-raised)] text-zinc-700'
               }`}
-              title="Feedback sonoro Bauhaus"
+              title={t.soundTitle[language]}
             >
               {soundEnabled ? <Volume2 className="w-4 h-4 text-[var(--accent-tertiary)]" /> : <VolumeX className="w-4 h-4" />}
               <span className="hidden sm:inline">{t.audioToggle[language]}</span>
@@ -177,7 +177,7 @@ export const BauhausLaboratory: React.FC = () => {
               type="button"
               onClick={randomizePalette}
               className="p-2 border border-[var(--text)] bg-[var(--surface-raised)] font-mono text-xs uppercase flex items-center gap-1.5 hover:bg-[var(--surface)]"
-              title="Variazione casuale canone Bauhaus"
+              title={t.variationTitle[language]}
             >
               <Shuffle className="w-4 h-4 text-[var(--accent)]" />
               <span className="hidden sm:inline">{t.variationToggle[language]}</span>
@@ -195,7 +195,7 @@ export const BauhausLaboratory: React.FC = () => {
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[var(--text)] font-mono text-xs">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]" />
-                <span className="font-bold uppercase">CANVAS 400×400 PT</span>
+                <span className="font-bold uppercase">{t.canvasLabel[language]}</span>
               </div>
               <div className="flex items-center gap-2 text-zinc-600">
                 <span>{t.elementsCount[language]}: {elements.length}</span>
@@ -336,9 +336,9 @@ export const BauhausLaboratory: React.FC = () => {
 
               {/* Presets dropdown */}
               <div className="flex items-center gap-1 font-mono text-xs">
-                <span className="text-zinc-500 hidden sm:inline">Preset:</span>
+                <span className="text-zinc-500 hidden sm:inline">{t.presetLabelShort[language]}</span>
                 <select
-                  aria-label="Carica composizione preset"
+                  aria-label={t.presetAria[language]}
                   onChange={(e) => loadPreset(e.target.value)}
                   className="border border-[var(--text)] bg-[var(--surface-raised)] px-2 py-1 font-mono text-xs outline-none"
                 >
@@ -368,7 +368,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   onClick={() => addPrimitive('circle', '#DE3831')}
                   className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
-                  title="Aggiungi Cerchio"
+                  title={t.addCircle[language]}
                 >
                   <span className="w-6 h-6 rounded-full bg-[var(--accent)] border border-[var(--text)]" />
                   <span className="font-mono text-[10px] uppercase">{t.circle[language]}</span>
@@ -378,7 +378,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   onClick={() => addPrimitive('square', '#1350B0')}
                   className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
-                  title="Aggiungi Quadrato"
+                  title={t.addSquare[language]}
                 >
                   <span className="w-6 h-6 bg-[var(--accent-secondary)] border border-[var(--text)]" />
                   <span className="font-mono text-[10px] uppercase">{t.square[language]}</span>
@@ -388,7 +388,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   onClick={() => addPrimitive('triangle', '#F7B801')}
                   className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
-                  title="Aggiungi Triangolo"
+                  title={t.addTriangle[language]}
                 >
                   <div className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[20px] border-b-[#F7B801]" />
                   <span className="font-mono text-[10px] uppercase">{t.triangle[language]}</span>
@@ -398,7 +398,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   onClick={() => addPrimitive('semicircle', '#121212')}
                   className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
-                  title="Aggiungi Semicerchio"
+                  title={t.addSemicircle[language]}
                 >
                   <div className="w-6 h-3 bg-[var(--text)] rounded-t-full border border-[var(--text)]" />
                   <span className="font-mono text-[10px] uppercase">{t.semicircle[language]}</span>
@@ -408,7 +408,7 @@ export const BauhausLaboratory: React.FC = () => {
                   type="button"
                   onClick={() => addPrimitive('line', '#121212')}
                   className="p-2.5 border-2 border-[var(--text)] bg-[var(--surface-raised)] hover:bg-[var(--canvas)] flex flex-col items-center gap-1 transition-transform active:scale-95"
-                  title="Aggiungi Linea"
+                  title={t.addLine[language]}
                 >
                   <div className="w-6 h-1 bg-[var(--text)] mt-2.5" />
                   <span className="font-mono text-[10px] uppercase">{t.line[language]}</span>
@@ -428,7 +428,7 @@ export const BauhausLaboratory: React.FC = () => {
                       type="button"
                       onClick={bringToFront}
                       className="p-1 border border-[var(--text)] bg-[var(--surface-raised)] hover:bg-zinc-100"
-                      title="Porta in primo piano"
+                      title={t.bringFront[language]}
                     >
                       <Layers className="w-3.5 h-3.5" />
                     </button>
@@ -436,7 +436,7 @@ export const BauhausLaboratory: React.FC = () => {
                       type="button"
                       onClick={removeSelected}
                       className="p-1 border border-[var(--text)] bg-[var(--surface-raised)] text-red-600 hover:bg-red-50"
-                      title="Elimina elemento"
+                      title={t.deleteElement[language]}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
