@@ -31,6 +31,26 @@ const modulorStudioData = {
     de: 'SYNTHESE AKTIV',
     en: 'SYNTH ACTIVE',
   },
+  audioAria: {
+    it: 'Sintetizzatore ambientale reattivo',
+    de: 'Reaktiver Ambient-Synthesizer',
+    en: 'Audio-reactive ambient synth',
+  },
+  particlesStat: {
+    it: 'PARTICELLE',
+    de: 'PARTIKEL',
+    en: 'PARTICLES',
+  },
+  fieldInstruction: {
+    it: 'CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO',
+    de: 'KLICK = SCHOCKWELLE · ZIEHEN = FELD MODULIEREN',
+    en: 'CLICK = EMIT SHOCKWAVE · DRAG = MODULATE FIELD',
+  },
+  paramsLabel: {
+    it: 'PARAMETRI VISIVI',
+    de: 'VISUELLE PARAMETER',
+    en: 'VISUAL PARAMETERS',
+  },
   subtitle: {
     it: 'Laboratorio visivo generativo & sonoro a proporzioni armoniche e reticoli cinetici. Muovi il cursore per modulare campi di forza e flussi particellari.',
     de: 'Generatives visuelles & akustisches Labor für harmonische Proportionen und kinetische Raster. Bewege den Cursor, um Kraftfelder und Partikelströme zu modulieren.',
