@@ -16,6 +16,21 @@ const modulorStudioData = {
     de: 'MODULOR STUDIO',
     en: 'MODULOR STUDIO',
   },
+  eyebrow: {
+    it: 'DOTZERO // CINETICA GENERATIVA',
+    de: 'DOTZERO // GENERATIVE KINETIK',
+    en: 'DOTZERO // GENERATIVE KINETICS',
+  },
+  realtimeField: {
+    it: 'CAMPO VISIVO IN TEMPO REALE',
+    de: 'VISUELLES FELD IN ECHTZEIT',
+    en: 'REAL-TIME VISUAL FIELD',
+  },
+  synthActive: {
+    it: 'SINTESI ATTIVA',
+    de: 'SYNTHESE AKTIV',
+    en: 'SYNTH ACTIVE',
+  },
   subtitle: {
     it: 'Laboratorio visivo generativo & sonoro a proporzioni armoniche e reticoli cinetici. Muovi il cursore per modulare campi di forza e flussi particellari.',
     de: 'Generatives visuelles & akustisches Labor für harmonische Proportionen und kinetische Raster. Bewege den Cursor, um Kraftfelder und Partikelströme zu modulieren.',
