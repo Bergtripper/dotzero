@@ -13,6 +13,7 @@ import { DotzeroIndex } from './components/DotzeroIndex';
 import { DotzeroFooter } from './components/DotzeroFooter';
 import { AtlasEnginePage } from './components/AtlasEnginePage';
 import { FoundationPage } from './components/FoundationPage';
+import { IdentityPage } from './components/IdentityPage';
 import { Hero } from './components/Hero';
 import { Manifesto } from './components/Manifesto';
 import { ColorShapeTheory } from './components/ColorShapeTheory';
@@ -24,7 +25,7 @@ import { ModulorStudio } from './components/ModulorStudio';
 import { UniversalSystemsProject } from './projects/universal-systems';
 
 function MainAppContent() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'modulor' | 'bauhaus' | 'universal' | 'atlas-engine' | 'foundation'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'modulor' | 'bauhaus' | 'universal' | 'atlas-engine' | 'foundation' | 'identity'>('home');
   const [currentTheme, setCurrentTheme] = useState<ThemeVariant>('classic');
   const [colorMode, setColorMode] = useState<ColorMode>('light');
   const [showGridLines, setShowGridLines] = useState<boolean>(true);
@@ -49,6 +50,8 @@ function MainAppContent() {
         hash === '#universal-type-lab'
       ) {
         setCurrentPage('universal');
+      } else if (hash === '#identity' || hash === '#cd-ci' || hash === '#brand') {
+        setCurrentPage('identity');
       } else if (hash === '#foundation' || hash === '#about-foundation') {
         setCurrentPage('foundation');
       } else if (hash === '#atlas-engine' || hash === '#framework' || hash === '#system') {
@@ -96,6 +99,17 @@ function MainAppContent() {
 
   if (currentPage === 'universal') {
     return <UniversalSystemsProject onBack={navigateToHome} />;
+  }
+
+  if (currentPage === 'identity') {
+    return (
+      <div data-color-mode={colorMode} className="min-h-screen dz-bg dz-text relative">
+        {showGridLines && <div id="dotzero-grid-overlay" className="fixed inset-0 pointer-events-none z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-6 lg:grid-cols-12 opacity-100">{Array.from({ length: 12 }).map((_, i) => <div key={i} className="h-full border-r dz-grid-line first:border-l" />)}</div>}
+        <DotzeroHeader colorMode={colorMode} onColorModeChange={setColorMode} showGridLines={showGridLines} onToggleGridLines={() => setShowGridLines(!showGridLines)} />
+        <IdentityPage />
+        <DotzeroFooter />
+      </div>
+    );
   }
 
   if (currentPage === 'foundation') {
