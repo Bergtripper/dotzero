@@ -17,7 +17,8 @@ const COPY = {
     construction: 'COSTRUZIONE',
     scaleTest: 'TEST DI SCALA',
     logotypeComplement: 'LOGOTIPO / IDENTITÀ COMPLEMENTARE',
-    noLockup: '.DOTZERO E SEGNO NON FORMANO UN LOCKUP',
+    noLockup: '.DOTZERO E SEGNO RESTANO SEPARATI',
+    constructionReadings: ['DOT / ORIGINE', 'ZERO / CAMPO', 'SLASH / OPEN DIRECTION'],
     syntaxLabel: 'SINTASSI GRAFICA / . · 0 · </>',
     syntaxCards: [
       ['CONOSCENZA.', 'DOT / MARCATORE DI CONTENUTO', 'Origine, domanda, nodo, evidenza e punto di attenzione. Il punto accompagna sezioni, affermazioni, fonti e stati.'],
@@ -83,7 +84,8 @@ const COPY = {
     construction: 'KONSTRUKTION',
     scaleTest: 'SKALENTEST',
     logotypeComplement: 'LOGOTYPE / KOMPLEMENTÄRE IDENTITÄT',
-    noLockup: '.DOTZERO UND ZEICHEN BILDEN KEIN LOCKUP',
+    noLockup: '.DOTZERO UND ZEICHEN BLEIBEN GETRENNT',
+    constructionReadings: ['DOT / URSPRUNG', 'ZERO / FELD', 'SLASH / OPEN DIRECTION'],
     syntaxLabel: 'GRAFISCHE SYNTAX / . · 0 · </>',
     syntaxCards: [
       ['WISSEN.', 'DOT / INHALTSMARKER', 'Ursprung, Frage, Knoten, Evidenz und Fokus. Der Punkt begleitet Abschnitte, Aussagen, Quellen und Zustände.'],
@@ -149,7 +151,8 @@ const COPY = {
     construction: 'CONSTRUCTION',
     scaleTest: 'SCALE TEST',
     logotypeComplement: 'LOGOTYPE / COMPLEMENTARY IDENTITY',
-    noLockup: '.DOTZERO AND SIGN NEVER FORM A LOCKUP',
+    noLockup: '.DOTZERO AND SIGN REMAIN SEPARATE',
+    constructionReadings: ['DOT / ORIGIN', 'ZERO / FIELD', 'SLASH / OPEN DIRECTION'],
     syntaxLabel: 'GRAPHIC SYNTAX / . · 0 · </>',
     syntaxCards: [
       ['KNOWLEDGE.', 'DOT / CONTENT MARKER', 'Origin, question, node, evidence and focus. The dot accompanies sections, claims, sources and states.'],
@@ -250,7 +253,7 @@ export const FoundationPage: React.FC = () => {
                 <div className="dz-identity-cell dz-identity-hero"><DotzeroMark size={150} /></div>
                 <div className="dz-identity-cell">
                   <div className="dz-meta">{t.construction}</div>
-                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">DOT / ORIGIN<br/>ZERO / FIELD<br/>SLASH / OPEN DIRECTION</div></div>
+                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">{t.constructionReadings.map((line) => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</div></div>
                 </div>
                 <div className="dz-identity-cell">
                   <div className="dz-meta">{t.scaleTest}</div>
