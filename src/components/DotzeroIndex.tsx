@@ -11,30 +11,58 @@ const COPY = {
     heroMeta: 'NODE 00 / INDEX',
     heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
     heroSub: 'Esplorare la conoscenza attraverso atlanti, studi e strumenti.',
-    intro: 'Atlas, Studies e Tools nati dalla curiosità e costruiti come strumenti di indagine.',
-    projects: 'PROJECT INDEX',
-    method: 'METHOD',
-    about: 'ABOUT',
-    aboutBody: 'Un laboratorio personale per esplorare la conoscenza. Il soggetto può cambiare completamente; metodo, standard, evidenza e responsabilità restano costanti.',
-    contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
-    open: 'OPEN PROJECT',
-    pending: 'LINK SOON',
+    intro: 'Atlas, Study e Tool nati dalla curiosità e costruiti come strumenti di indagine.',
+    projects: 'INDICE PROGETTI',
+    method: 'METODO',
+    about: 'PROFILO',
+    aboutBody: 'Un laboratorio personale per esplorare la conoscenza. Il soggetto può cambiare; metodo, evidenza e responsabilità restano costanti.',
+    contact: 'CONTATTO',
+    methodLines: [
+      'La domanda viene prima.',
+      'Curiosità per iniziare, rigore per pubblicare.',
+      'Ogni affermazione mostra il proprio fondamento.',
+      'Ogni strumento dichiara i propri limiti.',
+    ],
+    open: 'APRI PROGETTO',
+    pending: 'IN ARRIVO',
+    active: 'ATTIVO',
+    projectsCount: 'PROGETTI',
+    status: { active: 'attivo', prototype: 'prototipo', planned: 'pianificato' },
+    types: {
+      archive: 'archivio', research: 'ricerca', interactive: 'interattivo',
+      'visual-culture': 'cultura visiva', experiment: 'esperimento',
+      generative: 'generativo', 'visual-systems': 'sistemi visivi',
+      typography: 'tipografia', geometry: 'geometria', morphology: 'morfologia',
+    },
   },
   de: {
     heroLabel: 'PERSONAL RESEARCH LAB',
     heroMeta: 'NODE 00 / INDEX',
     heroStatement: 'DOT. ZERO. OPEN DIRECTION.',
-    heroSub: 'Wissen durch Atlanten, Studien und Instrumente erkunden.',
+    heroSub: 'Wissen durch Atlanten, Studien und Werkzeuge erkunden.',
     intro: 'Atlanten, Studies und Tools, die aus Neugier entstehen und als Instrumente der Untersuchung gebaut werden.',
-    projects: 'PROJECT INDEX',
-    method: 'METHOD',
-    about: 'ABOUT',
-    aboutBody: 'Ein persönliches Labor zur Erkundung von Wissen. Das Thema kann vollständig wechseln; Methode, Standards, Evidenz und Verantwortung bleiben konstant.',
-    contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
-    open: 'OPEN PROJECT',
-    pending: 'LINK SOON',
+    projects: 'PROJEKTINDEX',
+    method: 'METHODE',
+    about: 'PROFIL',
+    aboutBody: 'Ein persönliches Labor zur Erkundung von Wissen. Das Thema kann wechseln; Methode, Evidenz und Verantwortung bleiben konstant.',
+    contact: 'KONTAKT',
+    methodLines: [
+      'Die Frage kommt zuerst.',
+      'Neugier zum Beginnen, Sorgfalt zum Veröffentlichen.',
+      'Jede Aussage zeigt ihre Grundlage.',
+      'Jedes Instrument legt seine Grenzen offen.',
+    ],
+    open: 'PROJEKT ÖFFNEN',
+    pending: 'FOLGT',
+    active: 'AKTIV',
+    projectsCount: 'PROJEKTE',
+    status: { active: 'aktiv', prototype: 'prototyp', planned: 'geplant' },
+    types: {
+      archive: 'archiv', research: 'forschung', interactive: 'interaktiv',
+      'visual-culture': 'visuelle kultur', experiment: 'experiment',
+      generative: 'generativ', 'visual-systems': 'visuelle systeme',
+      typography: 'typografie', geometry: 'geometrie', morphology: 'morphologie',
+    },
   },
   en: {
     heroLabel: 'PERSONAL RESEARCH LAB',
@@ -45,11 +73,25 @@ const COPY = {
     projects: 'PROJECT INDEX',
     method: 'METHOD',
     about: 'ABOUT',
-    aboutBody: 'A personal lab for exploring knowledge. The subject may change completely; the method, standards, evidence and responsibility remain constant.',
+    aboutBody: 'A personal lab for exploring knowledge. The subject may change; method, evidence and responsibility remain constant.',
     contact: 'CONTACT',
-    methodLines: ['The question comes first.', 'Curiosity to begin, rigor to publish.', 'Every claim shows its ground.', 'Machines suggest. People interpret.'],
+    methodLines: [
+      'The question comes first.',
+      'Curiosity to begin, rigor to publish.',
+      'Every claim shows its ground.',
+      'Every instrument declares its limits.',
+    ],
     open: 'OPEN PROJECT',
-    pending: 'LINK SOON',
+    pending: 'COMING SOON',
+    active: 'ACTIVE',
+    projectsCount: 'PROJECTS',
+    status: { active: 'active', prototype: 'prototype', planned: 'planned' },
+    types: {
+      archive: 'archive', research: 'research', interactive: 'interactive',
+      'visual-culture': 'visual culture', experiment: 'experiment',
+      generative: 'generative', 'visual-systems': 'visual systems',
+      typography: 'typography', geometry: 'geometry', morphology: 'morphology',
+    },
   },
 };
 
@@ -109,7 +151,7 @@ export const DotzeroIndex: React.FC = () => {
                       </p>
                       <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
                         {project.type.map((type) => (
-                          <span key={type} className="font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
+                          <span key={t.types[type as keyof typeof t.types] ?? type} className="font-mono text-[9px] uppercase tracking-[0.15em] dz-text-muted">
                             {type}
                           </span>
                         ))}
@@ -119,7 +161,7 @@ export const DotzeroIndex: React.FC = () => {
                     <div className="flex items-start justify-between md:col-span-3 md:block md:text-right">
                       <div className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">
                         <DotMarker size="xs" />
-                        {project.status}
+                        {t.status[project.status as keyof typeof t.status] ?? project.status}
                       </div>
 
                       {canOpen && projectHref ? (
