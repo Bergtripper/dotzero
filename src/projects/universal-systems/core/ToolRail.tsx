@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { EditorMode, GlyphId, Tool } from './model';
 
 interface ToolRailProps {
@@ -9,15 +11,18 @@ interface ToolRailProps {
   glyph: GlyphId;
 }
 
-export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, onModeChange, glyph }) => (
+export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, onModeChange, glyph }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
+  return (
   <aside className="tc-rail">
-    <div className="tc-label">TOOLS</div>
+    <div className="tc-label">{t.tools}</div>
     <div className="tc-rail-tools">
       {([
-        ['select', '↖', 'Select'],
-        ['bowl', '○', 'Bowl'],
-        ['stem', '│', 'Stem'],
-        ['crossbar', '—', 'Bar'],
+        ['select', '↖', t.toolSelect],
+        ['bowl', '○', t.toolBowl],
+        ['stem', '│', t.toolStem],
+        ['crossbar', '—', t.toolBar],
       ] as Array<[Tool, string, string]>).map(([id, symbol, label]) => (
         <button
           key={id}
@@ -35,11 +40,12 @@ export const ToolRail: React.FC<ToolRailProps> = ({ tool, mode, onToolChange, on
     </div>
 
     <div className="tc-rail-mode">
-      <div className="tc-label">VIEW</div>
-      <button className={mode === 'design' ? 'is-active' : ''} onClick={() => onModeChange('design')}>DESIGN</button>
-      <button className={mode === 'construction' ? 'is-active' : ''} onClick={() => onModeChange('construction')}>CONSTRUCTION</button>
-      <button className={mode === 'system' ? 'is-active' : ''} onClick={() => onModeChange('system')}>SYSTEM</button>
-      <button className={mode === 'test' ? 'is-active' : ''} onClick={() => onModeChange('test')}>TEST</button>
+      <div className="tc-label">{t.view}</div>
+      <button className={mode === 'design' ? 'is-active' : ''} onClick={() => onModeChange('design')}>{t.design}</button>
+      <button className={mode === 'construction' ? 'is-active' : ''} onClick={() => onModeChange('construction')}>{t.construction}</button>
+      <button className={mode === 'system' ? 'is-active' : ''} onClick={() => onModeChange('system')}>{t.system}</button>
+      <button className={mode === 'test' ? 'is-active' : ''} onClick={() => onModeChange('test')}>{t.test}</button>
     </div>
   </aside>
-);
+  );
+};
