@@ -92,22 +92,32 @@ const modulorStudioData = {
     en: 'Kinetic Shockwave (Click)',
   },
   nodesTitle: {
-    it: 'PIPELINE DI GENERAZIONE MULTIMODALE',
-    de: 'MULTIMODALE GENERATIONS-PIPELINE',
-    en: 'MULTIMODAL GENERATION PIPELINE',
+    it: 'PIPELINE DI GENERAZIONE',
+    de: 'GENERATIVE PIPELINE',
+    en: 'GENERATION PIPELINE',
+  },
+  nodeLabel: {
+    it: 'NODO',
+    de: 'KNOTEN',
+    en: 'NODE',
+  },
+  running: {
+    it: 'STATO: ATTIVO',
+    de: 'STATUS: AKTIV',
+    en: 'STATUS: RUNNING',
   },
   nodes: [
     {
       id: 'node-1',
-      title: { it: 'Prompt Semantico', de: 'Semantischer Prompt', en: 'Semantic Prompt' },
-      desc: { it: 'Vettorializzazione del concetto visivo', de: 'Vektorisierung des visuellen Konzepts', en: 'Vectorization of visual concept' },
-      tag: 'LATENT INPUT',
+      title: { it: 'Parametri di Input', de: 'Eingabeparameter', en: 'Input Parameters' },
+      desc: { it: 'Regole e coordinate che definiscono il sistema visivo', de: 'Regeln und Koordinaten, die das visuelle System definieren', en: 'Rules and coordinates that define the visual system' },
+      tag: 'INPUT',
     },
     {
       id: 'node-2',
-      title: { it: 'Shader Neurale 4D', de: 'Neuronaler 4D-Shader', en: 'Neural 4D Shader' },
-      desc: { it: 'Interpolazione continua tra geometria e luce', de: 'Kontinuierliche Interpolation von Licht und Geometrie', en: 'Continuous interpolation of geometry and light' },
-      tag: 'RAYMARCHING',
+      title: { it: 'Campo Visivo', de: 'Visuelles Feld', en: 'Visual Field' },
+      desc: { it: 'Interpolazione continua tra geometria, movimento e luce', de: 'Kontinuierliche Interpolation von Geometrie, Bewegung und Licht', en: 'Continuous interpolation of geometry, motion and light' },
+      tag: 'RENDER',
     },
     {
       id: 'node-3',
