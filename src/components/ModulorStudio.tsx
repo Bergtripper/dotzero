@@ -832,7 +832,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] px-1.5 py-0.5 border border-white/20 text-zinc-400">
-                      NODE 0{i + 1}
+                      {t.nodeLabel[language]} 0{i + 1}
                     </span>                    <span className="text-[10px] text-[var(--accent-tertiary)] font-bold">
                       {node.tag}
                     </span>
@@ -847,7 +847,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-500">
-                  <span>STATUS: RUNNING</span>
+                  <span>{t.running[language]}</span>
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
               </div>
