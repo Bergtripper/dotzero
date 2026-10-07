@@ -1,8 +1,8 @@
 import React from 'react';
-import { ArrowUpRight, Circle } from 'lucide-react';
 import { getDotzeroProjects } from '../projects';
 import { useLanguage } from '../context/LanguageContext';
 import { DotzeroTypographicSpecimen } from './DotzeroTypographicSpecimen';
+import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph } from './GraphicSyntax';
 
 
 const COPY = {
@@ -57,11 +57,26 @@ export const DotzeroIndex: React.FC = () => {
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8 lg:pb-28 lg:pt-24">
           <div>
-            <div className="mb-7 font-mono text-[10px] uppercase tracking-[0.24em] dz-text-muted">{t.kicker}</div>
+            <div className="mb-7 dz-text-muted"><SyntaxLabel kind="dot">{t.kicker}</SyntaxLabel></div>
             <DotzeroTypographicSpecimen />
             <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.16em] dz-text-muted sm:text-[11px]">
               {t.title}
             </p>
+
+            <div className="mt-8 grid gap-px border dz-rule bg-[var(--line-soft)] sm:grid-cols-3">
+              <div className="bg-[var(--bg)] p-4">
+                <div className="flex items-center gap-3"><DotMarker size="md" /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Knowledge</span></div>
+                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Origin · Question · Node · Evidence</p>
+              </div>
+              <div className="bg-[var(--bg)] p-4">
+                <div className="flex items-center gap-3"><FieldGlyph size={15} /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Field</span></div>
+                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Container · System · Research space</p>
+              </div>
+              <div className="bg-[var(--bg)] p-4">
+                <div className="flex items-center gap-3"><SystemGlyph size={24} /><span className="font-mono text-[9px] font-semibold uppercase tracking-[.14em]">Method</span></div>
+                <p className="mt-3 font-mono text-[8px] uppercase leading-5 tracking-[.1em] dz-text-muted">Construct · Open · Move · Explore</p>
+              </div>
+            </div>
           </div>
 
           <div className="mt-12 grid gap-10 border-t dz-border pt-7 lg:grid-cols-12">
@@ -88,7 +103,7 @@ export const DotzeroIndex: React.FC = () => {
       <section id="projects" className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="mb-3 flex items-end justify-between">
-            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">{t.projects}</h2>
+            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]"><SyntaxLabel kind="dot">{t.projects}</SyntaxLabel></h2>
             <span className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">01—{String(projects.length).padStart(2, '0')}</span>
           </div>
 
@@ -107,7 +122,7 @@ export const DotzeroIndex: React.FC = () => {
                 <article key={project.id} className="dz-project-row group border-b dz-border">
                   <div className="grid gap-6 py-9 md:grid-cols-12 md:items-start lg:py-11">
                     <div className="md:col-span-1">
-                      <span className="font-mono text-[11px] font-bold">{project.number}</span>
+                      <span className="inline-flex items-center gap-2 font-mono text-[11px] font-bold"><FieldGlyph size={9} />{project.number}</span>
                     </div>
 
                     <div className="md:col-span-4">
@@ -134,7 +149,7 @@ export const DotzeroIndex: React.FC = () => {
 
                     <div className="flex items-start justify-between md:col-span-3 md:block md:text-right">
                       <div className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">
-                        <Circle className="h-2 w-2 fill-current" />
+                        <DotMarker size="xs" />
                         {project.status}
                       </div>
 
@@ -143,10 +158,10 @@ export const DotzeroIndex: React.FC = () => {
                           href={projectHref}
                           target={isExternal ? '_blank' : undefined}
                           rel={isExternal ? 'noreferrer' : undefined}
-                          className="mt-0 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] hover:opacity-50 md:mt-8"
+                          className="dz-action-link mt-0 font-mono text-[10px] font-bold uppercase tracking-[0.13em] hover:opacity-50 md:mt-8"
                         >
                           {t.open}
-                          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                          <SystemGlyph size={20} />
                         </a>
                       ) : (
                         <span className="mt-0 inline-flex cursor-default items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.13em] opacity-35 md:mt-8">
@@ -165,12 +180,12 @@ export const DotzeroIndex: React.FC = () => {
       <section id="method" className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
           <div className="lg:col-span-3">
-            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">{t.method}</h2>
+            <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]"><SyntaxLabel kind="system">{t.method}</SyntaxLabel></h2>
           </div>
           <div className="lg:col-span-9">
             {t.methodLines.map((line, i) => (
               <div key={line} className="group grid grid-cols-[2.5rem_1fr] border-t dz-border py-5 first:border-t-2">
-                <span className="font-mono text-[9px] dz-text-muted">0{i + 1}</span>
+                <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><SystemGlyph size={14} />0{i + 1}</span>
                 <p className="font-display text-2xl font-semibold tracking-[-0.04em] transition-transform duration-200 group-hover:translate-x-1 sm:text-4xl">{line}</p>
               </div>
             ))}
@@ -180,7 +195,7 @@ export const DotzeroIndex: React.FC = () => {
 
       <section id="about" className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.about}</h2>
+          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3"><SyntaxLabel kind="dot">{t.about}</SyntaxLabel></h2>
           <div className="lg:col-span-7">
             <p className="font-display text-3xl font-medium leading-[1.08] tracking-[-0.035em] sm:text-5xl">
               {t.aboutBody}
@@ -194,9 +209,9 @@ export const DotzeroIndex: React.FC = () => {
 
       <section id="contact">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3">{t.contact}</h2>
+          <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] lg:col-span-3"><SyntaxLabel kind="system">{t.contact}</SyntaxLabel></h2>
           <div className="lg:col-span-8">
-            <p className="font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">DOTZERO / OPEN CHANNEL</p>
+            <p className="flex items-center gap-4 font-display text-4xl font-semibold tracking-[-0.055em] sm:text-6xl"><SystemGlyph size={48} />OPEN CHANNEL</p>
             <p className="dz-body mt-6 max-w-xl text-sm">
               Personal research · Atlas · Study · Tool · Instruments for inquiry.
             </p>

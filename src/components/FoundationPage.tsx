@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Braces, Compass, GitBranch, Layers3, Search, Shi
 import { useLanguage } from '../context/LanguageContext';
 import { DotzeroMark } from './DotzeroMark';
 import { DotzeroLogotype } from './DotzeroLogotype';
+import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph, ZeroField } from './GraphicSyntax';
 
 const COPY = {
   it: {
@@ -196,8 +197,10 @@ const COPY = {
   },
 };
 
-const Label: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] dz-text-muted">{children}</div>
+const Label: React.FC<{ children: React.ReactNode; kind?: 'dot' | 'system' | 'field' }> = ({ children, kind = 'dot' }) => (
+  <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] dz-text-muted">
+    <SyntaxLabel kind={kind}>{children}</SyntaxLabel>
+  </div>
 );
 
 export const FoundationPage: React.FC = () => {
@@ -228,7 +231,7 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label>IDENTITY / v1.2 CANONICAL SYSTEM</Label>
+          <Label kind="field">IDENTITY / v1.2 CANONICAL SYSTEM</Label>
           <div className="mt-8 grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="dz-h2 text-4xl sm:text-6xl">DOT. ZERO. OPEN DIRECTION.</h2>
@@ -252,6 +255,37 @@ export const FoundationPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b dz-border">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <Label kind="system">GRAPHIC SYNTAX / . · 0 · &lt;/&gt;</Label>
+          <div className="mt-8 grid gap-px border dz-rule bg-[var(--line-soft)] lg:grid-cols-3">
+            <div className="bg-[var(--bg)] p-6 sm:p-8">
+              <DotMarker size="lg" />
+              <h3 className="dz-h3 mt-8 text-3xl">KNOWLEDGE.</h3>
+              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">DOT / CONTENT MARKER</div>
+              <p className="dz-body mt-5">Origin, question, node, evidence and active focus. The dot sits close to content: section labels, claims, sources, states and points of attention.</p>
+            </div>
+            <ZeroField className="bg-[var(--bg)] p-6 sm:p-8">
+              <FieldGlyph size={24} />
+              <h3 className="dz-h3 mt-8 text-3xl">FIELD.</h3>
+              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em]">ZERO / CONTAINER</div>
+              <p className="dz-body mt-5">A bounded research space: project, model, dataset or context. The zero is usually expressed as a field or frame, not repeated as decoration.</p>
+            </ZeroField>
+            <div className="bg-[var(--bg)] p-6 sm:p-8">
+              <SystemGlyph size={46} />
+              <h3 className="dz-h3 mt-8 text-3xl">METHOD.</h3>
+              <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">&lt;/&gt; / SYSTEM MARKER</div>
+              <p className="dz-body mt-5">Construction, action, transition and open direction. It belongs to methods, tools, navigation and calls to explore — never as generic code decoration.</p>
+            </div>
+          </div>
+          <div className="mt-6 grid gap-4 font-mono text-[8px] uppercase leading-5 tracking-[.12em] dz-text-muted md:grid-cols-3">
+            <div><strong className="text-[var(--text)]">.</strong> stays with knowledge and evidence.</div>
+            <div><strong className="text-[var(--text)]">0</strong> defines the field in which inquiry happens.</div>
+            <div><strong className="text-[var(--text)]">&lt;/&gt;</strong> marks method, action and movement beyond the field.</div>
           </div>
         </div>
       </section>
@@ -281,13 +315,13 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label>{t.methodLabel}</Label>
+          <Label kind="system">{t.methodLabel}</Label>
           <h2 className="dz-h2 mt-6 max-w-6xl text-4xl sm:text-6xl">{t.methodTitle}</h2>
           <p className="dz-body mt-7 max-w-3xl text-lg">{t.methodBody}</p>
           <div className="mt-12 grid gap-px border dz-border bg-[var(--line)] sm:grid-cols-3 lg:grid-cols-6">
             {['Question', 'Research', 'Model', 'Represent', 'Explore', 'Record'].map((item, i) => (
               <div key={item} className="min-h-32 bg-[var(--bg)] p-5">
-                <span className="font-mono text-[9px] dz-text-muted">0{i + 1}</span>
+                <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><SystemGlyph size={14} />0{i + 1}</span>
                 <div className="mt-10 font-display text-xl font-semibold">{item}</div>
               </div>
             ))}
@@ -297,19 +331,19 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label>{t.outputsLabel}</Label>
+          <Label kind="field">{t.outputsLabel}</Label>
           <h2 className="dz-h2 mt-6 text-4xl sm:text-6xl">{t.outputsTitle}</h2>
           <div className="mt-12 grid gap-4 lg:grid-cols-3">
             {t.outputs.map(([name, object, body], i) => (
-              <article key={name} className="border dz-border p-6 sm:p-8">
+              <ZeroField key={name} className="p-6 sm:p-8">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] dz-text-muted">0{i + 1}</span>
+                  <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><FieldGlyph size={10} />0{i + 1}</span>
                   <Layers3 className="h-4 w-4" />
                 </div>
                 <h3 className="dz-h3 mt-12 text-4xl">{name}</h3>
                 <div className="mt-4 font-mono text-[9px] uppercase tracking-[0.15em] text-[var(--accent)]">{object}</div>
                 <p className="dz-body mt-6">{body}</p>
-              </article>
+              </ZeroField>
             ))}
           </div>
         </div>
@@ -329,7 +363,7 @@ export const FoundationPage: React.FC = () => {
             <div className="mt-5 grid gap-5 md:grid-cols-2">
               {t.evidenceAxes.map(([label, values]) => (
                 <div key={label} className="border dz-border p-6">
-                  <div className="font-mono text-[9px] font-bold tracking-[0.15em]">{label}</div>
+                  <div className="flex items-center gap-2 font-mono text-[9px] font-bold tracking-[0.15em]"><DotMarker size="xs" />{label}</div>
                   <div className="mt-8 font-display text-2xl font-semibold leading-tight">{values}</div>
                 </div>
               ))}
@@ -340,7 +374,7 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-3"><Label>{t.aiLabel}</Label></div>
+          <div className="lg:col-span-3"><Label kind="system">{t.aiLabel}</Label></div>
           <div className="lg:col-span-8">
             <h2 className="dz-h2 text-4xl sm:text-6xl">{t.aiTitle}</h2>
             <p className="dz-body mt-7 max-w-3xl text-lg">{t.aiBody}</p>
@@ -350,7 +384,7 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-3"><Label>{t.scopeLabel}</Label></div>
+          <div className="lg:col-span-3"><Label kind="field">{t.scopeLabel}</Label></div>
           <div className="lg:col-span-8">
             <h2 className="dz-h2 text-4xl sm:text-6xl">{t.scopeTitle}</h2>
             <p className="dz-body mt-7 max-w-3xl text-lg">{t.scopeBody}</p>
@@ -360,7 +394,7 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label>{t.architectureLabel}</Label>
+          <Label kind="system">{t.architectureLabel}</Label>
           <div className="mt-6 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <h2 className="dz-h2 text-4xl sm:text-6xl">{t.architectureTitle}</h2>
@@ -373,15 +407,15 @@ export const FoundationPage: React.FC = () => {
                 ['REGISTER', 'projects · versions · status · contributors'],
               ].map(([name, body], i) => (
                 <div key={name} className="grid grid-cols-[2.5rem_1fr] border-t dz-border py-5 first:border-t-2">
-                  <span className="font-mono text-[9px] dz-text-muted">0{i + 1}</span>
+                  <span className="flex items-center gap-2 font-mono text-[9px] dz-text-muted"><SystemGlyph size={14} />0{i + 1}</span>
                   <div>
                     <div className="font-display text-2xl font-semibold">{name}</div>
                     <div className="mt-2 font-mono text-[9px] uppercase tracking-[0.13em] dz-text-muted">{body}</div>
                   </div>
                 </div>
               ))}
-              <a href="#atlas-engine" className="mt-8 inline-flex items-center gap-2 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
-                {t.framework} <ArrowRight className="h-3.5 w-3.5" />
+              <a href="#atlas-engine" className="dz-action-link mt-8 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
+                {t.framework} <SystemGlyph size={20} />
               </a>
             </div>
           </div>
@@ -407,11 +441,11 @@ export const FoundationPage: React.FC = () => {
           <Label>{t.longLabel}</Label>
           <p className="dz-h2 mt-8 max-w-6xl text-5xl sm:text-7xl lg:text-8xl">{t.longQuestion}</p>
           <div className="mt-14 flex flex-wrap gap-3">
-            <a href="#atlas-engine" className="inline-flex items-center gap-2 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
-              {t.framework} <GitBranch className="h-3.5 w-3.5" />
+            <a href="#atlas-engine" className="dz-action-link border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
+              {t.framework} <SystemGlyph size={20} />
             </a>
-            <a href="#index" className="inline-flex items-center gap-2 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
-              {t.back} <ArrowRight className="h-3.5 w-3.5" />
+            <a href="#index" className="dz-action-link border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
+              {t.back} <SystemGlyph size={20} />
             </a>
           </div>
         </div>

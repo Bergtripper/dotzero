@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ArrowRight, Circle, GitBranch, Layers3, Map, Network, Search, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph, ZeroField } from './GraphicSyntax';
 
 const COPY = {
   it: {
@@ -155,8 +156,10 @@ const COPY = {
   },
 };
 
-const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] dz-text-muted">{children}</div>
+const SectionLabel: React.FC<{ children: React.ReactNode; kind?: 'dot' | 'system' | 'field' }> = ({ children, kind = 'dot' }) => (
+  <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] dz-text-muted">
+    <SyntaxLabel kind={kind}>{children}</SyntaxLabel>
+  </div>
 );
 
 export const AtlasEnginePage: React.FC = () => {
@@ -172,7 +175,7 @@ export const AtlasEnginePage: React.FC = () => {
           </a>
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <SectionLabel>{t.kicker}</SectionLabel>
+              <SectionLabel kind="system">{t.kicker}</SectionLabel>
               <h1 className="dz-h1 mt-8 max-w-5xl text-[clamp(3.8rem,9vw,9rem)]">{t.title}</h1>
             </div>
             <div className="flex items-end lg:col-span-4">
@@ -194,22 +197,22 @@ export const AtlasEnginePage: React.FC = () => {
                 [t.archive, t.archiveFlow, '01'],
                 [t.atlas, t.atlasFlow, '02'],
               ].map(([label, flow, n]) => (
-                <div key={String(label)} className="border dz-border p-5 sm:p-7">
+                <ZeroField key={String(label)} className="p-5 sm:p-7">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[10px] font-bold tracking-[0.16em]">{String(label)}</span>
-                    <span className="font-mono text-[9px] dz-text-muted">{String(n)}</span>
+                    <span className="inline-flex items-center gap-2 font-mono text-[9px] dz-text-muted"><FieldGlyph size={9} />{String(n)}</span>
                   </div>
                   <div className="mt-8 space-y-2">
                     {(flow as string[]).map((item, i) => (
                       <React.Fragment key={item}>
                         <div className="flex min-h-12 items-center justify-between border dz-border px-4 font-display text-lg font-semibold">
-                          <span>{item}</span><Circle className="h-2.5 w-2.5" />
+                          <span>{item}</span><DotMarker size="xs" />
                         </div>
                         {i < (flow as string[]).length - 1 && <div className="pl-5 font-mono text-[10px] dz-text-muted">↓</div>}
                       </React.Fragment>
                     ))}
                   </div>
-                </div>
+                </ZeroField>
               ))}
             </div>
           </div>
@@ -234,7 +237,7 @@ export const AtlasEnginePage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-3"><SectionLabel>{t.framework}</SectionLabel></div>
+          <div className="lg:col-span-3"><SectionLabel kind="system">{t.framework}</SectionLabel></div>
           <div className="lg:col-span-9">
             <h2 className="dz-h2 max-w-4xl text-4xl sm:text-6xl">{t.frameworkTitle}</h2>
             <p className="dz-body mt-7 max-w-3xl text-lg">{t.frameworkBody}</p>
@@ -242,7 +245,7 @@ export const AtlasEnginePage: React.FC = () => {
             <div className="mt-14 border dz-border">
               {t.layers.map(([title, body], i) => (
                 <div key={title} className="grid gap-5 border-b dz-border p-5 last:border-b-0 sm:p-7 md:grid-cols-12">
-                  <div className="font-mono text-[9px] dz-text-muted md:col-span-1">0{i + 1}</div>
+                  <div className="flex items-center gap-2 font-mono text-[9px] dz-text-muted md:col-span-1"><SystemGlyph size={14} />0{i + 1}</div>
                   <div className="font-display text-2xl font-semibold md:col-span-3">{title}</div>
                   <p className="dz-body md:col-span-7">{body}</p>
                 </div>
@@ -254,7 +257,7 @@ export const AtlasEnginePage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <SectionLabel>{t.flow}</SectionLabel>
+          <SectionLabel kind="system">{t.flow}</SectionLabel>
           <div className="mt-6 grid gap-10 lg:grid-cols-12">
             <h2 className="dz-h2 text-4xl sm:text-6xl lg:col-span-7">{t.flowTitle}</h2>
             <div className="lg:col-span-5">
@@ -267,7 +270,7 @@ export const AtlasEnginePage: React.FC = () => {
               const Icon = [Layers3, Network, GitBranch, Map, Search, ArrowRight][i];
               return (
                 <div key={item} className="min-h-36 bg-[var(--bg)] p-5">
-                  <Icon className="h-5 w-5" />
+                  <div className="flex items-center justify-between"><Icon className="h-5 w-5" /><SystemGlyph size={18} /></div>
                   <div className="mt-12 font-mono text-[9px] uppercase tracking-[0.16em]">{item}</div>
                 </div>
               );
@@ -278,17 +281,17 @@ export const AtlasEnginePage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
-          <div className="lg:col-span-3"><SectionLabel>{t.boundary}</SectionLabel></div>
+          <div className="lg:col-span-3"><SectionLabel kind="field">{t.boundary}</SectionLabel></div>
           <div className="lg:col-span-8">
             <h2 className="dz-h2 text-4xl sm:text-6xl">{t.boundaryTitle}</h2>
             <p className="dz-body mt-7 max-w-3xl text-lg">{t.boundaryBody}</p>
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
               {['AVANT-GARDE', 'ALPINE GRAPHIC', 'SYSTEMS'].map((name) => (
-                <div key={name} className="border dz-border p-5">
-                  <div className="font-mono text-[9px] tracking-[0.16em] dz-text-muted">DOMAIN</div>
+                <ZeroField key={name} className="p-5">
+                  <div className="flex items-center gap-2 font-mono text-[9px] tracking-[0.16em] dz-text-muted"><FieldGlyph size={9} />DOMAIN</div>
                   <div className="mt-8 font-display text-2xl font-semibold">{name}</div>
                   <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">own vocabulary / shared core</div>
-                </div>
+                </ZeroField>
               ))}
             </div>
           </div>
@@ -317,10 +320,10 @@ export const AtlasEnginePage: React.FC = () => {
 
       <section>
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-          <SectionLabel>{t.close}</SectionLabel>
+          <SectionLabel kind="system">{t.close}</SectionLabel>
           <p className="dz-h2 mt-8 max-w-6xl text-5xl sm:text-7xl lg:text-8xl">{t.closeTitle}</p>
-          <a href="#index" className="mt-14 inline-flex items-center gap-2 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.16em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
-            {t.back} <ArrowRight className="h-3.5 w-3.5" />
+          <a href="#index" className="dz-action-link mt-14 border dz-border px-4 py-3 font-mono text-[9px] font-bold uppercase tracking-[0.16em] hover:bg-[var(--text)] hover:text-[var(--bg)]">
+            {t.back} <SystemGlyph size={20} />
           </a>
         </div>
       </section>
