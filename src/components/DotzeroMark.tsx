@@ -4,24 +4,48 @@ type DotzeroMarkProps = {
   size?: number | string;
   className?: string;
   title?: string;
+  variant?: 'standard' | 'outline';
+  rotation?: number;
 };
+
+const RED_PATH = 'M1820 288L1777 342L1777 463L1771 478L1759 489L1748 493L1665 493L1625 545L1626 546L1644 550L1764 550L1784 545L1796 539L1806 532L1822 516L1834 495L1839 476L1840 336L1839 327L1833 308ZM1752 242L1625 242L1608 247L1595 254L1574 273L1566 285L1561 296L1556 319L1556 455L1559 469L1566 486L1613 426L1613 326L1620 312L1629 304L1647 298L1709 298ZM1808 195L1731 294L1706 329L1575 501L1609 537L1622 522L1809 276ZM1686 69L1672 72L1658 78L1639 93L1628 108L1622 121L1618 147L1621 165L1629 183L1648 204L1664 213L1675 217L1686 219L1702 219L1719 215L1734 208L1755 189L1761 180L1768 164L1771 140L1768 123L1761 106L1750 91L1741 83L1720 72L1707 69Z';
+const BLACK_PATH = 'M1900 178L1824 178L1824 259Z';
 
 export const DotzeroMark: React.FC<DotzeroMarkProps> = ({
   size = 32,
   className = '',
-  title = 'DOTZERO',
-}) => (
-  <svg
-    viewBox="0 0 64 88"
-    width={size}
-    height="auto"
-    role="img"
-    aria-label={title}
-    className={`dz-mark ${className}`}
-  >
-    <circle className="dz-mark__dot" cx="32" cy="13" r="10" />
-    <rect className="dz-mark__zero" x="14" y="32" width="36" height="44" rx="18" />
-    <rect className="dz-mark__counter" x="23" y="41" width="18" height="26" rx="9" />
-    <path className="dz-mark__slash" d="M21 63 L48 27" />
-  </svg>
-);
+  title = 'DOTZERO symbol',
+  variant = 'standard',
+  rotation = 0,
+}) => {
+  const outline = variant === 'outline';
+
+  return (
+    <svg
+      viewBox="1545 55 370 510"
+      width={size}
+      height="auto"
+      role="img"
+      aria-label={title}
+      className={`dz-mark ${className}`}
+      style={{ transform: rotation ? `rotate(${rotation}deg)` : undefined }}
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path
+        d={RED_PATH}
+        fill={outline ? 'none' : 'var(--dz-logo-red, #F70B0D)'}
+        stroke={outline ? 'var(--dz-logo-red, #F70B0D)' : 'none'}
+        strokeWidth={outline ? 7 : 0}
+        strokeLinejoin="round"
+        fillRule="evenodd"
+      />
+      <path
+        d={BLACK_PATH}
+        fill={outline ? 'none' : 'currentColor'}
+        stroke={outline ? 'currentColor' : 'none'}
+        strokeWidth={outline ? 5 : 0}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
