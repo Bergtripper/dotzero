@@ -17,7 +17,7 @@ const GLYPHS: GlyphSpec[] = [
   { char: 'z', key: 'z', drift: -1.15, construction: { x: 49, y: 28, size: 25, rotate: -5 }, wordmark: { x: 49.5, y: 52, size: 21 } },
   { char: 'e', key: 'e', drift: 0.75, framed: true, construction: { x: 62, y: 49, size: 22, rotate: 3 }, wordmark: { x: 62, y: 52, size: 21 } },
   { char: 'r', key: 'r', drift: -1.3, construction: { x: 74, y: 58, size: 21, rotate: 6 }, wordmark: { x: 74.5, y: 52, size: 21 } },
-  { char: '0', key: 'zero', drift: 1.55, accent: true, construction: { x: 86, y: 31, size: 31, rotate: 0 }, wordmark: { x: 87, y: 52, size: 21 } },
+  { char: 'o', key: 'zero', drift: 1.55, accent: true, construction: { x: 86, y: 31, size: 31, rotate: 0 }, wordmark: { x: 87, y: 52, size: 21 } },
   { char: '.', key: 'period', drift: -0.5, accent: true, construction: { x: 95, y: 66, size: 10, rotate: 0 }, wordmark: { x: 3.5, y: 60, size: 10 } },
 ];
 
@@ -77,6 +77,7 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
       {GLYPHS.map((glyph, index) => {
         const position = mode === 'construction' ? glyph.construction : glyph.wordmark;
         const isZero = glyph.key === 'zero';
+        const isSlashedZero = isZero && mode === 'wordmark';
         const fontSize = Math.max(
           glyph.key === 'period' ? 26 : 48,
           Math.min(glyph.key === 'period' ? 92 : 220, stageWidth * (position.size / 100) * 0.72)
@@ -111,7 +112,9 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
             onClick={isZero ? toggleMode : undefined}
             aria-label={isZero ? `Toggle to ${mode === 'construction' ? 'wordmark' : 'construction'} state` : `Glyph ${glyph.key}`}
           >
-            <span className={`dz-specimen-glyph-node__char${isZero ? ' dz-specimen-glyph-node__char--slashed-zero' : ''}`}>{glyph.char}</span>
+            <span className={`dz-specimen-glyph-node__char${isSlashedZero ? ' dz-specimen-glyph-node__char--slashed-zero' : ''}`}>
+              {isSlashedZero ? '0' : glyph.char}
+            </span>
             <span className="dz-specimen-glyph-node__index">{String(index + 1).padStart(2, '0')}</span>
           </button>
         );
