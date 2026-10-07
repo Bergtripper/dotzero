@@ -179,7 +179,7 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
               const drift = (1 - align) * glyph.drift;
               const dx = pointer.x * 13 * drift;
               const dy = pointer.y * 9 * drift;
-              const fontSize = Math.max(34, Math.min(104, stageSize.width * 0.073));
+              const fontSize = Math.max(24, Math.min(104, stageSize.width * 0.073));
 
               return (
                 <span
