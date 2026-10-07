@@ -11,14 +11,14 @@ interface GlyphSpec {
 }
 
 const GLYPHS: GlyphSpec[] = [
-  { char: 'd', key: 'd', drift: 1.0, construction: { x: 7, y: 49, size: 29, rotate: -2 }, wordmark: { x: 7, y: 52, size: 23 } },
-  { char: 'o', key: 'o1', drift: -0.8, construction: { x: 21, y: 31, size: 23, rotate: 2 }, wordmark: { x: 20, y: 52, size: 23 } },
-  { char: 't', key: 't', drift: 1.35, framed: true, construction: { x: 35, y: 54, size: 22, rotate: -4 }, wordmark: { x: 33, y: 52, size: 23 } },
-  { char: 'z', key: 'z', drift: -1.15, construction: { x: 49, y: 28, size: 25, rotate: -5 }, wordmark: { x: 46, y: 52, size: 23 } },
-  { char: 'e', key: 'e', drift: 0.75, framed: true, construction: { x: 62, y: 49, size: 22, rotate: 3 }, wordmark: { x: 59, y: 52, size: 23 } },
-  { char: 'r', key: 'r', drift: -1.3, construction: { x: 74, y: 58, size: 21, rotate: 6 }, wordmark: { x: 71.5, y: 52, size: 23 } },
-  { char: 'o', key: 'zero', drift: 1.55, accent: true, construction: { x: 86, y: 31, size: 31, rotate: 0 }, wordmark: { x: 84, y: 52, size: 23 } },
-  { char: '.', key: 'period', drift: -0.5, accent: true, construction: { x: 95, y: 66, size: 10, rotate: 0 }, wordmark: { x: 95, y: 60, size: 10 } },
+  { char: 'd', key: 'd', drift: 1.0, construction: { x: 7, y: 49, size: 29, rotate: -2 }, wordmark: { x: 12, y: 52, size: 21 } },
+  { char: 'o', key: 'o1', drift: -0.8, construction: { x: 21, y: 31, size: 23, rotate: 2 }, wordmark: { x: 24.5, y: 52, size: 21 } },
+  { char: 't', key: 't', drift: 1.35, framed: true, construction: { x: 35, y: 54, size: 22, rotate: -4 }, wordmark: { x: 37, y: 52, size: 21 } },
+  { char: 'z', key: 'z', drift: -1.15, construction: { x: 49, y: 28, size: 25, rotate: -5 }, wordmark: { x: 49.5, y: 52, size: 21 } },
+  { char: 'e', key: 'e', drift: 0.75, framed: true, construction: { x: 62, y: 49, size: 22, rotate: 3 }, wordmark: { x: 62, y: 52, size: 21 } },
+  { char: 'r', key: 'r', drift: -1.3, construction: { x: 74, y: 58, size: 21, rotate: 6 }, wordmark: { x: 74.5, y: 52, size: 21 } },
+  { char: 'o', key: 'zero', drift: 1.55, accent: true, construction: { x: 86, y: 31, size: 31, rotate: 0 }, wordmark: { x: 87, y: 52, size: 21 } },
+  { char: '.', key: 'period', drift: -0.5, accent: true, construction: { x: 95, y: 66, size: 10, rotate: 0 }, wordmark: { x: 3.5, y: 60, size: 10 } },
 ];
 
 export const DotzeroTypographicSpecimen: React.FC = () => {
@@ -64,7 +64,7 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
     >
       <div className="dz-specimen-stage__grid" aria-hidden="true" />
       <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tl">
-        STATE / {mode === 'construction' ? '01 CONSTRUCTION' : '02 WORDMARK'}
+        STATE / {mode === 'construction' ? '01 CONSTRUCTION' : '02 TYPE SEQUENCE'}
       </div>
       <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tr">
         NODE 00 / TYPE SYSTEM
@@ -72,7 +72,7 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
       <div className="dz-specimen-stage__axis dz-specimen-stage__axis--x" aria-hidden="true" />
       <div className="dz-specimen-stage__axis dz-specimen-stage__axis--y" aria-hidden="true" />
 
-      <h1 className="sr-only">dotzero.</h1>
+      <h1 className="sr-only">.dotzero</h1>
 
       {GLYPHS.map((glyph, index) => {
         const position = mode === 'construction' ? glyph.construction : glyph.wordmark;
@@ -118,7 +118,7 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
       })}
 
       <button type="button" className="dz-specimen-stage__toggle" onClick={toggleMode}>
-        {mode === 'construction' ? 'ALIGN WORDMARK →' : '← OPEN SYSTEM'}
+        {mode === 'construction' ? 'ALIGN TYPE →' : '← OPEN SYSTEM'}
       </button>
 
       <div className="dz-specimen-stage__readout" aria-live="polite">
