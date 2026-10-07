@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { GlyphDesign, GlyphId, getGlyphBounds } from './model';
 
 interface SpacingPanelProps {
@@ -14,6 +16,8 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
   onGlyphChange,
   onChange,
 }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
   const bounds = getGlyphBounds(design, glyph);
   const metrics = design.metrics[glyph];
 
@@ -37,11 +41,11 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
     <section className="tc-spacing-panel">
       <div className="tc-spacing-head">
         <div>
-          <div className="tc-label">SPACING / METRICS</div>
-          <div className="tc-spacing-title">GLYPH {glyph}</div>
+          <div className="tc-label">{t.spacingMetrics}</div>
+          <div className="tc-spacing-title">{t.glyph} {glyph}</div>
         </div>
 
-        <div className="tc-spacing-glyph-switch" aria-label="Spacing glyph">
+        <div className="tc-spacing-glyph-switch" aria-label={t.spacingGlyph}>
           {(['b', 'c', 'd', 'e', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
             <button
               type="button"
@@ -57,7 +61,7 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
 
       <div className="tc-spacing-controls">
         <label>
-          <span>LEFT SIDE BEARING</span>
+          <span>{t.leftSideBearing}</span>
           <input
             type="range"
             min="0"
@@ -72,7 +76,7 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
         </label>
 
         <label>
-          <span>RIGHT SIDE BEARING</span>
+          <span>{t.rightSideBearing}</span>
           <input
             type="range"
             min="0"
@@ -89,11 +93,11 @@ export const SpacingPanel: React.FC<SpacingPanelProps> = ({
 
       <div className="tc-spacing-readout">
         <div>
-          <span>VISUAL WIDTH</span>
+          <span>{t.visualWidth}</span>
           <strong>{bounds.visualWidth.toFixed(1)}</strong>
         </div>
         <div>
-          <span>ADVANCE WIDTH</span>
+          <span>{t.advanceWidth}</span>
           <strong>{bounds.advanceWidth.toFixed(1)}</strong>
         </div>
         <div>
