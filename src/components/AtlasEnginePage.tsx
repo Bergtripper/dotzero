@@ -7,130 +7,115 @@ const COPY = {
   it: {
     kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'UN FRAMEWORK PER CONOSCENZA CONNESSA',
-    intro:
-      'L’Atlas Engine è un framework condiviso per i progetti DOTZERO che beneficiano di conoscenza relazionale strutturata: entità, relazioni, fonti e dimensioni spaziali e temporali. Non definisce il contenuto di un Atlas: definisce il modo in cui quel contenuto può essere strutturato, verificato ed esplorato.',
-    back: 'BACK TO INDEX',
-    why: 'WHY',
+    intro: 'L’Atlas Engine è il framework condiviso per i progetti DOTZERO basati su conoscenza relazionale: entità, relazioni, fonti, tempo e spazio. Non decide il contenuto di un Atlas; definisce come può essere strutturato, verificato ed esplorato.',
+    back: 'TORNA ALL’INDICE',
+    why: 'PERCHÉ',
     whyTitle: 'Da pagine isolate a sistemi esplorabili.',
-    whyBody:
-      'Un archivio tradizionale funziona bene quando sappiamo già cosa cercare. Un Atlas DOTZERO parte invece dalle relazioni: permette di entrare da un nodo, cambiare scala, seguire connessioni, confrontare contesti e formulare nuove domande.',
-    archive: 'ARCHIVE',
-    archiveFlow: ['Search', 'Result', 'Object', 'Metadata'],
+    whyBody: 'Un archivio tradizionale funziona bene quando sappiamo già cosa cercare. Un Atlas DOTZERO parte invece dalle relazioni: entrare da un nodo, cambiare scala, seguire connessioni, confrontare contesti e formulare nuove domande.',
+    archive: 'ARCHIVIO',
+    archiveFlow: ['Ricerca', 'Risultato', 'Oggetto', 'Metadati'],
     atlas: 'ATLAS',
-    atlasFlow: ['Entry point', 'Entity', 'Relation', 'Context', 'Discovery'],
-    principles: 'CORE PRINCIPLES',
+    atlasFlow: ['Ingresso', 'Entità', 'Relazione', 'Contesto', 'Scoperta'],
+    principles: 'PRINCIPI',
     principlesIntro: 'Cinque principi regolano il motore indipendentemente dal tema del singolo Atlas.',
     principleItems: [
-      ['01', 'Relations before isolation', 'Un elemento acquista significato anche attraverso ciò a cui è collegato.'],
-      ['02', 'One structure, many views', 'La stessa informazione può alimentare profili, mappe, timeline, network e confronti.'],
-      ['03', 'Evidence by design', 'Fonti, provenienza e grado di certezza fanno parte della struttura, non sono note accessorie.'],
-      ['04', 'Core + domain layer', 'Il framework resta comune; ogni Atlas definisce il proprio vocabolario, le proprie regole e le proprie viste.'],
-      ['05', 'Exploration before conclusion', 'Il sistema è progettato per far emergere pattern e domande, non solo per restituire risultati.'],
+      ['01', 'Relazioni prima dell’isolamento', 'Un elemento acquista significato anche attraverso ciò a cui è collegato.'],
+      ['02', 'Una struttura, molte viste', 'La stessa informazione può alimentare profili, mappe, timeline, reti e confronti.'],
+      ['03', 'Evidenza nella struttura', 'Fonti, provenienza e grado di certezza fanno parte del modello, non sono note accessorie.'],
+      ['04', 'Core + livello di dominio', 'Il framework resta comune; ogni Atlas definisce il proprio vocabolario, regole e viste.'],
+      ['05', 'Esplorazione prima della conclusione', 'Il sistema fa emergere pattern e domande, non soltanto risultati.'],
     ],
-    framework: 'FRAMEWORK',
+    framework: 'STRUTTURA',
     frameworkTitle: 'Un nucleo stabile, livelli specifici.',
-    frameworkBody:
-      'Il motore separa ciò che è universale da ciò che appartiene a un dominio. Il core gestisce identità, relazioni, tempo, spazio, fonti e media. Ogni Atlas aggiunge sopra questo nucleo il proprio modello culturale.',
+    frameworkBody: 'Il motore separa ciò che è condiviso da ciò che appartiene a un dominio. Il core gestisce identità, relazioni, tempo, spazio, fonti, evidenza e media. Ogni Atlas aggiunge il proprio modello.',
     layers: [
-      ['DOMAIN LAYER', 'Vocabolario, tipi di entità, relazioni specifiche, regole editoriali.'],
+      ['LIVELLO DI DOMINIO', 'Vocabolario, tipi di entità, relazioni specifiche, regole editoriali.'],
       ['ATLAS CORE', 'Entità, relazioni, tempo, spazio, fonti, evidenza, media.'],
-      ['VIEW LAYER', 'Profile, map, timeline, network, compare, routes, explore.'],
+      ['LIVELLO DI VISTA', 'Profilo, mappa, timeline, rete, confronto, percorsi, esplorazione.'],
     ],
-    flow: 'KNOWLEDGE FLOW',
+    flow: 'FLUSSO DELLA CONOSCENZA',
     flowTitle: 'Una volta strutturato, un fatto può vivere in molte interfacce.',
-    fact: 'ENTITY A → TYPED RELATION → ENTITY B',
-    flowItems: ['Profile', 'Network', 'Timeline', 'Map', 'Compare', 'Explore'],
-    boundary: 'SYSTEM BOUNDARY',
+    fact: 'ENTITÀ A → RELAZIONE TIPIZZATA → ENTITÀ B',
+    flowItems: ['Profilo', 'Rete', 'Timeline', 'Mappa', 'Confronto', 'Esplora'],
+    boundary: 'CONFINE DEL SISTEMA',
     boundaryTitle: 'Il motore non decide il significato del singolo Atlas.',
-    boundaryBody:
-      'Avant-Garde, Alpine Graphic, Systems e i futuri Atlas possono avere linguaggi, estetiche e strutture differenti. Il framework garantisce interoperabilità e coerenza, senza appiattire i progetti in un unico template.',
-    evidence: 'EVIDENCE',
+    boundaryBody: 'Avant-Garde, Alpine Graphic, Systems e i futuri Atlas possono avere linguaggi, estetiche e strutture differenti. Il framework crea coerenza senza ridurli a un unico template.',
+    evidence: 'EVIDENZA',
     evidenceTitle: 'Le connessioni devono poter essere spiegate.',
-    evidenceBody:
-      'Una visualizzazione può rendere una relazione persuasiva semplicemente perché la mostra. Per questo DOTZERO tratta fonti, attribuzioni e incertezza come dati di prima classe. Dove possibile, il sistema deve poter rispondere a una domanda semplice: perché questa connessione è qui?',
-    projectSpecific: 'PROJECT-SPECIFIC DOCUMENTATION',
-    projectSpecificBody:
-      'Le specifiche operative — tipi di entità, relation vocabulary, media model, regole delle viste e convenzioni editoriali — saranno documentate all’interno di ciascun Atlas. Questa pagina resta intenzionalmente generale: descrive il framework condiviso.',
+    evidenceBody: 'Una visualizzazione può rendere una relazione persuasiva semplicemente mostrandola. DOTZERO rende quindi visibili fonti, attribuzioni e incertezza. Il sistema dovrebbe poter rispondere a una domanda semplice: perché questa connessione è qui?',
+    domainLabel: 'DOMINIO',
+    domainNote: 'vocabolario proprio / core condiviso',
     close: 'DOTZERO ATLAS ENGINE',
-    closeTitle: 'A shared framework for relational inquiry.',
+    closeTitle: 'Un framework condiviso per esplorare relazioni.',
   },
   de: {
     kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'EIN FRAMEWORK FÜR VERNETZTES WISSEN',
-    intro:
-      'Die Atlas Engine ist ein gemeinsames Framework für DOTZERO-Projekte, die von strukturiertem relationalem Wissen profitieren: Entitäten, Beziehungen, Quellen sowie räumliche und zeitliche Dimensionen. Sie definiert nicht den Inhalt eines Atlas, sondern wie dieser Inhalt organisiert, überprüft und exploriert werden kann.',
-    back: 'BACK TO INDEX',
-    why: 'WHY',
-    whyTitle: 'Von isolierten Seiten zu explorierbaren Systemen.',
-    whyBody:
-      'Ein klassisches Archiv funktioniert gut, wenn bereits klar ist, wonach gesucht wird. Ein DOTZERO Atlas beginnt dagegen bei Beziehungen: Man kann über einen Knoten einsteigen, Maßstäbe wechseln, Verbindungen verfolgen, Kontexte vergleichen und neue Fragen entwickeln.',
-    archive: 'ARCHIVE',
-    archiveFlow: ['Search', 'Result', 'Object', 'Metadata'],
+    intro: 'Die Atlas Engine ist das gemeinsame Framework für DOTZERO-Projekte mit relationalem Wissen: Entitäten, Beziehungen, Quellen, Zeit und Raum. Sie bestimmt nicht den Inhalt eines Atlas, sondern wie er strukturiert, überprüft und erkundet werden kann.',
+    back: 'ZURÜCK ZUM INDEX',
+    why: 'WARUM',
+    whyTitle: 'Von isolierten Seiten zu erkundbaren Systemen.',
+    whyBody: 'Ein klassisches Archiv funktioniert gut, wenn bereits klar ist, wonach gesucht wird. Ein DOTZERO Atlas beginnt dagegen bei Beziehungen: über einen Knoten einsteigen, Maßstäbe wechseln, Verbindungen verfolgen, Kontexte vergleichen und neue Fragen entwickeln.',
+    archive: 'ARCHIV',
+    archiveFlow: ['Suche', 'Ergebnis', 'Objekt', 'Metadaten'],
     atlas: 'ATLAS',
-    atlasFlow: ['Entry point', 'Entity', 'Relation', 'Context', 'Discovery'],
-    principles: 'CORE PRINCIPLES',
+    atlasFlow: ['Einstieg', 'Entität', 'Beziehung', 'Kontext', 'Entdeckung'],
+    principles: 'PRINZIPIEN',
     principlesIntro: 'Fünf Prinzipien steuern die Engine unabhängig vom Thema des jeweiligen Atlas.',
     principleItems: [
-      ['01', 'Relations before isolation', 'Ein Element gewinnt Bedeutung auch durch das, womit es verbunden ist.'],
-      ['02', 'One structure, many views', 'Dieselbe Information kann Profile, Karten, Timelines, Netzwerke und Vergleiche speisen.'],
-      ['03', 'Evidence by design', 'Quellen, Provenienz und Unsicherheit gehören zur Struktur und sind keine nachträglichen Fußnoten.'],
-      ['04', 'Core + domain layer', 'Das Framework bleibt gemeinsam; jeder Atlas definiert sein eigenes Vokabular, Regeln und Ansichten.'],
-      ['05', 'Exploration before conclusion', 'Das System soll Muster und Fragen sichtbar machen, nicht nur Ergebnisse ausgeben.'],
+      ['01', 'Beziehungen vor Isolation', 'Ein Element gewinnt Bedeutung auch durch das, womit es verbunden ist.'],
+      ['02', 'Eine Struktur, viele Ansichten', 'Dieselbe Information kann Profile, Karten, Timelines, Netzwerke und Vergleiche speisen.'],
+      ['03', 'Evidenz in der Struktur', 'Quellen, Provenienz und Unsicherheit gehören zum Modell und sind keine nachträglichen Fußnoten.'],
+      ['04', 'Core + Domänenebene', 'Das Framework bleibt gemeinsam; jeder Atlas definiert eigenes Vokabular, Regeln und Ansichten.'],
+      ['05', 'Exploration vor Schlussfolgerung', 'Das System macht Muster und Fragen sichtbar, nicht nur Ergebnisse.'],
     ],
-    framework: 'FRAMEWORK',
+    framework: 'STRUKTUR',
     frameworkTitle: 'Ein stabiler Kern, spezifische Ebenen.',
-    frameworkBody:
-      'Die Engine trennt Universelles von Domänenspezifischem. Der Core verwaltet Identitäten, Beziehungen, Zeit, Raum, Quellen und Medien. Jeder Atlas ergänzt darauf sein eigenes kulturelles Modell.',
+    frameworkBody: 'Die Engine trennt Gemeinsames von Domänenspezifischem. Der Core verwaltet Identität, Beziehungen, Zeit, Raum, Quellen, Evidenz und Medien. Jeder Atlas ergänzt sein eigenes Modell.',
     layers: [
-      ['DOMAIN LAYER', 'Vokabular, Entitätstypen, spezifische Relationen, redaktionelle Regeln.'],
-      ['ATLAS CORE', 'Entitäten, Relationen, Zeit, Raum, Quellen, Evidenz, Medien.'],
-      ['VIEW LAYER', 'Profile, map, timeline, network, compare, routes, explore.'],
+      ['DOMÄNENEBENE', 'Vokabular, Entitätstypen, spezifische Relationen, redaktionelle Regeln.'],
+      ['ATLAS CORE', 'Entitäten, Beziehungen, Zeit, Raum, Quellen, Evidenz, Medien.'],
+      ['ANSICHTSEBENE', 'Profil, Karte, Timeline, Netzwerk, Vergleich, Routen, Exploration.'],
     ],
-    flow: 'KNOWLEDGE FLOW',
+    flow: 'WISSENSFLUSS',
     flowTitle: 'Einmal strukturiert, kann ein Fakt in vielen Interfaces leben.',
-    fact: 'ENTITY A → TYPED RELATION → ENTITY B',
-    flowItems: ['Profile', 'Network', 'Timeline', 'Map', 'Compare', 'Explore'],
-    boundary: 'SYSTEM BOUNDARY',
+    fact: 'ENTITÄT A → TYPISIERTE BEZIEHUNG → ENTITÄT B',
+    flowItems: ['Profil', 'Netzwerk', 'Timeline', 'Karte', 'Vergleich', 'Erkunden'],
+    boundary: 'SYSTEMGRENZE',
     boundaryTitle: 'Die Engine entscheidet nicht über die Bedeutung eines einzelnen Atlas.',
-    boundaryBody:
-      'Avant-Garde, Alpine Graphic, Systems und zukünftige Atlanten können unterschiedliche Sprachen, Ästhetiken und Strukturen haben. Das Framework schafft Interoperabilität und Kohärenz, ohne die Projekte in ein einziges Template zu pressen.',
-    evidence: 'EVIDENCE',
+    boundaryBody: 'Avant-Garde, Alpine Graphic, Systems und zukünftige Atlanten können unterschiedliche Sprachen, Ästhetiken und Strukturen haben. Das Framework schafft Kohärenz, ohne sie in ein einziges Template zu pressen.',
+    evidence: 'EVIDENZ',
     evidenceTitle: 'Verbindungen müssen erklärbar bleiben.',
-    evidenceBody:
-      'Eine Visualisierung kann eine Beziehung allein dadurch überzeugend wirken lassen, dass sie sie zeigt. Deshalb behandelt DOTZERO Quellen, Zuschreibungen und Unsicherheit als First-Class-Daten. Wo möglich, muss das System eine einfache Frage beantworten können: Warum ist diese Verbindung hier?',
-    projectSpecific: 'PROJECT-SPECIFIC DOCUMENTATION',
-    projectSpecificBody:
-      'Operative Spezifikationen — Entitätstypen, Relation Vocabulary, Media Model, View-Regeln und redaktionelle Konventionen — werden innerhalb jedes Atlas dokumentiert. Diese Seite bleibt bewusst allgemein und beschreibt das gemeinsame Framework.',
+    evidenceBody: 'Eine Visualisierung kann eine Beziehung allein dadurch überzeugend wirken lassen, dass sie sie zeigt. DOTZERO macht deshalb Quellen, Zuschreibungen und Unsicherheit sichtbar. Das System sollte eine einfache Frage beantworten können: Warum ist diese Verbindung hier?',
+    domainLabel: 'DOMÄNE',
+    domainNote: 'eigenes Vokabular / gemeinsamer Core',
     close: 'DOTZERO ATLAS ENGINE',
-    closeTitle: 'Not a database of isolated entries. A framework for connected knowledge.',
+    closeTitle: 'Ein gemeinsames Framework für relationale Exploration.',
   },
   en: {
     kicker: 'DOTZERO / FRAMEWORK / ATLAS ENGINE',
     title: 'A FRAMEWORK FOR CONNECTED KNOWLEDGE',
-    intro:
-      'The Atlas Engine is a shared framework for DOTZERO projects that benefit from structured relational knowledge: entities, relations, sources, and spatial and temporal dimensions. It does not define the content of an Atlas; it defines how that content can be organised, verified, and explored.',
+    intro: 'The Atlas Engine is the shared framework for DOTZERO projects built around relational knowledge: entities, relations, sources, time and space. It does not decide the content of an Atlas; it defines how that content can be structured, verified and explored.',
     back: 'BACK TO INDEX',
     why: 'WHY',
     whyTitle: 'From isolated pages to explorable systems.',
-    whyBody:
-      'A conventional archive works well when we already know what we are looking for. A DOTZERO Atlas starts from relations instead: enter through one node, change scale, follow connections, compare contexts, and formulate new questions.',
+    whyBody: 'A conventional archive works well when we already know what we are looking for. A DOTZERO Atlas starts from relations instead: enter through one node, change scale, follow connections, compare contexts and formulate new questions.',
     archive: 'ARCHIVE',
     archiveFlow: ['Search', 'Result', 'Object', 'Metadata'],
     atlas: 'ATLAS',
-    atlasFlow: ['Entry point', 'Entity', 'Relation', 'Context', 'Discovery'],
-    principles: 'CORE PRINCIPLES',
+    atlasFlow: ['Entry', 'Entity', 'Relation', 'Context', 'Discovery'],
+    principles: 'PRINCIPLES',
     principlesIntro: 'Five principles govern the engine independently of the subject of any individual Atlas.',
     principleItems: [
       ['01', 'Relations before isolation', 'An element gains meaning through what it is connected to.'],
-      ['02', 'One structure, many views', 'The same information can power profiles, maps, timelines, networks, and comparisons.'],
-      ['03', 'Evidence by design', 'Sources, provenance, and uncertainty are part of the structure, not secondary footnotes.'],
-      ['04', 'Core + domain layer', 'The framework stays shared; each Atlas defines its own vocabulary, rules, and views.'],
-      ['05', 'Exploration before conclusion', 'The system is designed to surface patterns and questions, not only return results.'],
+      ['02', 'One structure, many views', 'The same information can power profiles, maps, timelines, networks and comparisons.'],
+      ['03', 'Evidence in the structure', 'Sources, provenance and uncertainty are part of the model, not secondary footnotes.'],
+      ['04', 'Core + domain layer', 'The framework stays shared; each Atlas defines its own vocabulary, rules and views.'],
+      ['05', 'Exploration before conclusion', 'The system surfaces patterns and questions, not only results.'],
     ],
-    framework: 'FRAMEWORK',
+    framework: 'STRUCTURE',
     frameworkTitle: 'A stable core, domain-specific layers.',
-    frameworkBody:
-      'The engine separates what is universal from what belongs to a specific field. The core handles identity, relations, time, space, sources, evidence, and media. Each Atlas adds its own cultural model on top.',
+    frameworkBody: 'The engine separates what is shared from what belongs to a specific field. The core handles identity, relations, time, space, sources, evidence and media. Each Atlas adds its own model.',
     layers: [
       ['DOMAIN LAYER', 'Vocabulary, entity types, specific relations, editorial rules.'],
       ['ATLAS CORE', 'Entities, relations, time, space, sources, evidence, media.'],
@@ -142,17 +127,14 @@ const COPY = {
     flowItems: ['Profile', 'Network', 'Timeline', 'Map', 'Compare', 'Explore'],
     boundary: 'SYSTEM BOUNDARY',
     boundaryTitle: 'The engine does not decide what an individual Atlas means.',
-    boundaryBody:
-      'Avant-Garde, Alpine Graphic, Systems, and future Atlases can have different languages, aesthetics, and structures. The framework provides interoperability and coherence without flattening projects into a single template.',
+    boundaryBody: 'Avant-Garde, Alpine Graphic, Systems and future Atlases can have different languages, aesthetics and structures. The framework creates coherence without flattening them into one template.',
     evidence: 'EVIDENCE',
     evidenceTitle: 'Connections should remain explainable.',
-    evidenceBody:
-      'A visualisation can make a relation look persuasive simply by drawing it. DOTZERO therefore treats sources, attribution, and uncertainty as first-class data. Wherever possible, the system should answer one simple question: why is this connection here?',
-    projectSpecific: 'PROJECT-SPECIFIC DOCUMENTATION',
-    projectSpecificBody:
-      'Operational specifications — entity types, relation vocabulary, media models, view rules, and editorial conventions — will be documented inside each Atlas. This page intentionally remains general: it describes the shared framework.',
+    evidenceBody: 'A visualisation can make a relation look persuasive simply by drawing it. DOTZERO therefore keeps sources, attribution and uncertainty visible. The system should be able to answer one simple question: why is this connection here?',
+    domainLabel: 'DOMAIN',
+    domainNote: 'own vocabulary / shared core',
     close: 'DOTZERO ATLAS ENGINE',
-    closeTitle: 'Not a database of isolated entries. A framework for connected knowledge.',
+    closeTitle: 'A shared framework for relational exploration.',
   },
 };
 
@@ -288,9 +270,9 @@ export const AtlasEnginePage: React.FC = () => {
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
               {['AVANT-GARDE', 'ALPINE GRAPHIC', 'SYSTEMS'].map((name) => (
                 <ZeroField key={name} className="p-5">
-                  <div className="flex items-center gap-2 font-mono text-[9px] tracking-[0.16em] dz-text-muted"><FieldGlyph size={9} />DOMAIN</div>
+                  <div className="flex items-center gap-2 font-mono text-[9px] tracking-[0.16em] dz-text-muted"><FieldGlyph size={9} />{t.domainLabel}</div>
                   <div className="mt-8 font-display text-2xl font-semibold">{name}</div>
-                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">own vocabulary / shared core</div>
+                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">{t.domainNote}</div>
                 </ZeroField>
               ))}
             </div>
@@ -308,11 +290,6 @@ export const AtlasEnginePage: React.FC = () => {
                 <h2 className="dz-h2 text-4xl sm:text-5xl">{t.evidenceTitle}</h2>
                 <p className="dz-body mt-6 max-w-3xl text-lg">{t.evidenceBody}</p>
               </div>
-            </div>
-
-            <div className="mt-10 border-t dz-border pt-7">
-              <SectionLabel>{t.projectSpecific}</SectionLabel>
-              <p className="dz-body mt-5 max-w-3xl">{t.projectSpecificBody}</p>
             </div>
           </div>
         </div>

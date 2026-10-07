@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import {
   GlyphDesign,
   GlyphId,
@@ -25,6 +27,9 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
   onSelect,
   glyph,
 }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
+
   const joinStemToBowl = () => {
     onChange({
       ...design,
@@ -58,14 +63,14 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
 
   return (
     <aside className="tc-inspector">
-      <div className="tc-label">GLYPH {glyph} / SELECTED {selected.toUpperCase()}</div>
+      <div className="tc-label">{t.glyph} {glyph} / {t.selected} {selected.toUpperCase()}</div>
 
       {crossbarSelected ? (
         <>
-          <div className="tc-inspector-title">CROSSBAR</div>
+          <div className="tc-inspector-title">{t.crossbar}</div>
 
           <label className="tc-semantic-control">
-            <span>POSITION</span>
+            <span>{t.position}</span>
             <input
               type="range"
               min="-12"
@@ -83,7 +88,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
           </label>
 
           <label className="tc-semantic-control">
-            <span>INSET</span>
+            <span>{t.inset}</span>
             <input
               type="range"
               min="0"
@@ -109,19 +114,19 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
               })
             }
           >
-            CENTER CROSSBAR
+            {t.centerCrossbar}
           </button>
 
           <div className="tc-rule-note">
-            OPEN BOWL / APERTURE {design.crossbar.aperture}
+            {t.openBowl} / {t.aperture} {design.crossbar.aperture}
           </div>
         </>
       ) : bowlSelected ? (
         <>
-          <div className="tc-inspector-title">BOWL</div>
+          <div className="tc-inspector-title">{t.bowl}</div>
 
           <label className="tc-semantic-control">
-            <span>WIDTH</span>
+            <span>{t.width}</span>
             <input
               type="range"
               min="36"
@@ -139,7 +144,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
           </label>
 
           <label className="tc-semantic-control">
-            <span>HEIGHT</span>
+            <span>{t.height}</span>
             <input
               type="range"
               min="36"
@@ -158,7 +163,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
 
           {isOpenBowlGlyph(glyph) && (
             <label className="tc-semantic-control">
-              <span>APERTURE</span>
+              <span>{t.aperture}</span>
               <input
                 type="range"
                 min="6"
@@ -177,7 +182,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
           )}
 
           <button className="tc-semantic-action is-accent" onClick={alignBowl}>
-            FIT X-HEIGHT ↔ BASELINE
+            {t.fitXHeightBaseline}
           </button>
 
           {isStemGlyph(glyph) && (
@@ -193,7 +198,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
                 })
               }
             >
-              SNAP TANGENT TO STEM
+              {t.snapTangentStem}
             </button>
           )}
 
@@ -202,18 +207,18 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
               className="tc-semantic-action"
               onClick={() => onSelect('crossbar')}
             >
-              EDIT CROSSBAR
+              {t.editCrossbar}
             </button>
           )}
         </>
       ) : (
         <>
-          <div className="tc-inspector-title">STEM</div>
+          <div className="tc-inspector-title">{t.stem}</div>
 
           {isDescenderGlyph(glyph) ? (
             <>
               <label className="tc-semantic-control">
-                <span>DESCENDER</span>
+                <span>{t.descender}</span>
                 <input
                   type="range"
                   min={GUIDES.baseline + 8}
@@ -230,13 +235,13 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
                 <strong>{Math.round(design.descender)}</strong>
               </label>
               <div className="tc-rule-note">
-                STEM / X-HEIGHT {GUIDES.xHeight} → DESCENDER {Math.round(design.descender)}
+                {t.stem} / X-HEIGHT {GUIDES.xHeight} → {t.descender} {Math.round(design.descender)}
               </div>
             </>
           ) : (
             <>
               <label className="tc-semantic-control">
-                <span>ASCENDER</span>
+                <span>{t.ascender}</span>
                 <input
                   type="range"
                   min="8"
@@ -262,22 +267,22 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
                   })
                 }
               >
-                ANCHOR ASCENDER
+                {t.anchorAscender}
               </button>
             </>
           )}
 
           <button className="tc-semantic-action is-accent" onClick={joinStemToBowl}>
-            JOIN TANGENT TO BOWL
+            {t.joinTangentBowl}
           </button>
         </>
       )}
 
       <div className="tc-inspector-section">
-        <div className="tc-label">FAMILY RULES</div>
+        <div className="tc-label">{t.familyRules}</div>
 
         <label className="tc-semantic-control">
-          <span>STROKE</span>
+          <span>{t.stroke}</span>
           <input
             type="range"
             min="5"
@@ -292,7 +297,7 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
         </label>
 
         <label className="tc-semantic-control">
-          <span>OVERSHOOT</span>
+          <span>{t.overshoot}</span>
           <input
             type="range"
             min="0"
@@ -307,10 +312,10 @@ export const GlyphInspector: React.FC<GlyphInspectorProps> = ({
         </label>
 
         <div className="tc-rule-note">
-          OUTER BOWL / {(bowlOuterRy(design) * 2).toFixed(1)}
+          {t.outerBowl} / {(bowlOuterRy(design) * 2).toFixed(1)}
         </div>
         <div className="tc-rule-note">
-          DESCENDER / {Math.round(design.descender)}
+          {t.descender} / {Math.round(design.descender)}
         </div>
       </div>
     </aside>

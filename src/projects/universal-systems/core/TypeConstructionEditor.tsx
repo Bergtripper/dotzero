@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { RotateCcw } from 'lucide-react';
 import {
   DEFAULT_GLYPH,
@@ -17,6 +19,8 @@ import { SystemView } from './SystemView';
 import { TypeTester } from './TypeTester';
 
 export const TypeConstructionEditor: React.FC = () => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
   const [design, setDesign] = useState<GlyphDesign>(DEFAULT_GLYPH);
   const [glyph, setGlyph] = useState<GlyphId>('d');
   const [selected, setSelected] = useState<PartId>('bowl');
@@ -58,12 +62,12 @@ export const TypeConstructionEditor: React.FC = () => {
     <div className="tc-editor">
       <div className="tc-editor-topbar">
         <div>
-          <div className="tc-label">TYPE CONSTRUCTION LAB / STEP 10</div>
-          <div className="tc-editor-title">TYPE SYSTEM</div>
+          <div className="tc-label">{t.editorStep}</div>
+          <div className="tc-editor-title">{t.typeSystem}</div>
         </div>
 
         <div className="tc-editor-actions-top">
-          <div className="tc-glyph-switch" aria-label="Select glyph">
+          <div className="tc-glyph-switch" aria-label={t.selectGlyph}>
             {(['b', 'c', 'd', 'e', 'o', 'p', 'q'] as GlyphId[]).map((id) => (
               <button
                 key={id}
@@ -78,7 +82,7 @@ export const TypeConstructionEditor: React.FC = () => {
 
           <button type="button" className="tc-reset" onClick={reset}>
             <RotateCcw className="h-3.5 w-3.5" />
-            RESET
+            {t.reset}
           </button>
         </div>
       </div>

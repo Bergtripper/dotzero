@@ -156,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigateToModulor, onNavigateToMus
                     id="btn-rotate-sculpture"
                     onClick={rotateSculpture}
                     className="p-1 border border-[var(--text)] hover:bg-[var(--accent-tertiary)] transition-colors flex items-center gap-1"
-                    title="Ruota composizione"
+                    title={t.rotateTitle[language]}
                   >
                     <RotateCw className="w-3.5 h-3.5" />
                     <span>{rotation}°</span>

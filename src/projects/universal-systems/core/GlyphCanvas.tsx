@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import {
   EditorMode,
   GlyphDesign,
@@ -58,6 +60,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
   onChange,
   glyph,
 }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
   const svgRef = useRef<SVGSVGElement>(null);
   const [drag, setDrag] = useState<DragState | null>(null);
   const [snapCues, setSnapCues] = useState<SnapCue[]>([]);
@@ -118,7 +122,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         cues.push({
           axis: 'x',
           value: cxSnap.value,
-          label: cxSnap.target === tangentX ? 'TANGENT' : 'CENTER',
+          label: cxSnap.target === tangentX ? t.tangent : t.center,
         });
       }
 
@@ -136,8 +140,8 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
               : GUIDES.baseline,
           label:
             cySnap.target === xHeightCenter
-              ? 'X-HEIGHT'
-              : 'BASELINE',
+              ? t.xHeight
+              : t.baseline,
         });
       }
 
@@ -155,7 +159,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       const rx = clamp(Math.abs(p.x - design.bowl.cx), 18, 40);
       const snapped = magnetic(rx, [24, 28, 30, 32, 36], 1.1);
       if (snapped.snapped) {
-        cues.push({ axis: 'x', value: design.bowl.cx + snapped.value, label: `WIDTH ${snapped.value * 2}` });
+        cues.push({ axis: 'x', value: design.bowl.cx + snapped.value, label: `${t.width} ${snapped.value * 2}` });
       }
       onChange({ ...design, bowl: { ...design.bowl, rx: snapped.value } });
     }
@@ -165,7 +169,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       const ry = clamp(outer - design.overshoot, 18, 36);
       const snapped = magnetic(ry, [24, 28, 30, 32, 34], 1.1);
       if (snapped.snapped) {
-        cues.push({ axis: 'y', value: design.bowl.cy - snapped.value, label: `HEIGHT ${snapped.value * 2}` });
+        cues.push({ axis: 'y', value: design.bowl.cy - snapped.value, label: `${t.height} ${snapped.value * 2}` });
       }
       onChange({ ...design, bowl: { ...design.bowl, ry: snapped.value } });
     }
@@ -177,7 +181,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         cues.push({
           axis: 'y',
           value: design.bowl.cy + snap.value,
-          label: snap.value === 0 ? 'CENTER' : `BAR ${snap.value > 0 ? '+' : ''}${snap.value}`,
+          label: snap.value === 0 ? t.center : `${t.toolBar} ${snap.value > 0 ? '+' : ''}${snap.value}`,
         });
       }
       onChange({
@@ -201,7 +205,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         cues.push({
           axis: 'x',
           value: xSnap.value,
-          label: xSnap.target === tangentX ? 'TANGENT' : 'CENTER',
+          label: xSnap.target === tangentX ? t.tangent : t.center,
         });
       }
 
@@ -224,7 +228,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           cues.push({
             axis: 'y',
             value: top,
-            label: top === GUIDES.ascender ? 'ASCENDER' : 'X-HEIGHT',
+            label: top === GUIDES.ascender ? t.ascender : t.xHeight,
           });
         }
 
@@ -250,7 +254,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
         cues.push({
           axis: 'y',
           value: snap.value,
-          label: snap.value === GUIDES.ascender ? 'ASCENDER' : 'X-HEIGHT',
+          label: snap.value === GUIDES.ascender ? t.ascender : t.xHeight,
         });
       }
       onChange({ ...design, stem: { ...design.stem, top: snap.value } });
@@ -260,7 +264,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       if (isDescenderGlyph(glyph)) {
         const value = clamp(p.y, GUIDES.baseline + 8, 138);
         onChange({ ...design, descender: value });
-        cues.push({ axis: 'y', value, label: 'DESCENDER' });
+        cues.push({ axis: 'y', value, label: t.descender });
       } else {
         const snap = magnetic(
           clamp(p.y, design.stem.top + 18, 132),
@@ -268,7 +272,7 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
           2.2
         );
         if (snap.snapped) {
-          cues.push({ axis: 'y', value: GUIDES.baseline, label: 'BASELINE' });
+          cues.push({ axis: 'y', value: GUIDES.baseline, label: t.baseline });
         }
         onChange({ ...design, stem: { ...design.stem, bottom: snap.value } });
       }
@@ -292,11 +296,11 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
     <div className="tc-canvas-shell">
       <div className="tc-canvas-head">
         <div>
-          <div className="tc-label">GLYPH / {glyph}</div>
-          <div className="tc-canvas-sub">DESIGN FIELD / 100 × 140</div>
+          <div className="tc-label">{t.glyph} / {glyph}</div>
+          <div className="tc-canvas-sub">{t.designField} / 100 × 140</div>
         </div>
         <div className="tc-canvas-state">
-          {mode === 'design' ? 'DESIGN MODE' : 'CONSTRUCTION MODE'}
+          {mode === 'design' ? t.designMode : t.constructionMode}
         </div>
       </div>
 
@@ -560,10 +564,10 @@ export const GlyphCanvas: React.FC<GlyphCanvasProps> = ({
       </svg>
 
       <div className="tc-guide-legend">
-        <span>ASCENDER {GUIDES.ascender}</span>
-        <span>X-HEIGHT {GUIDES.xHeight}</span>
-        <span>BASELINE {GUIDES.baseline}</span>
-        {isDescenderGlyph(glyph) && <span>DESCENDER {Math.round(design.descender)}</span>}
+        <span>{t.ascender} {GUIDES.ascender}</span>
+        <span>{t.xHeight} {GUIDES.xHeight}</span>
+        <span>{t.baseline} {GUIDES.baseline}</span>
+        {isDescenderGlyph(glyph) && <span>{t.descender} {Math.round(design.descender)}</span>}
       </div>
     </div>
   );

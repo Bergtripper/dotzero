@@ -1,4 +1,59 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+
+const COPY = {
+  it: {
+    aria: 'Sistema tipografico DOTZERO',
+    state: 'STATO',
+    construction: '01 COSTRUZIONE',
+    sequence: '02 SEQUENZA TIPOGRAFICA',
+    node: 'NODO 00 / SISTEMA TIPOGRAFICO',
+    align: 'ALLINEA TIPO →',
+    open: '← APRI SISTEMA',
+    grid: 'GRIGLIA / 12',
+    glyph: 'GLIFO',
+    idle: 'IN ATTESA',
+    system: 'SISTEMA',
+    systemOpen: 'APERTO',
+    systemAligned: 'ALLINEATO',
+    toggleToWordmark: 'Allinea la sequenza tipografica',
+    toggleToConstruction: 'Apri la costruzione',
+  },
+  de: {
+    aria: 'DOTZERO Typografiesystem',
+    state: 'STATUS',
+    construction: '01 KONSTRUKTION',
+    sequence: '02 TYPOGRAFISCHE SEQUENZ',
+    node: 'KNOTEN 00 / TYPOGRAFIESYSTEM',
+    align: 'SCHRIFT AUSRICHTEN →',
+    open: '← SYSTEM ÖFFNEN',
+    grid: 'RASTER / 12',
+    glyph: 'GLYPHE',
+    idle: 'BEREIT',
+    system: 'SYSTEM',
+    systemOpen: 'OFFEN',
+    systemAligned: 'AUSGERICHTET',
+    toggleToWordmark: 'Typografische Sequenz ausrichten',
+    toggleToConstruction: 'Konstruktion öffnen',
+  },
+  en: {
+    aria: 'DOTZERO typographic system',
+    state: 'STATE',
+    construction: '01 CONSTRUCTION',
+    sequence: '02 TYPE SEQUENCE',
+    node: '{t.node}',
+    align: 'ALIGN TYPE →',
+    open: '← OPEN SYSTEM',
+    grid: 'GRID / 12',
+    glyph: 'GLYPH',
+    idle: 'IDLE',
+    system: 'SYSTEM',
+    systemOpen: 'OPEN',
+    systemAligned: 'ALIGNED',
+    toggleToWordmark: 'Align type sequence',
+    toggleToConstruction: 'Open construction',
+  },
+};
 
 interface GlyphSpec {
   char: string;
@@ -22,6 +77,8 @@ const GLYPHS: GlyphSpec[] = [
 ];
 
 export const DotzeroTypographicSpecimen: React.FC = () => {
+  const { language } = useLanguage();
+  const t = COPY[language];
   const stageRef = useRef<HTMLElement>(null);
   const [stageWidth, setStageWidth] = useState(1200);
   const [mode, setMode] = useState<'construction' | 'wordmark'>('construction');
@@ -58,13 +115,13 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
     <section
       ref={stageRef}
       className={`dz-specimen-stage dz-specimen-stage--${mode}`}
-      aria-label="DOTZERO typographic system"
+      aria-label={t.aria}
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
     >
       <div className="dz-specimen-stage__grid" aria-hidden="true" />
       <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tl">
-        STATE / {mode === 'construction' ? '01 CONSTRUCTION' : '02 TYPE SEQUENCE'}
+        {t.state} / {mode === 'construction' ? t.construction : t.sequence}
       </div>
       <div className="dz-specimen-stage__meta dz-specimen-stage__meta--tr">
         NODE 00 / TYPE SYSTEM
@@ -110,7 +167,7 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
             onFocus={() => setActiveGlyph(index)}
             onBlur={() => setActiveGlyph(null)}
             onClick={isZero ? toggleMode : undefined}
-            aria-label={isZero ? `Toggle to ${mode === 'construction' ? 'wordmark' : 'construction'} state` : `Glyph ${glyph.key}`}
+            aria-label={isZero ? (mode === 'construction' ? t.toggleToWordmark : t.toggleToConstruction) : `${t.glyph} ${glyph.key}`}
           >
             <span className={`dz-specimen-glyph-node__char${isSlashedZero ? ' dz-specimen-glyph-node__char--slashed-zero' : ''}`}>
               {isSlashedZero ? '0' : glyph.char}
@@ -121,13 +178,13 @@ export const DotzeroTypographicSpecimen: React.FC = () => {
       })}
 
       <button type="button" className="dz-specimen-stage__toggle" onClick={toggleMode}>
-        {mode === 'construction' ? 'ALIGN TYPE →' : '← OPEN SYSTEM'}
+        {mode === 'construction' ? t.align : t.open}
       </button>
 
       <div className="dz-specimen-stage__readout" aria-live="polite">
-        <span>GRID / 12</span>
-        <span>{activeGlyph === null ? 'GLYPH / IDLE' : `GLYPH / ${GLYPHS[activeGlyph].key.toUpperCase()}`}</span>
-        <span>{mode === 'construction' ? 'SYSTEM / OPEN' : 'SYSTEM / ALIGNED'}</span>
+        <span>{t.grid}</span>
+        <span>{activeGlyph === null ? `${t.glyph} / ${t.idle}` : `${t.glyph} / ${GLYPHS[activeGlyph].key.toUpperCase()}`}</span>
+        <span>{mode === 'construction' ? `${t.system} / ${t.systemOpen}` : `${t.system} / ${t.systemAligned}`}</span>
       </div>
     </section>
   );

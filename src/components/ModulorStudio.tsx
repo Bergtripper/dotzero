@@ -485,7 +485,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 ? 'border-[var(--accent-tertiary)] bg-[var(--accent-tertiary)]/10 text-[var(--accent-tertiary)] shadow-[0_0_12px_rgba(247,184,1,0.3)]'
                 : 'border-white/20 bg-[var(--surface-raised)]/5 text-zinc-400 hover:text-[var(--on-accent)]'
             }`}
-            title="Audio-reactive ambient synth"
+            title={t.audioAria[language]}
           >
             {audioActive ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
             <span className="hidden sm:inline">
@@ -522,13 +522,10 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           <div>
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent-tertiary)] mb-2 font-bold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>DOTZERO // NEXT-GEN KINETICS</span>
+              <span>{t.eyebrow[language]}</span>
             </div>
             <h1 className="dz-h1 flex items-center gap-3 text-3xl sm:text-4xl md:text-5xl uppercase text-[var(--on-accent)]">
               <span>{t.title[language]}</span>
-              <span className="text-xs px-2 py-0.5 border border-[var(--accent)] text-[var(--accent)] font-mono tracking-widest">
-                v2.0
-              </span>
             </h1>
           </div>
 
@@ -586,16 +583,16 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               {/* Viewport Overlay HUD Details */}
               <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
-                <span>REALTIME 4K SHADER · {activePreset.name}</span>
+                <span>{t.realtimeField[language]} · {activePreset.name}</span>
               </div>
 
               <div className="absolute top-3 right-3 pointer-events-none font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
-                <span>FPS: 60 · PARTICELLE: {particlesRef.current.length}</span>
+                <span>FPS: 60 · {t.particlesStat[language]}: {particlesRef.current.length}</span>
               </div>
 
               {/* Shockwave hint */}
               <div className="absolute bottom-3 left-3 pointer-events-none font-mono text-[10px] text-zinc-500 bg-black/60 px-2 py-1 border border-white/10">
-                <span>CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO GRAVITAZIONALE</span>
+                <span>{t.fieldInstruction[language]}</span>
               </div>              {/* Audio visualizer bars on canvas HUD */}
               {audioActive && (
                 <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[var(--accent-tertiary)]/30">
@@ -606,7 +603,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                       style={{ height: `${val / 3}px` }}
                     />
                   ))}
-                  <span className="font-mono text-[9px] text-[var(--accent-tertiary)] ml-1 uppercase">SYNTH LIVE</span>
+                  <span className="font-mono text-[9px] text-[var(--accent-tertiary)] ml-1 uppercase">{t.synthActive[language]}</span>
                 </div>
               )}
             </div>
@@ -709,7 +706,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[var(--void-text)] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
-                <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
+                <span className="text-[10px] text-zinc-400">{t.paramsLabel[language]}</span>
               </div>
 
               {/* Particle Count */}
@@ -816,7 +813,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         </div>
 
-        {/* Multimodal Generation Pipeline Nodes */}
+        {/* Generation pipeline */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-4">
             <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
@@ -832,7 +829,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] px-1.5 py-0.5 border border-white/20 text-zinc-400">
-                      NODE 0{i + 1}
+                      {t.nodeLabel[language]} 0{i + 1}
                     </span>                    <span className="text-[10px] text-[var(--accent-tertiary)] font-bold">
                       {node.tag}
                     </span>
@@ -847,7 +844,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-500">
-                  <span>STATUS: RUNNING</span>
+                  <span>{t.running[language]}</span>
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
               </div>

@@ -81,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
             href="#"
             id="brand-logo"
             className="flex items-center gap-2.5 group cursor-pointer"
-            aria-label="dotzero home"
+            aria-label={t.homeAria[language]}
           >
             <div className="flex items-center space-x-1">
               <span className="w-5 h-5 rounded-full bg-[var(--accent)] inline-block border border-[var(--text)] transition-transform duration-300 group-hover:scale-110" />
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
                 id="btn-nav-modulor-studio"
                 onClick={navigateToSubpage}
                 className="px-3 py-1.5 bg-[var(--text)] text-[var(--on-text)] hover:bg-[var(--accent)] font-mono text-xs uppercase tracking-wider font-bold border border-[var(--text)] shadow-[2px_2px_0px_0px_#DE3831] flex items-center gap-1.5 transition-all"
-                title="Apri la sottopagina MODULOR STUDIO"
+                title={t.modulorTitle[language]}
               >
                 <Sparkles className="w-3.5 h-3.5 text-[var(--accent-tertiary)] animate-spin" style={{ animationDuration: '6s' }} />
                 <span>MODULOR STUDIO</span>
@@ -148,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
               id="language-switcher"
               className="flex items-center border border-[var(--text)] bg-[var(--surface-raised)] p-0.5"
               role="group"
-              aria-label="Language Switcher"
+              aria-label={t.languageAria[language]}
             >
               {(['it', 'de', 'en'] as Language[]).map((lng) => (
                 <button
@@ -174,11 +174,11 @@ export const Header: React.FC<HeaderProps> = ({
               id="toggle-color-mode"
               onClick={() => onColorModeChange(colorMode === 'light' ? 'dark' : 'light')}
               className="p-1.5 border dz-border dz-surface-raised dz-text text-xs font-mono hidden sm:flex items-center gap-1 transition-all"
-              title={colorMode === 'light' ? 'Dark mode' : 'Light mode'}
-              aria-label={colorMode === 'light' ? 'Activate dark mode' : 'Activate light mode'}
+              title={colorMode === 'light' ? t.darkMode[language] : t.lightMode[language]}
+              aria-label={colorMode === 'light' ? t.activateDark[language] : t.activateLight[language]}
             >
               {colorMode === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
-              <span>{colorMode === 'light' ? 'DARK' : 'LIGHT'}</span>
+              <span>{colorMode === 'light' ? t.darkMode[language] : t.lightMode[language]}</span>
             </button>
 
             <button
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-[var(--accent)] text-[var(--on-accent)] font-bold'
                     : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
-                title="Classico Bauhaus"
+                title={t.themeClassicTitle[language]}
               >
                 {t.themeBauhaus[language]}
               </button>
@@ -219,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-[var(--text)] text-[var(--on-text)] font-bold'
                     : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
-                title="Monocromo"
+                title={t.themeMonoTitle[language]}
               >
                 {t.themeMono[language]}
               </button>
@@ -232,7 +232,7 @@ export const Header: React.FC<HeaderProps> = ({
                     ? 'bg-[var(--accent-secondary)] text-[var(--on-accent)] font-bold'
                     : 'text-[var(--text)] hover:bg-zinc-100'
                 }`}
-                title="De Stijl"
+                title={t.themeDeStijlTitle[language]}
               >
                 {t.themeDeStijl[language]}
               </button>
@@ -243,7 +243,7 @@ export const Header: React.FC<HeaderProps> = ({
               id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-1.5 border border-[var(--text)] bg-[var(--surface-raised)]"
-              aria-label="Toggle menu"
+              aria-label={t.mobileMenu[language]}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { BuiltGlyph } from './BuiltGlyph';
 import {
   GlyphDesign,
@@ -21,6 +23,8 @@ export const KerningPanel: React.FC<KerningPanelProps> = ({
   onPairChange,
   onChange,
 }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
   const left = pair[0] as GlyphId;
   const right = pair[1] as GlyphId;
   const value = design.kerning[pair];
@@ -41,11 +45,11 @@ export const KerningPanel: React.FC<KerningPanelProps> = ({
     <section className="tc-kerning-panel">
       <div className="tc-kerning-head">
         <div>
-          <div className="tc-label">KERNING / PAIRS</div>
+          <div className="tc-label">{t.kerningPairs}</div>
           <div className="tc-kerning-title">{pair}</div>
         </div>
 
-        <div className="tc-kerning-pairs" aria-label="Kerning pair">
+        <div className="tc-kerning-pairs" aria-label={t.kerningPair}>
           {KERNING_PAIRS.map((id) => (
             <button
               type="button"
@@ -80,7 +84,7 @@ export const KerningPanel: React.FC<KerningPanelProps> = ({
       </div>
 
       <label className="tc-kerning-control">
-        <span>PAIR VALUE</span>
+        <span>{t.pairValue}</span>
         <input
           type="range"
           min="-30"
@@ -94,19 +98,19 @@ export const KerningPanel: React.FC<KerningPanelProps> = ({
 
       <div className="tc-kerning-readout">
         <div>
-          <span>PAIR</span>
+          <span>{t.pair}</span>
           <strong>{pair}</strong>
         </div>
         <div>
-          <span>LEFT ADVANCE</span>
+          <span>{t.leftAdvance}</span>
           <strong>{leftAdvance.toFixed(1)}</strong>
         </div>
         <div>
-          <span>RIGHT ADVANCE</span>
+          <span>{t.rightAdvance}</span>
           <strong>{rightAdvance.toFixed(1)}</strong>
         </div>
         <div>
-          <span>KERN</span>
+          <span>{t.kern}</span>
           <strong>{value > 0 ? '+' : ''}{value}</strong>
         </div>
       </div>

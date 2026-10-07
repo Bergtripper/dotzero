@@ -227,7 +227,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Compass className="w-4 h-4 text-[#1350B0]" />
-                  <span>Protocollo PGP: 0xBAUHAUS2026</span>
+                  <span>{t.pgpProtocol[language]}: 0xBAUHAUS2026</span>
                 </div>
               </div>
             </div>

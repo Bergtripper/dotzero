@@ -219,7 +219,7 @@ export const ProjectsGallery: React.FC = () => {
                   id="close-project-modal"
                   onClick={() => setActiveProjectModal(null)}
                   className="p-1.5 border-2 border-[var(--text)] hover:bg-[var(--accent)] hover:text-[var(--on-accent)] transition-colors"
-                  aria-label="Chiudi dettaglio"
+                  aria-label={t.modalClose[language]}
                 >
                   <X className="w-5 h-5" />
                 </button>

@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+import { UNIVERSAL_CORE_COPY } from './copy';
 import { BuiltGlyph } from './BuiltGlyph';
 import { GlyphDesign, GlyphId, KerningPair, getGlyphBounds, getKerningValue } from './model';
 import { SpacingPanel } from './SpacingPanel';
@@ -12,6 +14,8 @@ interface TypeTesterProps {
 const BUILT = new Set<GlyphId>(['b', 'c', 'd', 'e', 'o', 'p', 'q']);
 
 export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
+  const { language } = useLanguage();
+  const t = UNIVERSAL_CORE_COPY[language];
   const [text, setText] = useState('code bed cope');
   const [size, setSize] = useState(88);
   const [tracking, setTracking] = useState(0);
@@ -36,26 +40,26 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
     <section className="tc-test-view">
       <div className="tc-test-head">
         <div>
-          <div className="tc-label">TYPE TEST</div>
-          <div className="tc-test-title">USE THE SYSTEM</div>
+          <div className="tc-label">{t.typeTest}</div>
+          <div className="tc-test-title">{t.useSystem}</div>
         </div>
-        <div className="tc-test-status">BUILT GLYPHS / b c d e o p q</div>
+        <div className="tc-test-status">{t.builtGlyphs} / b c d e o p q</div>
       </div>
 
       <div className="tc-test-controls">
         <label className="tc-test-input">
-          <span>TEXT</span>
+          <span>{t.text}</span>
           <input
             type="text"
             value={text}
             onChange={(event) => setText(event.target.value)}
             spellCheck={false}
-            aria-label="Type test text"
+            aria-label={t.typeTestText}
           />
         </label>
 
         <label>
-          <span>SIZE</span>
+          <span>{t.size}</span>
           <input
             type="range"
             min="42"
@@ -68,7 +72,7 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
         </label>
 
         <label>
-          <span>TRACKING</span>
+          <span>{t.tracking}</span>
           <input
             type="range"
             min="-6"
@@ -119,7 +123,7 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
             <span
               className="tc-test-char is-fallback"
               key={`${char}-${index}`}
-              title="Fallback glyph — not built yet"
+              title={t.fallbackGlyph}
             >
               {char}
             </span>
@@ -144,16 +148,16 @@ export const TypeTester: React.FC<TypeTesterProps> = ({ design, onChange }) => {
 
       <div className="tc-test-report">
         <div>
-          <span>BUILT INSTANCES</span>
+          <span>{t.builtInstances}</span>
           <strong>{String(builtCount).padStart(2, '0')}</strong>
         </div>
         <div>
-          <span>MISSING GLYPHS</span>
+          <span>{t.missingGlyphs}</span>
           <strong>{missing.length ? missing.join(' ') : '—'}</strong>
         </div>
         <div>
-          <span>COVERAGE</span>
-          <strong>07 GLYPHS</strong>
+          <span>{t.coverage}</span>
+          <strong>07 {t.glyphs}</strong>
         </div>
       </div>
     </section>

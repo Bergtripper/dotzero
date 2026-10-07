@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { Language } from '../../types';
 import { TypeConstructionEditor } from './core/TypeConstructionEditor';
 import './styles.css';
 
@@ -12,49 +13,53 @@ type ModuleStatus = 'active' | 'planned';
 
 const COPY = {
   it: {
-    kicker: 'PROJECT 04 / TYPOGRAPHIC RESEARCH',
+    kicker: 'PROGETTO 05 / RICERCA TIPOGRAFICA',
     title: 'UNIVERSAL SYSTEMS',
     period: '1925—2026',
-    subtitle: 'Type · Geometry · Morphology · Reduction',
+    subtitle: 'Tipografia · Geometria · Morfologia · Riduzione',
     intro: 'Un progetto di ricerca interattivo sulla costruzione della forma tipografica: dalle regole geometriche ai sistemi condivisi, fino alla domanda su cosa possa significare oggi una tipografia universale.',
-    back: 'BACK TO INDEX',
-    modules: 'EXPERIMENTS / MODULES',
-    active: 'ACTIVE',
-    soon: 'COMING SOON',
-    construction: 'CONSTRUCTION',
-    resolved: 'RESOLVED',
-    build: '01 / BUILD',
-    system: '02 / SYSTEM',
+    back: 'TORNA ALL’INDICE',
+    modules: 'ESPERIMENTI / MODULI',
+    active: 'ATTIVO',
+    soon: 'IN ARRIVO',
+    independent: 'STRUMENTO DI RICERCA INDIPENDENTE',
+    experiment: 'ESPERIMENTO 01 / ATTIVO',
+    construction: 'COSTRUZIONE',
+    resolved: 'RISOLTO',
+    build: '01 / COSTRUISCI',
+    system: '02 / SISTEMA',
     test: '03 / TEST',
     buildText: 'Costruisci il glifo attraverso un insieme limitato di primitive e regole condivise.',
     systemText: 'Osserva quali componenti vengono riutilizzati e come nasce una famiglia coerente di segni.',
     testText: 'Porta il glifo fuori dall’isolamento e verifica il comportamento dentro parole e sequenze.',
-    framework: 'FROM UNIVERSAL TYPE TO CONSTRUCTION SYSTEMS',
+    framework: 'DALLA TIPOGRAFIA UNIVERSALE AI SISTEMI DI COSTRUZIONE',
     frameworkText: 'Il punto di partenza non è imitare un carattere storico, ma interrogare il principio: quante regole servono per generare un sistema leggibile, coerente e riconoscibile?',
   },
   de: {
-    kicker: 'PROJECT 04 / TYPOGRAPHIC RESEARCH',
+    kicker: 'PROJEKT 05 / TYPOGRAFISCHE FORSCHUNG',
     title: 'UNIVERSAL SYSTEMS',
     period: '1925—2026',
-    subtitle: 'Type · Geometry · Morphology · Reduction',
+    subtitle: 'Typografie · Geometrie · Morphologie · Reduktion',
     intro: 'Ein interaktives Forschungsprojekt über die Konstruktion typografischer Form: von geometrischen Regeln über gemeinsame Systeme bis zur Frage, was universelle Typografie heute bedeuten könnte.',
-    back: 'BACK TO INDEX',
-    modules: 'EXPERIMENTS / MODULES',
-    active: 'ACTIVE',
-    soon: 'COMING SOON',
-    construction: 'CONSTRUCTION',
-    resolved: 'RESOLVED',
-    build: '01 / BUILD',
+    back: 'ZURÜCK ZUM INDEX',
+    modules: 'EXPERIMENTE / MODULE',
+    active: 'AKTIV',
+    soon: 'FOLGT',
+    independent: 'UNABHÄNGIGES FORSCHUNGSWERKZEUG',
+    experiment: 'EXPERIMENT 01 / AKTIV',
+    construction: 'KONSTRUKTION',
+    resolved: 'GELÖST',
+    build: '01 / BAUEN',
     system: '02 / SYSTEM',
     test: '03 / TEST',
     buildText: 'Konstruiere Glyphen aus einem begrenzten Satz gemeinsamer Grundformen und Regeln.',
     systemText: 'Untersuche wiederkehrende Komponenten und wie daraus eine kohärente Zeichenfamilie entsteht.',
     testText: 'Teste die Glyphe außerhalb der Isolation in Wörtern und Sequenzen.',
-    framework: 'FROM UNIVERSAL TYPE TO CONSTRUCTION SYSTEMS',
+    framework: 'VON UNIVERSALER TYPOGRAFIE ZU KONSTRUKTIONSSYSTEMEN',
     frameworkText: 'Es geht nicht darum, eine historische Schrift zu imitieren, sondern das Prinzip zu untersuchen: Wie wenige Regeln braucht ein lesbares, kohärentes und wiedererkennbares System?',
   },
   en: {
-    kicker: 'PROJECT 04 / TYPOGRAPHIC RESEARCH',
+    kicker: 'PROJECT 05 / TYPOGRAPHIC RESEARCH',
     title: 'UNIVERSAL SYSTEMS',
     period: '1925—2026',
     subtitle: 'Type · Geometry · Morphology · Reduction',
@@ -63,6 +68,8 @@ const COPY = {
     modules: 'EXPERIMENTS / MODULES',
     active: 'ACTIVE',
     soon: 'COMING SOON',
+    independent: 'INDEPENDENT RESEARCH TOOL',
+    experiment: 'EXPERIMENT 01 / ACTIVE',
     construction: 'CONSTRUCTION',
     resolved: 'RESOLVED',
     build: '01 / BUILD',
@@ -91,7 +98,7 @@ const MODULES: Array<{
 ];
 
 export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = ({ onBack }) => {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const t = COPY[language];
   return (
     <div className="min-h-screen dz-bg dz-text">
@@ -102,9 +109,22 @@ export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = (
               <ArrowLeft className="h-3.5 w-3.5" /> {t.back}
             </button>
           ) : (
-            <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">INDEPENDENT RESEARCH TOOL</div>
+            <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">{t.independent}</div>
           )}
-          <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">DOTZERO / UNIVERSAL SYSTEMS / 04</div>
+          <div className="flex items-center gap-3">
+            <div className="hidden font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted sm:block">DOTZERO / UNIVERSAL SYSTEMS / 05</div>
+            <div className="flex border dz-border">
+              {(['it', 'de', 'en'] as Language[]).map((lng) => (
+                <button
+                  key={lng}
+                  onClick={() => setLanguage(lng)}
+                  className={`px-2 py-1 font-mono text-[9px] font-bold uppercase ${language === lng ? 'bg-[var(--text)] text-[var(--bg)]' : 'dz-bg dz-text'}`}
+                >
+                  {lng}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
@@ -159,7 +179,7 @@ export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = (
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
             <div className="grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-3">
-                <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">EXPERIMENT 01 / ACTIVE</div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">{t.experiment}</div>
                 <h2 className="dz-h2 mt-4 text-4xl uppercase sm:text-5xl">TYPE CONSTRUCTION LAB</h2>
                 <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">GEOMETRY → GLYPH</div>
               </div>
