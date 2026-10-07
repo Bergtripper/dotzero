@@ -696,6 +696,7 @@ export const UI_TEXT = {
       de: 'STANDORTE & ATELIERS',
       en: 'OPERATIONAL STUDIOS & LOCATIONS',
     },
+    pgpProtocol: { it: 'Protocollo PGP', de: 'PGP-Protokoll', en: 'PGP protocol' },
     quoteHeading: {
       it: 'PRINCIPIO FONDANTE',
       de: 'GRUNDPRINZIP',
