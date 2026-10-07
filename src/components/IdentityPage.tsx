@@ -1,5 +1,5 @@
 import React from 'react';
-import { DotzeroLogotypetype } from './DotzeroLogotypetype';
+import { DotzeroLogotype } from './DotzeroLogotype';
 import { DotzeroMark } from './DotzeroMark';
 
 type CellProps = {
@@ -175,7 +175,7 @@ const UsageExamples = () => (
     <figure className="m-0">
       <div className="flex min-h-36 flex-col justify-between border border-[#dfdfdf] bg-white p-4 text-black">
         <div className="flex items-center justify-between">
-          <DotzeroLogotypetype className="w-[118px]" />
+          <DotzeroLogotype className="w-[118px]" />
           <span className="font-mono text-[8px]">☰</span>
         </div>
         <div className="flex gap-4 font-mono text-[7px] uppercase tracking-[.08em]">
@@ -187,7 +187,7 @@ const UsageExamples = () => (
 
     <figure className="m-0">
       <div className="flex min-h-36 items-center justify-center bg-black p-5 text-white">
-        <DotzeroLogotypetype className="w-[155px]" />
+        <DotzeroLogotype className="w-[155px]" />
       </div>
       <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Dark mode / logotype only</figcaption>
     </figure>
@@ -203,7 +203,7 @@ const UsageExamples = () => (
 
     <figure className="m-0">
       <div className="min-h-36 border border-[#dfdfdf] bg-white p-4 text-black">
-        <DotzeroLogotypetype className="w-[132px]" />
+        <DotzeroLogotype className="w-[132px]" />
         <div className="mt-8 border-l border-[#bdbdbd] pl-3 font-mono text-[8px] leading-4">
           RESEARCH<br />EXPLORATION<br />OPEN DIRECTION
         </div>
