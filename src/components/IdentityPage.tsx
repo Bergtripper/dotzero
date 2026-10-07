@@ -240,7 +240,7 @@ const UsageExamples = () => (
           <span>Research</span><span>Dialog</span><span>About</span>
         </div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header / origin state · logotype</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header · logotype</figcaption>
     </figure>
 
     <figure className="m-0">
@@ -249,9 +249,9 @@ const UsageExamples = () => (
           <DotzeroMark size={26} />
           <span className="font-mono text-[7px] uppercase tracking-[.1em]">Index · Foundation · CD/CI</span>
         </div>
-        <div className="font-mono text-[8px] uppercase tracking-[.12em] text-[#777]">scroll &gt; 32 px</div>
+        <div className="font-mono text-[8px] uppercase tracking-[.12em] text-[#777]">navigation state</div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header / navigation state · sign</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header · sign</figcaption>
     </figure>
 
     <figure className="m-0">
@@ -302,11 +302,11 @@ export const IdentityPage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-center justify-between gap-5 border-b dz-rule pb-5">
             <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">DOTZERO / BRAND IDENTITY GUIDELINES</div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.3</div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · CD / CI</div>
           </div>
           <div className="mt-10 grid items-end gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <div className="dz-meta">CD / CI / CANONICAL SYSTEM</div>
+              <div className="dz-meta">CD / CI / IDENTITY SYSTEM</div>
               <h1 className="dz-h1 mt-5 text-[clamp(4rem,10vw,9rem)]">IDENTITY.</h1>
               <p className="dz-body-strong mt-7 max-w-2xl">
                 The visual system begins with the sign: DOT · ZERO · OPEN DIRECTION. Logotype and sign are complementary identities and are never combined into a lockup.
@@ -336,8 +336,8 @@ export const IdentityPage: React.FC = () => {
               <DotzeroLogotype className="w-full max-w-[720px]" />
             </div>
             <div className="mt-4 flex flex-wrap justify-between gap-3 font-mono text-[8px] uppercase tracking-[.11em] dz-text-muted">
-              <span>Master artwork / path-built SVG · leading dot</span>
-              <span>Never paired with the sign</span>
+              <span>.DOTZERO · leading dot</span>
+              <span>Complementary to the sign</span>
             </div>
             <div className="mt-6 border-l-2 border-[var(--accent)] pl-4">
               <div className="font-mono text-[8px] font-semibold uppercase tracking-[.12em]">RELATIONSHIP RULE</div>
@@ -476,8 +476,8 @@ export const IdentityPage: React.FC = () => {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t dz-rule pt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
-          <span>DOTZERO / CD + CI / v1.3</span>
-          <span>. = knowledge · 0 = field · &lt;/&gt; = method · .DOTZERO → sign on scroll</span>
+          <span>DOTZERO / CD + CI</span>
+          <span>. = knowledge · 0 = field · &lt;/&gt; = method · open direction</span>
         </div>
       </div>
     </main>
