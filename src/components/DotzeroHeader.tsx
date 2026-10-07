@@ -3,6 +3,7 @@ import { Grid3X3, Moon, Sun } from 'lucide-react';
 import { ColorMode, Language } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { TypographySwitch } from './TypographySwitch';
+import { DotzeroMark } from './DotzeroMark';
 
 interface DotzeroHeaderProps {
   colorMode: ColorMode;
@@ -22,13 +23,15 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b dz-border bg-[color:var(--bg)]/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
-        <a href="#index" className="font-display text-lg font-extrabold tracking-[-0.07em] uppercase sm:text-xl">
-          dotzero<span className="text-[var(--accent)]">.</span>
+        <a href="#index" className="dz-brand-lockup" aria-label="DOTZERO — personal research lab">
+          <span className="font-display text-lg font-extrabold tracking-[-0.07em] uppercase sm:text-xl">dotzero<span className="text-[var(--accent)]">.</span></span>
+          <DotzeroMark size={22} title="DOTZERO mark" />
         </a>
 
         <nav className="hidden items-center gap-7 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
           <a href="#projects" className="transition-opacity hover:opacity-45">Index</a>
           <a href="#foundation" className="transition-opacity hover:opacity-45">Foundation</a>
+          <a href="#identity" className="transition-opacity hover:opacity-45">CD / CI</a>
           <a href="#atlas-engine" className="transition-opacity hover:opacity-45">Framework</a>
           <a href="#about" className="transition-opacity hover:opacity-45">About</a>
         </nav>

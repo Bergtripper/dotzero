@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, ArrowRight, Braces, Compass, GitBranch, Layers3, Search, ShieldCheck, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { DotzeroMark } from './DotzeroMark';
 
 const COPY = {
   it: {
@@ -219,6 +220,36 @@ export const FoundationPage: React.FC = () => {
               <p className="dz-body-strong">{t.intro}</p>
               <p className="dz-body">{t.subject}</p>
               <p className="font-mono text-[9px] uppercase tracking-[0.14em] dz-text-muted">{t.canonical}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b dz-border">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <Label>IDENTITY / v1.0 EXPERIMENT</Label>
+          <div className="mt-8 grid gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <h2 className="dz-h2 text-4xl sm:text-6xl">DOT. ZERO. OPEN DIRECTION.</h2>
+              <p className="dz-body mt-6 max-w-xl">A geometric mark built from origin, zero and an open diagonal. It may also read as a figure raising a hand: inquiry without illustrating inquiry.</p>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="dz-identity-board">
+                <div className="dz-identity-cell dz-identity-hero"><DotzeroMark size={150} /></div>
+                <div className="dz-identity-cell">
+                  <div className="dz-meta">CONSTRUCTION</div>
+                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">DOT / ORIGIN<br/>ZERO / FIELD<br/>SLASH / OPEN DIRECTION</div></div>
+                </div>
+                <div className="dz-identity-cell">
+                  <div className="dz-meta">SCALE TEST</div>
+                  <div className="dz-identity-scale mt-10">{[16,24,32,48].map(size => <figure key={size}><DotzeroMark size={size}/><figcaption className="dz-meta">{size}px</figcaption></figure>)}</div>
+                </div>
+                <div className="dz-identity-cell">
+                  <div className="dz-meta">LOCKUP</div>
+                  <div className="mt-10 flex items-center gap-3"><span className="font-display text-3xl font-extrabold tracking-[-.07em]">DOTZERO<span className="text-[var(--accent)]">.</span></span><DotzeroMark size={34}/></div>
+                  <div className="dz-meta mt-6">PERSONAL RESEARCH LAB</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
