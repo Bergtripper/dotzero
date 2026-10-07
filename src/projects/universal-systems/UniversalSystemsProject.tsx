@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, FlaskConical, Grid3X3, Network, ScanLine, Shapes, Type } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import { Language } from '../../types';
 import { TypeConstructionEditor } from './core/TypeConstructionEditor';
 import './styles.css';
 
@@ -67,8 +68,8 @@ const COPY = {
     modules: 'EXPERIMENTS / MODULES',
     active: 'ACTIVE',
     soon: 'COMING SOON',
-    independent: '{t.independent}',
-    experiment: '{t.experiment}',
+    independent: 'INDEPENDENT RESEARCH TOOL',
+    experiment: 'EXPERIMENT 01 / ACTIVE',
     construction: 'CONSTRUCTION',
     resolved: 'RESOLVED',
     build: '01 / BUILD',
@@ -97,7 +98,7 @@ const MODULES: Array<{
 ];
 
 export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = ({ onBack }) => {
-  const { language } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const t = COPY[language];
   return (
     <div className="min-h-screen dz-bg dz-text">
@@ -108,9 +109,22 @@ export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = (
               <ArrowLeft className="h-3.5 w-3.5" /> {t.back}
             </button>
           ) : (
-            <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">INDEPENDENT RESEARCH TOOL</div>
+            <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">{t.independent}</div>
           )}
-          <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">DOTZERO / UNIVERSAL SYSTEMS / 05</div>
+          <div className="flex items-center gap-3">
+            <div className="hidden font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted sm:block">DOTZERO / UNIVERSAL SYSTEMS / 05</div>
+            <div className="flex border dz-border">
+              {(['it', 'de', 'en'] as Language[]).map((lng) => (
+                <button
+                  key={lng}
+                  onClick={() => setLanguage(lng)}
+                  className={`px-2 py-1 font-mono text-[9px] font-bold uppercase ${language === lng ? 'bg-[var(--text)] text-[var(--bg)]' : 'dz-bg dz-text'}`}
+                >
+                  {lng}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
@@ -165,7 +179,7 @@ export const UniversalSystemsProject: React.FC<UniversalSystemsProjectProps> = (
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
             <div className="grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-3">
-                <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">EXPERIMENT 01 / ACTIVE</div>
+                <div className="font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">{t.experiment}</div>
                 <h2 className="dz-h2 mt-4 text-4xl uppercase sm:text-5xl">TYPE CONSTRUCTION LAB</h2>
                 <div className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] dz-text-muted">GEOMETRY → GLYPH</div>
               </div>
