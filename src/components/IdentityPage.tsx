@@ -232,7 +232,7 @@ export const IdentityPage: React.FC = () => {
 
       <div className="mx-auto max-w-[96rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid grid-cols-1 gap-px bg-[var(--line-soft)] p-px lg:grid-cols-12">
-          <Cell number="00" title="Meaning of the sign" note=". + 0 + </> / question · individual · opening" className="lg:col-span-12">
+          <Cell number="00" title="Meaning of the sign" note={'. + 0 + </> / question · individual · opening'} className="lg:col-span-12">
             <MeaningPanel />
           </Cell>
 
