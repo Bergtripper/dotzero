@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { TypographySwitch } from './TypographySwitch';
 import { DotzeroLogotype } from './DotzeroLogotype';
 import { DotzeroMark } from './DotzeroMark';
+import { DotMarker, FieldGlyph, SystemGlyph } from './GraphicSyntax';
 
 interface DotzeroHeaderProps {
   colorMode: ColorMode;
@@ -51,12 +52,12 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
-          <a href="#projects" className="transition-opacity hover:opacity-45">Index</a>
-          <a href="#foundation" className="transition-opacity hover:opacity-45">Foundation</a>
-          <a href="#identity" className="transition-opacity hover:opacity-45">CD / CI</a>
-          <a href="#atlas-engine" className="transition-opacity hover:opacity-45">Framework</a>
-          <a href="#about" className="transition-opacity hover:opacity-45">About</a>
+        <nav className="hidden items-center gap-6 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
+          <a href="#projects" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />Index</a>
+          <a href="#foundation" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />Foundation</a>
+          <a href="#identity" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><FieldGlyph size={8} />CD / CI</a>
+          <a href="#atlas-engine" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><SystemGlyph size={14} />Framework</a>
+          <a href="#about" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />About</a>
         </nav>
 
         <div className="flex items-center gap-1.5">
