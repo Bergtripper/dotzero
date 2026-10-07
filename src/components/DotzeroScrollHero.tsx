@@ -8,6 +8,8 @@ type DotzeroScrollHeroProps = {
   sub: string;
   intro: string;
   projectCount: number;
+  activeLabel: string;
+  projectsLabel: string;
 };
 
 type Glyph = {
@@ -78,6 +80,8 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
   sub,
   intro,
   projectCount,
+  activeLabel,
+  projectsLabel,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -243,8 +247,8 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
               <p className="dz-body mt-3 max-w-2xl">{intro}</p>
             </div>
             <div className="flex items-center gap-8 font-mono text-[8px] uppercase tracking-[0.16em] dz-text-muted lg:col-span-5 lg:justify-end">
-              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />Active</span>
-              <span>{String(projectCount).padStart(2, '0')} projects</span>
+              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />{activeLabel}</span>
+              <span>{String(projectCount).padStart(2, '0')} {projectsLabel}</span>
             </div>
           </div>
         </div>
