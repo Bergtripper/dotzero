@@ -1,6 +1,7 @@
 import React from 'react';
 import { DotzeroLogotype } from './DotzeroLogotype';
 import { DotzeroMark } from './DotzeroMark';
+import { DotMarker, FieldGlyph, SystemGlyph, ZeroField } from './GraphicSyntax';
 
 type CellProps = {
   number: string;
@@ -170,6 +171,63 @@ const MeaningPanel = () => (
   </div>
 );
 
+const GraphicSyntaxPanel = () => (
+  <div>
+    <div className="grid gap-px bg-[var(--line-soft)] p-px lg:grid-cols-3">
+      <div className="bg-[var(--bg)] p-6 sm:p-8">
+        <DotMarker size="lg" />
+        <div className="mt-7 font-mono text-[9px] font-semibold uppercase tracking-[.13em]">. / CONTENT MARKER</div>
+        <h3 className="dz-h3 mt-3 text-3xl">KNOWLEDGE.</h3>
+        <p className="dz-body mt-5">
+          Origin, question, node, evidence and active focus. Use the point beside section labels, claims, source/evidence notes and live states.
+        </p>
+        <div className="mt-6 border-t dz-rule pt-4 font-mono text-[8px] uppercase leading-5 tracking-[.11em] dz-text-muted">
+          Destinations / editorial labels · evidence · status · focus
+        </div>
+      </div>
+
+      <ZeroField className="bg-[var(--bg)] p-6 sm:p-8">
+        <FieldGlyph size={26} />
+        <div className="mt-7 font-mono text-[9px] font-semibold uppercase tracking-[.13em]">0 / FIELD LOGIC</div>
+        <h3 className="dz-h3 mt-3 text-3xl">CONTAINER.</h3>
+        <p className="dz-body mt-5">
+          The zero becomes a bounded research field: project, model, dataset or context. Prefer spatial framing over repeating a literal “0” as decoration.
+        </p>
+        <div className="mt-6 border-t dz-rule pt-4 font-mono text-[8px] uppercase leading-5 tracking-[.11em] dz-text-muted">
+          Destinations / project fields · models · datasets · contexts
+        </div>
+      </ZeroField>
+
+      <div className="bg-[var(--bg)] p-6 sm:p-8">
+        <SystemGlyph size={50} />
+        <div className="mt-7 font-mono text-[9px] font-semibold uppercase tracking-[.13em]">&lt;/&gt; / SYSTEM MARKER</div>
+        <h3 className="dz-h3 mt-3 text-3xl">OPEN DIRECTION.</h3>
+        <p className="dz-body mt-5">
+          Construction, method, action, transition and movement beyond the field. Use it for tools, framework layers, navigation and calls to explore.
+        </p>
+        <div className="mt-6 border-t dz-rule pt-4 font-mono text-[8px] uppercase leading-5 tracking-[.11em] dz-text-muted">
+          Destinations / method · tools · CTA · transitions · framework
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-8 grid gap-8 border-t dz-rule pt-7 md:grid-cols-2">
+      <div>
+        <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">SEPARATION RULE</div>
+        <p className="mt-4 text-sm leading-6 dz-text-muted">
+          The point and &lt;/&gt; are related but not interchangeable. The point identifies knowledge; &lt;/&gt; indicates what the system does with it.
+        </p>
+      </div>
+      <div>
+        <div className="font-mono text-[9px] font-semibold uppercase tracking-[.12em]">BEHAVIOUR RULE</div>
+        <p className="mt-4 text-sm leading-6 dz-text-muted">
+          At the top of the site the identity is named by <strong className="text-[var(--text)]">.DOTZERO</strong>. Once the user enters the page through scroll, the logotype yields to the standalone sign.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const UsageExamples = () => (
   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
     <figure className="m-0">
@@ -182,14 +240,18 @@ const UsageExamples = () => (
           <span>Research</span><span>Dialog</span><span>About</span>
         </div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Website / logotype only</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header / origin state · logotype</figcaption>
     </figure>
 
     <figure className="m-0">
-      <div className="flex min-h-36 items-center justify-center bg-black p-5 text-white">
-        <DotzeroLogotype className="w-[155px]" />
+      <div className="flex min-h-36 flex-col justify-between bg-white p-4 text-black">
+        <div className="flex items-center justify-between border-b border-[#dddddd] pb-3">
+          <DotzeroMark size={26} />
+          <span className="font-mono text-[7px] uppercase tracking-[.1em]">Index · Foundation · CD/CI</span>
+        </div>
+        <div className="font-mono text-[8px] uppercase tracking-[.12em] text-[#777]">scroll &gt; 32 px</div>
       </div>
-      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Dark mode / logotype only</figcaption>
+      <figcaption className="mt-2 font-mono text-[8px] uppercase tracking-[.1em] dz-text-muted">Header / navigation state · sign</figcaption>
     </figure>
 
     <figure className="m-0">
@@ -240,7 +302,7 @@ export const IdentityPage: React.FC = () => {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-center justify-between gap-5 border-b dz-rule pb-5">
             <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]">DOTZERO / BRAND IDENTITY GUIDELINES</div>
-            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.2</div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.14em] dz-text-muted">Personal research lab · Version 1.3</div>
           </div>
           <div className="mt-10 grid items-end gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -265,7 +327,11 @@ export const IdentityPage: React.FC = () => {
             <MeaningPanel />
           </Cell>
 
-          <Cell number="01" title="Logotype" note=".DOTZERO / standalone typographic signature" className="lg:col-span-7">
+          <Cell number="01" title="Graphic syntax" note=". = knowledge · 0 = field · </> = method / open direction" className="lg:col-span-12">
+            <GraphicSyntaxPanel />
+          </Cell>
+
+          <Cell number="02" title="Logotype" note=".DOTZERO / standalone typographic signature" className="lg:col-span-7">
             <div className="flex min-h-56 items-center justify-center bg-white p-8 text-black sm:min-h-72">
               <DotzeroLogotype className="w-full max-w-[720px]" />
             </div>
@@ -281,17 +347,17 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="02" title="Sign" note="Standalone sign · complementary to logotype" className="lg:col-span-2">
+          <Cell number="03" title="Sign" note="Standalone sign · complementary to logotype" className="lg:col-span-2">
             <div className="flex min-h-56 items-center justify-center bg-white p-6 text-black sm:min-h-72">
               <DotzeroMark size={180} />
             </div>
           </Cell>
 
-          <Cell number="03" title="Construction" note="Grid & proportions" className="lg:col-span-3">
+          <Cell number="04" title="Construction" note="Grid & proportions" className="lg:col-span-3">
             <ConstructionDiagram />
           </Cell>
 
-          <Cell number="04" title="Typography" note="IBM Plex system" className="lg:col-span-5">
+          <Cell number="05" title="Typography" note="IBM Plex system" className="lg:col-span-5">
             <div className="grid gap-8 sm:grid-cols-2">
               <div>
                 <div className="font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">Primary typeface</div>
@@ -325,7 +391,7 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="05" title="Sign variations" note="Controlled derivatives · sign only" className="lg:col-span-4">
+          <Cell number="06" title="Sign variations" note="Controlled derivatives · sign only" className="lg:col-span-4">
             <div className="grid grid-cols-2 gap-px bg-[var(--line-soft)] sm:grid-cols-4">
               <div className="bg-[var(--bg)] p-3 text-center">
                 <div className="flex h-28 items-center justify-center bg-white text-black"><DotzeroMark size={70} /></div>
@@ -350,7 +416,7 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="06" title="Rotation (optional)" note="Exploratory, never default" className="lg:col-span-3">
+          <Cell number="07" title="Rotation (optional)" note="Exploratory, never default" className="lg:col-span-3">
             <div className="grid grid-cols-3 gap-px bg-[var(--line-soft)]">
               {[0, 45, 90].map((angle) => (
                 <div key={angle} className="bg-[var(--bg)] px-2 py-4 text-center">
@@ -366,7 +432,7 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="07" title="Sizes" note="16 px and upward" className="lg:col-span-5">
+          <Cell number="08" title="Sizes" note="16 px and upward" className="lg:col-span-5">
             <div className="flex min-h-44 flex-wrap items-end justify-between gap-6">
               {sizes.map(([size, label]) => (
                 <figure key={size} className="m-0 grid justify-items-center gap-3">
@@ -382,7 +448,7 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="08" title="Color palette" note="Full chroma — no clipping" className="lg:col-span-4">
+          <Cell number="09" title="Color palette" note="Full chroma — no clipping" className="lg:col-span-4">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
               {[
                 ['DOTZERO Red', '#F70B0D', '#F70B0D', 'Primary'],
@@ -400,18 +466,18 @@ export const IdentityPage: React.FC = () => {
             </div>
           </Cell>
 
-          <Cell number="09" title="Clear space" note="Protected field" className="lg:col-span-3">
+          <Cell number="10" title="Clear space" note="Protected field" className="lg:col-span-3">
             <ClearSpaceDiagram />
           </Cell>
 
-          <Cell number="10" title="Usage examples" note="Digital · print · space" className="lg:col-span-12">
+          <Cell number="11" title="Usage examples" note="Digital · print · space" className="lg:col-span-12">
             <UsageExamples />
           </Cell>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t dz-rule pt-4 font-mono text-[8px] uppercase tracking-[.12em] dz-text-muted">
-          <span>DOTZERO / CD + CI / v1.2</span>
-          <span>.DOTZERO logotype + standalone sign · IBM Plex Sans · IBM Plex Mono · #F70B0D</span>
+          <span>DOTZERO / CD + CI / v1.3</span>
+          <span>. = knowledge · 0 = field · &lt;/&gt; = method · .DOTZERO → sign on scroll</span>
         </div>
       </div>
     </main>
