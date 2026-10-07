@@ -35,14 +35,15 @@ type SystemGlyphProps = {
 export const SystemGlyph: React.FC<SystemGlyphProps> = ({
   size = 28,
   className = '',
-  title = 'Open direction / system',
+  title,
 }) => (
   <svg
     viewBox="0 0 42 24"
     width={size}
     height={(size * 24) / 42}
-    role="img"
+    role={title ? 'img' : undefined}
     aria-label={title}
+    aria-hidden={title ? undefined : true}
     className={`dz-system-glyph ${className}`}
   >
     <path d="M11 3 L3 12 L11 21" />
@@ -60,14 +61,15 @@ type FieldGlyphProps = {
 export const FieldGlyph: React.FC<FieldGlyphProps> = ({
   size = 22,
   className = '',
-  title = 'Zero / field',
+  title,
 }) => (
   <svg
     viewBox="0 0 24 32"
     width={size}
     height={(size * 32) / 24}
-    role="img"
+    role={title ? 'img' : undefined}
     aria-label={title}
+    aria-hidden={title ? undefined : true}
     className={`dz-field-glyph ${className}`}
   >
     <rect x="3" y="2.5" width="18" height="27" rx="9" />
