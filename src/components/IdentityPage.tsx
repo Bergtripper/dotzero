@@ -365,7 +365,7 @@ export const IdentityPage: React.FC = () => {
               {t.variants.map(([name, note], i) => (
                 <div key={name} className="bg-[var(--bg)] p-3 text-center">
                   <div className={`flex h-28 items-center justify-center ${i === 2 ? 'bg-black text-white' : 'bg-white text-black'}`}>
-                    <DotzeroMark size={i === 1 ? 48 : 70} variant={i === 3 ? 'outline' : 'default'} />
+                    <DotzeroMark size={i === 1 ? 48 : 70} variant={i === 3 ? 'outline' : 'standard'} />
                   </div>
                   <div className="mt-3 text-xs font-semibold">{name}</div>
                   <div className="mt-1 font-mono text-[7px] uppercase dz-text-muted">{note}</div>
