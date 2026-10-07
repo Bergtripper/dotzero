@@ -22,6 +22,11 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
 }) => {
   const { language, setLanguage } = useLanguage();
   const [compactBrand, setCompactBrand] = useState(false);
+  const copy = {
+    it: { index: 'Indice', foundation: 'Foundation', identity: 'CD / CI', framework: 'Framework', about: 'DOTZERO', grid: 'Griglia', dark: 'Modalità scura', light: 'Modalità chiara' },
+    de: { index: 'Index', foundation: 'Foundation', identity: 'CD / CI', framework: 'Framework', about: 'DOTZERO', grid: 'Raster', dark: 'Dunkelmodus', light: 'Hellmodus' },
+    en: { index: 'Index', foundation: 'Foundation', identity: 'CD / CI', framework: 'Framework', about: 'DOTZERO', grid: 'Grid', dark: 'Dark mode', light: 'Light mode' },
+  }[language];
 
   useEffect(() => {
     const syncBrandState = () => setCompactBrand(window.scrollY > 32);
@@ -53,11 +58,11 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
         </a>
 
         <nav className="hidden items-center gap-6 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
-          <a href="#projects" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />Index</a>
-          <a href="#foundation" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />Foundation</a>
-          <a href="#identity" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><FieldGlyph size={8} />CD / CI</a>
-          <a href="#atlas-engine" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><SystemGlyph size={14} />Framework</a>
-          <a href="#about" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />About</a>
+          <a href="#projects" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />{copy.index}</a>
+          <a href="#foundation" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />{copy.foundation}</a>
+          <a href="#identity" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><FieldGlyph size={8} />{copy.identity}</a>
+          <a href="#atlas-engine" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><SystemGlyph size={14} />{copy.framework}</a>
+          <a href="#about" className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-45"><DotMarker size="xs" />{copy.about}</a>
         </nav>
 
         <div className="flex items-center gap-1.5">
@@ -83,7 +88,7 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
             className={`border dz-border p-1.5 ${
               showGridLines ? 'bg-[var(--text)] text-[var(--bg)]' : 'dz-surface-raised dz-text'
             }`}
-            title="Grid"
+            title={copy.grid}
           >
             <Grid3X3 className="h-3.5 w-3.5" />
           </button>
@@ -91,7 +96,7 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
           <button
             onClick={() => onColorModeChange(colorMode === 'light' ? 'dark' : 'light')}
             className="border dz-border dz-surface-raised dz-text p-1.5"
-            title={colorMode === 'light' ? 'Dark mode' : 'Light mode'}
+            title={colorMode === 'light' ? copy.dark : copy.light}
           >
             {colorMode === 'light' ? <Moon className="h-3.5 w-3.5" /> : <Sun className="h-3.5 w-3.5" />}
           </button>
