@@ -31,6 +31,7 @@ export const DotzeroHeader: React.FC<DotzeroHeaderProps> = ({
         <nav className="hidden items-center gap-7 font-mono text-[9px] uppercase tracking-[0.18em] md:flex">
           <a href="#projects" className="transition-opacity hover:opacity-45">Index</a>
           <a href="#foundation" className="transition-opacity hover:opacity-45">Foundation</a>
+          <a href="#identity" className="transition-opacity hover:opacity-45">CD / CI</a>
           <a href="#atlas-engine" className="transition-opacity hover:opacity-45">Framework</a>
           <a href="#about" className="transition-opacity hover:opacity-45">About</a>
         </nav>
