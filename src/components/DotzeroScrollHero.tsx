@@ -73,9 +73,9 @@ const buildGlyphs = (): Glyph[] => {
 const GLYPHS = buildGlyphs();
 
 const STATE_COPY = {
-  it: ['01 / APERTO', '02 / ALLINEA', '03 / OPEN DIRECTION'],
-  de: ['01 / OFFEN', '02 / AUSRICHTEN', '03 / OPEN DIRECTION'],
-  en: ['01 / OPEN', '02 / ALIGN', '03 / OPEN DIRECTION'],
+  it: { states: ['01 / APERTO', '02 / ALLINEA', '03 / OPEN DIRECTION'], active: 'ATTIVO', projects: 'PROGETTI' },
+  de: { states: ['01 / OFFEN', '02 / AUSRICHTEN', '03 / OPEN DIRECTION'], active: 'AKTIV', projects: 'PROJEKTE' },
+  en: { states: ['01 / OPEN', '02 / ALIGN', '03 / OPEN DIRECTION'], active: 'ACTIVE', projects: 'PROJECTS' },
 };
 
 export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
@@ -149,7 +149,7 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
   const zeroShift = smoothstep(0.42, 0.62, progress);
 
   const stateCopy = STATE_COPY[language];
-  const stateLabel = progress < 0.34 ? stateCopy[0] : progress < 0.68 ? stateCopy[1] : stateCopy[2];
+  const stateLabel = progress < 0.34 ? stateCopy.states[0] : progress < 0.68 ? stateCopy.states[1] : stateCopy.states[2];
 
   const renderedGlyphs = useMemo(() => GLYPHS, []);
 
@@ -252,8 +252,8 @@ export const DotzeroScrollHero: React.FC<DotzeroScrollHeroProps> = ({
               <p className="dz-body mt-3 max-w-2xl">{intro}</p>
             </div>
             <div className="flex items-center gap-8 font-mono text-[8px] uppercase tracking-[0.16em] dz-text-muted lg:col-span-5 lg:justify-end">
-              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />Active</span>
-              <span>{String(projectCount).padStart(2, '0')} projects</span>
+              <span className="inline-flex items-center gap-2"><DotMarker size="xs" />{stateCopy.active}</span>
+              <span>{String(projectCount).padStart(2, '0')} {stateCopy.projects}</span>
             </div>
           </div>
         </div>
