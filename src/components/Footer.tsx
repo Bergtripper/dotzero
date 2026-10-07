@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
                   className="px-3 py-1.5 border border-zinc-700 bg-zinc-900 hover:bg-[var(--accent)] hover:border-[var(--accent)] font-mono text-xs text-zinc-300 hover:text-[var(--on-accent)] uppercase flex items-center gap-1.5 transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[var(--accent-tertiary)]" />
-                  <span>Modulor Studio Subpage →</span>
+                  <span>{t.modulorButton[language]}</span>
                 </button>
               </div>
             )}
@@ -63,36 +63,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
             <div className="text-[var(--accent-tertiary)] font-bold uppercase tracking-widest mb-3">
               {t.modularIndex[language]}
             </div>
-            <div>
-              <a href="#hero-section" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                01 · Punto Zero
-              </a>
-            </div>
-            <div>
-              <a href="#manifesto" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                02 · Il Manifesto
-              </a>
-            </div>
-            <div>
-              <a href="#teoria" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                03 · Teoria Forma-Colore
-              </a>
-            </div>
-            <div>
-              <a href="#progetti" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                04 · Archivio Progetti
-              </a>
-            </div>
-            <div>
-              <a href="#laboratorio" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                05 · Laboratorio Geometrico
-              </a>
-            </div>
-            <div>
-              <a href="#contatti" className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
-                06 · Commissioni
-              </a>
-            </div>
+            {[
+              '#hero-section',
+              '#manifesto',
+              '#teoria',
+              '#progetti',
+              '#laboratorio',
+              '#contatti',
+            ].map((href, index) => (
+              <div key={href}>
+                <a href={href} className="text-zinc-300 hover:text-[var(--accent)] transition-colors">
+                  {t.quickLinks[language][index]}
+                </a>
+              </div>
+            ))}
           </div>
 
           {/* Standards & Specs (4 cols) */}
@@ -101,10 +85,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
               {t.constructiveStandards[language]}
             </div>
             <div className="p-3 bg-zinc-900 border border-zinc-800 space-y-1">
-              <div className="text-zinc-400">CANONE: Costruttivismo Funzionale</div>
-              <div className="text-zinc-400">PALETTE: Primaria Triadica (#DE3831, #1350B0, #F7B801)</div>
-              <div className="text-zinc-400">TIPOGRAFIA: Space Grotesk / Syne</div>
-              <div className="text-zinc-400">GRID ENGINE: CSS Grid 12 Colonne</div>
+              {t.standards[language].map((line) => <div key={line} className="text-zinc-400">{line}</div>)}
             </div>
 
             <button
@@ -128,15 +109,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />
-              <span>PUNKT</span>
+              <span>{t.primitives[language][0]}</span>
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 bg-[var(--accent-secondary)]" />
-              <span>LINIE</span>
+              <span>{t.primitives[language][1]}</span>
             </span>
             <span className="flex items-center gap-1.5">
               <span className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-b-[8px] border-b-[#F7B801]" />
-              <span>FLÄCHE</span>
+              <span>{t.primitives[language][2]}</span>
             </span>
           </div>
         </div>
