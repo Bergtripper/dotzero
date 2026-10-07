@@ -555,3 +555,19 @@ html {
     transition: none;
   }
 }
+
+
+/* DOTZERO Identity v1 — canonical mark */
+.dz-mark{display:block;overflow:visible;color:var(--accent)}
+.dz-mark__dot,.dz-mark__zero{fill:currentColor}
+.dz-mark__counter{fill:var(--bg)}
+.dz-mark__slash{fill:none;stroke:currentColor;stroke-width:8;stroke-linecap:round}
+.dz-brand-lockup{display:inline-flex;align-items:center;gap:.55rem;color:var(--text);text-decoration:none}
+.dz-brand-lockup .dz-mark{flex:none}
+.dz-identity-board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));border:1px solid var(--line-soft);background:var(--bg)}
+.dz-identity-cell{grid-column:span 12;padding:1.5rem;border-bottom:1px solid var(--line-soft)}
+.dz-identity-cell:last-child{border-bottom:0}
+.dz-identity-hero{display:flex;min-height:20rem;align-items:center;justify-content:center}
+.dz-identity-scale{display:flex;align-items:end;gap:2rem;flex-wrap:wrap}
+.dz-identity-scale figure{margin:0;display:grid;gap:.6rem;justify-items:center}
+@media(min-width:768px){.dz-identity-cell{grid-column:span 6}.dz-identity-cell:nth-last-child(-n+2){border-bottom:0}.dz-identity-cell:nth-child(odd){border-right:1px solid var(--line-soft)}}
