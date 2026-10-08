@@ -143,8 +143,7 @@ export const BauhausLaboratory: React.FC = () => {
   return (
     <section id="laboratorio" className="py-20 border-b-2 border-[var(--text)] bg-[var(--canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        
+
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b-2 border-[var(--text)] gap-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-2">
@@ -181,13 +180,10 @@ export const BauhausLaboratory: React.FC = () => {
           </div>
         </div>
 
-        
         <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] shadow-[8px_8px_0px_0px_#121212] grid grid-cols-1 lg:grid-cols-12">
-          
-          
+
           <div className="lg:col-span-7 p-6 border-b-2 lg:border-b-0 lg:border-r-2 border-[var(--text)] flex flex-col items-center justify-center bg-[var(--canvas)]">
-            
-            
+
             <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[var(--text)] font-mono text-xs">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]" />
@@ -198,7 +194,6 @@ export const BauhausLaboratory: React.FC = () => {
               </div>
             </div>
 
-            
             <div className="relative w-full max-w-[420px] aspect-square bg-[var(--bg)] border-2 border-[var(--text)] shadow-inner overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 bauhaus-grid-pattern opacity-60 pointer-events-none" />
 
@@ -306,7 +301,6 @@ export const BauhausLaboratory: React.FC = () => {
               </svg>
             </div>
 
-            
             <div className="w-full mt-4 flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <button
@@ -330,7 +324,6 @@ export const BauhausLaboratory: React.FC = () => {
                 </button>
               </div>
 
-              
               <div className="flex items-center gap-1 font-mono text-xs">
                 <span className="text-zinc-500 hidden sm:inline">Preset:</span>
                 <select
@@ -349,10 +342,8 @@ export const BauhausLaboratory: React.FC = () => {
 
           </div>
 
-          
           <div className="lg:col-span-5 p-6 flex flex-col justify-between space-y-6">
-            
-            
+
             <div>
               <div className="font-mono text-xs uppercase font-bold text-zinc-600 mb-3 flex items-center gap-2">
                 <Plus className="w-3.5 h-3.5" />
@@ -412,7 +403,6 @@ export const BauhausLaboratory: React.FC = () => {
               </div>
             </div>
 
-            
             {selectedElement ? (
               <div className="border-2 border-[var(--text)] p-4 bg-[var(--canvas)] space-y-4">
                 <div className="flex items-center justify-between pb-2 border-b border-[var(--text)] font-mono text-xs">
@@ -439,7 +429,6 @@ export const BauhausLaboratory: React.FC = () => {
                   </div>
                 </div>
 
-                
                 <div>
                   <div className="font-mono text-[11px] text-zinc-600 uppercase mb-1.5">
                     {t.colorLabel[language]}
@@ -465,7 +454,6 @@ export const BauhausLaboratory: React.FC = () => {
                   </div>
                 </div>
 
-                
                 <div className="grid grid-cols-2 gap-3 font-mono text-xs">
                   <div>
                     <label className="block text-zinc-600 uppercase mb-1">
@@ -495,7 +483,6 @@ export const BauhausLaboratory: React.FC = () => {
                   </div>
                 </div>
 
-                
                 <div className="grid grid-cols-2 gap-3 font-mono text-xs">
                   <div>
                     <label className="block text-zinc-600 uppercase mb-1">
@@ -526,7 +513,6 @@ export const BauhausLaboratory: React.FC = () => {
                   </div>
                 </div>
 
-                
                 <div className="font-mono text-xs">
                   <label className="block text-zinc-600 uppercase mb-1">
                     {t.opacityLabel[language]} {Math.round(selectedElement.opacity * 100)}%
@@ -548,7 +534,6 @@ export const BauhausLaboratory: React.FC = () => {
               </div>
             )}
 
-            
             <div className="font-mono text-[11px] text-zinc-500 border-t border-[var(--text)] pt-3">
               {t.tip[language]}
             </div>
