@@ -30,7 +30,6 @@ function MainAppContent() {
   const [colorMode, setColorMode] = useState<ColorMode>('light');
   const [showGridLines, setShowGridLines] = useState<boolean>(true);
 
-  // Sync hash routing if user comes with #modulor or #modulor-studio
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.toLowerCase();
@@ -85,7 +84,6 @@ function MainAppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Dynamic theme wrapper classes
   const themeClass =
     currentTheme === 'monochrome'
       ? 'theme-monochrome grayscale'
