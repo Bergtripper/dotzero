@@ -416,11 +416,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-[var(--void)] text-[var(--void-text)] font-sans relative selection:bg-[var(--accent)] selection:text-[var(--on-accent)] pb-20">
-      
-      
+
       <header className="sticky top-0 z-50 bg-[var(--void)]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        
-        
+
         <div className="flex items-center gap-4">
           <button
             type="button"
@@ -437,12 +435,11 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           </div>
         </div>
 
-        
         <div className="flex items-center gap-3">
           <div className="hidden xl:block">
             <TypographySwitch compact inverse />
           </div>
-          
+
                     <button
             type="button"
             onClick={toggleAudio}
@@ -459,7 +456,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             </span>
           </button>
 
-          
           <div className="flex items-center border border-white/20 bg-black/40 p-0.5 font-mono text-xs">
             {(['it', 'de', 'en'] as Language[]).map((lng) => (
               <button
@@ -480,10 +476,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         </div>
       </header>
 
-      
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        
-        
+
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent-tertiary)] mb-2 font-bold">
@@ -503,15 +497,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           </p>
         </div>
 
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
-          
+
           <div className="lg:col-span-8 flex flex-col gap-4">
-            
+
             <div className="relative w-full h-[460px] sm:h-[540px] bg-[var(--void)] border-2 border-white/15 overflow-hidden rounded-xs shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-              
-              
+
               <canvas
                 ref={canvasRef}
                 className="w-full h-full cursor-crosshair block"
@@ -549,7 +540,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 }}
               />
 
-              
               <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
                 <span>REALTIME 4K SHADER · {activePreset.name}</span>
@@ -559,10 +549,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <span>FPS: 60 · PARTICELLE: {particlesRef.current.length}</span>
               </div>
 
-              
               <div className="absolute bottom-3 left-3 pointer-events-none font-mono text-[10px] text-zinc-500 bg-black/60 px-2 py-1 border border-white/10">
                 <span>CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO GRAVITAZIONALE</span>
-              </div>              
+              </div>
               {audioActive && (
                 <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[var(--accent-tertiary)]/30">
                   {audioMeter.map((val, idx) => (
@@ -577,7 +566,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               )}
             </div>
 
-            
             <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-[var(--surface-raised)]/5 border border-white/10 font-mono text-xs">
               <div className="flex items-center gap-2">
                 <button
@@ -608,7 +596,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 </button>
               </div>
 
-              
               <div className="flex items-center border border-white/20 bg-black/50 p-0.5 text-[11px]">
                 <button
                   type="button"
@@ -642,10 +629,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
           </div>
 
-          
           <div className="lg:col-span-4 space-y-6">
-            
-            
+
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs">
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--accent-tertiary)] font-bold mb-3">
                 <Sliders className="w-3.5 h-3.5" />
@@ -671,14 +656,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               </div>
             </div>
 
-            
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[var(--void-text)] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
                 <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
               </div>
 
-              
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">                  <span>{t.particlesLabel[language]}</span>
                   <span className="text-[var(--accent)]">{particleDensity}</span>
@@ -698,7 +681,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.speedLabel[language]}</span>
@@ -715,7 +697,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.glowLabel[language]}</span>
@@ -732,7 +713,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.trailLabel[language]}</span>
@@ -750,7 +730,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               </div>
             </div>
 
-            
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <span className="font-bold uppercase text-[var(--accent-tertiary)] flex items-center gap-2">
@@ -782,7 +761,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         </div>
 
-        
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-4">
             <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
