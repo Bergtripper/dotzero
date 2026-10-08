@@ -29,7 +29,7 @@ export const ProjectsGallery: React.FC = () => {
     <section id="progetti" className="py-20 border-b-2 border-[var(--text)] bg-[var(--bg)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title & Filter Bar */}
+        
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b-2 border-[var(--text)] gap-6">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-2">
@@ -41,7 +41,7 @@ export const ProjectsGallery: React.FC = () => {
             </h2>
           </div>
 
-          {/* Category Filter Pills */}
+          
           <div className="flex flex-wrap items-center gap-1.5 border border-[var(--text)] bg-[var(--surface-raised)] p-1">
             {categories.map((cat) => (
               <button
@@ -61,7 +61,7 @@ export const ProjectsGallery: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects Grid: 3 columns on large screens */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div
@@ -70,11 +70,11 @@ export const ProjectsGallery: React.FC = () => {
               onClick={() => setActiveProjectModal(project)}
               className="border-2 border-[var(--text)] bg-[var(--surface-raised)] group cursor-pointer transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_#121212] flex flex-col justify-between"
             >
-              {/* Card Geometric Visual Poster Area */}
+              
               <div className="h-56 bg-[var(--canvas)] border-b-2 border-[var(--text)] p-6 relative overflow-hidden flex items-center justify-center">
                 <div className="absolute inset-0 bauhaus-grid-pattern opacity-50" />
 
-                {/* Vector Constructivist Graphic corresponding to project */}
+                
                 {project.id === 'kandinsky-grid' && (
                   <div className="relative w-36 h-36 flex items-center justify-center">
                     <div className="absolute w-28 h-28 rounded-full bg-[var(--accent)] mix-blend-multiply" />
@@ -137,7 +137,7 @@ export const ProjectsGallery: React.FC = () => {
                   </div>
                 )}
 
-                {/* Technical Coordinates Badge */}
+                
                 <div className="absolute top-2 left-2 font-mono text-[10px] bg-[var(--surface-raised)] border border-[var(--text)] px-1.5 py-0.5">
                   {project.code}
                 </div>
@@ -146,7 +146,7 @@ export const ProjectsGallery: React.FC = () => {
                 </div>
               </div>
 
-              {/* Card Meta Content */}
+              
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -165,7 +165,7 @@ export const ProjectsGallery: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Bottom Action strip */}
+                
                 <div className="pt-4 border-t border-[var(--text)] flex items-center justify-between font-mono text-xs">
                   <span className="font-semibold text-[var(--text)] flex items-center gap-1 group-hover:underline">
                     {t.detailsBtn[language]}
@@ -187,7 +187,7 @@ export const ProjectsGallery: React.FC = () => {
           ))}
         </div>
 
-        {/* Project Detail Modal */}
+        
         {activeProjectModal && (
           <div
             id="project-detail-modal"
@@ -198,7 +198,7 @@ export const ProjectsGallery: React.FC = () => {
               className="bg-[var(--surface-raised)] border-4 border-[var(--text)] max-w-2xl w-full p-6 sm:p-8 shadow-[12px_12px_0px_0px_#DE3831] max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Header */}
+              
               <div className="flex items-start justify-between pb-4 mb-6 border-b-2 border-[var(--text)]">
                 <div>
                   <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase font-bold mb-1">
@@ -225,7 +225,7 @@ export const ProjectsGallery: React.FC = () => {
                 </button>
               </div>
 
-              {/* Description & specs */}
+              
               <div className="space-y-6">
                 <div>
                   <h4 className="font-mono text-xs uppercase font-bold text-zinc-500 mb-2">
@@ -236,7 +236,7 @@ export const ProjectsGallery: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Specifics Checklist */}
+                
                 <div>
                   <h4 className="font-mono text-xs uppercase font-bold text-zinc-500 mb-3">
                     {t.modalSpecs[language]}
@@ -251,7 +251,7 @@ export const ProjectsGallery: React.FC = () => {
                   </ul>
                 </div>
 
-                {/* Color Palette Specimen */}
+                
                 <div className="pt-4 border-t-2 border-[var(--text)] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
