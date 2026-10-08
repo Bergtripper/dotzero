@@ -15,7 +15,7 @@ export const MANIFESTO_PRINCIPLES: ManifestoPrinciple[] = [
       en: 'The primary geometric origin',
     },
     shape: 'circle',
-    color: '#DE3831', // Red
+    color: '#DE3831',
     description: {
       it: 'Tutto ha origine da un punto nello spazio: il punto zero. Quando il punto si muove genera la linea, la linea definisce il piano. In dotzero eliminiamo ogni ornamento superficiale per riscoprire la purezza delle prime forze grafiche.',
       de: 'Alles entspringt einem Punkt im Raum: dem Punkt Null. Bewegt sich der Punkt, entsteht die Linie; die Linie bildet die Fläche. In dotzero verbannen wir jedes oberflächliche Ornament, um die Reinheit der primären Urkräfte freizulegen.',
@@ -36,7 +36,7 @@ export const MANIFESTO_PRINCIPLES: ManifestoPrinciple[] = [
       en: 'No element without intent',
     },
     shape: 'square',
-    color: '#1350B0', // Blue
+    color: '#1350B0',
     description: {
       it: 'La bellezza non è un additivo decorativo, ma la conseguenza naturale della massima chiarezza e funzionalità. La struttura stessa diventa estetica, senza inganni visivi o ombre artificiali.',
       de: 'Schönheit ist keine dekorative Beigabe, sondern die zwingende Konsequenz maximaler Klarheit und Zweckmäßigkeit. Die Konstruktion selbst ist Ästhetik, ohne Täuschung oder künstliche Effekte.',
@@ -57,7 +57,7 @@ export const MANIFESTO_PRINCIPLES: ManifestoPrinciple[] = [
       en: 'Red, Yellow, Blue, Black',
     },
     shape: 'triangle',
-    color: '#F7B801', // Yellow
+    color: '#F7B801',
     description: {
       it: 'Rifiutiamo le gradazioni pastello e le sfumature ambigue. Il rosso per la tensione e la gravitazione, il giallo per la luce e la spinta centrifuga, il blu per la calma e la concentrazione interiore.',
       de: 'Wir verwerfen diffuse Pastelltöne und unklare Schattierungen. Rot steht für Spannung und irdische Schwere, Gelb für Licht und zentrifugalen Drang, Blau für kosmische Ruhe und Einkehr.',
@@ -78,7 +78,7 @@ export const MANIFESTO_PRINCIPLES: ManifestoPrinciple[] = [
       en: 'Craftsmanship, architecture, and code',
     },
     shape: 'cross',
-    color: '#121212', // Black
+    color: '#121212',
     description: {
       it: 'Come Gropius riunì pittura, falegnameria e costruzione a Weimar nel 1919, dotzero unisce progettazione grafica, architettura delle informazioni e ingegneria del software in un unico solido manufatto.',
       de: 'Wie Walter Gropius 1919 in Weimar Malerei, Tischlerei und Bauwesen vereinte, verbindet dotzero Grafikdesign, Informationsarchitektur und Software-Engineering zu einem monolithischen Artefakt.',
