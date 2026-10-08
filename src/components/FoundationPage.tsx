@@ -1,8 +1,6 @@
 import React from 'react';
 import { ArrowLeft, Braces, Compass, Layers3, Search, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { DotzeroMark } from './DotzeroMark';
-import { DotzeroLogotype } from './DotzeroLogotype';
 import { DotMarker, FieldGlyph, SyntaxLabel, SystemGlyph, ZeroField } from './GraphicSyntax';
 
 const COPY = {
@@ -13,24 +11,13 @@ const COPY = {
     intro: 'DOTZERO nasce dalla curiosità e costruisce atlanti, studi e strumenti per vedere connessioni, testare idee e confrontare prospettive.',
     subject: 'I temi possono cambiare completamente. Metodo, rigore ed evidenza restano costanti.',
     back: 'TORNA ALL’INDICE',
-    identityLabel: 'IDENTITÀ / DOT · ZERO · OPEN DIRECTION',
-    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
-    identityBody: 'Un segno costruito con punto, zero, diagonale e triangolo. Le sue letture convivono: origine, campo, domanda, gesto e direzione aperta.',
-    construction: 'COSTRUZIONE',
-    constructionLines: ['DOT / ORIGINE', 'ZERO / CAMPO', 'DIAGONALE / DIREZIONE APERTA'],
-    scale: 'PROVA DI SCALA',
-    logotype: 'LOGOTIPO / IDENTITÀ COMPLEMENTARE',
-    logotypeRule: '.DOTZERO e il segno non formano mai un lockup',
-    syntaxLabel: 'SINTASSI GRAFICA / . · 0 · </>',
-    syntax: [
-      ['CONOSCENZA.', 'DOT / MARCATORE DI CONTENUTO', 'Origine, domanda, nodo, evidenza e punto attivo. Il punto resta vicino al contenuto che identifica.'],
-      ['CAMPO.', 'ZERO / CONTENITORE', 'Uno spazio delimitato di ricerca: progetto, modello, dataset o contesto. Lo zero diventa soprattutto struttura e campo.'],
-      ['METODO.', '</> / MARCATORE DI SISTEMA', 'Costruzione, azione, transizione e apertura. Indica strumenti, metodo, navigazione e movimento oltre il campo.'],
-    ],
-    syntaxRules: [
-      '. resta con conoscenza ed evidenza.',
-      '0 definisce il campo in cui avviene l’indagine.',
-      '</> indica metodo, azione e apertura.',
+    principleLabel: 'PRINCIPIO / DOT · ZERO · OPEN DIRECTION',
+    principleTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    principleBody: 'DOTZERO parte da un punto, apre un campo e cerca una direzione. La grammatica visiva riflette il metodo di ricerca, senza sostituirlo.',
+    principleItems: [
+      ['DOT.', 'ORIGINE', 'Il punto è l’inizio: una domanda, un’osservazione, un nodo da cui partire.'],
+      ['ZERO.', 'CAMPO', 'Lo zero è lo spazio dell’indagine: un contesto delimitato in cui elementi e relazioni diventano leggibili.'],
+      ['OPEN DIRECTION.', 'METODO', 'La direzione resta aperta: il metodo organizza la ricerca senza chiuderla in una risposta definitiva.'],
     ],
     problemLabel: 'IL PROBLEMA',
     problemTitle: 'L’informazione è abbondante. La comprensione no.',
@@ -92,24 +79,13 @@ const COPY = {
     intro: 'DOTZERO beginnt mit Neugier und entwickelt Atlanten, Studien und Instrumente, um Verbindungen sichtbar zu machen, Ideen zu prüfen und Perspektiven zu vergleichen.',
     subject: 'Die Themen können vollständig wechseln. Methode, Sorgfalt und Evidenz bleiben konstant.',
     back: 'ZURÜCK ZUM INDEX',
-    identityLabel: 'IDENTITÄT / DOT · ZERO · OPEN DIRECTION',
-    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
-    identityBody: 'Ein Zeichen aus Punkt, Null, Diagonale und Dreieck. Seine Lesarten bestehen gleichzeitig: Ursprung, Feld, Frage, Geste und offene Richtung.',
-    construction: 'KONSTRUKTION',
-    constructionLines: ['DOT / URSPRUNG', 'ZERO / FELD', 'DIAGONALE / OFFENE RICHTUNG'],
-    scale: 'GRÖSSENTEST',
-    logotype: 'LOGOTYPE / ERGÄNZENDE IDENTITÄT',
-    logotypeRule: '.DOTZERO und das Zeichen bilden niemals einen Lockup',
-    syntaxLabel: 'GRAFISCHE SYNTAX / . · 0 · </>',
-    syntax: [
-      ['WISSEN.', 'DOT / INHALTSMARKER', 'Ursprung, Frage, Knoten, Evidenz und aktiver Fokus. Der Punkt bleibt nahe bei dem Inhalt, den er markiert.'],
-      ['FELD.', 'ZERO / CONTAINER', 'Ein begrenzter Forschungsraum: Projekt, Modell, Datensatz oder Kontext. Die Null wird vor allem zu Struktur und Feld.'],
-      ['METHODE.', '</> / SYSTEMMARKER', 'Konstruktion, Handlung, Übergang und Öffnung. Das Zeichen markiert Instrumente, Methode, Navigation und Bewegung über das Feld hinaus.'],
-    ],
-    syntaxRules: [
-      '. bleibt bei Wissen und Evidenz.',
-      '0 definiert das Feld der Untersuchung.',
-      '</> markiert Methode, Handlung und Öffnung.',
+    principleLabel: 'PRINZIP / DOT · ZERO · OPEN DIRECTION',
+    principleTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    principleBody: 'DOTZERO beginnt mit einem Punkt, öffnet ein Feld und sucht eine Richtung. Die visuelle Grammatik spiegelt die Forschungsmethode, ohne sie zu ersetzen.',
+    principleItems: [
+      ['DOT.', 'URSPRUNG', 'Der Punkt ist der Anfang: eine Frage, eine Beobachtung, ein Knoten, von dem aus die Untersuchung beginnt.'],
+      ['ZERO.', 'FELD', 'Die Null ist der Untersuchungsraum: ein begrenzter Kontext, in dem Elemente und Beziehungen lesbar werden.'],
+      ['OPEN DIRECTION.', 'METHODE', 'Die Richtung bleibt offen: Die Methode strukturiert die Forschung, ohne sie in einer endgültigen Antwort zu schließen.'],
     ],
     problemLabel: 'DAS PROBLEM',
     problemTitle: 'Information ist reichlich vorhanden. Verstehen nicht.',
@@ -171,24 +147,13 @@ const COPY = {
     intro: 'DOTZERO begins with curiosity and builds atlases, studies and tools to reveal connections, test ideas and compare perspectives.',
     subject: 'Subjects can change completely. Method, rigor and evidence remain constant.',
     back: 'BACK TO INDEX',
-    identityLabel: 'IDENTITY / DOT · ZERO · OPEN DIRECTION',
-    identityTitle: 'DOT. ZERO. OPEN DIRECTION.',
-    identityBody: 'A sign built from point, zero, diagonal and triangle. Its readings coexist: origin, field, question, gesture and open direction.',
-    construction: 'CONSTRUCTION',
-    constructionLines: ['DOT / ORIGIN', 'ZERO / FIELD', 'DIAGONAL / OPEN DIRECTION'],
-    scale: 'SCALE TEST',
-    logotype: 'LOGOTYPE / COMPLEMENTARY IDENTITY',
-    logotypeRule: '.DOTZERO and the sign never form a lockup',
-    syntaxLabel: 'GRAPHIC SYNTAX / . · 0 · </>',
-    syntax: [
-      ['KNOWLEDGE.', 'DOT / CONTENT MARKER', 'Origin, question, node, evidence and active focus. The dot stays close to the content it identifies.'],
-      ['FIELD.', 'ZERO / CONTAINER', 'A bounded research space: project, model, dataset or context. The zero becomes structure and field rather than decoration.'],
-      ['METHOD.', '</> / SYSTEM MARKER', 'Construction, action, transition and opening. It marks tools, method, navigation and movement beyond the field.'],
-    ],
-    syntaxRules: [
-      '. stays with knowledge and evidence.',
-      '0 defines the field in which inquiry happens.',
-      '</> marks method, action and opening.',
+    principleLabel: 'PRINCIPLE / DOT · ZERO · OPEN DIRECTION',
+    principleTitle: 'DOT. ZERO. OPEN DIRECTION.',
+    principleBody: 'DOTZERO starts from a point, opens a field and looks for a direction. The visual grammar reflects the research method without replacing it.',
+    principleItems: [
+      ['DOT.', 'ORIGIN', 'The point is the beginning: a question, an observation, a node from which inquiry starts.'],
+      ['ZERO.', 'FIELD', 'Zero is the space of inquiry: a bounded context in which elements and relations become legible.'],
+      ['OPEN DIRECTION.', 'METHOD', 'The direction remains open: method structures inquiry without closing it into a final answer.'],
     ],
     problemLabel: 'THE PROBLEM',
     problemTitle: 'Information is abundant. Understanding is not.',
@@ -278,55 +243,30 @@ export const FoundationPage: React.FC = () => {
 
       <section className="border-b dz-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label kind="field">{t.identityLabel}</Label>
-          <div className="mt-8 grid gap-8 lg:grid-cols-12">
+          <Label kind="field">{t.principleLabel}</Label>
+          <div className="mt-8 grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h2 className="dz-h2 text-4xl sm:text-6xl">{t.identityTitle}</h2>
-              <p className="dz-body mt-6 max-w-xl">{t.identityBody}</p>
+              <h2 className="dz-h2 text-4xl sm:text-6xl">{t.principleTitle}</h2>
+              <p className="dz-body mt-6 max-w-xl text-lg">{t.principleBody}</p>
             </div>
             <div className="lg:col-span-7">
-              <div className="dz-identity-board">
-                <div className="dz-identity-cell dz-identity-hero"><DotzeroMark size={150} /></div>
-                <div className="dz-identity-cell">
-                  <div className="dz-meta">{t.construction}</div>
-                  <div className="mt-10 flex items-center gap-5"><DotzeroMark size={72} /><div className="font-mono text-[9px] uppercase tracking-[.14em] dz-text-muted">{t.constructionLines.map(line => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</div></div>
-                </div>
-                <div className="dz-identity-cell">
-                  <div className="dz-meta">{t.scale}</div>
-                  <div className="dz-identity-scale mt-10">{[16,24,32,48].map(size => <figure key={size}><DotzeroMark size={size}/><figcaption className="dz-meta">{size}px</figcaption></figure>)}</div>
-                </div>
-                <div className="dz-identity-cell">
-                  <div className="dz-meta">{t.logotype}</div>
-                  <div className="mt-10 bg-white p-4 text-black"><DotzeroLogotype className="w-full max-w-[250px]" /></div>
-                  <div className="dz-meta mt-6">{t.logotypeRule}</div>
-                </div>
+              <div className="grid gap-px border dz-rule bg-[var(--line-soft)] md:grid-cols-3">
+                {t.principleItems.map(([title, meta, body], index) => {
+                  const icon = index === 0 ? <DotMarker size="lg" /> : index === 1 ? <FieldGlyph size={24} /> : <SystemGlyph size={46} />;
+                  const inner = (
+                    <>
+                      {icon}
+                      <h3 className="dz-h3 mt-8 text-3xl">{title}</h3>
+                      <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">{meta}</div>
+                      <p className="dz-body mt-5">{body}</p>
+                    </>
+                  );
+                  return index === 1
+                    ? <ZeroField key={title} className="bg-[var(--bg)] p-6 sm:p-7">{inner}</ZeroField>
+                    : <div key={title} className="bg-[var(--bg)] p-6 sm:p-7">{inner}</div>;
+                })}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b dz-border">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <Label kind="system">{t.syntaxLabel}</Label>
-          <div className="mt-8 grid gap-px border dz-rule bg-[var(--line-soft)] lg:grid-cols-3">
-            {t.syntax.map(([title, meta, body], index) => {
-              const icon = index === 0 ? <DotMarker size="lg" /> : index === 1 ? <FieldGlyph size={24} /> : <SystemGlyph size={46} />;
-              const wrapper = (
-                <>
-                  {icon}
-                  <h3 className="dz-h3 mt-8 text-3xl">{title}</h3>
-                  <div className="mt-3 font-mono text-[9px] uppercase tracking-[.14em] text-[var(--accent)]">{meta}</div>
-                  <p className="dz-body mt-5">{body}</p>
-                </>
-              );
-              return index === 1
-                ? <ZeroField key={title} className="bg-[var(--bg)] p-6 sm:p-8">{wrapper}</ZeroField>
-                : <div key={title} className="bg-[var(--bg)] p-6 sm:p-8">{wrapper}</div>;
-            })}
-          </div>
-          <div className="mt-6 grid gap-4 font-mono text-[8px] uppercase leading-5 tracking-[.12em] dz-text-muted md:grid-cols-3">
-            {t.syntaxRules.map(rule => <div key={rule}>{rule}</div>)}
           </div>
         </div>
       </section>
