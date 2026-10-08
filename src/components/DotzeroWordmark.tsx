@@ -23,12 +23,10 @@ export const DotzeroWordmark: React.FC<DotzeroWordmarkProps> = ({ className = ''
         const available = frame.getBoundingClientRect().width;
         if (available <= 0) return;
 
-        // Measure the actual rendered word at a stable reference size.
         word.style.fontSize = '100px';
         const measured = word.getBoundingClientRect().width;
         if (measured <= 0) return;
 
-        // Fit inside the frame with a tiny safety margin for font rasterisation.
         const nextSize = Math.max(1, (available / measured) * 99.2);
         word.style.fontSize = `${nextSize}px`;
       });
