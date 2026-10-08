@@ -20,11 +20,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
   return (
     <footer id="footer-section" className="bg-[var(--text)] text-[var(--on-text)] pt-16 pb-12 border-t-4 border-[var(--accent)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-zinc-800">
-          
-          
+
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-[var(--accent)] inline-block border border-white" />
@@ -58,7 +56,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
             )}
           </div>
 
-          
           <div className="md:col-span-3 font-mono text-xs space-y-2">
             <div className="text-[var(--accent-tertiary)] font-bold uppercase tracking-widest mb-3">
               {t.modularIndex[language]}
@@ -95,7 +92,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
             </div>
           </div>
 
-          
           <div className="md:col-span-4 font-mono text-xs space-y-3">
             <div className="text-[var(--accent-secondary)] font-bold uppercase tracking-widest mb-3">
               {t.constructiveStandards[language]}
@@ -120,7 +116,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateToModulor, onNavigateT
 
         </div>
 
-        
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-500">
           <div>
             {t.copyright[language]}
