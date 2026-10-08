@@ -15,8 +15,7 @@ export const Manifesto: React.FC = () => {
   return (
     <section id="manifesto" className="py-20 border-b-2 border-[var(--text)] bg-[var(--bg)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
+
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b-2 border-[var(--text)] gap-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-2">
@@ -32,7 +31,6 @@ export const Manifesto: React.FC = () => {
           </div>
         </div>
 
-        {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {MANIFESTO_PRINCIPLES.map((principle) => {
             const isSelected = selectedPrinciple.number === principle.number;
@@ -47,14 +45,13 @@ export const Manifesto: React.FC = () => {
                     : 'hover:shadow-[4px_4px_0px_0px_#121212] hover:-translate-y-0.5'
                 }`}
               >
-                {/* Top Number & Accent Shape */}
+
                 <div>
                   <div className="flex items-start justify-between mb-6">
                     <span className="font-display font-extrabold text-3xl sm:text-4xl text-[var(--text)]">
                       {principle.number}
                     </span>
 
-                    {/* Geometric Shape Badge */}
                     <div className="w-10 h-10 border border-[var(--text)] flex items-center justify-center bg-[var(--canvas)]">
                       {principle.shape === 'circle' && (
                         <div
@@ -95,7 +92,6 @@ export const Manifesto: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Bottom Status bar indicator */}
                 <div className="mt-6 pt-4 border-t border-[var(--text)] flex items-center justify-between font-mono text-[11px]">
                   <span className="text-zinc-500">{t.activeLabel[language]}</span>
                   <span
@@ -108,7 +104,6 @@ export const Manifesto: React.FC = () => {
           })}
         </div>
 
-        {/* Selected Principle Deep Dive Box */}
         <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 sm:p-10 shadow-[8px_8px_0px_0px_#121212] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8">
             <div className="flex items-center gap-2 mb-3">

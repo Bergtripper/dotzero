@@ -21,7 +21,6 @@ export const ColorShapeTheory: React.FC = () => {
 
   const [tested, setTested] = useState(false);
 
-  // Kandinsky's historic answer: Triangle -> Yellow, Square -> Red, Circle -> Blue
   const correctMapping: ShapeMapping = {
     triangle: '#F7B801',
     square: '#DE3831',
@@ -62,8 +61,7 @@ export const ColorShapeTheory: React.FC = () => {
   return (
     <section id="teoria" className="py-20 border-b-2 border-[var(--text)] bg-[var(--canvas)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
+
         <div className="mb-12 pb-6 border-b-2 border-[var(--text)] flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent-secondary)] uppercase tracking-[0.2em] font-bold mb-2">
@@ -79,7 +77,6 @@ export const ColorShapeTheory: React.FC = () => {
           </div>
         </div>
 
-        {/* Interactive Experiment Box */}
         <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 sm:p-10 shadow-[8px_8px_0px_0px_#121212] mb-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b-2 border-[var(--text)] gap-4">
             <div>
@@ -113,10 +110,8 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
           </div>
 
-          {/* 3 Shapes to Color */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            
-            {/* Shape 1: Triangolo */}
+
             <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.triangleTitle[language]}
@@ -157,7 +152,6 @@ export const ColorShapeTheory: React.FC = () => {
               </div>
             </div>
 
-            {/* Shape 2: Quadrato */}
             <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.squareTitle[language]}
@@ -193,7 +187,6 @@ export const ColorShapeTheory: React.FC = () => {
               </div>
             </div>
 
-            {/* Shape 3: Cerchio */}
             <div className="border-2 border-[var(--text)] p-6 bg-[var(--canvas)] flex flex-col items-center justify-between text-center">
               <div className="font-mono text-xs uppercase font-bold tracking-widest mb-4">
                 {t.circleTitle[language]}
@@ -231,7 +224,6 @@ export const ColorShapeTheory: React.FC = () => {
 
           </div>
 
-          {/* Test Result Evaluation */}
           {tested && (
             <div
               className={`p-6 border-2 border-[var(--text)] font-mono text-sm ${
@@ -255,10 +247,8 @@ export const ColorShapeTheory: React.FC = () => {
           )}
         </div>
 
-        {/* Deep Dive Theory Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Card Yellow */}
+
           <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
             <div className="w-full h-3 bg-[var(--accent-tertiary)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">
@@ -276,7 +266,6 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
           </div>
 
-          {/* Card Red */}
           <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
             <div className="w-full h-3 bg-[var(--accent)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">
@@ -294,7 +283,6 @@ export const ColorShapeTheory: React.FC = () => {
             </div>
           </div>
 
-          {/* Card Blue */}
           <div className="border-2 border-[var(--text)] bg-[var(--surface-raised)] p-6 relative">
             <div className="w-full h-3 bg-[var(--accent-secondary)] mb-4 border border-[var(--text)]" />
             <div className="flex items-center justify-between mb-3">

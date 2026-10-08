@@ -49,11 +49,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
   const [trailPersistence, setTrailPersistence] = useState<number>(activePreset.trail);
   const [shapeMode, setShapeMode] = useState<'particles' | 'geometric-mesh' | 'waveform'>('geometric-mesh');
 
-  // Audio synthesis state
   const [audioActive, setAudioActive] = useState<boolean>(false);
   const [snapshotTaken, setSnapshotTaken] = useState<boolean>(false);
 
-  // References
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameId = useRef<number | null>(null);
   const particlesRef = useRef<Particle[]>([]);
@@ -64,14 +62,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     moved: false,
   });
 
-  // Web Audio Context & Oscillators
   const audioCtxRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
   const oscNodesRef = useRef<OscillatorNode[]>([]);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const [audioMeter, setAudioMeter] = useState<number[]>([12, 28, 54, 30, 18, 62, 44, 20]);
 
-  // Color schemes for presets
   const colorPalettes = {
     'bauhaus-neon': ['#DE3831', '#1350B0', '#F7B801', '#FFFFFF', '#FF3B30'],
     'cyber-amber': ['#F7B801', '#FFAA00', '#FF5500', '#FFFFFF', '#E63946'],
@@ -80,7 +76,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     'solar-red': ['#DE3831', '#FF2A2A', '#FF7700', '#F7B801', '#FFFFFF'],
   };
 
-  // Switch preset
   const handleSelectPreset = (preset: ModulorPreset) => {
     setActivePreset(preset);
     setParticleDensity(preset.particleCount);
@@ -91,7 +86,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     initParticles(preset.particleCount, preset.colorScheme);
   };
 
-  // Initialize particles
   const initParticles = (count: number, paletteKey: keyof typeof colorPalettes) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -118,7 +112,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
       });
     }
     particlesRef.current = newParticles;
-  };  // Shockwave burst on click or manual trigger
+  };
   const triggerShockwave = (clientX?: number, clientY?: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -135,7 +129,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
       p.vy += (dy / dist) * force;
     });
 
-    // Play subtle synth pulse
     if (audioActive && audioCtxRef.current) {
       try {
         const pulseOsc = audioCtxRef.current.createOscillator();
@@ -150,15 +143,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         pulseOsc.start();
         pulseOsc.stop(audioCtxRef.current.currentTime + 0.3);
       } catch {
-        // audio fail
       }
     }
   };
 
-  // Web Audio Synth Toggle
   const toggleAudio = () => {
     if (audioActive) {
-      // Stop
       if (gainNodeRef.current && audioCtxRef.current) {
         gainNodeRef.current.gain.linearRampToValueAtTime(0, audioCtxRef.current.currentTime + 0.3);
         setTimeout(() => {
@@ -166,7 +156,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             try {
               osc.stop();
             } catch {
-              // already stopped
             }
           });
           oscNodesRef.current = [];
@@ -176,7 +165,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         setAudioActive(false);
       }
     } else {
-      // Start
       try {
         const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
         const ctx = new AudioContextClass();
@@ -193,7 +181,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         masterGain.connect(analyser);
         analyserRef.current = analyser;
 
-        // Triad chords tuned to Bauhaus harmonics (C, G, E / 130.81Hz, 196.00Hz, 329.63Hz)
         const baseFreqs = [130.81, 196.0, 261.63, 329.63];
         const oscs: OscillatorNode[] = [];
 
@@ -214,7 +201,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     }
   };
 
-  // Modulate Audio with cursor movement
   useEffect(() => {
     if (!audioActive || !audioCtxRef.current || oscNodesRef.current.length === 0) return;
     const canvas = canvasRef.current;
@@ -224,7 +210,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     const normY = Math.max(0, Math.min(1, mouseRef.current.y / canvas.height));
 
     const ctx = audioCtxRef.current;
-    // Modulate base frequencies
     const baseFreqs = [130.81, 196.0, 261.63, 329.63];
     oscNodesRef.current.forEach((osc, i) => {
       const targetFreq = baseFreqs[i] * (1 + normX * 0.8) + (1 - normY) * 50;
@@ -232,7 +217,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     });
   }, [mouseRef.current.x, mouseRef.current.y, audioActive]);
 
-  // Audio spectrum visualizer loop
   useEffect(() => {
     if (!audioActive || !analyserRef.current) return;
     const interval = setInterval(() => {
@@ -244,7 +228,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     return () => clearInterval(interval);
   }, [audioActive]);
 
-  // Clean up audio on unmount
   useEffect(() => {
     return () => {
       if (oscNodesRef.current) {
@@ -252,7 +235,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           try {
             osc.stop();
           } catch {
-            // ignore
           }
         });
       }
@@ -262,14 +244,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     };
   }, []);
 
-  // Main Canvas Render Loop
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Resize handler
     const updateSize = () => {
       const container = canvas.parentElement;
       if (!container) return;
@@ -283,16 +263,13 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     updateSize();
     window.addEventListener('resize', updateSize);
 
-    // Animation loop
     const render = () => {
       const w = canvas.width;
       const h = canvas.height;
 
-      // Dark canvas fade trail effect (creates fluid optical trails)
       ctx.fillStyle = `rgba(7, 8, 12, ${trailPersistence})`;
       ctx.fillRect(0, 0, w, h);
 
-      // Render subtle background laser grid lines
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
       ctx.lineWidth = 1;
       const gridStep = 48;
@@ -314,22 +291,18 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
       const isMouseActive = mouseRef.current.moved;
       const particles = particlesRef.current;
 
-      // Update & Draw particles
       ctx.shadowBlur = glowIntensity;
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Velocity & motion
         p.x += p.vx * speedMultiplier;
         p.y += p.vy * speedMultiplier;
         p.angle += p.va;
 
-        // Bounce or wrap edges
         if (p.x < 0) { p.x = w; } else if (p.x > w) { p.x = 0; }
         if (p.y < 0) { p.y = h; } else if (p.y > h) { p.y = 0; }
 
-        // Interaction with mouse cursor (attraction and gravitational vortex)
         if (isMouseActive) {
           const dx = mx - p.x;
           const dy = my - p.y;
@@ -342,11 +315,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           }
         }
 
-        // Apply slight drag
         p.vx *= 0.985;
         p.vy *= 0.985;
 
-        // Keep minimum gentle drift
         if (Math.abs(p.vx) < 0.1) p.vx += (Math.random() - 0.5) * 0.4;
         if (Math.abs(p.vy) < 0.1) p.vy += (Math.random() - 0.5) * 0.4;
 
@@ -354,12 +325,10 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         ctx.fillStyle = p.color;
         ctx.strokeStyle = p.color;
 
-        // Render based on shape mode
         if (shapeMode === 'particles') {          ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
           ctx.fill();
         } else if (shapeMode === 'geometric-mesh') {
-          // Geometric Bauhaus primitives with rotation
           ctx.save();
           ctx.translate(p.x, p.y);
           ctx.rotate(p.angle);
@@ -380,7 +349,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           }
           ctx.restore();
 
-          // Connect nearby particles with luminous constellation lines
           for (let j = i + 1; j < particles.length; j++) {
             const p2 = particles[j];
             const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
@@ -395,7 +363,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             }
           }
         } else if (shapeMode === 'waveform') {
-          // Flow lines connecting particles
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size * 0.8, 0, Math.PI * 2);
           ctx.fill();
@@ -418,7 +385,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         }
       }
 
-      ctx.shadowBlur = 0; // reset
+      ctx.shadowBlur = 0;
       animationFrameId.current = requestAnimationFrame(render);
     };
 
@@ -432,7 +399,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
     };
   }, [speedMultiplier, glowIntensity, trailPersistence, shapeMode, activePreset]);
 
-  // Snapshot PNG generator
   const captureSnapshot = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -450,11 +416,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
   return (
     <div className="min-h-screen bg-[var(--void)] text-[var(--void-text)] font-sans relative selection:bg-[var(--accent)] selection:text-[var(--on-accent)] pb-20">
-      
-      {/* Top Bar for Musa Subpage */}
+
       <header className="sticky top-0 z-50 bg-[var(--void)]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        
-        {/* Left: Back to Dotzero */}
+
         <div className="flex items-center gap-4">
           <button
             type="button"
@@ -471,13 +435,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           </div>
         </div>
 
-        {/* Right: Language Switcher & Audio quick-toggle */}
         <div className="flex items-center gap-3">
           <div className="hidden xl:block">
             <TypographySwitch compact inverse />
           </div>
-          
-          {/* Audio Synth Toggle */}          <button
+
+                    <button
             type="button"
             onClick={toggleAudio}
             className={`flex items-center gap-1.5 px-3 py-1.5 border text-xs font-mono uppercase tracking-wider transition-all ${
@@ -493,7 +456,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
             </span>
           </button>
 
-          {/* Language Switcher Segmented Control */}
           <div className="flex items-center border border-white/20 bg-black/40 p-0.5 font-mono text-xs">
             {(['it', 'de', 'en'] as Language[]).map((lng) => (
               <button
@@ -514,10 +476,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         </div>
       </header>
 
-      {/* Main Musa FX Stage */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        
-        {/* Title Lockup */}
+
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--accent-tertiary)] mb-2 font-bold">
@@ -537,15 +497,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
           </p>
         </div>
 
-        {/* Viewport Canvas + Side Controls Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          
-          {/* Real-Time Interactive Canvas (8 cols) */}
+
           <div className="lg:col-span-8 flex flex-col gap-4">
-            
+
             <div className="relative w-full h-[460px] sm:h-[540px] bg-[var(--void)] border-2 border-white/15 overflow-hidden rounded-xs shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-              
-              {/* Canvas element */}
+
               <canvas
                 ref={canvasRef}
                 className="w-full h-full cursor-crosshair block"
@@ -583,7 +540,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 }}
               />
 
-              {/* Viewport Overlay HUD Details */}
               <div className="absolute top-3 left-3 pointer-events-none flex items-center gap-2 font-mono text-[10px] text-zinc-400 bg-black/60 backdrop-blur-xs px-2 py-1 border border-white/10">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping" />
                 <span>REALTIME 4K SHADER · {activePreset.name}</span>
@@ -593,10 +549,9 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 <span>FPS: 60 · PARTICELLE: {particlesRef.current.length}</span>
               </div>
 
-              {/* Shockwave hint */}
               <div className="absolute bottom-3 left-3 pointer-events-none font-mono text-[10px] text-zinc-500 bg-black/60 px-2 py-1 border border-white/10">
                 <span>CLICK = EMETTI ONDA D’URTO · TRASCINA = MODULA CAMPO GRAVITAZIONALE</span>
-              </div>              {/* Audio visualizer bars on canvas HUD */}
+              </div>
               {audioActive && (
                 <div className="absolute bottom-3 right-3 flex items-end gap-1 bg-black/70 px-2 py-1.5 border border-[var(--accent-tertiary)]/30">
                   {audioMeter.map((val, idx) => (
@@ -611,7 +566,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               )}
             </div>
 
-            {/* Quick Actions Bar below canvas */}
             <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-[var(--surface-raised)]/5 border border-white/10 font-mono text-xs">
               <div className="flex items-center gap-2">
                 <button
@@ -642,7 +596,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 </button>
               </div>
 
-              {/* Shape Morph Mode Segmented Tabs */}
               <div className="flex items-center border border-white/20 bg-black/50 p-0.5 text-[11px]">
                 <button
                   type="button"
@@ -676,10 +629,8 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
           </div>
 
-          {/* Side Controls & Parametric Inspector (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            
-            {/* Preset Selector Panel */}
+
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs">
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--accent-tertiary)] font-bold mb-3">
                 <Sliders className="w-3.5 h-3.5" />
@@ -705,14 +656,12 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               </div>
             </div>
 
-            {/* Parametric Shader Sliders */}
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-4 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-[var(--void-text)] font-bold uppercase">
                 <span>{t.shaderControls[language]}</span>
                 <span className="text-[10px] text-zinc-400">GLSL PARAMS</span>
               </div>
 
-              {/* Particle Count */}
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">                  <span>{t.particlesLabel[language]}</span>
                   <span className="text-[var(--accent)]">{particleDensity}</span>
@@ -732,7 +681,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Speed Multiplier */}
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.speedLabel[language]}</span>
@@ -749,7 +697,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Bloom Glow */}
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.glowLabel[language]}</span>
@@ -766,7 +713,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
                 />
               </div>
 
-              {/* Trail persistence */}
               <div>
                 <div className="flex justify-between text-zinc-300 mb-1">
                   <span>{t.trailLabel[language]}</span>
@@ -784,7 +730,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
               </div>
             </div>
 
-            {/* Web Audio Synth Panel */}
             <div className="border border-white/15 bg-[var(--surface-raised)]/5 p-4 rounded-xs space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-white/10">
                 <span className="font-bold uppercase text-[var(--accent-tertiary)] flex items-center gap-2">
@@ -816,7 +761,6 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
 
         </div>
 
-        {/* Multimodal Generation Pipeline Nodes */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center gap-2 font-mono text-xs text-[var(--accent)] uppercase tracking-[0.2em] font-bold mb-4">
             <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />

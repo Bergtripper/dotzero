@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    /* DOTZERO semantic system */
+    
     --bg: #F6F4EE;
     --surface: #ECE8DD;
     --surface-raised: #FFFFFF;
@@ -20,12 +20,12 @@
     --on-text: var(--bg);
     --line-soft: rgba(18, 18, 18, 0.22);
 
-    /* Global typography profile */
+    
     --font-body: 'IBM Plex Sans', sans-serif;
     --font-display: 'IBM Plex Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
 
-    /* Legacy Bauhaus aliases retained during migration */
+    
     --bauhaus-red: var(--accent);
     --bauhaus-blue: var(--accent-secondary);
     --bauhaus-yellow: var(--accent-tertiary);
@@ -45,7 +45,6 @@
     --line-soft: rgba(242, 240, 233, 0.24);
     --canvas: #151719;
   }
-
 
   [data-typography='plex'] {
     --font-body: 'IBM Plex Sans', sans-serif;
@@ -85,7 +84,6 @@
   }
 }
 
-/* Architectural grid */
 .bauhaus-grid-pattern {
   background-size: 40px 40px;
   background-image:
@@ -110,7 +108,6 @@
   font-family: var(--font-body);
 }
 
-/* Semantic utilities used during the migration away from hardcoded Bauhaus colors */
 .dz-bg { background-color: var(--bg); }
 .dz-surface { background-color: var(--surface); }
 .dz-surface-raised { background-color: var(--surface-raised); }
@@ -119,7 +116,6 @@
 .dz-border { border-color: var(--line); }
 .dz-grid-line { border-color: var(--grid); }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -135,7 +131,6 @@
   background: var(--accent);
 }
 
-/* DOTZERO editorial index refinements */
 html {
   scroll-behavior: smooth;
 }
@@ -175,7 +170,6 @@ html {
   }
 }
 
-/* Shared DOTZERO typography */
 .dz-h1 {
   font-family: var(--font-display);
   font-weight: 800;
@@ -222,7 +216,6 @@ html {
   border-color: var(--line-soft);
 }
 
-/* Isolated home wordmark: safe for future per-letter effects */
 .dz-wordmark-frame {
   width: 100%;
   min-width: 0;
@@ -269,7 +262,6 @@ html {
   }
 }
 
-/* Global typography switch */
 .dz-type-switch {
   display: inline-flex;
   align-items: stretch;
@@ -338,7 +330,6 @@ html {
   --on-text: var(--void);
 }
 
-/* DOTZERO typographic specimen — absolute coordinate stage */
 .dz-specimen-stage {
   position: relative;
   width: 100%;
@@ -568,8 +559,6 @@ html {
   }
 }
 
-
-/* DOTZERO Identity v1 — canonical SVG system */
 .dz-logotype,
 .dz-mark {
   display: block;
@@ -620,8 +609,6 @@ html {
   }
 }
 
-
-/* DOTZERO graphic syntax — . / 0 / </> */
 .dz-dot-marker {
   display: inline-block;
   flex: none;
@@ -696,7 +683,6 @@ html {
   transform: translateX(3px);
 }
 
-/* Header brand state: logotype at origin, sign while navigating */
 .dz-brand-state {
   position: relative;
   display: flex;
@@ -742,7 +728,6 @@ html {
   }
 }
 
-/* Scroll hero */
 .dz-scroll-hero {
   position: relative;
   height: 220vh;
@@ -914,7 +899,6 @@ html {
     height: 56vh;
     min-height: 390px;
   }
-
 
   .dz-scroll-hero__footer {
     margin-top: 1rem;

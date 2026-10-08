@@ -16,7 +16,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         return stored;
       }
     } catch {
-      // localStorage unavailable
     }
     return 'it';
   });
@@ -26,7 +25,6 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     try {
       localStorage.setItem('dotzero_lang', lang);
     } catch {
-      // ignore
     }
     if (typeof document !== 'undefined') {
       document.documentElement.lang = lang;
