@@ -112,7 +112,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
       });
     }
     particlesRef.current = newParticles;
-  };  // Shockwave burst on click or manual trigger
+  };
   const triggerShockwave = (clientX?: number, clientY?: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -385,7 +385,7 @@ export const ModulorStudio: React.FC<ModulorStudioProps> = ({ onBack }) => {
         }
       }
 
-      ctx.shadowBlur = 0; // reset
+      ctx.shadowBlur = 0;
       animationFrameId.current = requestAnimationFrame(render);
     };
 
