@@ -33,7 +33,7 @@ export const ContactSection: React.FC = () => {
     <section id="contatti" className="py-20 border-b-2 border-[#121212] bg-[#F6F4EE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b-2 border-[#121212] gap-4">
           <div>
             <div className="flex items-center gap-2 font-mono text-xs text-[#DE3831] uppercase tracking-[0.2em] font-bold mb-2">
@@ -51,7 +51,7 @@ export const ContactSection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Inquiry Form (7 cols) */}
+          
           <div className="lg:col-span-7 border-2 border-[#121212] bg-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_#121212]">
             {submitted ? (
               <div className="py-12 text-center space-y-4 font-mono">
@@ -85,7 +85,7 @@ export const ContactSection: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {/* Name */}
+                  
                   <div>
                     <label
                       htmlFor="contact-name"
@@ -104,7 +104,7 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
 
-                  {/* Email */}
+                  
                   <div>
                     <label
                       htmlFor="contact-email"
@@ -124,7 +124,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Category Selection */}
+                
                 <div>
                   <label className="block font-mono text-xs uppercase font-bold text-[#121212] mb-2">
                     {t.categoryLabel[language]}
@@ -156,7 +156,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Brief Notes */}
+                
                 <div>
                   <label
                     htmlFor="contact-message"
@@ -174,7 +174,7 @@ export const ContactSection: React.FC = () => {
                   />
                 </div>
 
-                {/* Submit button */}
+                
                 <div>
                   <button
                     type="submit"
@@ -189,10 +189,10 @@ export const ContactSection: React.FC = () => {
             )}
           </div>
 
-          {/* Right Column: Atelier Addresses & Coordinates (5 cols) */}
+          
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Atelier Locations Box */}
+            
             <div className="border-2 border-[#121212] bg-white p-6 shadow-[6px_6px_0px_0px_#121212]">
               <div className="font-mono text-xs font-bold uppercase text-[#121212] pb-3 mb-4 border-b border-[#121212] flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#DE3831]" />
@@ -219,7 +219,7 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Direct Channel */}
+              
               <div className="mt-6 pt-4 border-t border-[#121212] space-y-2 font-mono text-xs">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#DE3831]" />
@@ -232,7 +232,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Geometric Philosophy Quote */}
+            
             <div className="border-2 border-[#121212] bg-[#121212] text-white p-6 relative overflow-hidden">
               <div className="text-6xl font-display font-extrabold text-white/10 absolute -right-4 -bottom-4 select-none">
                 ·0
